@@ -66,7 +66,7 @@ public static int mainDisplayOptions() {
     Scanner sc = new Scanner(System.in);
     do {
         System.out.println("======================\n"+
-                           "        Molibma       \n"+
+                           "        Moblima       \n"+
                            "======================\n"+
                            "(1) Search/List movie\n(2) View movie details \n"+
                            "(3) Check seat availability and selection of seat/s\n(4) Book and purchase ticket\n"+
@@ -82,7 +82,9 @@ public static int mainDisplayOptions() {
         } catch (Exception e) {
             choice = sc.nextInt();
             if (choice >=1 && choice <=8) break;
-            //TODO: handle exception
+            else{
+                System.out.println("Enter a valid option");
+            }
         }
 
     } while (choice<1 || choice >8);
