@@ -27,5 +27,8 @@ public enum SeatTypes {
 
     DELUXE,
 
+
+    
+
     
 }

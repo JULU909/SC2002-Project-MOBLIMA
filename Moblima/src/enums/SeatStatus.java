@@ -16,4 +16,6 @@ public enum SeatStatus {
      * OCCUPIED SEATS 
      */
     OCCUPIED, 
+
+    EMPTY,
 }

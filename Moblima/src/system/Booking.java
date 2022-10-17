@@ -1,5 +1,7 @@
 package src.system;
 import src.enums.*;
+import java.util.ArrayList;
+
 // Imports all the enums to be used in the Class
 
 /**
@@ -9,10 +11,14 @@ import src.enums.*;
  * @since 1.0
  */
 
-
-public class Seating {
-    private SeatTypes roomType;
-    private SeatStatus roomStatus;
+public class Booking {
+    
     private CineplexTypes cineplex;
     private int cost; 
+    private Seat seat;
+    private Showtime showtime;
+    private int price;
+
+    
 }
+

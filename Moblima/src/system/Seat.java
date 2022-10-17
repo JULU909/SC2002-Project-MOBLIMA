@@ -1,0 +1,47 @@
+package src.system;
+import src.enums.*;
+// Imports all the enums to be used in the Class
+
+/**
+ * Represents the class of Seats, which holds the information at the instance a seat is selected to be booked.
+ * @author Harish Vasanth
+ * @version 1.0
+ * @since 1.0
+ */
+
+
+public class Seat {
+    private SeatTypes seatType;
+    private SeatStatus seatStatus;
+    private int row;
+    private int col;
+
+
+
+
+    public void Seat(SeatTypes seatType,SeatStatus seatStatus, int row , int col){
+        this.seatType = seatType;
+        this.seatStatus = seatStatus;
+        this.row = row;
+        this.col = col;
+
+    }
+
+    public int getRow() {
+    return row;
+    }
+
+    public int getCol() {
+    return col;
+    }
+
+    public SeatTypes getSeatType() {
+    return seatType;
+    }
+
+    public SeatStatus getSeatStatus() {
+    return seatStatus;
+    
+}
+
+}
