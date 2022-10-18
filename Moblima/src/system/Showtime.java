@@ -49,6 +49,14 @@ public void printLayout(){
 
 }
 
+public void checkAvailability(int row, int column){  
 
+
+
+    
+
+
+
+}
 
 }

@@ -18,4 +18,8 @@ public enum SeatStatus {
     OCCUPIED, 
 
     EMPTY,
+     /**
+     * EMPTY SPACES IN THE CINEMA
+     */
+    
 }
