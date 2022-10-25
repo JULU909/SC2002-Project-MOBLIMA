@@ -4,16 +4,19 @@ import src.enums.*;
 public class Showtime {
     private int time;
     private int date;
-    private CineplexTypes cineplex;
+    private String cineplex;
     private Seat [][] layout;
+    private String movie;
 
 
 
-public void Showtime(int time, int date, CineplexTypes cineplex){
+
+public void Showtime(int time, int date, String string , String movie){
     this.date = date;
     this.time = time;
-    this.cineplex = cineplex;
+    this.cineplex = string;
     this.layout = new Seat[11][32];
+    this.movie = movie;
     for (int x = 0 ;  x < this.layout.length ; x++){
         for(int y = 0 ; y < this.layout[x].length; y++){
              this.layout[x][y] = new Seat();
@@ -59,4 +62,13 @@ public void checkAvailability(int row, int column){
 
 }
 
+public int getTime(){
+    return this.time;
+}
+
+
+
+public String getMovie(){
+    return this.movie;
+}
 }

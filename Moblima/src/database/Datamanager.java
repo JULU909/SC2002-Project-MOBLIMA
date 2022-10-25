@@ -23,20 +23,22 @@ public class Datamanager {
                 List<String> list = Arrays.asList(values);
                 System.out.println(list);
             }
+        }
+    }
+
+    public void getDataRow(int row) throws FileNotFoundException, IOException{
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                List<String> list = Arrays.asList(values);
+                System.out.println(list.get(row));
+            }
     }
 }
     
-public void getDataRow(int row) throws FileNotFoundException, IOException{
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] values = line.split(",");
-            List<String> list = Arrays.asList(values);
-            System.out.println(list.get(row));
-        }
-}
 
 
-}
+
 
 }
