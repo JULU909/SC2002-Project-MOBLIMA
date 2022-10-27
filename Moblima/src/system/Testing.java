@@ -20,7 +20,7 @@ public class Testing {
         
         BookingDisplay bk = new BookingDisplay();
         bk.askCineplex();
-        
+        show.printLayout();
         int seats = bk.askTickets();
         
         bk.askSeats(seats);

@@ -49,7 +49,18 @@ public void printLayout(){
 
             System.out.println();
     }
-
+       /* int count = 0;
+        System.out.print("    ");
+    for (int i = 0 ; i < layout[0].length ; i++){
+        if (layout[0][i].getSeatStatus() == SeatStatus.VACANT || layout[0][i].getSeatStatus() == SeatStatus.OCCUPIED){
+            System.out.print(count+ " ");
+            count++;
+        }
+        else{
+            System.out.print("      ");
+        }
+    }
+    */
 }
 
 public void checkAvailability(int row, int column){  
