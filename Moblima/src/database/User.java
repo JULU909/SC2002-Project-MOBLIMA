@@ -1,4 +1,4 @@
-package src;
+package src.database;
 
 import java.util.Scanner;
 
@@ -7,12 +7,12 @@ enum userType { CUSTOMER, STAFF}
 public class User extends Person{
 	private String password;
 	private userType UserType;
-	User(String firstName, String lastName){
+	public User(String firstName, String lastName){
 		super(firstName,lastName);
 		this.password = "default";
 	}
 	
-	public void setPassword() {
+	public void setPassword() { //set password with UI
 		System.out.println("Enter current password (default if first time): ");
 		Scanner input = new Scanner(System.in);
 		String text = input.nextLine();
@@ -25,6 +25,10 @@ public class User extends Person{
 		this.password = input.nextLine(); //update user's password attribute
 		System.out.println("New password set! ");
 		return;
+	}
+	
+	public void setPassword(String password) { //set password directly
+		this.password = password;
 	}
 	
 	public void setUserType(userType type) { 
