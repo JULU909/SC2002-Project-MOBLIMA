@@ -25,14 +25,17 @@ public class Testing {
         
         bk.askSeats(seats);
         ShowtimeManager Showtimes = new ShowtimeManager();
-        Showtimes.ShowtimeManager("src/data/Showtimes.csv");
+        Showtimes.ShowtimeManager("Moblima/src/Data/Showtimes.csv");
         int length = Showtimes.getLength();
         Showtime[] data = new Showtime[100] ;
         
         data = Showtimes.getDataAll(length);
-        Showtimes.getMovies(length);
-        for(int i = 1 ; i < length ; i++){
-            System.out.println(data[i].getMovie());
+        String [] names  = Showtimes.getMovies(length);
+        
+        int count = 0;
+        while (names[count] != null){
+            System.out.println(names[count]);
+            count++;
         }
        
     }

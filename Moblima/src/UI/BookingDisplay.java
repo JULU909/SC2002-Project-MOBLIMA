@@ -56,15 +56,19 @@ public int askTickets(){
 
 public int askMovie(String [] movies){
     Scanner sc = new Scanner(System.in);
-
+    int count= 0;
     System.out.println("Please select the number corresponding to a movie : ");
     System.out.println( "-------------------------------------------------- ");
-    for (int i =0 ; i < movies.length; i++){
-        System.out.println(i+1 + " :  " + movies[i]);
+    while(movies[count] != null){
+        System.out.println(i+1 + " :  " + movies[count]);
+        count++;
     }
     int choice = 0 ;
     choice = sc.nextInt();
     return choice;
 }
+
+
+
 
 }
