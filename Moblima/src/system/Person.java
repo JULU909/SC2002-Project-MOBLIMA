@@ -1,4 +1,6 @@
-class Person{
+package src.system;
+
+class Person{ //delete this cause it's already in database?
     private String firstName;
     private String lastName;
     
