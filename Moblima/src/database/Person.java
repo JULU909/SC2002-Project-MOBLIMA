@@ -1,4 +1,4 @@
-package src;
+package database;
 
 public class Person {
 	private String firstName;

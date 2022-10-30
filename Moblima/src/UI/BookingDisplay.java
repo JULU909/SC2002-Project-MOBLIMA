@@ -1,10 +1,10 @@
-package src.UI;
-import src.enums.*;
-import src.system.Cineplex;
+package UI;
+import enums.*;
+import system.Cineplex;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import src.system.Seat;
+import system.Seat;
 public class BookingDisplay {
     
 

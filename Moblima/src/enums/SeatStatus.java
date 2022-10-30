@@ -1,4 +1,4 @@
-package src.enums;
+package enums;
 
 /**
  *  RoomStatus that can be used

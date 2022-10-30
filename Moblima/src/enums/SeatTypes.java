@@ -1,4 +1,4 @@
-package src.enums;
+package enums;
 
 /**
  *  RoomType that can be used

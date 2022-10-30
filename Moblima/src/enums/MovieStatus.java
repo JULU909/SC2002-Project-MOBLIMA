@@ -1,3 +1,5 @@
+package enums;
+
 public enum MovieStatus {
     COMING_SOON,
     PREVIEW,
