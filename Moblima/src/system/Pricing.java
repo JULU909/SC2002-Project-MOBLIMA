@@ -1,4 +1,4 @@
-package src.system;
+package system;
 
 public class Pricing {
     

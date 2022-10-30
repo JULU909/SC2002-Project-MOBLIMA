@@ -1,4 +1,4 @@
-package src.system;
+package system;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

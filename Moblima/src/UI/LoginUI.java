@@ -1,9 +1,8 @@
-package src.UI;
+package UI;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import src.database.Database;
-import src.database.User;
+import database.Database;
+import database.User;
 
 public class LoginUI {
 	public User loginText() {
@@ -12,12 +11,12 @@ public class LoginUI {
 		System.out.println("Enter userType: ");
 		System.out.println("1. CUSTOMER");
 		System.out.println("2. STAFF");
-		src.enums.UserType type = src.enums.UserType.CUSTOMER;
+		enums.UserType type = enums.UserType.CUSTOMER;
 		int choice = sc.nextInt();
 		if(choice == 1)
-			type = src.enums.UserType.CUSTOMER;
+			type = enums.UserType.CUSTOMER;
 		else if(choice == 2)
-			type = src.enums.UserType.STAFF;
+			type = enums.UserType.STAFF;
 		else
 			System.out.println("Invalid entry, defaulting userType to CUSTOMER");
 				

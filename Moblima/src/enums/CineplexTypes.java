@@ -1,4 +1,4 @@
-package src.enums;
+package enums;
 
 /**
  *  Cineplex that is used

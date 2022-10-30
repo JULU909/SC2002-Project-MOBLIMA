@@ -1,5 +1,5 @@
-package src.system;
-import src.enums.*;
+package system;
+import enums.*;
 
 public class Showtime {
     private int time;

@@ -1,4 +1,4 @@
-package src.database;
+package database;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList; // import the ArrayList class
+
 import src.system.Showtime;
 
 public class ShowtimeManager {

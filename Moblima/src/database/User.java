@@ -1,12 +1,12 @@
-package src.database;
+package database;
 
 import java.util.Scanner;
+import enums.UserType;
 
-enum userType { CUSTOMER, STAFF}
 
 public class User extends Person{
 	private String password;
-	private userType UserType;
+	private UserType UserType;
 	public User(String firstName, String lastName){
 		super(firstName,lastName);
 		this.password = "default";
@@ -31,12 +31,12 @@ public class User extends Person{
 		this.password = password;
 	}
 	
-	public void setUserType(userType type) { 
+	public void setUserType(UserType type) { 
 		this.UserType = type;
 		
 	}
 	
-	public userType getUserType() {
+	public UserType getUserType() {
 		return this.UserType;
 	}
 	

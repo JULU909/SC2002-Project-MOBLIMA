@@ -1,5 +1,5 @@
-package src.system;
-import src.enums.*;
+package system;
+import enums.*;
 // Imports all the enums to be used in the Class
 
 /**
