@@ -1,12 +1,14 @@
-package src.UI;
-import src.enums.*;
-import src.system.Cineplex;
+package UI;
+import enums.*;
+import system.Cineplex;
 import java.util.ArrayList; // import the ArrayList class
 
 import java.util.Arrays;
 import java.util.Scanner;
-import src.system.Seat;
-import src.system.Showtime;
+import system.Seat;
+import system.Showtime;
+import system.Ticket;
+import database.User;
 public class BookingDisplay {
     
 
@@ -23,25 +25,27 @@ public String askCineplex(){
         System.out.println(i+1 + " : " + list[i]);
     }
 
-    String choice;
-    choice = sc.nextLine();
-    return choice;
+    int choice;
+    choice = sc.nextInt();
+    return (list[choice-1]).name();
 }
 
-public Seat[] askSeats(int number){
+public ArrayList askSeats(int number){
     
     Scanner sc = new Scanner(System.in);
-    Seat [] seatList = new Seat [number];
-    
+    ArrayList <Seat> seats = new ArrayList<Seat>();
     System.out.println( "Please Enter your seat numbers (EG : A1) : ");
     System.out.println( "------------------------------------------- ");
     for (int i = 0 ; i < number; i++){
         String seat = sc.nextLine();
-        seatList[i] = new Seat();
-        seatList[i].Seat(null, null, seat.charAt(0), seat.charAt(0));
+        Seat TempSeat = new Seat();
+        String strNew = seat.substring(1, seat.length());
+        
+        TempSeat.Seat(null, null, seat.charAt(0), Integer.valueOf(strNew));
+        seats.add(TempSeat);
     }
     
-    return seatList;
+    return seats;
 }
 
 public int askTickets(){
@@ -85,5 +89,32 @@ public int askTiming(ArrayList <Showtime>showtimes){
     return choice;
 }
 
+
+public int confirmTicket(Ticket ticket) throws InterruptedException{
+    Scanner sc = new Scanner(System.in);
+    int choice = 0;
+    ArrayList <Seat> bookedSeats = ticket.getSeats();
+    int price = ticket.getPrice();
+    User user = ticket.getUser();
+    Showtime bookedShowtime = ticket.getShowtime();
+    System.out.println("These are the details of your Booking : ");
+    System.out.println("--------------------------------------- ");
+    Thread.sleep(1000);
+    System.out.println("Show time booked : " + bookedShowtime.getTime());
+    System.out.println("Date booked      : " + ticket.getDate());
+    System.out.println("Number of seats  : " + bookedSeats.size());
+    Thread.sleep(1000);
+    System.out.println();
+    for (int i = 0 ;  i< bookedSeats.size() ; i++ ){
+        System.out.println("Seat " + (i+1) + " : " + (char)(bookedSeats.get(i).getRow()) + bookedSeats.get(i).getCol());
+    }
+
+    System.out.println("Ticked ID       : " + ticket.getID());
+    System.out.println("User            : " + user.getfirstName());
+    System.out.println("To confirm purchase type 1 : ");
+    choice = sc.nextInt();
+
+    return choice;
+}
 
 }

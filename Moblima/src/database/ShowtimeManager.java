@@ -95,7 +95,7 @@ public class ShowtimeManager {
                 }
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
-                if (list.get(3).equals(movie)){
+                if (list.get(3).equals(movie) && list.get(0).equals(cineplex)){
                     temp = new Showtime() ;
                     temp.Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
                     showtimes.add(temp);

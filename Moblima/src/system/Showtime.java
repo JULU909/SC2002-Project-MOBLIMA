@@ -11,12 +11,16 @@ public class Showtime {
 
 
 
-public void Showtime(int time, int date, String string , String movie){
+public void Showtime(int time, int date, String cineplex , String movie){
     this.date = date;
     this.time = time;
-    this.cineplex = string;
+    this.cineplex = cineplex;
     this.layout = new Seat[11][32];
     this.movie = movie;
+    
+
+
+
     for (int x = 0 ;  x < this.layout.length ; x++){
         for(int y = 0 ; y < this.layout[x].length; y++){
              this.layout[x][y] = new Seat();
@@ -32,6 +36,23 @@ public void Showtime(int time, int date, String string , String movie){
 
 public void printLayout(){
     int characters = 'A';        
+    
+    int n = 10;
+    int m = 100;
+        for (int i = 1; i <= n; i++)
+        {
+            System.out.print("  ");
+            for (int j = 1; j <= m; j++)
+            {
+                if (i == 1 || i == n)           
+                    System.out.print("-");     
+                else if(j == 1 || j == m)  
+                    System.out.print("|"); 
+                else
+                    System.out.print(" ");           
+            }
+            System.out.println();
+        }
     for (int x = 0 ;  x < layout.length ; x++){
         System.out.printf("%c ", characters);
         characters++;
@@ -81,5 +102,9 @@ public int getTime(){
 
 public String getMovie(){
     return this.movie;
+}
+
+public String getCineplex(){
+    return this.cineplex;
 }
 }

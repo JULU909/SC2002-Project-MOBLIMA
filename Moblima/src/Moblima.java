@@ -1,13 +1,16 @@
-package src;
+import UI.BookingDisplay;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
-
+import java.util.*;
+import system.*;
+import database.*;
+import system.*;
 
 public class Moblima {
     
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
 
         do {
@@ -108,9 +111,36 @@ public static void seatDetails(){
     
 }
 
-public static void purchaseTicket(){
+public static void purchaseTicket() throws FileNotFoundException, IOException, InterruptedException{
+        // Connection to the managers and UI
+        BookingDisplay booking = new BookingDisplay();
+        ShowtimeManager Showtimes = new ShowtimeManager();
+        Showtimes.ShowtimeManager("Moblima/src/Data/Showtimes.csv");
+        int showtimesLength = Showtimes.getLength();
+        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
 
-    
+        //Getting user inputs.
+        String cineplex = booking.askCineplex();
+        String [] movies  = Showtimes.getMovies(showtimesLength);
+        int movieChoice = booking.askMovie(movies);
+        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice-1], cineplex);
+        int showtimeChoice = booking.askTiming(showtimes);
+        Showtime choosenShowtime = showtimes.get(showtimeChoice-1);
+        
+        int numberSeats = booking.askTickets();
+        Ticket ticket = new Ticket();
+        Pricing temp = new Pricing();
+        choosenShowtime.printLayout();
+        ArrayList <Seat> userSeats = booking.askSeats(numberSeats);
+        ticket.Ticket(20, userSeats, choosenShowtime, 301222);
+
+       int confirmation = booking.confirmTicket(ticket);
+       if (confirmation == 1){
+        System.out.println("Done! ");
+        ticketHandle.uploadTicket(ticket);
+       }
+       else{return;}
+
 }
 
 public static void bookingHistory(){
