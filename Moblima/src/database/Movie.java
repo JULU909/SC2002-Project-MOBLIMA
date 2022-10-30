@@ -1,4 +1,9 @@
+package database;
+
 import java.util.ArrayList;
+import system.*;
+import enums.MovieType;
+import enums.AgeRating;
 
 public class Movie {
 	
@@ -9,7 +14,7 @@ public class Movie {
     private MovieType type;
     private AgeRating ageRating;
     private ArrayList<Review> reviews = new ArrayList<Review>();
-    private ShowTime[] showTimes = new ArrayList<ShowTime>();
+    private Showtime[] showTimes = new ArrayList<Showtime>();
     private int totalSales=0;
 
 	Movie(String title, String synopsis, String director, String[] cast, MovieType type, AgeRating ageRating)
@@ -67,12 +72,12 @@ public class Movie {
     
     // showtime, sales, agerating
     // idk if needed referencing
-    public ShowTime[] getShowtimes() {
+    public Showtime[] getShowtimes() {
 		return this.showTimes;
     }
 
-    public void setShowTimes(ShowTime[] showTime) {
-		this.showTime = showTime;
+    public void setShowTimes(Showtime[] showTime) {
+		this.showTimes = showTime;
 	}
 
     

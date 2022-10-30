@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import src.system.Showtime;
+import system.Showtime;
 
 public class ShowtimeManager {
     private String filename;
