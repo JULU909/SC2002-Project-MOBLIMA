@@ -13,12 +13,29 @@ import java.util.ArrayList;
 
 public class Booking {
     
-    private CineplexTypes cineplex;
-    private int cost; 
+    private String cineplex;
     private Seat seat;
     private Showtime showtime;
     private int price;
 
+    public void Booking(String cineplex, Seat seat , Showtime showtime , int price){
+        this.cineplex = cineplex ;
+        this.price = price;
+        this.showtime = showtime,
+        this.seat = seat;
     
+    }
+
+    public Seat getSeat(){
+        return this.seat;
+    }
+
+    public int getPrice(){
+        return this.price;
+    }
+    
+    public Showtime getShowtime(){
+        return this.showtime;
+    }
 }
 

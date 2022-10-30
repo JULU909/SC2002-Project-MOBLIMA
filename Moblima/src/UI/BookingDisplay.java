@@ -1,17 +1,19 @@
 package src.UI;
 import src.enums.*;
 import src.system.Cineplex;
+import java.util.ArrayList; // import the ArrayList class
 
 import java.util.Arrays;
 import java.util.Scanner;
 import src.system.Seat;
+import src.system.Showtime;
 public class BookingDisplay {
     
 
 
 
 
-public int askCineplex(){
+public String askCineplex(){
     Scanner sc = new Scanner(System.in);
     CineplexTypes [] list ;
     list = CineplexTypes.values();
@@ -21,8 +23,8 @@ public int askCineplex(){
         System.out.println(i+1 + " : " + list[i]);
     }
 
-    int choice = 0 ;
-    choice = sc.nextInt();
+    String choice;
+    choice = sc.nextLine();
     return choice;
 }
 
@@ -60,7 +62,7 @@ public int askMovie(String [] movies){
     System.out.println("Please select the number corresponding to a movie : ");
     System.out.println( "-------------------------------------------------- ");
     while(movies[count] != null){
-        System.out.println(i+1 + " :  " + movies[count]);
+        System.out.println(count+1 + " :  " + movies[count]);
         count++;
     }
     int choice = 0 ;
@@ -68,7 +70,20 @@ public int askMovie(String [] movies){
     return choice;
 }
 
-
+public int askTiming(ArrayList <Showtime>showtimes){
+    Scanner sc = new Scanner(System.in);
+    int count= 0;
+    System.out.println("Please select the showtime of your liking! : ");
+    System.out.println( "------------------------------------------ ");
+    for(int i =0 ; i < showtimes.size() ; i++){
+        Showtime temp = showtimes.get(i);
+        System.out.println(i+1 + " :  " + temp.getTime());
+        count++;
+    }
+    int choice = 0 ;
+    choice = sc.nextInt();
+    return choice;
+}
 
 
 }
