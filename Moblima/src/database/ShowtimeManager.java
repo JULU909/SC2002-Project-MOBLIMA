@@ -14,9 +14,11 @@ public class ShowtimeManager {
     private Showtime[] data;
     private Showtime temp;
 
-    public void ShowtimeManager(String filename) {
-		this.filename = filename;
-	}
+    public ShowtimeManager(String filename) {
+        this.filename = filename;
+    }
+
+    
 
     public int getLength()throws FileNotFoundException, IOException {
         int count = 0;

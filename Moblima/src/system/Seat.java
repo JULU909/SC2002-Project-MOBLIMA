@@ -27,6 +27,13 @@ public class Seat {
 
     }
 
+    public void setRowCol(int row, int col){
+
+        this.row = row;
+        this.col = col;
+        
+    }
+
     public int getRow() {
     return row;
     }

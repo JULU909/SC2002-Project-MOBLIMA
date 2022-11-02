@@ -110,7 +110,7 @@ public LocalDate askDate(){
             System.out.println((i+1)+ " : "+ modifiedDate + " " + day);
             
         }
-        LocalDate date2 =  LocalDate.now().plusDays(1);
+        
         
        
         

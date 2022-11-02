@@ -1,4 +1,9 @@
 package system;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import database.ShowtimeManager;
+import database.TicketManager;
 import enums.*;
 
 public class Showtime {
@@ -25,10 +30,10 @@ public void Showtime(int time, int date, String cineplex , String movie){
         for(int y = 0 ; y < this.layout[x].length; y++){
              this.layout[x][y] = new Seat();
              if (y == 7 || y == 24){
-                this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.EMPTY, x, y);
+                this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.EMPTY, x+65, y);
                 continue;
              }
-             this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.VACANT, x, y);
+             this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.VACANT, x+65, y);
         }
 }
 }
@@ -84,12 +89,26 @@ public void printLayout(){
     */
 }
 
-public void checkAvailability(int row, int column){  
+public void setLayout() throws IOException{  
 
 
-
+    ArrayList <Seat> bookedSeats = new ArrayList<>();
+    TicketManager n = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
+    bookedSeats = n.getAllBookedSeats(cineplex , Integer.toString(time), Integer.toString(date) , movie);
+    System.out.print(bookedSeats);
+    for (int i  = 0 ; i < bookedSeats.size() ; i ++){
+        int row  = bookedSeats.get(i).getRow();
+        int col = bookedSeats.get(i).getCol();
+        this.layout[row-65][col-1].Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, row, col);
+    }
+   
+}
     
 
+
+
+
+public void checkAvailability(){
 
 
 }

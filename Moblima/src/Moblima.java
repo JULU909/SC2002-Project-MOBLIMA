@@ -2,6 +2,8 @@ import UI.BookingDisplay;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import system.*;
 import database.*;
@@ -115,8 +117,7 @@ public static void seatDetails(){
 public static void purchaseTicket() throws FileNotFoundException, IOException, InterruptedException{
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
-        ShowtimeManager Showtimes = new ShowtimeManager();
-        Showtimes.ShowtimeManager("Moblima/src/Data/Showtimes.csv");
+        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
         int showtimesLength = Showtimes.getLength();
         TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
 
@@ -125,16 +126,17 @@ public static void purchaseTicket() throws FileNotFoundException, IOException, I
         String [] movies  = Showtimes.getMovies(showtimesLength);
         int movieChoice = booking.askMovie(movies);
         ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice-1], cineplex);
-        Day inputDate = booking.askDate();
+        LocalDate inputDate = booking.askDate();
+        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
         int showtimeChoice = booking.askTiming(showtimes);
         Showtime choosenShowtime = showtimes.get(showtimeChoice-1);
-        
+        choosenShowtime.setLayout();
         int numberSeats = booking.askTickets();
         Ticket ticket = new Ticket();
-        Pricing temp = new Pricing();
+        Pricing price = new Pricing();
         choosenShowtime.printLayout();
         ArrayList <Seat> userSeats = booking.askSeats(numberSeats);
-        ticket.Ticket(20, userSeats, choosenShowtime, 301222);
+        ticket.Ticket(price.getPrice(), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
 
        int confirmation = booking.confirmTicket(ticket);
        if (confirmation == 1){
