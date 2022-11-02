@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.*;
 import system.*;
 import database.*;
+import enums.Day;
 import system.*;
 
 public class Moblima {
@@ -124,6 +125,7 @@ public static void purchaseTicket() throws FileNotFoundException, IOException, I
         String [] movies  = Showtimes.getMovies(showtimesLength);
         int movieChoice = booking.askMovie(movies);
         ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice-1], cineplex);
+        Day inputDate = booking.askDate();
         int showtimeChoice = booking.askTiming(showtimes);
         Showtime choosenShowtime = showtimes.get(showtimeChoice-1);
         

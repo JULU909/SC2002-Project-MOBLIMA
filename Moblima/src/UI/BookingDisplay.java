@@ -9,6 +9,11 @@ import system.Seat;
 import system.Showtime;
 import system.Ticket;
 import database.User;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 public class BookingDisplay {
     
 
@@ -88,6 +93,33 @@ public int askTiming(ArrayList <Showtime>showtimes){
     choice = sc.nextInt();
     return choice;
 }
+
+public LocalDate askDate(){
+        Scanner sc = new Scanner(System.in);
+        LocalDate date =  LocalDate.now();
+        Calendar cal = Calendar.getInstance();
+        LocalDate [] bookingDates = new LocalDate[7];
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
+        DateTimeFormatter dayFormatters = DateTimeFormatter.ofPattern("EEEE");
+        System.out.println("Please select the Date of your liking! : ");
+        System.out.println( "--------------------------------------- ");
+        for (int i = 0 ; i <7 ; i ++){
+            bookingDates[i] = LocalDate.now().plusDays(i);
+            String modifiedDate = bookingDates[i].format(formatters);
+            String day = bookingDates[i].format(dayFormatters);
+            System.out.println((i+1)+ " : "+ modifiedDate + " " + day);
+            
+        }
+        LocalDate date2 =  LocalDate.now().plusDays(1);
+        
+       
+        
+
+		int choice = sc.nextInt();
+        return  bookingDates[choice-1];
+		
+}
+
 
 
 public int confirmTicket(Ticket ticket) throws InterruptedException{

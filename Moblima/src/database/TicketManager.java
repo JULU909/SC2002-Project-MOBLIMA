@@ -22,7 +22,7 @@ public class TicketManager {
         FileWriter fileWriter = new FileWriter("Moblima/src/Data/TicketsBooked.csv",true);
 
         BufferedWriter bufferWrt = new BufferedWriter(fileWriter);
-
+        bufferWrt.newLine();
         StringBuilder line = new StringBuilder();
         line.append(ticket.getID());
         line.append(',');
