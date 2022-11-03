@@ -75,6 +75,8 @@ public void printLayout(){
 
             System.out.println();
     }
+    System.out.println("[X] Indicates the seat is previously booked , [ ] Indicates that the seat is avaliable");
+
        /* int count = 0;
         System.out.print("    ");
     for (int i = 0 ; i < layout[0].length ; i++){
