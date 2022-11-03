@@ -14,6 +14,14 @@ public class ShowtimeManager {
     private Showtime[] data;
     private Showtime temp;
 
+    public final static String FILENAME = "Moblima/src/Data/Movies.csv";
+
+    public ShowtimeManager(){
+        this.filename = FILENAME;
+    }
+
+
+
     public ShowtimeManager(String filename) {
         this.filename = filename;
     }
@@ -32,8 +40,7 @@ public class ShowtimeManager {
     }
 
     public Showtime[] getDataAll(int length) throws FileNotFoundException, IOException{
-        
-        
+
         data = new Showtime [length];
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
