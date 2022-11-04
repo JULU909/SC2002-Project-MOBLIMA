@@ -24,7 +24,7 @@ public class SearchMovieUI {
     private int option;
     private int length;
     public final static String FILENAME = "Moblima/src/Data/movieInformation.csv";
-    
+    ShowtimeManager s1;
   
     SearchMovieUI(){
         ShowtimeManager s1 = new ShowtimeManager(FILENAME);
@@ -60,7 +60,8 @@ public class SearchMovieUI {
     }
     
     public Showtime[] DisplayAll(){
-        s1.getDataAll()
+        int length = s1.getLength();
+        s1.getDataAll(length);
 
     }
     public int getLength(){
