@@ -25,7 +25,7 @@ public class Moblima {
                     break;
     
                 case 2:
-                    movieDetails();
+                    new MovieInfoManager().getDataAll();
                      break;
                 
                 case 3:
