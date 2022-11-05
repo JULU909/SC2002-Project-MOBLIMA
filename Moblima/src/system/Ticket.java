@@ -3,6 +3,7 @@ import enums.*;
 import java.util.ArrayList;
 import system.Showtime;
 import database.User;
+
 // Imports all the enums to be used in the Class
 
 /**
