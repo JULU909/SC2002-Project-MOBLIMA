@@ -1,3 +1,5 @@
+package database;
+
 public class Review {
     Customer reviewer;
     int rating;
