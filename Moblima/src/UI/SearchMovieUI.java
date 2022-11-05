@@ -18,45 +18,41 @@ public class SearchMovieUI {
     private String type;
     private int option;
     private int length;
-    public final static String FILENAME = "Moblima/src/Data/movieInformation.csv";
+    public final static String FILENAME = "Moblima/src/Data/Showtimes.csv";
     private ShowtimeManager s1;
   
     
     public SearchMovieUI(){
         s1 = new ShowtimeManager(FILENAME);
-        Scanner sc = new Scanner(System.in);
-        while(choice != -1){
-            System.out.println("Input the following fields:");
-            System.out.println("Choice 1: Search/List Movie");
-            System.out.println("Choice 2: Display all Movie details, including reviews and ratings");
-            System.out.println("Choice -1: exit");
-            choice = sc.nextInt();
+        // Scanner sc = new Scanner(System.in);
+        // while(choice != -1){
+            // System.out.println("Input the following fields:");
+            // System.out.println("Choice 1: Search/List Movie");
+            // System.out.println("Choice 2: Display all Movie details, including reviews and ratings");
+            // System.out.println("Choice -1: exit");
+            // choice = sc.nextInt();
 
-            switch(choice){
-                case 1:
+        //     switch(choice){
+        //         case 1:
                 
-                break;
+        //         break;
 
-                case 2:
-                DisplayAll();
-                break;
+        //         case 2:
+        //         DisplayAll();
+        //         break;
 
-                default:
-                System.out.println("Your choice: " + choice + " was not a valid input ");
-                break;
-            }
-        }
-        sc.close();
+        //         default:
+        //         System.out.println("Your choice: " + choice + " was not a valid input ");
+        //         break;
+        //     }
+        // }
+        // sc.close();
     }
 
 
     public static void main(String args[]){
         new SearchMovieUI();
         }
-    public  void sad(String args[]){
-        new SearchMovieUI();
-        }
-    
     
     
     public void DisplayAll(){
@@ -64,6 +60,7 @@ public class SearchMovieUI {
         try{
             lmaoArr = s1.getDataAll();
             for(int i=0; i<lmaoArr.length; i++){
+                if(i==0){continue;}
                 System.out.println(String.format("Entry %s: %s", i, lmaoArr[i].getShowTimeDetails()));
             }
         }

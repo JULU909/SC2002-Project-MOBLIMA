@@ -130,7 +130,7 @@ public String getCineplex(){
 }
 
 public String getShowTimeDetails(){
-    return String.format("time: %s ,date: %s ,cineplex: %s, movie: %s", time, date, cineplex, movie);
+    return String.format("time: %s, date: %s, cineplex: %s, movie: %s", time, date, cineplex, movie);
 }
 
 
