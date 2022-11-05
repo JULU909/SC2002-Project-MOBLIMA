@@ -36,11 +36,10 @@ public class Customer extends User{
     }
 
     public AgeGroup getageGroup(){
-        int age = getAge();
-        
+        return this.ageGroup;        
     }
 
-    public AgeGroup setageGroup(AgeGroup ageGroup){
+    public void setageGroup(AgeGroup ageGroup){
         this.ageGroup = ageGroup;
         
     }
