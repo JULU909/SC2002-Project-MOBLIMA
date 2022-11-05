@@ -1,6 +1,5 @@
 package database;
 import java.util.*;
-import enums.AgeRating;
 import enums.AgeGroup;
 import enums.UserType;
 
@@ -25,21 +24,21 @@ public class Customer extends User{
     public void setAge(int age){
         this.age = age;
         if (age < 18){
-            setageGroup(AgeGroup.CHILD);
+            setAgeGroup(AgeGroup.CHILD);
         }
         else if (age < 55){
-            setageGroup(AgeGroup.ADULT);
+            setAgeGroup(AgeGroup.ADULT);
         }
         else {
-            setageGroup(AgeGroup.SENIOR);
+            setAgeGroup(AgeGroup.SENIOR);
         }
     }
 
-    public AgeGroup getageGroup(){
+    public AgeGroup getAgeGroup(){
         return this.ageGroup;        
     }
 
-    public void setageGroup(AgeGroup ageGroup){
+    public void setAgeGroup(AgeGroup ageGroup){
         this.ageGroup = ageGroup;
         
     }
@@ -76,25 +75,4 @@ public class Customer extends User{
     public void addMovieHistory(Movie movie){
         movieHistory.add(movie);
     }
-
-    public boolean addReview(Movie movie, Review reviewList, String review, int rating){
-        // if movie not in review list, create one
-        for (review : movie.getReviews()){
-            if (review.movie.getTitle == )
-        }
-    }
-
-    public void buyTicket(){
-        //
-    }
-
-
-
-
-
-
-
-
-    
-
 }
