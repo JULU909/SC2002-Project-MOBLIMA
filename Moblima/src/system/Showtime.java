@@ -115,18 +115,36 @@ public void checkAvailability(){
 
 }
 
+public int getDate() {
+	return this.date;
+}
+
+public void setDate(int date) {
+	this.date = date;
+}
+
 public int getTime(){
     return this.time;
 }
 
-
+public void setTime(int time) {
+	this.time = time;
+}
 
 public String getMovie(){
     return this.movie;
 }
 
+public void setMovie(String movie) {
+	this.movie = movie;
+}
+
 public String getCineplex(){
     return this.cineplex;
+}
+
+public void setCineplex(String cineplex) {
+	this.cineplex = cineplex;
 }
 
 public String getShowTimeDetails(){
