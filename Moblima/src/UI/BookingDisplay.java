@@ -15,10 +15,6 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 public class BookingDisplay {
-    
-
-
-
 
 public String askCineplex(){
     Scanner sc = new Scanner(System.in);
@@ -145,7 +141,6 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     System.out.println("User            : " + user.getfirstName());
     System.out.println("To confirm purchase type 1 : ");
     choice = sc.nextInt();
-
     return choice;
 }
 

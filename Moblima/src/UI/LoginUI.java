@@ -30,7 +30,7 @@ public class LoginUI {
 		User loginUser = new User(firstName,lastName); 
 		loginUser.setUserType(type);
 		loginUser.setPassword(password);
-		
+		sc.close();
 		return loginUser;
 
 	}
