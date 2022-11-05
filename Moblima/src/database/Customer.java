@@ -1,17 +1,22 @@
 package database;
 import java.util.*;
+import enums.AgeRating;
+import enums.AgeGroup;
+import enums.UserType;
 
 public class Customer extends User{
     private int age;
+    private AgeGroup ageGroup;
     private int mobileNumber;
     private String emailAddress;
     ArrayList<Movie> movieHistory;
     private int cardHolder;
+    
 
    
 
-    public Customer(String firstName, String lastName, int age, AgeGroup ageGroup, int mobileNumber, String emailAddress, Movie[] movieHistory, int cardHolder){
-        super(firstName, lastName); super.setUserType(userType.CUSTOMER);this.age = age; this.ageGroup = ageGroup; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress; this.cardHolder = cardHolder;
+    public Customer(String firstName, String lastName, int age, int mobileNumber, String emailAddress, Movie[] movieHistory, int cardHolder){
+        super(firstName, lastName); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress; this.cardHolder = cardHolder;
     }
     public int getAge(){
         return this.age;
@@ -19,21 +24,26 @@ public class Customer extends User{
 
     public void setAge(int age){
         this.age = age;
+        if (age < 18){
+            setageGroup(AgeGroup.CHILD);
+        }
+        else if (age < 55){
+            setageGroup(AgeGroup.ADULT);
+        }
+        else {
+            setageGroup(AgeGroup.SENIOR);
+        }
     }
 
     public AgeGroup getageGroup(){
         int age = getAge();
-        if (age < 18){
-            return AgeGroup.CHILD;
-        }
-        else if (age < 55){
-            return AgeGroup.ADULT;
-        }
-        else {
-            return AgeGroup.SENIOR;
-        }
+        
     }
 
+    public AgeGroup setageGroup(AgeGroup ageGroup){
+        this.ageGroup = ageGroup;
+        
+    }
     public int getmobileNumber(){
         return this.mobileNumber;
     }
@@ -68,9 +78,9 @@ public class Customer extends User{
         movieHistory.add(movie);
     }
 
-    public void addReview(Movie movie, Review reviewList, String review, int rating){
+    public boolean addReview(Movie movie, Review reviewList, String review, int rating){
         // if movie not in review list, create one
-        for (review : reviewList){
+        for (review : movie.getReviews()){
             if (review.movie.getTitle == )
         }
     }

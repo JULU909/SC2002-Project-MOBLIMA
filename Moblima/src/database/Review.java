@@ -1,9 +1,11 @@
 public class Review {
     Customer reviewer;
-    Movie movie;
     int rating;
     String prose;
 
+    public Review(Customer reviewer, int rating, String prose){
+        this.reviewer = reviewer; this.rating = rating; this.prose = prose;
+    }
     Customer getReviewer(){
         return this.reviewer;
     }
@@ -11,7 +13,7 @@ public class Review {
     void setReviewer(Customer reviewer){
         this.reviewer = reviewer;
     }
-
+/* 
     Movie getMovie(){
         return this.movie;
     }
@@ -19,7 +21,7 @@ public class Review {
     void setMovie(Movie movie){
         this.movie = movie;
     }
-
+*/
     int getRating(){
         return this.rating;
     }
