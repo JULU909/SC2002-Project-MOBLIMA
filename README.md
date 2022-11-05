@@ -9,7 +9,7 @@ Java
 1. [(Boundary) Object Definition Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/system)
 2. [(Boundary) UI File for console display](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/UI)
 3. [(Control) Manager Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/database)
-4. [(Entity) The Database] https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/Data
+4. [(Entity) The Database](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/Data)
 5. [(Entity) Enum Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/enums)
 
 
