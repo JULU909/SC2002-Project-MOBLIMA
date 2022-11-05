@@ -39,4 +39,5 @@ public class DaySettings {
 				return Day.MONDAY;		
 		}
 	}
+
 }

@@ -16,7 +16,7 @@ public class Showtime {
 
 
 
-public Showtime(int time, int date, String cineplex , String movie){
+public void Showtime(int time, int date, String cineplex , String movie){
     this.date = date;
     this.time = time;
     this.cineplex = cineplex;

@@ -25,7 +25,7 @@ public class MovieInfo {
     }
 
     public String getAll(){
-        return String.format("INDEX: %s, Movie_Name: %s,Showing_Status: %s, Synopsis: %s, Director : %s, CAST: %s, Overall_Review: %s, Movie_Restriction: %s, GENRE: %s, Run_Time: %s", 
+        return String.format("INDEX: %s, Movie_Name: %s,Showing_Status: %s, Synopsis: %s,Director : %s, CAST: %s,Overall_Review: %s, Movie_Restriction: %s, GENRE: %s, Run_Time: %s", 
         index,Movie_Name,Showing_Status,Synopsis,Director,Cast,Overall_Review,Movie_Restriction,Genre,Run_Time);
     }
     
