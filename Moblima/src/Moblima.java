@@ -25,8 +25,10 @@ public class Moblima {
                     break;
     
                 case 2:
-                    new MovieInfoManager().getDataAll();
-                     break;
+                    MovieInfoManager m1 = new MovieInfoManager();
+                    m1.getDataAll();
+                    m1.PrintAll();
+                    break;
                 
                 case 3:
                     seatDetails();

@@ -52,14 +52,23 @@ public class MovieInfoManager {
                 }
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
-                
-                data[count] = new MovieInfo(Integer.parseInt(list.get(0)), list.get(1), list.get(2),list.get(3),list.get(4),list.get(5), Integer.parseInt(list.get(6)), list.get(7),list.get(8),list.get(9));
+                    data[count] = new MovieInfo(Integer.parseInt(list.get(0)), list.get(1), list.get(2),list.get(3),list.get(4),list.get(5), list.get(6), list.get(10),list.get(11),list.get(12));
+            
                 count++;
             }
         }
         return data;
     }
 
-   
+    public void PrintAll(){
+        for(int i =0;i<data.length;i++){
+            if(i == 0){
+                continue;
             }
+            System.out.println("");
+            System.out.println(data[i].getAll());
+        
+        }
+    }
+    }
         
