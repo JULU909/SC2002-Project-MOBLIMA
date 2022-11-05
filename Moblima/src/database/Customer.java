@@ -36,8 +36,7 @@ public class Customer extends User{
     }
 
     public AgeGroup getAgeGroup(){
-        return this.ageGroup;
-        
+        return this.ageGroup;        
     }
 
     public void setAgeGroup(AgeGroup ageGroup){
