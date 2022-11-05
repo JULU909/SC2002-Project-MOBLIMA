@@ -128,4 +128,10 @@ public String getMovie(){
 public String getCineplex(){
     return this.cineplex;
 }
+
+public String getShowTimeDetails(){
+    return String.format("time: %s ,date: %s ,cineplex: %s, movie: %s", time, date, cineplex, movie);
+}
+
+
 }

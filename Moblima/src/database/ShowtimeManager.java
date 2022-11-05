@@ -38,10 +38,11 @@ public class ShowtimeManager {
         }
         return count;
     }
+    // object.getDataAll(object.getLength())
 
-    public Showtime[] getDataAll(int length) throws FileNotFoundException, IOException{
+    public Showtime[] getDataAll() throws FileNotFoundException, IOException{
 
-        data = new Showtime [length];
+        data = new Showtime [getLength()];
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             int count = 0;
