@@ -6,11 +6,11 @@ Language(s) used
 Java
 
 
-[(Boundary) Object Definition Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/system)
-[(Boundary) UI File for console display](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/UI)
-[(Control) Manager Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/database)
-[(Entity) The Database](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/Data)
-[(Entity) Enum Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/enums)
+1. [(Boundary) Object Definition Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/system)
+2. [(Boundary) UI File for console display](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/UI)
+3. [(Control) Manager Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/database)
+4. [(Entity) The Database] https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/Data
+5. [(Entity) Enum Files](https://github.com/JULU909/SC2002-Project-MOBLIMA/tree/main/Moblima/src/enums)
 
 
 [Main Java File](https://github.com/JULU909/SC2002-Project-MOBLIMA/blob/main/Moblima/src/Moblima.java)
