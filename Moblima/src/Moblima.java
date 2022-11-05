@@ -1,4 +1,5 @@
 import UI.BookingDisplay;
+import UI.SearchMovieUI;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,12 +21,14 @@ public class Moblima {
             int choice = mainDisplayOptions();
             switch (choice) {
                 case 1:
-                     movieListing();
+                    new SearchMovieUI().DisplayAll();
                     break;
     
                 case 2:
-                    movieDetails();
-                     break;
+                    MovieInfoManager m1 = new MovieInfoManager();
+                    m1.getDataAll();
+                    m1.PrintAll();
+                    break;
                 
                 case 3:
                     seatDetails();
