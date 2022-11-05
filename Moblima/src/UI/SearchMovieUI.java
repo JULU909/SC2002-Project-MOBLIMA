@@ -7,7 +7,7 @@ import system.Showtime;
 import database.ShowtimeManager;
 
 
-// SearchMovieUI  is a Movie-goer module
+// SearchMovieUI is a Movie-goer module
 /*
 1. Search/List movie
 2. View movie details – including reviews and ratings
@@ -71,6 +71,32 @@ public class SearchMovieUI {
             System.out.println("Error! IOException ");
         }
 
+    }
+
+    public void DisplayOne(int index){
+        Showtime[] lmaoArr;
+        int flag = 0;
+        try{
+            lmaoArr = s1.getDataAll();
+            for(int i=0; i<lmaoArr.length; i++){
+                if(i==0){continue;}
+                if(i == index){
+                    flag = 1;
+                    System.out.println(String.format("Entry %s: %s", i, lmaoArr[i].getShowTimeDetails()));
+                    break;
+                }
+
+            }
+            if(flag == 0){
+                System.out.println("Invalid Range");
+            }
+        }
+        catch(FileNotFoundException para1){
+            System.out.println("Error! FileNotFoundException ");
+        }
+        catch(IOException para2){
+            System.out.println("Error! IOException ");
+        }
     }
     
 

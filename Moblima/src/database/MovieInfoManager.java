@@ -8,7 +8,14 @@ import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
 
-
+/* 
+ * HOW TO USE:
+ * MovieInfoManager() calls "Moblima/src/Data/movieInformation.csv"
+ * getLength() returns the length (int)
+ * getDataAll() iterates and returns all rows, except the first
+ * printAll() prints the data in getDataAll()
+ * 
+ */
 
 public class MovieInfoManager {
     private String filename;
@@ -70,6 +77,25 @@ public class MovieInfoManager {
             System.out.println("");
             System.out.println(data[i].getAll());
         
+        }
+    }
+
+    public void PrintOne(int index){
+        //INDEX CANNOT START FROM 0
+        int flag = 0;
+        for(int i =0;i<data.length;i++){
+            if(i == 0){
+                continue;
+            }
+            if(i == index){
+                System.out.println("");
+                System.out.println(data[i].getAll());
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 0){
+            System.out.println("Invalid Range!");
         }
     }
     }

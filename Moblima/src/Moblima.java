@@ -22,12 +22,20 @@ public class Moblima {
             switch (choice) {
                 case 1:
                     new SearchMovieUI().DisplayAll();
+                    // Scanner sc = new Scanner(System.in);
+                    // System.out.println("Select the index of the movie you want to display: ");
+                    // int selection = sc.nextInt();
+                    // new SearchMovieUI().DisplayOne(selection); // selection refers to the index
                     break;
     
                 case 2:
                     MovieInfoManager m1 = new MovieInfoManager();
                     m1.getDataAll();
                     m1.PrintAll();
+                    // Scanner sc = new Scanner(System.in);
+                    // System.out.println("Select the index of the movie you want to display: ");
+                    // int selection = sc.nextInt();
+                    // m1.PrintOne(selection);
                     break;
                 
                 case 3:

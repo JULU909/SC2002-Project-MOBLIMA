@@ -1,5 +1,10 @@
 package database;
 
+/*
+ * This file is useful to initialse the attributes of MovieInfo, and contains a getAll() function to return the details of a movie
+ * 
+ */
+
 public class MovieInfo {
     private int index;
     private String Movie_Name;
