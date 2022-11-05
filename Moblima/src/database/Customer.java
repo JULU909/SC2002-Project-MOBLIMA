@@ -1,6 +1,5 @@
 package database;
 import java.util.*;
-import enums.AgeRating;
 import enums.AgeGroup;
 import enums.UserType;
 
