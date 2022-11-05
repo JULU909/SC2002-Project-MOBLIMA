@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DaySettings {
 	public static Day setDay() {
 		System.out.println("----Day settings----");
-		System.out.println("Enter today's day.");
+		System.out.println("Enter today's day");
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
 		System.out.println("1. MONDAY");
