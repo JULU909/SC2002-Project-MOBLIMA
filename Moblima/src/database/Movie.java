@@ -83,6 +83,7 @@ public class Movie {
 	public ArrayList<Review> getReviews() {
 		return this.reviews;
 	}
+  
   public void setReviews(ArrayList<Review> reviews) {
 		this.reviews = reviews;
 	}
