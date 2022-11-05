@@ -18,24 +18,50 @@ public class Moblima {
 
 
         do {
+            Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
+            int selection;
             switch (choice) {
                 case 1:
-                    new SearchMovieUI().DisplayAll();
-                    // Scanner sc = new Scanner(System.in);
-                    // System.out.println("Select the index of the movie you want to display: ");
-                    // int selection = sc.nextInt();
+                    System.out.println("=====================================================================================\n");
+                    System.out.println("                          Searching Movies                                           \n");
+                    System.out.println("=====================================================================================\n");
+                    System.out.println("Do you want to Display All Movies or Display one Movie? \n1) Display All Movies\n2) Display ONE movie (by index, cannot be 0 or negative)\n");
+                    System.out.println("Your Choice please: ");
+
+                    // new SearchMovieUI().DisplayAll();
+                    selection = sc.nextInt();
+                    if(selection == 1){
+                        new SearchMovieUI().DisplayAll();
+                    }
+                    else if(selection == 2){
+                        System.out.println("\nSelect the index of the movie you want to display: ");
+                        selection = sc.nextInt();
+                        new SearchMovieUI().DisplayOne(selection);
+                    }
                     // new SearchMovieUI().DisplayOne(selection); // selection refers to the index
                     break;
     
                 case 2:
+                    System.out.println("=====================================================================================\n");
+                    System.out.println("                          Viewing Movie Details                                      \n");
+                    System.out.println("=====================================================================================\n");
+                    System.out.println("Do you want to View ALL Movie details or View ONE Movie detail? \n1) View All Movie details\n2) View ONE Movie detail (by index, cannot be 0 or negative)\n");
+                    System.out.println("Your Choice please: ");
+                    selection = sc.nextInt();
                     MovieInfoManager m1 = new MovieInfoManager();
                     m1.getDataAll();
+                    
+                    if(selection == 1){
                     m1.PrintAll();
+                    }
+                    else if(selection == 2){
                     // Scanner sc = new Scanner(System.in);
-                    // System.out.println("Select the index of the movie you want to display: ");
-                    // int selection = sc.nextInt();
-                    // m1.PrintOne(selection);
+                        System.out.println("Select the index of the movie you want to display: ");
+                        selection = sc.nextInt();
+                        m1.PrintOne(selection);
+                    }
+
                     break;
                 
                 case 3:
@@ -60,6 +86,7 @@ public class Moblima {
                 case 8:
                     exitDialouge();
                 default:
+                    sc.close();
                     break;
             }
             // choice
@@ -82,16 +109,18 @@ public static int mainDisplayOptions() {
     int choice=0;
     Scanner sc = new Scanner(System.in);
     do {
-        System.out.println("======================\n"+
-                           "        Moblima       \n"+
-                           "======================\n"+
-                           "(1) Search/List movie\n(2) View movie details \n"+
-                           "(3) Check seat availability and selection of seat/s\n(4) Book and purchase ticket\n"+
-                           "(5) View booking history\n(6) List the Top 5 ranking by ticket sales OR by overall reviewers’ ratings\n"+
-                           "(7) Admin\n(8) Exit\n");
+        System.out.println("=====================================================================================\n"+
+                           "=====================================================================================\n"+
+                           "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
+                           "=====================================================================================\n"+
+                           "=====================================================================================\n"+
+                           "(1) Search/List Movies\n\n(2) View movie details \n\n"+
+                           "(3) Check seat availability and selection of seat/s\n\n(4) Book and purchase ticket\n\n"+
+                           "(5) View booking history\n\n(6) List the Top 5 ranking by ticket sales OR by overall reviewers’ ratings\n\n"+
+                           "(7) Admin\n\n(8) Exit\n\nChoices (1~8): ");
         
         try {
-            System.out.print("What is your choice:  ");
+            System.out.print("\nWhat is your choice:  ");
             choice = sc.nextInt();
             if (choice >=1 && choice <=8) break;
             else throw new Exception();
@@ -100,7 +129,7 @@ public static int mainDisplayOptions() {
             choice = sc.nextInt();
             if (choice >=1 && choice <=8) break;
             else{
-                System.out.println("Enter a valid option");
+                System.out.println("Please enter a valid option");
             }
         }
 

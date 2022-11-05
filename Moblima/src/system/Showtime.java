@@ -148,8 +148,10 @@ public void setCineplex(String cineplex) {
 }
 
 public String getShowTimeDetails(){
-    return String.format("time: %s, date: %s, cineplex: %s, movie: %s", time, date, cineplex, movie);
+    return String.format("Time: %s\nDate: %s\nCineplex: %s\nMovie Title: %s\n ", time, date, cineplex, movie);
 }
 
-
+public String returnTitle(){
+    return String.format("Movie: %s",movie);
+}
 }

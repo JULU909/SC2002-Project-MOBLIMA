@@ -59,6 +59,9 @@ public class SearchMovieUI {
         Showtime[] lmaoArr;
         try{
             lmaoArr = s1.getDataAll();
+            System.out.println("=====================================================================================");
+            System.out.println("                        Searching Movies (Displaying ALL)                            ");
+            System.out.println("=====================================================================================");
             for(int i=0; i<lmaoArr.length; i++){
                 if(i==0){continue;}
                 System.out.println(String.format("Entry %s: %s", i, lmaoArr[i].getShowTimeDetails()));
@@ -78,18 +81,33 @@ public class SearchMovieUI {
         int flag = 0;
         try{
             lmaoArr = s1.getDataAll();
-            for(int i=0; i<lmaoArr.length; i++){
-                if(i==0){continue;}
-                if(i == index){
-                    flag = 1;
-                    System.out.println(String.format("Entry %s: %s", i, lmaoArr[i].getShowTimeDetails()));
-                    break;
-                }
+            System.out.println("=====================================================================================");
+            System.out.printf("                   Searching Movies (Displaying %s)                            \n",lmaoArr[index].returnTitle());
+            System.out.println("=====================================================================================");
+            int i = index;
+            if(i == 0){System.out.println("Integer input cannot be a value of 0.");}
 
+            if(i < lmaoArr.length && i > 0){
+                flag = 1;
+                System.out.println(String.format("Entry %s\n%s", i, lmaoArr[i].getShowTimeDetails()));
+            
             }
             if(flag == 0){
                 System.out.println("Invalid Range");
             }
+
+            // for(int i=0; i<lmaoArr.length; i++){
+            //     if(i==0){continue;}
+            //     if(i == index){
+            //         flag = 1;
+            //         System.out.println(String.format("Entry %s: %s", i, lmaoArr[i].getShowTimeDetails()));
+            //         break;
+            //     }
+
+            // }
+            // if(flag == 0){
+            //     System.out.println("Invalid Range");
+            // }
         }
         catch(FileNotFoundException para1){
             System.out.println("Error! FileNotFoundException ");

@@ -18,7 +18,7 @@ public class MovieInfo {
     private String Run_Time;
 
     public MovieInfo(int index1,String Movie_Name1,String Showing_Status1,String Synopsis1,String Director1,String Cast1,String Overall_Review1,String Movie_Restriction1,String Genre1,String Run_Time1){
-        index = index1;
+      index = index1;
       Movie_Name = Movie_Name1;
       Showing_Status = Showing_Status1;
       Synopsis = Synopsis1;
@@ -30,8 +30,12 @@ public class MovieInfo {
     }
 
     public String getAll(){
-        return String.format("INDEX: %s, Movie_Name: %s,Showing_Status: %s, Synopsis: %s, Director : %s, CAST: %s, Overall_Review: %s, Movie_Restriction: %s, GENRE: %s, Run_Time: %s", 
+        return String.format("INDEX: %s\nMovie_Name: %s\nShowing_Status: %s\nSynopsis: %s\nDirector : %s\nCAST: %s\nOverall_Review: %s\nMovie_Restriction: %s\nGENRE: %s\nRun_Time: %s\n", 
         index,Movie_Name,Showing_Status,Synopsis,Director,Cast,Overall_Review,Movie_Restriction,Genre,Run_Time);
+    }
+
+    public String getTitle(){
+        return String.format("%s", Movie_Name);
     }
     
 }
