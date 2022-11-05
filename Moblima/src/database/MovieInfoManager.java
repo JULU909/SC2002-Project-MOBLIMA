@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
 
+
+
 public class MovieInfoManager {
     private String filename;
     private MovieInfo[] data;
@@ -50,10 +52,10 @@ public class MovieInfoManager {
                     count++;
                     continue;
                 }
-                String[] values = line.split(",");
+                String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                 List<String> list = Arrays.asList(values);
                     data[count] = new MovieInfo(Integer.parseInt(list.get(0)), list.get(1), list.get(2),list.get(3),list.get(4),list.get(5), list.get(6), list.get(10),list.get(11),list.get(12));
-            
+    
                 count++;
             }
         }

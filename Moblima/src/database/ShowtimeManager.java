@@ -54,8 +54,8 @@ public class ShowtimeManager {
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
                 
-                data[count] = new Showtime() ;
-                data[count].Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
+                
+                data[count] = new Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
                 count++;
             }
         }
@@ -106,8 +106,8 @@ public class ShowtimeManager {
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
                 if (list.get(3).equals(movie) && list.get(0).equals(cineplex)){
-                    temp = new Showtime() ;
-                    temp.Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
+
+                    temp = new Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
                     showtimes.add(temp);
                     count++;
                     continue;
