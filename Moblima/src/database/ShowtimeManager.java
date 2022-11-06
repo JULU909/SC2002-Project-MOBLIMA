@@ -169,8 +169,22 @@ public class ShowtimeManager {
     	}
     	
     	return showtimes; //return to array list
-    	
     }
+    
+    public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime){ //remove from array list
+    	int i = 0;
+    	while(i!=list.size()) {
+    		if(list.get(i) == showtime) //if found,
+    		{
+    			list.remove(i); //remove it
+    			System.out.println("Showtime removed!");
+    			return list;
+    		}   			
+    	}
+    	System.out.println("Showtime does not exist! Exiting..."); //if not found,
+    	return list; //just return list
+    }
+    
     
     public static void main(String [] args) throws FileNotFoundException, IOException {
     	String filepath = new File("Showtimes.csv").getAbsolutePath(); //to get exact path to csv
