@@ -1,6 +1,7 @@
 package database;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
+
+import java.util.StringTokenizer; //for writing to csv
+import java.io.FileWriter; //for writing to csv
+import java.io.PrintWriter; //for writing to csv
+import java.io.FileInputStream; //for writing to csv
 
 public class ShowtimeManager {
     private String filename;
@@ -118,5 +124,39 @@ public class ShowtimeManager {
         }
         return showtimes;
      }
-
+    
+    public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{
+    	
+    	//FileWriter to write to csv, true to allow appending    	
+    	FileWriter writer = new FileWriter(filename,true);
+    	
+    	//convert showtime to individual arguments
+    	String cineplex = showtime.getCineplex(); 
+    	int time = showtime.getTime();
+    	int date = showtime.getDate();
+    	String movie = showtime.getMovie();
+    	
+    	//append them all into csv
+    	writer.append(cineplex);
+    	writer.append(",");
+    	writer.append(String.valueOf(time));
+    	writer.append(",");
+    	writer.append(String.valueOf(date));
+    	writer.append(",");
+    	writer.append(movie);
+    	writer.append("\n");
+    	
+    	//cleanup
+    	writer.flush();
+    	writer.close();
+    
+    }
+    
+   /* public static void main(String [] args) throws FileNotFoundException, IOException {
+    	String filepath = new File("Showtimes.csv").getAbsolutePath(); //to get exact path to csv
+    	ShowtimeManager sm = new ShowtimeManager(filepath);
+    	Showtime showtime = new Showtime(1031,121122,"ALPHA","BlackAdam");
+    	sm.addShowtimecsv(showtime);
+    	//System.out.println("test: " + sm.getShowtimes("BlackAdam","ALPHA").get(0).getMovie());
+    }*/
 }
