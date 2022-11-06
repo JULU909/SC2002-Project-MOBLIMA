@@ -125,7 +125,7 @@ public class ShowtimeManager {
         return showtimes;
      }
     
-    public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{
+    public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{ //add one showtime to csv
     	
     	//FileWriter to write to csv, true to allow appending    	
     	FileWriter writer = new FileWriter(filename,true);
