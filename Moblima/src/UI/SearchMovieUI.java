@@ -58,8 +58,6 @@ public class SearchMovieUI {
         }
     
     
-<<<<<<< HEAD
-=======
     public void DisplayAll(){
         Showtime[] lmaoArr;
         try{
@@ -120,7 +118,6 @@ public class SearchMovieUI {
         catch(IOException para2){
             System.out.println("Error! IOException ");
         }
->>>>>>> 5b6d988041125069430e7a50c69bd73fdb2b26c9
     }
     
     public Showtime[] DisplayAll(){
