@@ -114,10 +114,10 @@ public static int mainDisplayOptions() {
                            "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
                            "=====================================================================================\n"+
                            "=====================================================================================\n"+
-                           "(1) Search/List Movies\n\n(2) View movie details \n\n"+
-                           "(3) Check seat availability and selection of seat/s\n\n(4) Book and purchase ticket\n\n"+
-                           "(5) View booking history\n\n(6) List the Top 5 ranking by ticket sales OR by overall reviewers’ ratings\n\n"+
-                           "(7) Admin\n\n(8) Exit\n\nChoices (1~8): ");
+                           "(1) Search/List Movies\n\n"+
+                           "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n"+
+                           "(4) View booking history\n\n"+
+                           "(5) Admin\n\n(6) Exit\n\nChoices (1~6): ");
         
         try {
             System.out.print("\nWhat is your choice:  ");
