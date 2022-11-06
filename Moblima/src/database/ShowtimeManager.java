@@ -92,9 +92,9 @@ public class ShowtimeManager {
         return names;
     }
 
-    public ArrayList getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{
+    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{
 
-        ArrayList<Showtime> showtimes = new ArrayList();
+        ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             int count = 0;
