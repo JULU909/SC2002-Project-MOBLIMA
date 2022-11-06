@@ -70,33 +70,39 @@ public class MovieInfoManager {
     }
 
     public void PrintAll(){
+        System.out.println("=====================================================================================");
+        System.out.println("                   Viewing Movie Details (Displaying ALL)                            ");
+        System.out.println("=====================================================================================");
         for(int i =0;i<data.length;i++){
             if(i == 0){
                 continue;
             }
-            System.out.println("");
             System.out.println(data[i].getAll());
-        
         }
+        System.out.println("-------------------------------------------------------------------------------------");
     }
 
     public void PrintOne(int index){
         //INDEX CANNOT START FROM 0
         int flag = 0;
-        for(int i =0;i<data.length;i++){
-            if(i == 0){
-                continue;
-            }
-            if(i == index){
-                System.out.println("");
-                System.out.println(data[i].getAll());
+        
+
+            if(index> 0 && index<data.length){
+                System.out.println("=====================================================================================");
+                System.out.printf("                   Viewing Movie Details (Displaying %s)                            \n",data[index].getTitle());
+                System.out.println("=====================================================================================");
+                System.out.println(data[index].getAll());
+                System.out.println("-------------------------------------------------------------------------------------");
                 flag = 1;
-                break;
-            }
+                
+            
         }
         if(flag == 0){
             System.out.println("Invalid Range!");
         }
     }
-    }
+
+}
+    
+    
         

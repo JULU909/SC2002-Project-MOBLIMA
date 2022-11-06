@@ -115,23 +115,43 @@ public void checkAvailability(){
 
 }
 
+public int getDate() {
+	return this.date;
+}
+
+public void setDate(int date) {
+	this.date = date;
+}
+
 public int getTime(){
     return this.time;
 }
 
-
+public void setTime(int time) {
+	this.time = time;
+}
 
 public String getMovie(){
     return this.movie;
+}
+
+public void setMovie(String movie) {
+	this.movie = movie;
 }
 
 public String getCineplex(){
     return this.cineplex;
 }
 
-public String getShowTimeDetails(){
-    return String.format("time: %s, date: %s, cineplex: %s, movie: %s", time, date, cineplex, movie);
+public void setCineplex(String cineplex) {
+	this.cineplex = cineplex;
 }
 
+public String getShowTimeDetails(){
+    return String.format("Time: %s\nDate: %s\nCineplex: %s\nMovie Title: %s\n ", time, date, cineplex, movie);
+}
 
+public String returnTitle(){
+    return String.format("Movie: %s",movie);
+}
 }
