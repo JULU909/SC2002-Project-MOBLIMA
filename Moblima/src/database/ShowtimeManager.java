@@ -10,10 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
 
-import java.util.StringTokenizer; //for writing to csv
 import java.io.FileWriter; //for writing to csv
-import java.io.PrintWriter; //for writing to csv
-import java.io.FileInputStream; //for writing to csv
+
 
 public class ShowtimeManager {
     private String filename;
@@ -152,11 +150,40 @@ public class ShowtimeManager {
     
     }
     
-   /* public static void main(String [] args) throws FileNotFoundException, IOException {
+    public ArrayList<Showtime> readShowtimecsv() throws FileNotFoundException, IOException{ //read whole csv
+    	ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
+    	BufferedReader br = new BufferedReader(new FileReader(filename));
+    	String line;
+    	String header = "Cineplex";
+    	while ((line = br.readLine()) != null) {
+    		
+    		String split[] = line.split(",", 4); //convert each line to individual arguments
+    		if(split[0].equals(header)) //ignore header
+    			continue;
+    		String cineplex = split[0];
+    		int time = Integer.parseInt(split[1]);
+    		int date = Integer.parseInt(split[2]);
+    		String movie = split[3];
+    		Showtime tempTime = new Showtime (time,date,cineplex,movie);
+    		showtimes.add(tempTime); //add to array list
+    	}
+    	
+    	return showtimes; //return to array list
+    	
+    }
+    
+    public static void main(String [] args) throws FileNotFoundException, IOException {
     	String filepath = new File("Showtimes.csv").getAbsolutePath(); //to get exact path to csv
     	ShowtimeManager sm = new ShowtimeManager(filepath);
-    	Showtime showtime = new Showtime(1031,121122,"ALPHA","BlackAdam");
-    	sm.addShowtimecsv(showtime);
-    	//System.out.println("test: " + sm.getShowtimes("BlackAdam","ALPHA").get(0).getMovie());
-    }*/
+    	ArrayList<Showtime> test = new ArrayList<Showtime>();
+    	/*test = sm.readShowtimecsv(); //test read
+    	int i = 0;
+    	while (i!=test.size()) { //test read
+    		System.out.println(i + ":" + test.get(i).getCineplex() + " " + test.get(i).getTime() + " " + test.get(i).getDate() + " " + test.get(i).getMovie());
+    		i++;
+    	}*/
+    	//Showtime showtime = new Showtime(1031,121122,"ALPHA","BlackAdam");
+    	//sm.addShowtimecsv(showtime); //test add
+    	//System.out.println("test: " + sm.getShowtimes("BlackAdam","ALPHA").get(0).getMovie()); //test get
+    }
 }
