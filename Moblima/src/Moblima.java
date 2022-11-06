@@ -65,10 +65,10 @@ public class Moblima {
                     break;
                 
                 case 3:
-                    seatDetails();
+                    purchaseTicket() ;
                     break;
                 case 4:
-                    purchaseTicket() ;
+                    seatDetails();
                     break;
 
                 case 5:
@@ -122,18 +122,18 @@ public static int mainDisplayOptions() {
         try {
             System.out.print("\nWhat is your choice:  ");
             choice = sc.nextInt();
-            if (choice >=1 && choice <=8) break;
+            if (choice >=1 && choice <=6) break;
             else throw new Exception();
             // choice = Integer.parseInt(sc.next());
         } catch (Exception e) {
             choice = sc.nextInt();
-            if (choice >=1 && choice <=8) break;
+            if (choice >=1 && choice <=6) break;
             else{
                 System.out.println("Please enter a valid option");
             }
         }
 
-    } while (choice<1 || choice >8);
+    } while (choice<1 || choice >6);
 
     return choice;
 }
@@ -170,6 +170,7 @@ public static void purchaseTicket() throws FileNotFoundException, IOException, I
         String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
         int showtimeChoice = booking.askTiming(showtimes);
         Showtime choosenShowtime = showtimes.get(showtimeChoice-1);
+        choosenShowtime.setDate( Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
         int numberSeats = booking.askTickets();
         Ticket ticket = new Ticket();
