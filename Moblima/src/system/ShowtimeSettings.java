@@ -2,8 +2,8 @@ package system;
 import java.util.Scanner;
 
 public class ShowtimeSettings { //static functions so that object does not need to be created
-	public static Showtime addShowtime() {
-		System.out.println("Adding showtime...");
+	public static Showtime createShowtime() { //create a showtime object
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter movie: ");
 		String movie = sc.nextLine();
@@ -17,8 +17,15 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		return showtime;
 	}
 	
-	public static Showtime editShowtime(Showtime showtime) {
+	public static Showtime addShowtime() {
+		System.out.println("Adding showtime...");
+		return createShowtime();
+		
+	}
+	
+	public static void editShowtime(Showtime showtime) {
 		Scanner sc = new Scanner(System.in);
+
 		int choice=0;
 
 		while(choice<5) {
@@ -30,6 +37,8 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			System.out.println("5) Exit");
 			String input;
 			int number;
+			choice = sc.nextInt();
+			sc.nextLine();
 			switch(choice)
 			{
 			case 1:
@@ -47,12 +56,14 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			case 3:
 				System.out.println("Enter time: ");
 				number = sc.nextInt();
+				sc.nextLine();
 				showtime.setTime(number);
 				System.out.println("Time edited to " + number);
 				break;
 			case 4:
 				System.out.println("Enter date(DDMMYY): ");
 				number = sc.nextInt();
+				sc.nextLine();
 				showtime.setDate(number);
 				System.out.println("Date edited to " + number);
 				break;
@@ -66,22 +77,12 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			}
 
 		}
-		return showtime;
 	}
 	
 	public static Showtime removeShowtime() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Removing showtime...");
-		System.out.println("Enter movie title of showtime to be removed: ");
-		String movie = sc.nextLine();
-		System.out.println("Enter cineplex of showtime to be removed: ");
-		String cineplex = sc.nextLine();
-		System.out.println("Enter time of showtime to be removed: ");
-		int time = sc.nextInt();
-		System.out.println("Enter date (DDMMYY) of showtime to be removed: ");
-		int date = sc.nextInt();
-		Showtime toRemove = new Showtime(time,date,cineplex,movie);
-		return toRemove;
+		return createShowtime();
 	}
 
 }

@@ -123,6 +123,21 @@ public class ShowtimeManager {
         return showtimes;
      }
     
+    public static int findShowtimecsv(ArrayList<Showtime> list, Showtime showtime)throws FileNotFoundException, IOException{ //find index in arraylist
+    	int i = 0;
+
+    	while(i!=list.size()) {
+    		if(list.get(i).getMovie().equals(showtime.getMovie()) 
+    				&& list.get(i).getDate() == showtime.getDate() 
+    				&& list.get(i).getCineplex().equals(showtime.getCineplex()) 
+    				&& list.get(i).getTime() == showtime.getTime())
+    			return i;
+    		i++;
+    	}
+    	return -1;
+    	
+    }
+    
     public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{ //add one showtime to csv
     	
     	//FileWriter to write to csv, true to allow appending    	
@@ -172,18 +187,16 @@ public class ShowtimeManager {
     	return showtimes; //return array list
     }
     
-    public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime){ //remove from array list, use for editing/remove a row
-    	int i = 0;
-
-    	while(i!=list.size()) {
-    		if(list.get(i).getMovie().equals(showtime.getMovie()) && list.get(i).getDate() == showtime.getDate() && list.get(i).getCineplex().equals(showtime.getCineplex()) && list.get(i).getTime() == showtime.getTime()) //if found,
-    		{
-    			list.remove(i); //remove it
-    			System.out.println("Showtime removed!");
-    			return list;
-    		}
-    		i++;
+    public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime) throws FileNotFoundException, IOException{ //remove from array list, use for editing/remove a row
+    	int i = findShowtimecsv(list,showtime);
+    	
+    	if(i!=-1) 
+    	{
+    		list.remove(i);
+    		System.out.println("Showtime removed!");
+    		return list;
     	}
+    	
     	System.out.println("Showtime does not exist! Exiting..."); //if not found,
     	return list; //just return list
     }
