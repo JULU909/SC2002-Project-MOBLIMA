@@ -19,7 +19,7 @@ public class Movie {
     private int totalSales=0;
     private double averageRating;
 
-	Movie(String title, String synopsis, String director, String[] cast, MovieType type, AgeRating ageRating)
+	public Movie(String title, String synopsis, String director, String[] cast, MovieType type, AgeRating ageRating)
 	{
 		this.title = title; this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating=ageRating;
 	}
