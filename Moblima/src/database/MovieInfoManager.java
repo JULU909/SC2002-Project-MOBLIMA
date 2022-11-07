@@ -62,15 +62,14 @@ public class MovieInfoManager {
                 String[] values = line.split(",", -1);
                 List<String> list = Arrays.asList(values);
                 int index = Integer.parseInt(list.get(0)); String title = list.get(1); String showingStatus = list.get(2); String synopsis = list.get(3); String director = list.get(4);
-                ArrayList<String> cast = new ArrayList<String>(Arrays.asList(list.get(5).split(",", -1)));
-                int overallRating = Integer.parseInt(list.get(6));
-                ArrayList<String> reviews = new ArrayList<String>(Arrays.asList(list.get(7).split(",", -1)));
+                ArrayList<String> cast = new ArrayList<String>(Arrays.asList(list.get(5).replaceAll("\"", "").split(",", -1)));
+                double averageRating = Double.parseDouble(list.get(6));
+                ArrayList<String> reviews = new ArrayList<String>(Arrays.asList(list.get(7).replaceAll("\"", "").split(",", -1)));
                 AgeRating ageRating = AgeRating.valueOf(list.get(10));
                 String genre = list.get(11);
                 String runtime = list.get(12);
+                    data.add(new Movie(index, title, showingStatus, synopsis, director, cast, averageRating, ageRating, reviews, genre, runtime));
 
-                    data.add(new Movie(index, title, showingStatus, synopsis, director, cast, overallRating, ageRating, genre, runTime));
-    
                 count++;
             }
         }

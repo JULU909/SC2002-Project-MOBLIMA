@@ -25,10 +25,10 @@ public class Movie {
     private String genre;
     private String runTime;
 
-	public Movie(int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating, String genre, String runTime)
+	public Movie(int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
 	{
-		this.index = index; this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating = ageRating;
-		this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
+		this.index = index; this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
+    this.ageRating = ageRating; this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
 	}
 	
     public String getTitle() {
