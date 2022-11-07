@@ -66,7 +66,7 @@ public class ShowtimeManager {
         return data;
     }
 
-    public String[] getMovies(int length) throws FileNotFoundException, IOException{
+    public String[] getMovies(int length) throws FileNotFoundException, IOException{ //get all movies in csv
 
        String [] names = new String [10];
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -96,7 +96,7 @@ public class ShowtimeManager {
         return names;
     }
 
-    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{
+    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{ //get all showtimes of certain movie and cineplex in csv
 
         ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
