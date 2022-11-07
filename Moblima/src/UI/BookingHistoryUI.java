@@ -2,15 +2,15 @@ package UI;
 
 public class BookingHistoryUI {
     
-    public String getUserID(){
+    //public String getUserID(){
 
-    }
-
-
-    public String getTicketID(){
+    ///}
 
 
-    }
+    //public String getTicketID(){
+
+
+    //}
 
     public void printDetails(){
         
