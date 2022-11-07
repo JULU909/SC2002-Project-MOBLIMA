@@ -18,7 +18,7 @@ public class ShowtimeManager {
     private Showtime[] data;
     private Showtime temp;
 
-    public final static String FILENAME = "Moblima/src/Data/Movies.csv";
+    public final static String FILENAME = "Moblima/src/Data/Showtimes.csv";
 
     public ShowtimeManager(){
         this.filename = FILENAME;
@@ -115,7 +115,7 @@ public class ShowtimeManager {
                 int i = 0;
                 while(i!=showtimes.size())
                 {
-                	if(showtimes.get(i).getMovie().equals(movie) && list.get(i).getCineplex().equals(cineplex))
+                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex))
                 	{
                 		list.add(showtimes.get(i));
                 	}
