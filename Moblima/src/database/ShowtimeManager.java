@@ -115,7 +115,7 @@ public class ShowtimeManager {
                 int i = 0;
                 while(i!=showtimes.size())
                 {
-                	if(showtimes.get(i).getMovie().equals(movie) && list.get(i).getCineplex().equals(cineplex))
+                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex))
                 	{
                 		list.add(showtimes.get(i));
                 	}
