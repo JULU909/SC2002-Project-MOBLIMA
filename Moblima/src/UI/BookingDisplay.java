@@ -138,7 +138,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     }
 
     System.out.println("Ticked ID       : " + ticket.getID());
-    System.out.println("User            : " + user.getfirstName());
+    System.out.println("User            : " + user.getUsername());
     System.out.println("To confirm purchase type 1 : ");
     choice = sc.nextInt();
     return choice;

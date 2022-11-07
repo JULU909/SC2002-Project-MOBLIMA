@@ -1,21 +1,21 @@
 package database;
 import java.util.ArrayList;
 
-// this file adds, deletes, findUserpos of user to database
-
-
 public class Database {
+	/*
+     * Adds, deletes, and finds position of a user within the database
+     */
 	public static void addToDatabase(User user, ArrayList<User> database) {
 		int j = findUserPos(user, database);
 		if(j!=-1)
 			{
 				database.set(j, user); //update credentials if user changes password
-				System.out.println(user.getUserType() + " " + user.getfirstName() + " " + user.getlastName() + " successfully added.");
+				System.out.println(user.getUserType() + " " + user.getUsername() + " successfully added.");
 				return;
 			}
 
 		database.add(user); //if user is being added for the first time (they're not in the ArrayList)
-		System.out.println(user.getUserType() + " " + user.getfirstName() + " " + user.getlastName() + " successfully added.");
+		System.out.println(user.getUserType() + " " + user.getUsername() + " successfully added.");
 		return;
 	}
 	
@@ -24,7 +24,7 @@ public class Database {
 		if(j!=-1)
 		{
 			database.remove(j); //and remove them
-			System.out.println(user.getUserType() + " " + user.getfirstName() + " " + user.getlastName() + " successfully removed.");
+			System.out.println(user.getUserType() + " " + user.getUsername() + " successfully removed.");
 			return;
 		}
 
@@ -36,7 +36,7 @@ public class Database {
 	public static int findUserPos(User user, ArrayList<User> database) { //find position
 		int j;
 		for(j=0;j<database.size();j++) 
-			if(database.get(j).getfirstName() == user.getfirstName() && database.get(j).getlastName() == user.getlastName()) //find user member
+			if(database.get(j).getUsername() == user.getUsername()) //find user member
 				return j;
 		return -1;
 	}

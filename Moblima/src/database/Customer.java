@@ -12,15 +12,15 @@ public class Customer extends User{
      * @param emailAddress Email address of this customer
      * @param movieHistory List of movies previously watched by this customer
      */
-    
+
     private int age;
     private AgeGroup ageGroup;
     private int mobileNumber;
     private String emailAddress;
     ArrayList<Movie> movieHistory;
 
-    public Customer(String firstName, String lastName, int age, int mobileNumber, String emailAddress){
-        super(firstName, lastName); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
+    public Customer(String username, int age, int mobileNumber, String emailAddress){
+        super(username); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
     }
 
     public int getAge(){
