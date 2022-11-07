@@ -38,7 +38,7 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			String input;
 			int number;
 			choice = sc.nextInt();
-			sc.nextLine();
+			sc.nextLine(); // eat the \n
 			switch(choice)
 			{
 			case 1:
@@ -56,14 +56,14 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			case 3:
 				System.out.println("Enter time: ");
 				number = sc.nextInt();
-				sc.nextLine();
+				sc.nextLine(); // eat the \n
 				showtime.setTime(number);
 				System.out.println("Time edited to " + number);
 				break;
 			case 4:
 				System.out.println("Enter date(DDMMYY): ");
 				number = sc.nextInt();
-				sc.nextLine();
+				sc.nextLine(); // eat the \n
 				showtime.setDate(number);
 				System.out.println("Date edited to " + number);
 				break;

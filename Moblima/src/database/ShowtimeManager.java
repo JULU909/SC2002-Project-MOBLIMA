@@ -66,7 +66,7 @@ public class ShowtimeManager {
         return data;
     }
 
-    public String[] getMovies(int length) throws FileNotFoundException, IOException{
+    public String[] getMovies(int length) throws FileNotFoundException, IOException{ //get all movies in csv
 
        String [] names = new String [10];
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -96,10 +96,13 @@ public class ShowtimeManager {
         return names;
     }
 
-    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{
+    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{ //get all showtimes of certain movie and cineplex in csv
 
         ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        ArrayList<Showtime> list = new ArrayList<Showtime>();
+        ShowtimeManager sm = new ShowtimeManager();
+        showtimes = sm.readShowtimecsv();
+        /*try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
@@ -108,20 +111,29 @@ public class ShowtimeManager {
                     continue;
                 }
                 String[] values = line.split(",");
-                List<String> list = Arrays.asList(values);
-                if (list.get(3).equals(movie) && list.get(0).equals(cineplex)){
+                List<String> list = Arrays.asList(values);*/
+                int i = 0;
+                while(i!=showtimes.size())
+                {
+                	if(showtimes.get(i).getMovie().equals(movie) && list.get(i).getCineplex().equals(cineplex))
+                	{
+                		list.add(showtimes.get(i));
+                	}
+                	i++;
+                }
+       /* if (list.get(3).equals(movie) && list.get(0).equals(cineplex)){
 
                     temp = new Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
                     showtimes.add(temp);
                     count++;
                     continue;
 
-                }
-                
+                }*/
+                return list;
             }
-        }
-        return showtimes;
-     }
+       // }
+        
+     
     
     public static int findShowtimecsv(ArrayList<Showtime> list, Showtime showtime)throws FileNotFoundException, IOException{ //find index in arraylist
     	int i = 0;
