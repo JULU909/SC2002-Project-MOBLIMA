@@ -80,7 +80,6 @@ public class ShowtimeSettings { //static functions so that object does not need 
 	}
 	
 	public static Showtime removeShowtime() {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Removing showtime...");
 		return createShowtime();
 	}
