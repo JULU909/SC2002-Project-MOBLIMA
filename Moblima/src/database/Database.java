@@ -1,6 +1,9 @@
 package database;
 import java.util.ArrayList;
 
+// this file adds, deletes, findUserpos of user to database
+
+
 public class Database {
 	public static void addToDatabase(User user, ArrayList<User> database) {
 		int j = findUserPos(user, database);

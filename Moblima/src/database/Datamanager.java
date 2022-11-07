@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+
+// Datamanager file reads any csv file, and displays all data or displays 1 data row
+// public void Datamanager(String Filename)
+// getDataAll()
+// getDataRow(int Row)
+
 public class Datamanager {
     private String filename;
     private String[] data;
