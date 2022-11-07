@@ -41,7 +41,7 @@ public class TicketManager {
         StringBuilder line = new StringBuilder();
         line.append(ticket.getID());
         line.append(',');
-        line.append(ticket.getUser().getfirstName());
+        line.append(ticket.getUser().getUsername());
         line.append(',');
         line.append(ticket.getShowtime().getCineplex());
         line.append(',');

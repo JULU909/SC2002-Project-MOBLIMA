@@ -4,14 +4,24 @@ import java.util.Scanner;
 import enums.UserType;
 
 
-public class User extends Person{
+public class User{
+	private String username;
 	private String password;
 	private UserType UserType;
-	public User(String firstName, String lastName){
-		super(firstName,lastName);
+	public User(String username){
+		this.username = username;
 		this.password = "default";
 	}
 	
+	public void setUsername(String username) { 
+		this.username = username;
+		
+	}
+	
+	public String getUsername() {
+		return this.username;
+	}
+
 	public void setPassword() { //set password with UI
 		System.out.println("Enter current password (default if first time): ");
 		Scanner input = new Scanner(System.in);
@@ -39,7 +49,4 @@ public class User extends Person{
 	public UserType getUserType() {
 		return this.UserType;
 	}
-	
-	
-
 }
