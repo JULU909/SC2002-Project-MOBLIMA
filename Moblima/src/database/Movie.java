@@ -8,23 +8,27 @@ import enums.MovieStatus;
 import system.Showtime;
 
 public class Movie {
+  private int index;
 	private String title;
 	private String synopsis;
+  private String showingStatus;
     private String director;
-    private String[] cast;
+    private ArrayList<String> cast = new ArrayList<String>();
     private MovieType type;
     private AgeRating ageRating;
     private MovieStatus status;
-    private int noOfReviews;
+    // private int noOfReviews;
     private ArrayList<Review> reviews = new ArrayList<Review>();
     private ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
     private int totalSales=0;
     private double averageRating;
+    private String genre;
+    private String runTime;
 
-	public Movie(String title, String synopsis, String director, String[] cast, MovieType type, AgeRating ageRating)
+	public Movie(int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating, String genre, String runTime)
 	{
-		this.title = title; this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating=ageRating;
-		this.status = MovieStatus.COMING_SOON;
+		this.index = index; this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating = ageRating;
+		this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
 	}
 	
     public String getTitle() {
@@ -51,11 +55,11 @@ public class Movie {
 		this.director = director;
 	}
 
-    public String[] getCast() {
+    public ArrayList<String> getCast() {
 		return this.cast;
     }
 
-    public void setCast(String[] cast) {
+    public void setCast(ArrayList<String> cast) {
 		this.cast = cast;
 	}
 

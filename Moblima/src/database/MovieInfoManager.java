@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
+import enums.AgeRating;
 
 /* 
  * HOW TO USE:
@@ -48,9 +49,8 @@ public class MovieInfoManager {
     }
     // object.getDataAll(object.getLength())
 
-    public MovieInfo[] getDataAll() throws FileNotFoundException, IOException{
-
-        data = new MovieInfo[getLength()];
+    public ArrayList<Movie> getDataAll() throws FileNotFoundException, IOException{
+        ArrayList<Movie> data = new ArrayList<Movie>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             int count = 0;
@@ -59,9 +59,17 @@ public class MovieInfoManager {
                     count++;
                     continue;
                 }
-                String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                String[] values = line.split(",", -1);
                 List<String> list = Arrays.asList(values);
-                    data[count] = new MovieInfo(Integer.parseInt(list.get(0)), list.get(1), list.get(2),list.get(3),list.get(4),list.get(5), list.get(6), list.get(10),list.get(11),list.get(12));
+                int index = Integer.parseInt(list.get(0)); String title = list.get(1); String showingStatus = list.get(2); String synopsis = list.get(3); String director = list.get(4);
+                ArrayList<String> cast = new ArrayList<String>(Arrays.asList(list.get(5).split(",", -1)));
+                int overallRating = Integer.parseInt(list.get(6));
+                ArrayList<String> reviews = new ArrayList<String>(Arrays.asList(list.get(7).split(",", -1)));
+                AgeRating ageRating = AgeRating.valueOf(list.get(10));
+                String genre = list.get(11);
+                String runtime = list.get(12);
+
+                    data.add(new Movie(index, title, showingStatus, synopsis, director, cast, overallRating, ageRating, genre, runTime));
     
                 count++;
             }
