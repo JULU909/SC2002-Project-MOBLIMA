@@ -18,11 +18,19 @@ public static Movie createMovie() { //create a Movie object
 		String synopsis = sc.nextLine();
 		System.out.println("Enter director: ");
 		String director = sc.nextLine();
-		System.out.println("Enter cast member 1: ");
-		String cast1 = sc.nextLine();
-		System.out.println("Enter cast member 2:");
-		String cast2 = sc.nextLine();
-		String[] cast = {cast1,cast2};
+		String[] cast = new String[5];
+		
+		int i = 0;
+		while(i<5) {
+			System.out.printf("Maximum 5 cast members, number of cast members: %d",i);
+			System.out.printf("Enter cast member %d (Enter END to stop inputting): \n", i+1);
+			String input = sc.nextLine();
+			if(input.equals("END"))
+				break;
+			cast[i] = input;
+			i++;
+		}
+
 		System.out.println("Enter movie type:");
 		MovieType type = MovieTypeSetter.typeSetter();
 		System.out.println("Enter age rating: ");
@@ -40,7 +48,7 @@ public static Movie addMovie() {
 public static void editMovie(Movie movie) {
 	Scanner sc = new Scanner(System.in);
 	int choice = 0;
-	String input;
+	String input = "";
 	
 	while(choice<8) {
 		System.out.println("---Movie Editor---");
@@ -78,15 +86,29 @@ public static void editMovie(Movie movie) {
 			break;
 			
 		case 4:
-			System.out.println("Enter cast member 1: ");
-			input = sc.nextLine();
-			System.out.println("Enter cast member 2: ");
-			String cast2 = sc.nextLine();
-			String[] cast = {input,cast2};
-			movie.setCast(cast);
-			for(int i = 0;i<cast.length;i++) {
-				System.out.printf("Cast member %d set to: %s \n",i+1, cast[i]);
+			System.out.println("Current cast members: ");
+			int i = 0;
+			String[] cast = movie.getCast();
+			for(i = 0;i<cast.length;i++) {
+				System.out.printf("Cast member %d: %s \n",i+1, cast[i]);
 			}
+			i = 0;
+			while(i<cast.length) {
+				System.out.println("Enter cast member number to edit: ");
+				int exit = cast.length + 1;
+				System.out.println("Input " + exit + " to exit.");
+				i = sc.nextInt();
+				sc.nextLine();
+				if(i >= exit)
+					break;	
+				System.out.println("Enter new cast member name: ");
+				cast[i-1] = sc.nextLine();
+			}
+			System.out.println("New cast set to: ");
+			for(i = 0;i<cast.length;i++) {
+				System.out.printf("Cast member %d: %s \n",i+1, cast[i]);
+			}
+			movie.setCast(cast);
 			break;
 			
 		case 5:
