@@ -177,7 +177,7 @@ public static void purchaseTicket() throws FileNotFoundException, IOException, I
         Pricing price = new Pricing();
         choosenShowtime.printLayout();
         ArrayList <Seat> userSeats = booking.askSeats(numberSeats);
-        ticket.Ticket(price.getPrice(), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+        ticket.Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
 
        int confirmation = booking.confirmTicket(ticket);
        if (confirmation == 1){
