@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import system.*;
 import enums.MovieType;
 import enums.AgeRating;
+import enums.MovieStatus;
 import system.Showtime;
 
 public class Movie {
@@ -13,6 +14,7 @@ public class Movie {
     private String[] cast;
     private MovieType type;
     private AgeRating ageRating;
+    private MovieStatus status;
     private int noOfReviews;
     private ArrayList<Review> reviews = new ArrayList<Review>();
     private ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
@@ -22,6 +24,7 @@ public class Movie {
 	public Movie(String title, String synopsis, String director, String[] cast, MovieType type, AgeRating ageRating)
 	{
 		this.title = title; this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating=ageRating;
+		this.status = MovieStatus.COMING_SOON;
 	}
 	
     public String getTitle() {
@@ -71,6 +74,14 @@ public class Movie {
     public void setAgeRating(AgeRating ageRating) {
 		this.ageRating = ageRating;
 	}
+    
+    public MovieStatus getMovieStatus() {
+    	return this.status;
+    }
+    
+    public void setMovieStatus(MovieStatus status) {
+    	this.status = status;
+    }
 /* 
   public int getNoOfReviews() {
 		return this.noOfReviews;

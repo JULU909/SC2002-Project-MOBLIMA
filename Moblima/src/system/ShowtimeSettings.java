@@ -69,10 +69,10 @@ public class ShowtimeSettings { //static functions so that object does not need 
 				break;
 			case 5:
 				System.out.println("Exiting...");
-				break;
+				return;
 			default:
 				System.out.println("Invalid input! Exiting...");
-				break;
+				return;
 				
 			}
 
@@ -80,7 +80,6 @@ public class ShowtimeSettings { //static functions so that object does not need 
 	}
 	
 	public static Showtime removeShowtime() {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Removing showtime...");
 		return createShowtime();
 	}
