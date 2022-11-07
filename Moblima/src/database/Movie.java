@@ -74,6 +74,14 @@ public class Movie {
     public void setAgeRating(AgeRating ageRating) {
 		this.ageRating = ageRating;
 	}
+    
+    public MovieStatus getMovieStatus() {
+    	return this.status;
+    }
+    
+    public void setMovieStatus(MovieStatus status) {
+    	this.status = status;
+    }
 /* 
   public int getNoOfReviews() {
 		return this.noOfReviews;
