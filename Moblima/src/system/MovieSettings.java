@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import database.Movie;
 import enums.AgeRating;
+import enums.MovieStatus;
 import enums.MovieType;
 
 public class MovieSettings {
@@ -41,7 +42,7 @@ public static void editMovie(Movie movie) {
 	int choice = 0;
 	String input;
 	
-	while(choice<7) {
+	while(choice<8) {
 		System.out.println("---Movie Editor---");
 		System.out.println("1) Title");
 		System.out.println("2) Synopsis");
@@ -49,7 +50,8 @@ public static void editMovie(Movie movie) {
 		System.out.println("4) Cast");
 		System.out.println("5) Type");
 		System.out.println("6) AgeRating");
-		System.out.println("7) Exit");
+		System.out.println("7) Showing status");
+		System.out.println("8) Exit");
 		choice = sc.nextInt();
 		sc.nextLine(); //eat the \n
 		
@@ -98,10 +100,17 @@ public static void editMovie(Movie movie) {
 			System.out.println("Enter age rating: ");
 			AgeRating rating = AgeRatingSetter.ageSetter();
 			movie.setAgeRating(rating);
-			System.out.println("Movie age rating set to " + rating);
+			System.out.println("Movie age rating set to: " + rating);
+			break;
+		
+		case 7:
+			System.out.println("Enter movie showing status: ");
+			MovieStatus status = MovieStatusSetter.statusSetter();
+			movie.setMovieStatus(status);
+			System.out.println("Movie status set to: " + status);
 			break;
 			
-		case 7:
+		case 8:
 			System.out.println("Exiting...");
 			return;
 		default:
