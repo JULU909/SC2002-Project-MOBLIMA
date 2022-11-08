@@ -108,6 +108,7 @@ public class SettingsUI {
 				sm.writeShowtimecsv(showList); //Rewrite CSV
 				break;
 			case 8:
+				//List top movies not implemented
 				break;
 			case 9:
 				System.out.println("Exiting settings...");
