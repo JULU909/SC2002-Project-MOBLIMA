@@ -14,9 +14,25 @@ import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+
+/**
+ * Represents the class of BookingDisplay, which prints the UI for Booking ticket -related operations
+ * @author Harish Vasanth
+ * @version 1.0
+ * @since 1.0
+ */
+
+
 public class BookingDisplay {
 
 public String askCineplex(){
+
+    /** 
+     * This method prints the UI to get the Cineplex the user wants to watch the movie at
+     * After the cineplex is obtained, it will be returned as a String
+     * @return String
+     */
+
     Scanner sc = new Scanner(System.in);
     CineplexTypes [] list ;
     list = CineplexTypes.values();
@@ -32,7 +48,11 @@ public String askCineplex(){
 }
 
 public ArrayList askSeats(int number){
-    
+    /** 
+     * This method prints the UI to get the Seats the user wants to book at the movie.
+     * After the Seats are obtained, it will be returned as a ArrayList of the item Seat
+     * @return ArrayList <Seat>
+     */
     Scanner sc = new Scanner(System.in);
     ArrayList <Seat> seats = new ArrayList<Seat>();
     System.out.println( "Please Enter your seat numbers (EG : A1) : ");
@@ -50,6 +70,12 @@ public ArrayList askSeats(int number){
 }
 
 public int askTickets(){
+
+    /** 
+     * This method prints the UI to get the number of Seats the user wants to book at the movie.
+     * After the number is obtained, it will be as a integer.
+     * @return int
+     */
     Scanner sc = new Scanner(System.in);
     
     
@@ -62,6 +88,13 @@ public int askTickets(){
 
 
 public int askMovie(String [] movies){
+    /** 
+     * This method prints the UI to get the specific movie the user wants to book.
+     * After the movie is obtained, it will returned as a integer.
+     * @return int
+     * @param String
+     */
+
     Scanner sc = new Scanner(System.in);
     int count= 0;
     System.out.println("Please select the number corresponding to a movie : ");
