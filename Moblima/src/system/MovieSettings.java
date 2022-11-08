@@ -13,7 +13,7 @@ public static Movie createMovie() { //create a Movie object
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter movie: ");
+		System.out.println("Enter movie title: ");
 		String title = sc.nextLine();
 		
 		System.out.println("Enter synopsis: ");
@@ -39,17 +39,18 @@ public static Movie createMovie() { //create a Movie object
 		
 		System.out.println("Enter age rating: ");
 		AgeRating rating = AgeRatingSetter.ageSetter();
-
 		
+		System.out.println("Enter movie status: ");
+		MovieStatus status = MovieStatusSetter.statusSetter();
+
 		System.out.println("Enter movie genre(s) (Action/Adventure/...): ");
 		String genre = sc.nextLine();
 		
 		System.out.println("Enter runtime (xHxxM): ");
 		String runTime = sc.nextLine();
 		
-		Movie movie = new Movie(title,synopsis,director,cast,type,rating,genre,runTime);
+		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
 		return movie;
-		//String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating, String genre, String runTime
 	}
 
 public static Movie addMovie() {
