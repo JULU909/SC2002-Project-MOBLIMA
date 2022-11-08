@@ -33,9 +33,11 @@ public class MovieInfoManager2 {
     }
     
     
-    public void addMoviecsv(Movie movie) throws FileNotFoundException, IOException{
+    public void addMoviecsv(Movie movie) throws FileNotFoundException, IOException{ //Add a movie into CSV
+    	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter(filename,true);
     	
+    	//Get each attribute out from movie
     	String title = movie.getTitle();
     	String synopsis = movie.getSynopsis();
     	String director = movie.getDirector();
@@ -48,6 +50,7 @@ public class MovieInfoManager2 {
     	String genre = movie.getGenre();
     	String runtime = movie.getrunTime();
     	
+    	//Write them all into CSV
     	writer.append(title);
     	writer.append(",");
     	writer.append(synopsis);
@@ -57,7 +60,7 @@ public class MovieInfoManager2 {
     	
     	int i = 1;
     	writer.append(cast.get(0));
-    	while(i!=cast.size()) { //adding cast into one column of csv
+    	while(i!=cast.size()) { //Add cast members into one column in CSV
     		writer.append("'");
     		writer.append(cast.get(i));
     		i++;
@@ -83,15 +86,15 @@ public class MovieInfoManager2 {
     	writer.close();
     	
     }
-    public ArrayList<Movie> readMovieCSV() throws FileNotFoundException, IOException{
-    	ArrayList<Movie> list = new ArrayList<Movie>();
+    public ArrayList<Movie> readMovieCSV() throws FileNotFoundException, IOException{ //Read CSV
+    	ArrayList<Movie> list = new ArrayList<Movie>(); //Create array list of movies
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String line;
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
     		
-    		String split[] = line.split(",", 11); //convert each column to individual arguments
-    		if(split[0].equals(header)) //ignore header
+    		String split[] = line.split(",", 11); //Convert each column to individual attributes
+    		if(split[0].equals(header)) //Ignore header
     			continue;
     		
     		String title = split[0];
@@ -107,30 +110,33 @@ public class MovieInfoManager2 {
     		String genre = split[9];
     		String runTime = split[10];
     		
+    		//Create a movie object
     		Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime);
+    		//And add it to the array list
     		list.add(tempMovie);
     	}
     	
     	return list;
     }
     
-    public static int findMovieCSV(String title, ArrayList<Movie> list) throws FileNotFoundException, IOException{
+    public static int findMovieCSV(String title, ArrayList<Movie> list) throws FileNotFoundException, IOException{ //Find position of movie in array list
     	int i = 0;
     	while(i!=list.size()) {
-    		if(list.get(i).getTitle().equals(title))
-    			return i;
+    		if(list.get(i).getTitle().equals(title)) //Match title
+    			return i; //Return position
     		i++;
     	}
-    	return -1;
+    	return -1; //If not present, return -1
     }
     
     public void writeMovieCSV(ArrayList<Movie> list) throws FileNotFoundException, IOException{
-    	//FileWriter to write to csv, no true because it's rewriting    	
+    	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);
     	
     	int i =0;
-    	while(i!=list.size())
+    	while(i!=list.size()) //Go through every movie in array list
     	{
+    		//Get every attribute
     		Movie movie = list.get(i);
         	String title = movie.getTitle();
         	String synopsis = movie.getSynopsis();
@@ -144,22 +150,21 @@ public class MovieInfoManager2 {
         	String genre = movie.getGenre();
         	String runtime = movie.getrunTime();
         	
+        	//And add it to the CSV
         	writer.append(title);
         	writer.append(",");
         	writer.append(synopsis);
         	writer.append(",");
         	writer.append(director);
         	writer.append(",");
-        	//writer.append("'");
         
         	int j=1;
         	writer.append(cast.get(0));
-        	while(j!=cast.size()) { //adding cast into one column of csv
+        	while(j!=cast.size()) { //Adding cast into one column of CSV
         		writer.append("'");
         		writer.append(cast.get(j));
         		j++;
         	}
-        	//writer.append("'");
         	writer.append(",");
         	writer.append(type.toString());
         	writer.append(",");
@@ -177,44 +182,21 @@ public class MovieInfoManager2 {
         	writer.append("\n");
         	i++;
     	}
-
     	
     	//cleanup
     	writer.flush();
     	writer.close();
     }
     
-    public ArrayList<Movie> removeMovieCSV(ArrayList<Movie> list, String title) throws FileNotFoundException, IOException{
-    	int i = findMovieCSV(title,list);
+    public ArrayList<Movie> removeMovieCSV(ArrayList<Movie> list, String title) throws FileNotFoundException, IOException{ //Remove movie from array list
+    	int i = findMovieCSV(title,list); //Find position of movie
     	if(i!=-1) {
-    		list.remove(i);
+    		list.remove(i); // And remove it
     		System.out.println("Movie removed!");
     		return list;
     	}
     	System.out.println("Movie does not exist! Exiting...");
-    	return list;
+    	return list; //Return list if movie not present
     }
-    
-    
-
-/*public static void main(String [] args) throws FileNotFoundException, IOException {
-	ArrayList<String> cast = new ArrayList<String>();
-	String filepath = new File("movieInformation2.csv").getAbsolutePath();
-	MovieInfoManager2 mm = new MovieInfoManager2(filepath);
-	cast.add("john");
-	cast.add("jack");
-	cast.add("jhin");
-	Movie test = new Movie("alien","prose","dude",cast,MovieType.TWOD,AgeRating.NC16,MovieStatus.PREVIEW,"Action/Horror","2H15M");
-	mm.addMoviecsv(test);
-	Movie test2 = new Movie("aliens","prose","dude",cast,MovieType.TWOD,AgeRating.NC16,MovieStatus.PREVIEW,"Action/Horror","2H15M");
-	mm.addMoviecsv(test2);
-	ArrayList<Movie> list = mm.readMovieCSV();
-	System.out.println("1: " + list.get(0).getTitle() + " 2.: " + list.get(1).getTitle());
-	System.out.println("Done");
-	String cast = "john joe'jack hi'jhin four";
-	String[] arrcast = cast.split("'");
-	System.out.println(arrcast[0] + " and " + arrcast[1] + " and " + arrcast[2]);
-	
-}*/
 
 }
