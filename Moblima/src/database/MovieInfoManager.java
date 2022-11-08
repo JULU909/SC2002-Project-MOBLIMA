@@ -68,6 +68,7 @@ public class MovieInfoManager {
                 AgeRating ageRating = AgeRating.valueOf(list.get(10));
                 String genre = list.get(11);
                 String runtime = list.get(12);
+                // int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
                     data.add(new Movie(index, title, showingStatus, synopsis, director, cast, averageRating, ageRating, reviews, genre, runtime));
 
                 count++;

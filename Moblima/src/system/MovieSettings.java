@@ -1,6 +1,7 @@
 package system;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import database.Movie;
 import enums.AgeRating;
@@ -18,22 +19,21 @@ public static Movie createMovie() { //create a Movie object
 		String synopsis = sc.nextLine();
 		System.out.println("Enter director: ");
 		String director = sc.nextLine();
-		String[] cast = new String[5];
+		ArrayList<String> cast = new ArrayList<String>;
 		
-		int i = 0;
-		while(i<5) {
-			System.out.printf("Maximum 5 cast members, number of cast members: %d",i);
+		while (true) {
 			System.out.printf("Enter cast member %d (Enter END to stop inputting): \n", i+1);
 			String input = sc.nextLine();
 			if(input.equals("END"))
 				break;
-			cast[i] = input;
-			i++;
+			cast.add(input);
 		}
-
+		// (int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
 		System.out.println("Enter movie type:");
 		MovieType type = MovieTypeSetter.typeSetter();
 		System.out.println("Enter age rating: ");
+		AgeRating rating = AgeRatingSetter.ageSetter();
+		System.out.println("Enter showing status: ");
 		AgeRating rating = AgeRatingSetter.ageSetter();
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating);
 		return movie;

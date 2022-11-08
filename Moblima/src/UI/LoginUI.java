@@ -30,7 +30,6 @@ public class LoginUI {
 		loginUser.setPassword(password);
 		sc.close();
 		return loginUser;
-
 	}
 	
 	public boolean validateUser(User user, ArrayList<User> database) {
