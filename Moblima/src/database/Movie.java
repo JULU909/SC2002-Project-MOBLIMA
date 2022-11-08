@@ -162,6 +162,14 @@ public class Movie {
             return;
         }
 }
+  
+  public void setTotalSales(int totalSales) {
+	  this.totalSales = totalSales;
+  }
+  
+  public int getTotalSales() {
+	  return this.totalSales;
+  }
 
 public double getAverageRating() {
   return this.averageRating;
