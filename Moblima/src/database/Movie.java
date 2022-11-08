@@ -39,6 +39,7 @@ public class Movie {
 		this.status = status;
 		this.genre = genre;
 		this.runTime = runTime;
+		this.averageRating = 0;
 	}
 	
     public String getTitle() {
