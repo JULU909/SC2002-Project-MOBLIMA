@@ -54,16 +54,14 @@ public class MovieInfoManager2 {
     	writer.append(",");
     	writer.append(director);
     	writer.append(",");
-    	//writer.append("'");
     	
     	int i = 1;
     	writer.append(cast.get(0));
     	while(i!=cast.size()) { //adding cast into one column of csv
-    		writer.append("|");
+    		writer.append("'");
     		writer.append(cast.get(i));
     		i++;
     	}
-    	//writer.append("'");
     	writer.append(",");
     	writer.append(type.toString());
     	writer.append(",");
@@ -99,7 +97,8 @@ public class MovieInfoManager2 {
     		String title = split[0];
     		String synopsis = split[1];
     		String director = split[2];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("|")));
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'")));
+
     		MovieType type = MovieType.valueOf(split[4]);
     		AgeRating ageRating = AgeRating.valueOf(split[5]);
     		MovieStatus status = MovieStatus.valueOf(split[6]);
@@ -156,7 +155,7 @@ public class MovieInfoManager2 {
         	int j=1;
         	writer.append(cast.get(0));
         	while(j!=cast.size()) { //adding cast into one column of csv
-        		writer.append("|");
+        		writer.append("'");
         		writer.append(cast.get(j));
         		j++;
         	}
@@ -212,6 +211,10 @@ public class MovieInfoManager2 {
 	ArrayList<Movie> list = mm.readMovieCSV();
 	System.out.println("1: " + list.get(0).getTitle() + " 2.: " + list.get(1).getTitle());
 	System.out.println("Done");
+	String cast = "john joe'jack hi'jhin four";
+	String[] arrcast = cast.split("'");
+	System.out.println(arrcast[0] + " and " + arrcast[1] + " and " + arrcast[2]);
+	
 }*/
 
 }
