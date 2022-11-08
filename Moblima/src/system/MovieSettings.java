@@ -13,7 +13,7 @@ public static Movie createMovie() { //create a Movie object
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter movie: ");
+		System.out.println("Enter movie title: ");
 		String title = sc.nextLine();
 		
 		System.out.println("Enter synopsis: ");
@@ -39,14 +39,14 @@ public static Movie createMovie() { //create a Movie object
 		
 		System.out.println("Enter age rating: ");
 		AgeRating rating = AgeRatingSetter.ageSetter();
-
-		System.out.println("Enter showing status: ");
-		MovieStatus status = MovieStatusSetter.statusSetter();
 		
+		System.out.println("Enter movie status: ");
+		MovieStatus status = MovieStatusSetter.statusSetter();
+
 		System.out.println("Enter movie genre(s) (Action/Adventure/...): ");
 		String genre = sc.nextLine();
 		
-		System.out.println("Enter runtime (xH xxM): ");
+		System.out.println("Enter runtime (xHxxM): ");
 		String runTime = sc.nextLine();
 		
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
@@ -64,7 +64,7 @@ public static void editMovie(Movie movie) {
 	int choice = 0;
 	String input = "";
 	
-	while(choice<8) {
+	while(choice<10) {
 		System.out.println("---Movie Editor---");
 		System.out.println("1) Title");
 		System.out.println("2) Synopsis");
@@ -73,7 +73,9 @@ public static void editMovie(Movie movie) {
 		System.out.println("5) Type");
 		System.out.println("6) AgeRating");
 		System.out.println("7) Showing status");
-		System.out.println("8) Exit");
+		System.out.println("8) Genre");
+		System.out.println("9) Runtime");
+		System.out.println("10) Exit");
 		choice = sc.nextInt();
 		sc.nextLine(); //eat the \n
 		
@@ -156,6 +158,19 @@ public static void editMovie(Movie movie) {
 			break;
 			
 		case 8:
+			System.out.println("Enter movie genre(s) (Action/Horror): ");
+			input = sc.nextLine();
+			movie.setGenre(input);
+			System.out.println("Movie genre set to: " + input);
+			break;
+		
+		case 9:
+			System.out.println("Enter movie runtime (xHxxM): ");
+			input = sc.nextLine();
+			movie.setrunTime(input);
+			System.out.println("Movie runtime set to: " + input);
+			break;
+		case 10:
 			System.out.println("Exiting...");
 			return;
 		default:

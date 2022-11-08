@@ -26,11 +26,18 @@ public class Movie {
 	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, 
 			double averageRating,ArrayList<Review> reviews,int totalSales, String genre, String runTime)
 	{
-		this.title = title;  this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.averageRating = averageRating;
-    this.ageRating = ageRating; this.status = status; this.reviews = reviews; this.totalSales=totalSales; this.genre = genre; this.runTime=runTime;
+		this.title = title;  this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating = ageRating;
+		this.status = status; this.totalSales=totalSales; this.averageRating = averageRating;  this.reviews = reviews;  this.genre = genre; this.runTime=runTime;
 	} //constructor for exisiting movie
 	
-	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,  MovieStatus status, String genre, String runTime) {
+	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, 
+			int totalSales, double averageRating, String genre, String runTime)
+	{
+		this.title = title;  this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating = ageRating;
+		this.status = status; this.totalSales=totalSales; this.averageRating = averageRating;  this.genre = genre; this.runTime=runTime;
+	} //constructor for exisiting movie without review
+	
+	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, String genre, String runTime) {
 		this.title = title;
 		this.synopsis = synopsis;
 		this.director = director;
@@ -38,9 +45,10 @@ public class Movie {
 		this.type = type;
 		this.ageRating = ageRating;
 		this.status = status;
-		this.genre = genre;
-		this.runTime = runTime;
+		this.totalSales = 0;
 		this.averageRating = 0;
+		this.genre = genre;
+		this.runTime = runTime;	
 	} //constructor for new movie
 	
     public String getTitle() {

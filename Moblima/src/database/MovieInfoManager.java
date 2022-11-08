@@ -1,5 +1,6 @@
 package database;
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -71,8 +72,8 @@ public class MovieInfoManager {
                 // sorry jia wei :(
                 // String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                 // int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
-                    data.add(new Movie(index, title, showingStatus, synopsis, director, cast, averageRating, ageRating, reviews, genre, runtime));
-
+                    data.add(new Movie(title, showingStatus, synopsis, director, cast, averageRating, ageRating, reviews, genre, runtime));
+                    
                     //data[count] = new MovieInfo(Integer.parseInt(list.get(0)), list.get(1), list.get(2),list.get(3),list.get(4),list.get(5), list.get(6), list.get(10),list.get(11),list.get(12));
 
                 count++;

@@ -45,7 +45,7 @@ public class SettingsUI {
 			case 3: //should be able to update by inputting title alone
 				break;
 			case 4: //should be able to remove by inputting title alone
-				Movie toRemove = MovieSettings.removeMovie();
+				Movie MovietoRemove = MovieSettings.removeMovie();
 				break;
 			case 5:
 				Showtime newShowtime = ShowtimeSettings.addShowtime(); //get showtime to add
@@ -68,10 +68,10 @@ public class SettingsUI {
 				sm.addShowtimecsv(toEdit); //add it to the csv
 				break;
 			case 7: 
-				Showtime toRemove = ShowtimeSettings.removeShowtime(); //get showtime to remove
+				Showtime ShowTimetoRemove = ShowtimeSettings.removeShowtime(); //get showtime to remove
 				list = new ArrayList<Showtime>(); 
 				list = sm.readShowtimecsv(); //convert csv to array list
-				list = sm.removeShowtimecsv(list, toRemove); //remove showtime in array list
+				list = sm.removeShowtimecsv(list, ShowTimetoRemove); //remove showtime in array list
 				sm.writeShowtimecsv(list); //rewrite csv back
 				break;
 			case 8:
