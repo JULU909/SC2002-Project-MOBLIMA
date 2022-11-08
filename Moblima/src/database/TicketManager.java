@@ -88,7 +88,7 @@ public class TicketManager {
                             String col = seats.substring(0,2);
                             String row = seats.substring(2,4);
 
-
+                            seats = seats.substring(4);
                             temp.Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, Integer.valueOf(row), Integer.valueOf(col));
                             bookedSeats.add(temp);
 
