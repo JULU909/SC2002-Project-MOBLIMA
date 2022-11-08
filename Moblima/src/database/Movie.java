@@ -8,7 +8,6 @@ import enums.MovieStatus;
 import system.Showtime;
 
 public class Movie {
-  private int index;
 	private String title;
 	private String synopsis;
   private String showingStatus;
@@ -25,9 +24,9 @@ public class Movie {
     private String genre;
     private String runTime;
 
-	public Movie(int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
+	public Movie(String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
 	{
-		this.index = index; this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
+		this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
     this.ageRating = ageRating; this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
 	}
 	
