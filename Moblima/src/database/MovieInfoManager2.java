@@ -196,7 +196,10 @@ public class MovieInfoManager2 {
     		return list;
     	}
     	System.out.println("Movie does not exist! Exiting...");
+		writeMovieCSV(list);
     	return list; //Return list if movie not present
     }
+
+	
 
 }

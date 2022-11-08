@@ -1,16 +1,18 @@
 package database;
 
-import java.io.FileWriter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+
+import java.io.FileWriter; //for writing to csv
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class HolidayManager {
@@ -87,7 +89,7 @@ public class HolidayManager {
 
     // IDK HOW TO WRITE TO CSV FILES 
 
-    public void addHoliday() throws IOException, FileNotFoundException{
+    public void addHolidayCSV() throws IOException, FileNotFoundException{
         System.out.println("Enter name of holiday to be added: ");
         while (!sc.hasNext()) {
             System.out.println("Please enter a string value!");
@@ -113,20 +115,41 @@ public class HolidayManager {
                 System.out.println("Please enter a string value!");
                 sc.next(); // Remove newline character
             }
-            startDate = sc.nextLine();
+            endDate = sc.nextLine();
             if(checkValidDate(startDate)) break;
             System.out.println("Please enter a date in the format YYYY-MM-DD!");
         }
-        if (!checkDuplicateHoliday(getDataAll(), holidayName))
+        if (!checkDuplicateHoliday(getDataAll(), holidayName)){
+            FileWriter writer = new FileWriter(filename,true);
 
-        java.io.File f = new java.io.File(FILENAME);
-        java.io.PrintWriter outfile = new java.io.PrintWriter(f);
-        outfile.append(holidayName + "," + startDate + "," + "endDate");
-        outfile.close();
-        
+    	    //Write them all into CSV
+    	    writer.append(holidayName);
+    	    writer.append(",");
+            writer.append(startDate);
+    	    writer.append(",");
+            writer.append(endDate);
+    	    writer.append(",");
+            writer.append("\n");
+
+            //cleanup
+    	    writer.flush();
+    	    writer.close();
+        }
     }
-
-    public void deleteHoliday(){
+    /*
+    public ArrayList<Movie> removeMovieCSV(ArrayList<Movie> list, String title) throws FileNotFoundException, IOException{ //Remove movie from array list
+    	int i = findMovieCSV(title,list); //Find position of movie
+    	if(i!=-1) {
+    		list.remove(i); // And remove it
+    		System.out.println("Movie removed!");
+    		return list;
+    	}
+    	System.out.println("Movie does not exist! Exiting...");
+		writeMovieCSV(list);
+    	return list; //Return list if movie not present
+    }
+*/
+    public void removeHolidayCSV(String holidayName){
         System.out.println("Enter name of holiday to delete: ");
         while (!sc.hasNext()) {
             System.out.println("Please enter a string value!");
