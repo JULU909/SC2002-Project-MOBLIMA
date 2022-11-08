@@ -178,6 +178,14 @@ public class Movie {
   public String getGenre() {
 	  return this.genre;
   }
+  
+  public void setrunTime(String runtime) {
+	  this.runTime = runtime;
+  }
+  
+  public String getrunTime() {
+	  return this.runTime;
+  }
 
 public double getAverageRating() {
   return this.averageRating;
