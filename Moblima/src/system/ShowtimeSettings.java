@@ -2,7 +2,7 @@ package system;
 import java.util.Scanner;
 
 public class ShowtimeSettings { //static functions so that object does not need to be created
-	public static Showtime createShowtime() { //create a showtime object
+	public static Showtime createShowtime() { //create a show time object
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter movie: ");
@@ -17,13 +17,13 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		return showtime;
 	}
 	
-	public static Showtime addShowtime() {
+	public static Showtime addShowtime() { //Add a show time object
 		System.out.println("Adding showtime...");
 		return createShowtime();
 		
 	}
 	
-	public static void editShowtime(Showtime showtime) {
+	public static void editShowtime(Showtime showtime) { //Edit a show time object
 		Scanner sc = new Scanner(System.in);
 
 		int choice=0;
@@ -79,7 +79,7 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		}
 	}
 	
-	public static Showtime removeShowtime() {
+	public static Showtime removeShowtime() { //Remove a show time object
 		System.out.println("Removing showtime...");
 		return createShowtime();
 	}

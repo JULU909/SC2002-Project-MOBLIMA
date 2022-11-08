@@ -97,72 +97,53 @@ public class ShowtimeManager {
         return names;
     }
 
-    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{ //get all showtimes of certain movie and cineplex in csv
+    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{ //Get all show times of certain movie and cineplex in CSV
 
         ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
         ArrayList<Showtime> list = new ArrayList<Showtime>();
         ShowtimeManager sm = new ShowtimeManager();
-        showtimes = sm.readShowtimecsv();
-        /*try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-            int count = 0;
-            while ((line = br.readLine()) != null) {
-                if (count==0){
-                    count++;
-                    continue;
-                }
-                String[] values = line.split(",");
-                List<String> list = Arrays.asList(values);*/
+        showtimes = sm.readShowtimecsv(); //Get all show times out into array list
                 int i = 0;
                 while(i!=showtimes.size())
                 {
-                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex))
+                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex)) //Find rows with same movie and cineplex
                 	{
-                		list.add(showtimes.get(i));
+                		list.add(showtimes.get(i)); // Add it to list array list
                 	}
-                	i++;
+                	i++; //Increment to continue looking
                 }
-       /* if (list.get(3).equals(movie) && list.get(0).equals(cineplex)){
-
-                    temp = new Showtime(Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(0), list.get(3));
-                    showtimes.add(temp);
-                    count++;
-                    continue;
-
-                }*/
-                return list;
+                return list; //Return list of show times of certain movie and cineplex
             }
-       // }
         
      
     
-    public static int findShowtimecsv(ArrayList<Showtime> list, Showtime showtime)throws FileNotFoundException, IOException{ //find index in arraylist
+    public static int findShowtimecsv(ArrayList<Showtime> list, Showtime showtime)throws FileNotFoundException, IOException{ //Find index in array list
     	int i = 0;
 
-    	while(i!=list.size()) {
-    		if(list.get(i).getMovie().equals(showtime.getMovie()) 
+    	while(i!=list.size()) { //Look through array list
+    		if(list.get(i).getMovie().equals(showtime.getMovie()) //Find exact match
     				&& list.get(i).getDate() == showtime.getDate() 
     				&& list.get(i).getCineplex().equals(showtime.getCineplex()) 
     				&& list.get(i).getTime() == showtime.getTime())
-    			return i;
-    		i++;
+    			return i; //Return its position
+    		i++; //Increment if not found
     	}
-    	return -1;
+    	return -1; //Return -1 if its not in array list
     	
     }
     
-    public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{ //add one showtime to csv
+    public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{ //Add one show time to CSV
     	
     	//FileWriter to write to csv, true to allow appending    	
     	FileWriter writer = new FileWriter(filename,true);
     	
-    	//convert showtime to individual arguments
+    	//Convert show time to individual attributes
     	String cineplex = showtime.getCineplex(); 
     	int time = showtime.getTime();
     	int date = showtime.getDate();
     	String movie = showtime.getMovie();
     	
-    	//append them all into csv
+    	//Append them all into CSV
     	writer.append(cineplex);
     	writer.append(",");
     	writer.append(String.valueOf(time));
@@ -178,14 +159,14 @@ public class ShowtimeManager {
     
     }
     
-    public ArrayList<Showtime> readShowtimecsv() throws FileNotFoundException, IOException{ //read whole csv
+    public ArrayList<Showtime> readShowtimecsv() throws FileNotFoundException, IOException{ //Read whole CSV
     	ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String line;
     	String header = "Cineplex";
     	while ((line = br.readLine()) != null) {
     		
-    		String split[] = line.split(",", 4); //convert each column to individual arguments
+    		String split[] = line.split(",", 4); //convert each column to individual attributes
     		if(split[0].equals(header)) //ignore header
     			continue;
     		
@@ -193,40 +174,41 @@ public class ShowtimeManager {
     		int time = Integer.parseInt(split[1]);
     		int date = Integer.parseInt(split[2]);
     		String movie = split[3];
-    		Showtime tempTime = new Showtime (time,date,cineplex,movie); //create Showtime object
-    		showtimes.add(tempTime); //and add to array list
+    		Showtime tempTime = new Showtime (time,date,cineplex,movie); //create show time object with each attribute
+    		showtimes.add(tempTime); //And add show time to array list
     	}
     	
     	return showtimes; //return array list
     }
     
-    public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime) throws FileNotFoundException, IOException{ //remove from array list, use for editing/remove a row
-    	int i = findShowtimecsv(list,showtime);
+    public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime) throws FileNotFoundException, IOException{ //Remove from array list, use for editing/remove a row
+    	int i = findShowtimecsv(list,showtime); //Find its position
     	
-    	if(i!=-1) 
+    	if(i!=-1) //If show time present
     	{
-    		list.remove(i);
+    		list.remove(i); //Remove it
     		System.out.println("Showtime removed!");
-    		return list;
+    		return list; //Return list
     	}
     	
-    	System.out.println("Showtime does not exist! Exiting..."); //if not found,
-    	return list; //just return list
+    	System.out.println("Showtime does not exist! Exiting..."); //If not found
+    	return list; //Just return list
     }
     
-    public void writeShowtimecsv(ArrayList<Showtime> list) throws FileNotFoundException, IOException { //rewrite csv, use for editing/removing a row
+    public void writeShowtimecsv(ArrayList<Showtime> list) throws FileNotFoundException, IOException { //Rewrite CSV, use for editing/removing a row
 
-    	//FileWriter to write to csv, no true because it's rewriting    	
+    	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);
     	
     	int i =0;
     	while(i!=list.size()) {
+    		//Convert show time to each attribute
     		String cineplex = list.get(i).getCineplex(); 
         	int time = list.get(i).getTime();
         	int date = list.get(i).getDate();
         	String movie = list.get(i).getMovie();
         	
-        	//append them all into csv
+        	//Append them all into CSV
         	writer.append(cineplex);
         	writer.append(",");
         	writer.append(String.valueOf(time));
@@ -244,31 +226,4 @@ public class ShowtimeManager {
     	writer.close();
     }
     
-    
-   /* public static void main(String [] args) throws FileNotFoundException, IOException {
-    	String filepath = new File("Showtimes.csv").getAbsolutePath(); //to get exact path to csv
-    	ShowtimeManager sm = new ShowtimeManager(filepath);
-    	ArrayList<Showtime> test = new ArrayList<Showtime>();
-    	test = sm.readShowtimecsv(); //test read
-    	Showtime showtime = new Showtime(1030,121122,"ALPHA","BlackAdam");
-    	
-    	int i = 0;
-    	while (i!=test.size()) { //test read
-    		System.out.println("before: " + i + ":" + test.get(i).getCineplex() + " " + test.get(i).getTime() + " " + test.get(i).getDate() + " " + test.get(i).getMovie());
-    		i++;
-    	}
-    	
-    	test = sm.removeShowtimecsv(test, showtime); //testing remove
-    	sm.writeShowtimecsv(test);
-    	test = sm.readShowtimecsv();
-    	
-    	i = 0;
-    	while (i!=test.size()) { //test read
-    		System.out.println("after: " + i + ":" + test.get(i).getCineplex() + " " + test.get(i).getTime() + " " + test.get(i).getDate() + " " + test.get(i).getMovie());
-    		i++;
-    	}
-    	//Showtime showtime = new Showtime(1031,121122,"ALPHA","BlackAdam");
-    	//sm.addShowtimecsv(showtime); //test add
-    	//System.out.println("test: " + sm.getShowtimes("BlackAdam","ALPHA").get(0).getMovie()); //test get
-    }*/
 }
