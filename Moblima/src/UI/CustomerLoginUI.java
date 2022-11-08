@@ -10,7 +10,11 @@ public class CustomerLoginUI {
 
 	public static void execute() {
         Scanner sc = new Scanner(System.in);
-		System.out.println("----Login to Customer Cinema database----");
+		System.out.println("=====================================================================================\n"+
+                           "=====================================================================================\n"+
+                           "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
+                           "=====================================================================================\n"+
+                           "=====================================================================================\n")
 		System.out.println("Enter username: ");
 		String username = sc.nextLine();
 		System.out.println("Enter password: ");

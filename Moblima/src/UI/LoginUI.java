@@ -6,7 +6,11 @@ import UI.*;
 
 public class LoginUI {
 	public static void execute() {
-		System.out.println("----Login to Cinema database----");
+		System.out.println("=====================================================================================\n"+
+                           "=====================================================================================\n"+
+                           "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
+                           "=====================================================================================\n"+
+                           "=====================================================================================\n");
 		Scanner sc = new Scanner(System.in);
 		int choice;
 
