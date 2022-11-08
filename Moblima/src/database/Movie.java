@@ -170,6 +170,14 @@ public class Movie {
   public int getTotalSales() {
 	  return this.totalSales;
   }
+  
+  public void setGenre(String genre) {
+	  this.genre = genre;
+  }
+  
+  public String getGenre() {
+	  return this.genre;
+  }
 
 public double getAverageRating() {
   return this.averageRating;
