@@ -23,9 +23,9 @@ public static Movie createMovie() { //create a Movie object
 		String director = sc.nextLine();
 		
 		ArrayList<String> cast = new ArrayList<String>();
-		
+		int i = 1;
 		while (true) {
-			int i = 1;
+			
 			System.out.printf("Enter cast member %d (Enter END to stop inputting): \n", i);
 			String input = sc.nextLine();
 			if(input.equals("END"))
@@ -180,9 +180,11 @@ public static void editMovie(Movie movie) {
 	}
 	
 }
-public static Movie removeMovie() {
+public static String removeMovie() {
+	Scanner sc = new Scanner(System.in);
 	System.out.println("Removing movie...");
-	return createMovie();
+	System.out.println("Enter movie title: ");
+	return sc.nextLine();
 	
 }
 
