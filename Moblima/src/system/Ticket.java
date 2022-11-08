@@ -19,7 +19,7 @@ public class Ticket {
     private Showtime showtime;
     private int price;
     private int date;
-    private User user = new User("John Doe");
+    private User user = new User("John Doe","123");
     private int ticketID;
     public void Ticket(int price, ArrayList <Seat> seats , Showtime showtime , int date ){
         this.price = price;
