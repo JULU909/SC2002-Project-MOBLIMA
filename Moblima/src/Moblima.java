@@ -20,10 +20,8 @@ public class Moblima {
 
 
         do {
-            do {
-                User user = LoginUI.loginText();
-
-            }
+            
+            
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
             int selection;
@@ -36,6 +34,7 @@ public class Moblima {
                     System.out.println("Your Choice please: ");
 
                     // new SearchMovieUI().DisplayAll();
+                    
                     selection = sc.nextInt();
                     if(selection == 1){
                         new SearchMovieUI().DisplayAll();
@@ -86,7 +85,7 @@ public class Moblima {
                     break;
 
                 case 7:
-                    admin() ;
+                    ;
                     break;
                 
                 case 8:
@@ -206,7 +205,7 @@ public static void movieRanking(){
 
 public static void admin(User user){
         System.out.println("=====================================================================================\n");
-        System.out.println("                          Admin                                           \n");
+        System.out.println("                          User Settings                                           \n");
         System.out.println("=====================================================================================\n");
         System.out.println("Do you want to:\n1) Change username\n2) Change password (by index, cannot be 0 or negative)\n");
         System.out.println("Your Choice please: ");
