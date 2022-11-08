@@ -101,8 +101,7 @@ public void setLayout() throws IOException{
     for (int i  = 0 ; i < bookedSeats.size() ; i ++){
         int row  = bookedSeats.get(i).getRow();
         int col = bookedSeats.get(i).getCol();
-        System.out.println(row);
-        System.out.println(col);
+   
 
         this.layout[row-65][col-1].Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, row, col);
     }
