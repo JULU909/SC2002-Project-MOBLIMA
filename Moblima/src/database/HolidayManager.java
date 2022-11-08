@@ -88,8 +88,8 @@ public class HolidayManager {
     }
 
     // IDK HOW TO WRITE TO CSV FILES 
-    
-    public void addHoliday(){
+
+    public void addHoliday() throws IOException, FileNotFoundException{
         System.out.println("Enter name of holiday to be added: ");
         while (!sc.hasNext()) {
             System.out.println("Please enter a string value!");
@@ -120,12 +120,12 @@ public class HolidayManager {
             System.out.println("Please enter a date in the format YYYY-MM-DD!");
         }
         if (!checkDuplicateHoliday(getDataAll(), holidayName))
-        try {
+
         java.io.File f = new java.io.File(FILENAME);
         java.io.PrintWriter outfile = new java.io.PrintWriter(f);
         outfile.append(holidayName + "," + startDate + "," + "endDate");
         outfile.close();
-        } catch (IOException e) {}
+        
     }
 
     public void deleteHoliday(){

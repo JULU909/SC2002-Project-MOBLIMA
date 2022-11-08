@@ -10,18 +10,18 @@ import system.Showtime;
 import enums.AgeGroup;
 import enums.AgeRating;
 
-public class CustomerManager {
+public class StaffManager {
     private String filename;
-    private ArrayList<Customer> data;
+    private ArrayList<Staff> data;
     private Showtime temp;
 
-    public final static String FILENAME = "Moblima/src/Data/Customers.csv";
+    public final static String FILENAME = "Moblima/src/Data/Staff.csv";
 
-    public CustomerManager(){
+    public StaffManager(){
         this.filename = FILENAME;
     }
 
-    public CustomerManager(String filename) {
+    public StaffManager(String filename) {
         this.filename = filename;
     }
 
@@ -35,8 +35,8 @@ public class CustomerManager {
         }
         return count;
     }
-    public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
-        ArrayList<Customer> data = new ArrayList<Customer>(getLength());
+    public ArrayList<Staff> getDataAll() throws FileNotFoundException, IOException{
+        ArrayList<Staff> data = new ArrayList<Staff>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             int count = 0;
@@ -47,8 +47,8 @@ public class CustomerManager {
                 }
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
-                Customer c = new Customer(list.get(1), list.get(2), Integer.parseInt(list.get(3)), list.get(5), list.get(6));
-                data.add(c);
+                Staff s = new Staff(list.get(1), list.get(2));
+                data.add(s);
                 count++;
             }
         }
