@@ -3,9 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import database.Database;
 import database.User;
+import enums.UserType;
 
 public class LoginUI {
-	public User loginText() {
+	public static User loginText() {
 		System.out.println("----Login to Cinema database----");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter userType: ");
@@ -25,15 +26,16 @@ public class LoginUI {
 		System.out.println("Enter password: ");
 		String password = sc.nextLine();
 		
-		User loginUser = new User(username); 
+		User loginUser = new User(username, password); 
 		loginUser.setUserType(type);
-		loginUser.setPassword(password);
 		sc.close();
 		return loginUser;
 	}
 	
 	public boolean validateUser(User user, ArrayList<User> database) {
-		int check = Database.findUserPos(user, database);
+		String filepath;
+		if (user.getUserType() == UserType.CUSTOMER) filepath = "Moblima/src/Data/Customer.csv";
+		else filepath = "Moblima/src/Data/Staff.csv";
 		if(check == -1)
 		{
 			System.out.println("Login failed!");

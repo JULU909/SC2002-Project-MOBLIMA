@@ -15,12 +15,12 @@ public class Customer extends User{
 
     private int age;
     private AgeGroup ageGroup;
-    private int mobileNumber;
+    private String mobileNumber;
     private String emailAddress;
     ArrayList<Movie> movieHistory;
 
-    public Customer(String username, int age, int mobileNumber, String emailAddress){
-        super(username); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
+    public Customer(String username, String password, int age, String mobileNumber, String emailAddress){
+        super(username, password); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
     }
 
     public int getAge(){
@@ -48,11 +48,11 @@ public class Customer extends User{
         this.ageGroup = ageGroup;
         
     }
-    public int getmobileNumber(){
+    public String getmobileNumber(){
         return this.mobileNumber;
     }
 
-    public void setmobileNumber(int mobileNumber){
+    public void setmobileNumber(String mobileNumber){
         this.mobileNumber = mobileNumber;
     }
 
