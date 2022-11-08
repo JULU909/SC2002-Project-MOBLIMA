@@ -22,9 +22,13 @@ public class LoginUI {
 			System.out.println("Invalid entry, defaulting userType to CUSTOMER");
 				
 		System.out.println("Enter username: ");
+		String temp = sc.nextLine();
 		String username = sc.nextLine();
+		System.out.println(username);
 		System.out.println("Enter password: ");
+		
 		String password = sc.nextLine();
+		System.out.println(password);
 		
 		User loginUser = new User(username, password); 
 		loginUser.setUserType(type);
