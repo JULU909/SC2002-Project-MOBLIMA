@@ -1,5 +1,6 @@
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
+import UI.StaffLoginUI;
 import UI.LoginUI;
 
 import java.io.FileNotFoundException;
@@ -85,7 +86,7 @@ public class Moblima {
                     break;
 
                 case 7:
-                    ;
+                	LoginUI.execute();
                     break;
                 
                 case 8:
@@ -122,17 +123,17 @@ public static int mainDisplayOptions() {
                            "(1) Search/List Movies\n\n"+
                            "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n"+
                            "(4) View booking history\n\n"+
-                           "(5) User Settings\n\n(6) Exit\n\nChoices (1~6): ");
+                           "(5) User Settings\n\n(6) Exit\n\n(7)Login \n\nChoices (1~6): ");
         
         try {
             System.out.print("\nWhat is your choice:  ");
             choice = sc.nextInt();
-            if (choice >=1 && choice <=6) break;
+            if (choice >=1 && choice <=7) break;
             else throw new Exception();
             // choice = Integer.parseInt(sc.next());
         } catch (Exception e) {
             choice = sc.nextInt();
-            if (choice >=1 && choice <=6) break;
+            if (choice >=1 && choice <=7) break;
             else{
                 System.out.println("Please enter a valid option");
             }
