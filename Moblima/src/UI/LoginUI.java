@@ -12,13 +12,21 @@ public class LoginUI {
                            "=====================================================================================\n"+
                            "=====================================================================================\n");
 		Scanner sc = new Scanner(System.in);
-		int choice;
-
+		int choice=0;
 		do {
 			System.out.println("1. CUSTOMER Login");
 			System.out.println("2. STAFF Login");
 			System.out.println("3. Exit Moblima");
-			choice = sc.nextInt(); sc.next();
+			try {
+				System.out.print("\nWhat is your choice:  ");
+				choice = sc.nextInt(); sc.next();	
+				if (choice >=1 && choice <=6) break;
+				else throw new Exception();
+			} catch (Exception e) {
+					System.out.println("Please enter a valid option");
+			}
+		} while (choice <1 || choice >3);
+			
 			switch (choice) {
 				case 1:
 					CustomerLoginUI.execute();
@@ -26,13 +34,9 @@ public class LoginUI {
 				case 2:
 					StaffLoginUI.execute();
 				case 3:
-					System.out.println("Thank you for using Moblima. Exiting...");
-					break;
-				default:
-					System.out.println("Invalid input!");
+					System.out.println("Thank you for using MOBLIMA. Exiting...");
 					break;
 			}
-		} while (choice != 3);
 		sc.close();
 	}
 }
