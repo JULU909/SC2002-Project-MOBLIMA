@@ -8,10 +8,8 @@ import enums.MovieStatus;
 import system.Showtime;
 
 public class Movie {
-  private int index;
 	private String title;
 	private String synopsis;
-  private String showingStatus;
     private String director;
     private ArrayList<String> cast = new ArrayList<String>();
     private MovieType type;
@@ -25,10 +23,22 @@ public class Movie {
     private String genre;
     private String runTime;
 
-	public Movie(int index, String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
+	/*public Movie(String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
 	{
-		this.index = index; this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
+		this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
     this.ageRating = ageRating; this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
+	}*/ //this constructor is weird, when the movie is created theres not gonna be any reviews or rating right?
+	
+	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,  MovieStatus status, String genre, String runTime) {
+		this.title = title;
+		this.synopsis = synopsis;
+		this.director = director;
+		this.cast = cast;
+		this.type = type;
+		this.ageRating = ageRating;
+		this.status = status;
+		this.genre = genre;
+		this.runTime = runTime;
 	}
 	
     public String getTitle() {
