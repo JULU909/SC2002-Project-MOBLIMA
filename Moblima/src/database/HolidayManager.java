@@ -29,7 +29,7 @@ public class HolidayManager {
         this.filename = filename;
     }
 
-    public int getLength() {
+    public int getLength() throws FileNotFoundException, IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -49,7 +49,7 @@ public class HolidayManager {
         return true;
     }
 
-    public ArrayList<Holiday> getDataAll() {
+    public ArrayList<Holiday> getDataAll() throws FileNotFoundException, IOException {
         ArrayList<Holiday> data = new ArrayList<Holiday>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -74,17 +74,15 @@ public class HolidayManager {
         return data;
     }
 
-    public void writeToCSV(ArrayList<Holiday> holidays) {
+    public void writeToCSV(ArrayList<Holiday> holidays) throws FileNotFoundException, IOException {
         int length = getLength();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Holiday Name, Start Date, End Date").append("\n");;
         for (Holiday holiday : holidays)
             stringBuilder.append(holiday.getHolidayName() + "," + holiday.getStartDateString() + "," + holiday.getEndDateString()).append("\n");;
-        try {
-            FileWriter fw = new FileWriter(FILENAME);
-            for (int i = 0; i < stringBuilder.length(); i++)
-                    fw.write(stringBuilder.charAt(i));
-        } catch (IOException e) {}
+        FileWriter fw = new FileWriter(FILENAME);
+        for (int i = 0; i < stringBuilder.length(); i++)
+            fw.write(stringBuilder.charAt(i));
     }
 
     // IDK HOW TO WRITE TO CSV FILES 

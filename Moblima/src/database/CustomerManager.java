@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
-import enums.AgeGroup;
-import enums.AgeRating;
 
 public class CustomerManager {
     private String filename;
