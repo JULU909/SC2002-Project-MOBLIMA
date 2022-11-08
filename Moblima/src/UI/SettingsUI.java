@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import database.Movie;
 import database.ShowtimeManager;
 import system.DaySettings;
+import system.MovieSettings;
 import system.Showtime;
 import system.ShowtimeSettings;
 
@@ -38,10 +40,12 @@ public class SettingsUI {
 				System.out.println("Day set to " + day); 
 				break;
 			case 2:
+				Movie newMovie = MovieSettings.addMovie();
 				break;
-			case 3:
+			case 3: //should be able to update by inputting title alone
 				break;
-			case 4: 
+			case 4: //should be able to remove by inputting title alone
+				Movie toRemove = MovieSettings.removeMovie();
 				break;
 			case 5:
 				Showtime newShowtime = ShowtimeSettings.addShowtime(); //get showtime to add
