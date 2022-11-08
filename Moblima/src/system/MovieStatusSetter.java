@@ -7,7 +7,6 @@ public class MovieStatusSetter {
 	public static MovieStatus statusSetter() {
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
-		System.out.println("Enter MovieStatus: ");
 		System.out.println("1) COMING_SOON");
 		System.out.println("2) PREVIEW");
 		System.out.println("3) NOW_SHOWING");

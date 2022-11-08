@@ -57,7 +57,7 @@ public class MovieInfoManager2 {
     	//writer.append("'");
     	
     	int i = 1;
-    	writer.append(cast.get(i));
+    	writer.append(cast.get(0));
     	while(i!=cast.size()) { //adding cast into one column of csv
     		writer.append("|");
     		writer.append(cast.get(i));
@@ -115,7 +115,7 @@ public class MovieInfoManager2 {
     	return list;
     }
     
-    public int findMovieCSV(String title, ArrayList<Movie> list) throws FileNotFoundException, IOException{
+    public static int findMovieCSV(String title, ArrayList<Movie> list) throws FileNotFoundException, IOException{
     	int i = 0;
     	while(i!=list.size()) {
     		if(list.get(i).getTitle().equals(title))
@@ -123,8 +123,80 @@ public class MovieInfoManager2 {
     		i++;
     	}
     	return -1;
-    	
     }
+    
+    public void writeMovieCSV(ArrayList<Movie> list) throws FileNotFoundException, IOException{
+    	//FileWriter to write to csv, no true because it's rewriting    	
+    	FileWriter writer = new FileWriter(filename);
+    	
+    	int i =0;
+    	while(i!=list.size())
+    	{
+    		Movie movie = list.get(i);
+        	String title = movie.getTitle();
+        	String synopsis = movie.getSynopsis();
+        	String director = movie.getDirector();
+        	ArrayList<String> cast = movie.getCast();
+        	MovieType type = movie.getType();
+        	AgeRating ageRating = movie.getAgeRating();
+        	MovieStatus status = movie.getMovieStatus();
+        	int totalSales = movie.getTotalSales();
+        	double averageRating = movie.getAverageRating();
+        	String genre = movie.getGenre();
+        	String runtime = movie.getrunTime();
+        	
+        	writer.append(title);
+        	writer.append(",");
+        	writer.append(synopsis);
+        	writer.append(",");
+        	writer.append(director);
+        	writer.append(",");
+        	//writer.append("'");
+        
+        	int j=1;
+        	writer.append(cast.get(0));
+        	while(j!=cast.size()) { //adding cast into one column of csv
+        		writer.append("|");
+        		writer.append(cast.get(j));
+        		j++;
+        	}
+        	//writer.append("'");
+        	writer.append(",");
+        	writer.append(type.toString());
+        	writer.append(",");
+        	writer.append(ageRating.toString());
+        	writer.append(",");
+        	writer.append(status.toString());
+        	writer.append(",");
+        	writer.append(String.valueOf(totalSales));
+        	writer.append(",");
+        	writer.append(String.valueOf(averageRating));
+        	writer.append(",");
+        	writer.append(genre);
+        	writer.append(",");
+        	writer.append(runtime);
+        	writer.append("\n");
+        	i++;
+    	}
+
+    	
+    	//cleanup
+    	writer.flush();
+    	writer.close();
+    }
+    
+    public ArrayList<Movie> removeMovieCSV(ArrayList<Movie> list, String title) throws FileNotFoundException, IOException{
+    	int i = findMovieCSV(title,list);
+    	if(i!=-1) {
+    		list.remove(i);
+    		System.out.println("Movie removed!");
+    		return list;
+    	}
+    	System.out.println("Movie does not exist! Exiting...");
+    	return list;
+    }
+    
+    
 
 /*public static void main(String [] args) throws FileNotFoundException, IOException {
 	ArrayList<String> cast = new ArrayList<String>();
