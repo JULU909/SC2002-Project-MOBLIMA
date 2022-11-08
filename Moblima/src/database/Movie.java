@@ -23,11 +23,12 @@ public class Movie {
     private String genre;
     private String runTime;
 
-	/*public Movie(String title, String showingStatus, String synopsis, String director, ArrayList<String> cast, double averageRating, AgeRating ageRating,ArrayList<Review> reviews, String genre, String runTime)
+	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, 
+			double averageRating,ArrayList<Review> reviews,int totalSales, String genre, String runTime)
 	{
-		this.title = title; this.showingStatus = showingStatus; this.synopsis = synopsis; this.director = director; this.cast = cast; this.averageRating = averageRating;
-    this.ageRating = ageRating; this.status = MovieStatus.COMING_SOON; this.genre = genre; this.runTime=runTime;
-	}*/ //this constructor is weird, when the movie is created theres not gonna be any reviews or rating right?
+		this.title = title;  this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.averageRating = averageRating;
+    this.ageRating = ageRating; this.status = status; this.reviews = reviews; this.totalSales=totalSales; this.genre = genre; this.runTime=runTime;
+	} //constructor for exisiting movie
 	
 	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,  MovieStatus status, String genre, String runTime) {
 		this.title = title;
@@ -40,7 +41,7 @@ public class Movie {
 		this.genre = genre;
 		this.runTime = runTime;
 		this.averageRating = 0;
-	}
+	} //constructor for new movie
 	
     public String getTitle() {
         return this.title;
