@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import system.Showtime;
 
 public class CustomerManager {
-    private String filename;
+    private static String filename;
     private ArrayList<Customer> data;
     private Showtime temp;
 
@@ -23,7 +23,7 @@ public class CustomerManager {
         this.filename = filename;
     }
 
-    public int getLength()throws FileNotFoundException, IOException {
+    public static int getLength() throws FileNotFoundException, IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -33,7 +33,7 @@ public class CustomerManager {
         }
         return count;
     }
-    public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
+    static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -53,5 +53,23 @@ public class CustomerManager {
         return data;
     }
 
-    
+
+
+    public static Customer findCustomer(String username, ArrayList<Customer> database){
+        for (Customer c : database){
+            if(c.getUsername().equals(username)){
+                return c;
+            }
+        }
+        return null;
+    } 
+
+    public static boolean validateCustomer(String username, String password, ArrayList<Customer> database){
+        for (Customer c : database){
+            if(c.getUsername().equals(username) && c.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+    } 
 }

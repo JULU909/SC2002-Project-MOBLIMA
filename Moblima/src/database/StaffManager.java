@@ -7,11 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
-import enums.AgeGroup;
-import enums.AgeRating;
 
 public class StaffManager {
-    private String filename;
+    private static String filename;
     private ArrayList<Staff> data;
     private Showtime temp;
 
@@ -25,7 +23,7 @@ public class StaffManager {
         this.filename = filename;
     }
 
-    public int getLength()throws FileNotFoundException, IOException {
+    public static int getLength()throws FileNotFoundException, IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -35,7 +33,7 @@ public class StaffManager {
         }
         return count;
     }
-    public ArrayList<Staff> getDataAll() throws FileNotFoundException, IOException{
+    public static ArrayList<Staff> getDataAll() throws FileNotFoundException, IOException{
         ArrayList<Staff> data = new ArrayList<Staff>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -55,5 +53,26 @@ public class StaffManager {
         return data;
     }
 
+    public static boolean validateStaff(String username, String password, ArrayList<Staff> database) {
+		for (Staff c : database){
+		    if(c.getUsername().equals(username) && c.getPassword().equals(password)){
+                return true;
+            }
+	    }
+        return false;
+    }
+    
+
+    public static Staff findStaff(String username, ArrayList<Staff> database){
+        for (Staff s : database){
+            if(s.getUsername().equals(username)){
+                return s;
+            }
+        }
+        return null;
+    } 
+
     
 }
+
+    

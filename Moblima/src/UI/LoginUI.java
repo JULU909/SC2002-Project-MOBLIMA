@@ -1,8 +1,7 @@
 package UI;
 import java.util.ArrayList;
 import java.util.Scanner;
-import database.Database;
-import database.User;
+import database.*;
 import enums.UserType;
 
 public class LoginUI {
@@ -20,10 +19,19 @@ public class LoginUI {
 			type = enums.UserType.STAFF;
 		else
 			System.out.println("Invalid entry, defaulting userType to CUSTOMER");
-				
+
+		String filepath;
+		if (user.getUserType() == UserType.CUSTOMER){
+
+		}
+
+			filepath = "Moblima/src/Data/Customer.csv";
+		else filepath = "Moblima/src/Data/Staff.csv";
 		System.out.println("Enter username: ");
 		String temp = sc.nextLine();
 		String username = sc.nextLine();
+
+
 		System.out.println(username);
 		System.out.println("Enter password: ");
 		
@@ -36,10 +44,12 @@ public class LoginUI {
 		return loginUser;
 	}
 	
-	public boolean validateUser(User user, ArrayList<User> database) {
+	public boolean validateUser(User user) {
 		String filepath;
 		if (user.getUserType() == UserType.CUSTOMER) filepath = "Moblima/src/Data/Customer.csv";
 		else filepath = "Moblima/src/Data/Staff.csv";
+		database = 
+		for (User user : database)
 		if(check == -1)
 		{
 			System.out.println("Login failed!");

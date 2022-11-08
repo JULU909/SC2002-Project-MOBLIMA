@@ -1,5 +1,4 @@
 package database;
-import java.util.Scanner;
 import enums.UserType;
 
 public class Staff extends User{
@@ -7,5 +6,4 @@ public class Staff extends User{
 		super(username,password);
 		super.setUserType(UserType.STAFF);
 	}
-
 }
