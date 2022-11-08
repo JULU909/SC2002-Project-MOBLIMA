@@ -20,7 +20,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager2 {
 	private String filename;
 
-    public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = /*"Moblima/src/Data/movieInformation2.csv";*/new File("moveInformation2.csv").getAbsolutePath();
 
 
 
@@ -197,6 +197,30 @@ public class MovieInfoManager2 {
     	}
     	System.out.println("Movie does not exist! Exiting...");
     	return list; //Return list if movie not present
+    }
+    
+    public void printAll(ArrayList<Movie> list) {
+    	int i = 0;
+    	while(i!=list.size()) {
+    		Movie tempMovie = list.get(i);
+    		System.out.println("Title: " + tempMovie.getTitle());
+    		System.out.println("Synopsis: " + tempMovie.getSynopsis());
+    		System.out.println("Director: " + tempMovie.getDirector());
+    		ArrayList<String> cast = tempMovie.getCast();
+    		int j = 0;
+    		while(j!=cast.size())
+    		{
+    			System.out.println("Cast member " + j+1 + " : " +cast.get(j));
+    			j++;
+    		}
+    		System.out.println("Movie type: " + tempMovie.getType());
+    		System.out.println("Age Rating: " + tempMovie.getAgeRating());
+    		System.out.println("Average Rating: " + tempMovie.getAverageRating());
+    		System.out.println("Genre: " + tempMovie.getGenre());
+    		System.out.println("Runtime: " + tempMovie.getrunTime());
+    		i++;
+    	}
+    	return;
     }
 
 }

@@ -55,17 +55,24 @@ public class Moblima {
                     System.out.println("Do you want to View ALL Movie details or View ONE Movie detail? \n1) View All Movie details\n2) View ONE Movie detail (by index, cannot be 0 or negative)\n");
                     System.out.println("Your Choice please: ");
                     selection = sc.nextInt();
-                    MovieInfoManager m1 = new MovieInfoManager();
-                    m1.getDataAll();
+                    MovieInfoManager2 m1 = new MovieInfoManager2();
+                    //MovieInfoManager m1 = new MovieInfoManager();
+                    ArrayList<Movie> list = m1.readMovieCSV();
+                    
+                   // m1.getDataAll();
                     
                     if(selection == 1){
-                    m1.PrintAll();
+                    	m1.printAll(list);
+                    //m1.PrintAll();
                     }
                     else if(selection == 2){
                     // Scanner sc = new Scanner(System.in);
-                        System.out.println("Select the index of the movie you want to display: ");
-                        selection = sc.nextInt();
-                        m1.PrintOne(selection);
+                    	System.out.println("Enter name of movie to display: ");
+                    	String title = sc.nextLine();
+                    	int index = m1.findMovieCSV(title, list);
+                       // System.out.println("Select the index of the movie you want to display: ");
+                       // selection = sc.nextInt(); sc.nextLine();
+                        //m1.PrintOne(selection);
                     }
 
                     break;
