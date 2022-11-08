@@ -13,6 +13,7 @@ public static Movie createMovie() { //create a Movie object
 		
 		Scanner sc = new Scanner(System.in);
 		
+		//Ask for every attribute needed
 		System.out.println("Enter movie title: ");
 		String title = sc.nextLine();
 		
@@ -49,21 +50,23 @@ public static Movie createMovie() { //create a Movie object
 		System.out.println("Enter runtime (xHxxM): ");
 		String runTime = sc.nextLine();
 		
+		//Create movie object with those attributes
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
 		return movie;
 	}
 
-public static Movie addMovie() {
+public static Movie addMovie() { //Add movie
 	System.out.println("Adding movie...");
 	return createMovie();
 	
 	}
 
-public static void editMovie(Movie movie) {
+public static void editMovie(Movie movie) { //Edit movie
 	Scanner sc = new Scanner(System.in);
 	int choice = 0;
 	String input = "";
 	
+	//Choose which attribute to edit
 	while(choice<10) {
 		System.out.println("---Movie Editor---");
 		System.out.println("1) Title");
@@ -77,7 +80,7 @@ public static void editMovie(Movie movie) {
 		System.out.println("9) Runtime");
 		System.out.println("10) Exit");
 		choice = sc.nextInt();
-		sc.nextLine(); //eat the \n
+		sc.nextLine(); //Eat the \n
 		
 		switch(choice) {
 		case 1:
@@ -110,30 +113,30 @@ public static void editMovie(Movie movie) {
 			while(i<cast.size()) {
 				
 				for(i = 0;i<cast.size();i++) {
-					System.out.printf("Cast member %d: %s \n",i+1, cast.get(i));
+					System.out.printf("Cast member %d: %s \n",i+1, cast.get(i)); //Print out current cast members
 				}
 				
 				System.out.println("Enter cast member number to edit: ");
 				int exit = cast.size() + 1;
 				System.out.println("Input " + exit + " to exit.");
 				i = sc.nextInt();
-				sc.nextLine(); //eat the \n
+				sc.nextLine(); //Eat the \n
 				if(i == exit)
 					break;
-				if(i<0|| i>exit)
+				if(i<0|| i>exit) //Ignore invalid inputs
 				{
 					System.out.println("Invalid input! Exiting...");
 					break;
 				}
-				cast.remove(i-1);
-				System.out.println("Enter new cast member name: ");
-				cast.add(sc.nextLine());
+				cast.remove(i-1); //Remove cast member from array list
+				System.out.println("Enter new cast member name: "); 
+				cast.add(sc.nextLine()); //And replace them with new cast member
 			}
 			System.out.println("New cast set to: ");
 			for(i = 0;i<cast.size();i++) {
-				System.out.printf("Cast member %d: %s \n",i+1, cast.get(i));
+				System.out.printf("Cast member %d: %s \n",i+1, cast.get(i)); //Print out new cast members
 			}
-			movie.setCast(cast);
+			movie.setCast(cast); //Set the new cast members in movie
 			break;
 			
 		case 5:
@@ -188,13 +191,4 @@ public static String removeMovie() {
 	
 }
 
-/*public static void main(String [] args) {
-	ArrayList<String> cast = new ArrayList<String>();
-	cast.add("john");
-	cast.add("jack");
-	cast.add("jhin");
-	Movie movie = new Movie("alien","prose","guy",cast,MovieType.TWOD,AgeRating.NC16,MovieStatus.NOW_SHOWING,"Action/Horror","2H 15M");
-	editMovie(movie);		
-	
-}*/ //for testing
 }
