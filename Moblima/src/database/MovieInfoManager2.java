@@ -114,6 +114,17 @@ public class MovieInfoManager2 {
     	
     	return list;
     }
+    
+    public int findMovieCSV(String title, ArrayList<Movie> list) throws FileNotFoundException, IOException{
+    	int i = 0;
+    	while(i!=list.size()) {
+    		if(list.get(i).getTitle().equals(title))
+    			return i;
+    		i++;
+    	}
+    	return -1;
+    	
+    }
 
 /*public static void main(String [] args) throws FileNotFoundException, IOException {
 	ArrayList<String> cast = new ArrayList<String>();
