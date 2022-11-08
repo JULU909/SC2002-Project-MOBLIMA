@@ -1,5 +1,6 @@
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
+import UI.LoginUI;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +20,10 @@ public class Moblima {
 
 
         do {
+            do {
+                User user = LoginUI.loginText();
+
+            }
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
             int selection;
