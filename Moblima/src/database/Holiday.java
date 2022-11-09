@@ -5,28 +5,21 @@ import java.time.format.DateTimeFormatter;
 
 public class Holiday {
     private String holidayName;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDate holidayDate;
     
-    public Holiday(String holidayName, LocalDate startDate, LocalDate endDate){
-        this.holidayName = holidayName; this.startDate = startDate; this.endDate = endDate; 
+    public Holiday(String holidayName, LocalDate holidayDate){
+        this.holidayName = holidayName; this.holidayDate = holidayDate; 
     }
 
-    public void setStartDate(LocalDate startDate){
-        this.startDate = startDate;
+    public void setHolidayDate(LocalDate holidayDate){
+        this.holidayDate = holidayDate;
     }
 
-    public void setEndDate(LocalDate endDate){
-        this.endDate = endDate;
+
+    public LocalDate getHolidayDate(){
+        return this.holidayDate;
     }
 
-    public LocalDate getStartDate(){
-        return this.startDate;
-    }
-
-    public LocalDate getEndDate(){
-        return this.endDate;
-    }
 
     public String getHolidayName(){
         return this.holidayName;
@@ -36,15 +29,11 @@ public class Holiday {
         this.holidayName = holidayName;
     }
 
-    public String getStartDateString(){
-        return this.startDate.format(DateTimeFormatter.ofPattern("EE, dd/MM/yyyy"));
-    }
-
-    public String getEndDateString(){
-        return this.endDate.format(DateTimeFormatter.ofPattern("EE, dd/MM/yyyy"));
+    public String getHolidayDateString(){
+        return this.holidayDate.format(DateTimeFormatter.ofPattern("EE, dd/MM/yyyy"));
     }
 
     public String toString(){
-        return (this.getHolidayName() + ": " + this.getStartDateString() + " - " + this.getEndDateString());
+        return (this.getHolidayName() + ": " + this.getHolidayDate() + " - " + this.getHolidayDateString());
     }
 }
