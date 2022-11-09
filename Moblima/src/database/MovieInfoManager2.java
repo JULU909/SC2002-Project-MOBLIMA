@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import enums.AgeRating;
@@ -20,7 +22,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager2 {
 	private String filename;
 
-    public final static String FILENAME = /*"Moblima/src/Data/movieInformation2.csv";*/new File("moveInformation2.csv").getAbsolutePath();
+    public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";//new File("movieInformation2.csv").getAbsolutePath();
 
 
 
@@ -223,4 +225,26 @@ public class MovieInfoManager2 {
     	return;
     }
 
+	public void rankByRatings(boolean byTicketSales) throws FileNotFoundException, IOException {
+		ArrayList<Movie> list = readMovieCSV();
+		if(byTicketSales) {
+
+		} else {
+			Collections.sort(list, new Comparator<Movie>() {
+				@Override
+				public int compare(Movie c1, Movie c2) {
+					return Double.compare(c2.getAverageRating(), c1.getAverageRating());
+				}
+			});
+		}
+		System.out.println("=====================================================================================\n");
+		System.out.println("                          Top 5 Movies based on Average Ratings:                     \n");
+		System.out.println("=====================================================================================\n");
+		for(int i = 0; i < 5; i++) {
+			Movie tempMovie = list.get(i);
+			System.out.println("Movie Title: " + tempMovie.getTitle());
+			System.out.println("Average Rating: " + tempMovie.getAverageRating());
+			System.out.println();
+		}
+	}
 }
