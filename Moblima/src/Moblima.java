@@ -22,7 +22,7 @@ public class Moblima {
 
         do {
             
-            
+
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
             int selection;
