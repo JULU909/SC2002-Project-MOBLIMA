@@ -8,7 +8,11 @@ import UI.*;
 
 public class LoginUI {
 	public static void execute() {
-		System.out.println("----Login to Customer Cinema database----");
+		System.out.println("=====================================================================================\n"+
+                           "=====================================================================================\n"+
+                           "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
+                           "=====================================================================================\n"+
+                           "=====================================================================================\n");
 		Scanner sc = new Scanner(System.in);
 		int choice=0;
 		do {
@@ -31,7 +35,7 @@ public class LoginUI {
 					CustomerLoginUI.execute();
 					break;
 				case 2:
-					CustomerLoginUI.execute();
+					CustomerRegistrationUI.execute();
 					break;
 				case 3:
 					StaffLoginUI.execute();
