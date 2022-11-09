@@ -1,5 +1,6 @@
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
+import UI.StaffLoginUI;
 import UI.LoginUI;
 
 import java.io.FileNotFoundException;
@@ -54,17 +55,24 @@ public class Moblima {
                     System.out.println("Do you want to View ALL Movie details or View ONE Movie detail? \n1) View All Movie details\n2) View ONE Movie detail (by index, cannot be 0 or negative)\n");
                     System.out.println("Your Choice please: ");
                     selection = sc.nextInt();
-                    MovieInfoManager m1 = new MovieInfoManager();
-                    m1.getDataAll();
+                    MovieInfoManager2 m1 = new MovieInfoManager2();
+                    //MovieInfoManager m1 = new MovieInfoManager();
+                    ArrayList<Movie> list = m1.readMovieCSV();
+                    
+                   // m1.getDataAll();
                     
                     if(selection == 1){
-                    m1.PrintAll();
+                    	m1.printAll(list);
+                    //m1.PrintAll();
                     }
                     else if(selection == 2){
                     // Scanner sc = new Scanner(System.in);
-                        System.out.println("Select the index of the movie you want to display: ");
-                        selection = sc.nextInt();
-                        m1.PrintOne(selection);
+                    	System.out.println("Enter name of movie to display: ");
+                    	String title = sc.nextLine();
+                    	int index = m1.findMovieCSV(title, list);
+                       // System.out.println("Select the index of the movie you want to display: ");
+                       // selection = sc.nextInt(); sc.nextLine();
+                        //m1.PrintOne(selection);
                     }
 
                     break;
@@ -85,7 +93,7 @@ public class Moblima {
                     break;
 
                 case 7:
-                    ;
+                	LoginUI.execute();
                     break;
                 
                 case 8:
@@ -122,17 +130,17 @@ public static int mainDisplayOptions() {
                            "(1) Search/List Movies\n\n"+
                            "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n"+
                            "(4) View booking history\n\n"+
-                           "(5) User Settings\n\n(6) Exit\n\nChoices (1~6): ");
+                           "(5) User Settings\n\n(6) Exit\n\n(7)Login \n\nChoices (1~6): ");
         
         try {
             System.out.print("\nWhat is your choice:  ");
             choice = sc.nextInt();
-            if (choice >=1 && choice <=6) break;
+            if (choice >=1 && choice <=7) break;
             else throw new Exception();
             // choice = Integer.parseInt(sc.next());
         } catch (Exception e) {
             choice = sc.nextInt();
-            if (choice >=1 && choice <=6) break;
+            if (choice >=1 && choice <=7) break;
             else{
                 System.out.println("Please enter a valid option");
             }

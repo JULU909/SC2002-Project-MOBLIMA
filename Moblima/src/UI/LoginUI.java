@@ -1,4 +1,6 @@
 package UI;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import database.*;
@@ -33,6 +35,7 @@ public class LoginUI {
 					break;
 				case 2:
 					StaffLoginUI.execute();
+					break;
 				case 3:
 					System.out.println("Thank you for using MOBLIMA. Exiting...");
 					break;

@@ -9,7 +9,7 @@ import java.io.IOException;
 public class StaffLoginUI {
     public String filepath = "Moblima/src/Data/Staff.csv";
 
-	public static void execute() {
+	public static void execute() throws FileNotFoundException, IOException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Login to Staff Cinema database----");
 		System.out.println("Enter username: ");
@@ -24,7 +24,7 @@ public class StaffLoginUI {
         if (StaffManager.validateStaff(username, password, database)){
             System.out.println("Login success!");
             Staff staff = StaffManager.findStaff(username, database);
-            // go to staff admin menu (not yet implemented)
+            SettingsUI.settingsText();
             
         }
 
@@ -35,4 +35,5 @@ public class StaffLoginUI {
         }
 		sc.close();
 	}
+
 }
