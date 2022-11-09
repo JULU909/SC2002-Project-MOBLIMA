@@ -18,7 +18,6 @@ import system.ShowtimeSettings;
 
 public class SettingsUI {
 	public static void settingsText() throws FileNotFoundException, IOException {
-		System.out.println("----Cineplex Settings ---- ");
 		int choice = 0;
 		
 		Scanner sc = new Scanner(System.in);
@@ -39,8 +38,13 @@ public class SettingsUI {
 			System.out.println("7) Remove show time.");
 			System.out.println("8) Register Staff.");
 			System.out.println("9) Exit.");
-			choice = sc.nextInt();
-			sc.nextLine(); // Eat the \n
+
+			try {
+				choice = sc.nextInt();
+				sc.nextLine(); // Eat the \n
+			} catch (Exception e) {System.out.println("Please enter a valid input!"); continue;}
+			
+			
 			switch(choice) {
 			case 1:
 				enums.Day day = DaySettings.setDay();
@@ -118,9 +122,8 @@ public class SettingsUI {
 				System.out.println("Exiting settings...");
 				return;
 			default:
-				System.out.println("Invalid input! Exiting settings...");
-				return;
-			
+				System.out.println("Please enter a valid input!");
+				break;
 			}
 		}
 		

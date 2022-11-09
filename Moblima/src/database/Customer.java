@@ -20,7 +20,7 @@ public class Customer extends User{
     ArrayList<Movie> movieHistory;
 
     public Customer(String username, String password, int age, String mobileNumber, String emailAddress){
-        super(username, password); super.setUserType(UserType.CUSTOMER); setAge(age);; this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
+        super(username, password); super.setUserType(UserType.CUSTOMER); setAge(age); this.mobileNumber = mobileNumber; this.emailAddress = emailAddress;
     }
 
     public int getAge(){
@@ -56,11 +56,11 @@ public class Customer extends User{
         this.mobileNumber = mobileNumber;
     }
 
-    public String getEmailAdress(){
+    public String getEmailAddress(){
         return this.emailAddress;
     }
 
-    public void setEmailAdress(String emailAdress){
+    public void setEmailAddress(String emailAdress){
         this.emailAddress = emailAdress;
     }
 

@@ -21,7 +21,7 @@ public class Ticket {
     private int date;
     private User user = new User("John Doe","123");
     private int ticketID;
-    public void Ticket(int price, ArrayList <Seat> seats , Showtime showtime , int date ){
+    public Ticket(int price, ArrayList <Seat> seats , Showtime showtime , int date ){
         this.price = price;
         this.showtime = showtime;
         this.seats = seats;
