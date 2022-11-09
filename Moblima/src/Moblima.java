@@ -1,3 +1,5 @@
+import UI.BookedHistoryUI;
+import UI.BookedTicketsUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
 import UI.StaffLoginUI;
@@ -94,11 +96,12 @@ public class Moblima {
                     purchaseTicket();
                     break;
                 case 4:
-                    seatDetails();
+                    bookingHistory();
+                    
                     break;
 
                 case 5:
-                    bookingHistory();
+                    seatDetails();
                     break;
                 case 7:
                     LoginUI.execute();
@@ -186,11 +189,11 @@ public class Moblima {
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
         int numberSeats = booking.askTickets();
-        Ticket ticket = new Ticket();
+        
         Pricing price = new Pricing();
         choosenShowtime.printLayout();
         ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        ticket.Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+        Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
 
         int confirmation = booking.confirmTicket(ticket);
         if (confirmation == 1) {
@@ -202,7 +205,19 @@ public class Moblima {
 
     }
 
-    public static void bookingHistory() {
+    public static void bookingHistory() throws IOException, InterruptedException {
+        BookedHistoryUI bt = new BookedHistoryUI();
+        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
+        ArrayList <Ticket> userTickets = tk.getUserTickets("John");
+        int input  = bt.mainUI();
+        switch (input) {
+            case 1:
+                bt.printAllTickets(userTickets);
+                bt.individualTicketmenu(userTickets);
+                break;
+
+
+        }
 
     }
 
