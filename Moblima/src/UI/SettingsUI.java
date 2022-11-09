@@ -8,8 +8,10 @@ import java.util.Scanner;
 import database.Movie;
 import database.MovieInfoManager2;
 import database.ShowtimeManager;
+import database.Staff;
 import system.DaySettings;
 import system.MovieSettings;
+import system.RegisterStaff;
 import system.Showtime;
 import system.ShowtimeSettings;
 
@@ -26,8 +28,7 @@ public class SettingsUI {
 		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
 		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		
-		while(choice<8) {
-			System.out.println("----Cineplex Settings ---- ");
+		while(choice<9) {
 			System.out.println("1) Set day.");
 			System.out.println("2) Add movie.");
 			System.out.println("3) Update movie.");
@@ -35,7 +36,7 @@ public class SettingsUI {
 			System.out.println("5) Add show time.");
 			System.out.println("6) Edit show time.");
 			System.out.println("7) Remove show time.");
-			System.out.println("8) List top movies.");
+			System.out.println("8) Register Staff.");
 			System.out.println("9) Exit.");
 
 			try {
@@ -113,7 +114,9 @@ public class SettingsUI {
 				sm.writeShowtimecsv(showList); //Rewrite CSV
 				break;
 			case 8:
-				//List top movies not implemented
+				Staff newStaff = RegisterStaff.registerStaff();
+				RegisterStaff.addStaffCSV(newStaff);
+				System.out.println("Staff member " + newStaff.getUsername() + " added to database.");
 				break;
 			case 9:
 				System.out.println("Exiting settings...");
