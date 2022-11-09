@@ -207,12 +207,8 @@ public class Moblima {
     }
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
-        if (byTicketSales) {
-
-        } else {
-            MovieInfoManager2 m1 = new MovieInfoManager2();
-            m1.rankByRatings(false);
-        }
+        MovieInfoManager2 m1 = new MovieInfoManager2();
+        m1.rankByRatings(byTicketSales);
     }
 
     public static void admin(User user) {

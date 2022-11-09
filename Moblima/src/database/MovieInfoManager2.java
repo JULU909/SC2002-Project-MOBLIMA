@@ -228,7 +228,21 @@ public class MovieInfoManager2 {
 	public void rankByRatings(boolean byTicketSales) throws FileNotFoundException, IOException {
 		ArrayList<Movie> list = readMovieCSV();
 		if(byTicketSales) {
-
+			Collections.sort(list, new Comparator<Movie>() {
+				@Override
+				public int compare(Movie c1, Movie c2) {
+					return Integer.compare(c2.getTotalSales(), c1.getTotalSales());
+				}
+			});
+			System.out.println("=====================================================================================\n");
+			System.out.println("                          Top 5 Movies based on Total Sales:                         \n");
+			System.out.println("=====================================================================================\n");
+			for(int i = 0; i < 5; i++) {
+				Movie tempMovie = list.get(i);
+				System.out.println("Movie Title: " + tempMovie.getTitle());
+				System.out.println("Total Ticket Sales: " + tempMovie.getTotalSales());
+				System.out.println();
+			}
 		} else {
 			Collections.sort(list, new Comparator<Movie>() {
 				@Override
@@ -236,15 +250,15 @@ public class MovieInfoManager2 {
 					return Double.compare(c2.getAverageRating(), c1.getAverageRating());
 				}
 			});
-		}
-		System.out.println("=====================================================================================\n");
-		System.out.println("                          Top 5 Movies based on Average Ratings:                     \n");
-		System.out.println("=====================================================================================\n");
-		for(int i = 0; i < 5; i++) {
-			Movie tempMovie = list.get(i);
-			System.out.println("Movie Title: " + tempMovie.getTitle());
-			System.out.println("Average Rating: " + tempMovie.getAverageRating());
-			System.out.println();
+			System.out.println("=====================================================================================\n");
+			System.out.println("                          Top 5 Movies based on Average Ratings:                     \n");
+			System.out.println("=====================================================================================\n");
+			for(int i = 0; i < 5; i++) {
+				Movie tempMovie = list.get(i);
+				System.out.println("Movie Title: " + tempMovie.getTitle());
+				System.out.println("Average Rating: " + tempMovie.getAverageRating());
+				System.out.println();
+			}
 		}
 	}
 }
