@@ -5,7 +5,7 @@ import database.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-// THIS DOESNT WORK RIGHT NOW I JUST COPIED MOBLIMA.JAVA INTO IT. GOAL IS TO MAKE MOBLIMA.JAVA BUT CLEANER
+// THIS DOESNT WORK RIGHT NOW I JUST COPIED MOBLIMA.JAVA INTO IT. GOAL IS TO MAKE MOBLIMA.JAVA BUT CLEANER. ACTUALLY IMMA PAUSE WORK ON THIS FOR NOW
 public class CustomerMainMenuUI {
 	public static void execute(Customer customer) {
         int choice=0;
