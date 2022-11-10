@@ -172,9 +172,25 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
 
     System.out.println("Ticked ID       : " + ticket.getID());
     System.out.println("User            : " + user.getUsername());
-    System.out.println("To confirm purchase type 1 : ");
+    
+    System.out.println("To confirm & make payment type 1 , : ");
     choice = sc.nextInt();
     return choice;
+      
+    
+    
+}
+
+public static void successExitDialouge() {
+    System.out.println("Your Ticket has been booked, Have a pleasant day!.");
+    return;
+
+}
+
+public static void failExitDialouge() {
+    System.out.println("Your Ticket has been removed, Have a pleasant day!.");
+    return;
+
 }
 
 }
