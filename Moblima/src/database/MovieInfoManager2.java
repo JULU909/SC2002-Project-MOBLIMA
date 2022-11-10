@@ -63,7 +63,7 @@ public class MovieInfoManager2 {
     	int i = 1;
     	writer.append(cast.get(0));
     	while(i!=cast.size()) { //Add cast members into one column in CSV
-    		writer.append("'");
+    		writer.append("'"); //' splits between different cast members
     		writer.append(cast.get(i));
     		i++;
     	}
@@ -85,13 +85,13 @@ public class MovieInfoManager2 {
     	
     	i=1;
     	writer.append(review.get(0).getReviewer());
-    	writer.append("'");
+    	writer.append("'");//' splits between different attributes of review
     	writer.append(review.get(0).getProse());
     	writer.append("'");
     	writer.append(String.valueOf(review.get(0).getRating()));
     	while(i!=review.size())
     	{
-    		writer.append("`");
+    		writer.append("`");//` splits between different reviews in array list
     		writer.append(review.get(i).getReviewer());
         	writer.append("'");
         	writer.append(review.get(i).getProse());
@@ -122,7 +122,7 @@ public class MovieInfoManager2 {
     		String title = split[0];
     		String synopsis = split[1];
     		String director = split[2];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'")));
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'")));//' splits between different cast members
 
     		MovieType type = MovieType.valueOf(split[4]);
     		AgeRating ageRating = AgeRating.valueOf(split[5]);
@@ -132,12 +132,12 @@ public class MovieInfoManager2 {
     		String genre = split[9];
     		String runTime = split[10];
     		
-    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));
+    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		int i = 0;
     		while(i!=reviewStr.size())
     		{
-    			String[] splitReview = reviewStr.get(i).split("'");
+    			String[] splitReview = reviewStr.get(i).split("'");//' splits between different attributes of review
     			String reviewer = splitReview[0];
     			String proseReview = splitReview[1];
     			int ratingReview = Integer.valueOf(splitReview[2]);
@@ -200,7 +200,7 @@ public class MovieInfoManager2 {
         	int j=1;
         	writer.append(cast.get(0));
         	while(j!=cast.size()) { //Adding cast into one column of CSV
-        		writer.append("'");
+        		writer.append("'");//' splits between different cast members
         		writer.append(cast.get(j));
         		j++;
         	}
@@ -221,13 +221,13 @@ public class MovieInfoManager2 {
         	
         	int k=1;
         	writer.append(review.get(0).getReviewer());
-        	writer.append("'");
+        	writer.append("'");//' splits between different attributes of review
         	writer.append(review.get(0).getProse());
         	writer.append("'");
         	writer.append(String.valueOf(review.get(0).getRating()));
         	while(k!=review.size())
         	{
-        		writer.append("`");
+        		writer.append("`");//` splits between different reviews in array list
         		writer.append(review.get(k).getReviewer());
         		writer.append("'");
         		writer.append(review.get(k).getProse());
@@ -346,7 +346,7 @@ public class MovieInfoManager2 {
 		}
 	}
 	
-	public static void main (String[] args) throws FileNotFoundException, IOException {
+	/*public static void main (String[] args) throws FileNotFoundException, IOException {
 		MovieInfoManager2 mm = new MovieInfoManager2();
 		ArrayList<String> cast = new ArrayList<String>();
 		cast.add("dude1");
@@ -361,5 +361,5 @@ public class MovieInfoManager2 {
 		ArrayList<Movie> list = mm.readMovieCSV();
 		System.out.println(list.get(0).getReviews().get(0).getProse());
 		System.out.println(list.get(0).getReviews().get(0).getReviewer());
-	}
+	}*/
 }
