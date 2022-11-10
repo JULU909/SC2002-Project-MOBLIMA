@@ -27,6 +27,7 @@ public class Moblima {
             int selection=0;
             switch (choice) {
                 case 1:
+                    while(true){
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
@@ -34,7 +35,7 @@ public class Moblima {
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
-                            "Do you want to Display All Movies or Display one Movie? \n1) Display All Movies\n2) Display ONE movie \n3) Top 5 movies based on ticket sales\n4) Top 5 movies based on average ratings\n");
+                            "Do you want to Display All Movies or Display one Movie? Press 0 to exit \n1) Display All Movies\n2) Display ONE movie \n3) Top 5 movies based on ticket sales\n4) Top 5 movies based on average ratings\n");
                     System.out.println("Your Choice please: ");
 
                     // new SearchMovieUI().DisplayAll();
@@ -57,52 +58,17 @@ public class Moblima {
                     //Top 5 based on avgRatings
                     } else if (selection == 4) {
                         movieRanking(false);
+                    }else if (selection == 0){
+                        break;
                     } else {
                         break;
                     }
                     // new SearchMovieUI().DisplayOne(selection); // selection refers to the index
-                    break;
-
-                case 2:
-                    System.out.println(
-                            "=====================================================================================\n");
-                    System.out.println(
-                            "                          Viewing Movie Details                                      \n");
-                    System.out.println(
-                            "=====================================================================================\n");
-                    System.out.println(
-                            "How would you like to view the movie details? \n1) View All Movie details\n2) View ONE Movie detail \n3) View top 5 movies by sales\n4) View top 5 movies by rating (by index, cannot be 0 or negative)\n");
-                    System.out.println("Your Choice please: ");
-                    try {
-                        selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 4) {sc.close(); throw new Exception();}
-                    } catch (Exception e) {System.out.println("Error: invalid input!");}
-
-                    MovieInfoManager2 m1 = new MovieInfoManager2();
-                    // MovieInfoManager m1 = new MovieInfoManager();
-                    ArrayList<Movie> list = m1.readMovieCSV();
-
-                    // m1.getDataAll();
-
-                    if (selection == 1) {
-                        m1.printAll(list);
-                        // m1.PrintAll();
-                    } else if (selection == 2) {
-                        // Scanner sc = new Scanner(System.in);
-                        System.out.println("Enter name of movie to display: ");
-                        String title = sc.nextLine();
-                        int index = MovieInfoManager2.findMovieCSV(title, list);
-                        if (index == -1) System.out.println("Movie not found! ");
-                        // System.out.println("Select the index of the movie you want to display: ");
-                        // selection = sc.nextInt(); sc.nextLine();
-                        else m1.printOne(list, index);
+                    
                     }
-                    else if (selection == 3) {
-                        movieRanking(true);
-                    //Top 5 based on avgRatings
-                    } else if (selection == 4) {
-                        movieRanking(false);
-                    } 
+                    break;
+                case 2:
+                    
                     break;
 
                 case 3:

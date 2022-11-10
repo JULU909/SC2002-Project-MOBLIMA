@@ -26,6 +26,7 @@ public class Ticket {
         this.showtime = showtime;
         this.seats = seats;
         this.date = date;
+        
     }
 
     public Ticket(){

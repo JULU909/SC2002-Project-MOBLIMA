@@ -76,15 +76,20 @@ public class BookedHistoryUI {
     }
 
     public  void individualTicketmenu(ArrayList <Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
+        while (true){
         System.out.println("To view a specific booking further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
         System.out.println("--------------------------------------------------------------------------  " );
         String temp = sc.next();
         if (Integer.valueOf(temp) == 0 ){
-            return;
+            break;
+            
         }
-        if ( Integer.valueOf(temp) < userTickets.size()){
+        if ( Integer.valueOf(temp) <= userTickets.size()){
             printTicketSeats((Integer.valueOf(temp)-1), userTickets);
         }
+        
+        }
+        return;
     }
 
     public void noBookings(){
