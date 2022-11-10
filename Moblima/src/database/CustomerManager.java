@@ -84,7 +84,7 @@ public class CustomerManager {
 
     public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException{ //Add a movie into CSV
     	//Writer will write into filename, true allows appending
-    	FileWriter writer = new FileWriter(filename,true);
+    	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",true);
     	
     	//Get each attribute out from customer
     	String username = customer.getUsername();

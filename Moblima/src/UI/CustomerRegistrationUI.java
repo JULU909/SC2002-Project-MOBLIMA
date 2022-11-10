@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.regex.*;  
 public class CustomerRegistrationUI {
     public String filepath = "Moblima/src/Data/Customers.csv";
-    Customer customer;
-    public void CustomerRegistrationUI(Customer customer){
-        this.customer = customer;
-    }
+
 	public static void execute() throws FileNotFoundException, IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Registration for Customer Cinema database----");
@@ -43,7 +40,7 @@ public class CustomerRegistrationUI {
         do {
             try {
                 System.out.println("Enter age: ");
-                age = sc.nextInt(); sc.nextLine();
+                age = Integer.parseInt(sc.nextLine());
                 if (age > 0) break;
                 else throw new Exception();
             } catch (Exception e) {System.out.println("Invalid input!");}         
@@ -52,7 +49,7 @@ public class CustomerRegistrationUI {
         do {
             try {
                 System.out.println("Enter phone number: ");
-                mobileNumber = sc.next(); sc.nextLine();
+                mobileNumber = sc.nextLine();
                 Integer.parseInt(mobileNumber);
                 break;
             } catch (Exception e) {System.out.println("Invalid input!");}         
@@ -74,7 +71,6 @@ public class CustomerRegistrationUI {
         }  catch (Exception e) {System.out.println("Error! Customer Database not found!"); sc.close(); return;}
 
         System.out.println("Customer account successfully registered in database!");
-		sc.close();
         LoginUI.execute();
 	}
 }
