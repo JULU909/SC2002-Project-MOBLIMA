@@ -128,9 +128,8 @@ public static void editMovie(Movie movie) { //Edit movie
 					System.out.println("Invalid input! Exiting...");
 					break;
 				}
-				cast.remove(i-1); //Remove cast member from array list
 				System.out.println("Enter new cast member name: "); 
-				cast.add(sc.nextLine()); //And replace them with new cast member
+				cast.set(i-1,sc.nextLine()); //And replace them with new cast member
 			}
 			System.out.println("New cast set to: ");
 			for(i = 0;i<cast.size();i++) {
