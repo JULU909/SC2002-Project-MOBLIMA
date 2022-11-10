@@ -65,9 +65,9 @@ public class Moblima {
                         movieRanking(false);
                     } 
                 
-                    break;
-                    }
                     
+                    break;
+                
                 case 2:
                     seatDetails();
                     break;
