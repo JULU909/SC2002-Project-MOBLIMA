@@ -37,7 +37,7 @@ public class StaffManager {
         ArrayList<Staff> data = new ArrayList<Staff>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Staff.csv"))) {
             String line;
-            int count = 0;3
+            int count = 0;
             while ((line = br.readLine()) != null) {
                 if (count==0){
                     count++;

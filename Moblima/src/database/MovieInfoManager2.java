@@ -280,7 +280,8 @@ public class MovieInfoManager2 {
 			System.out.println("=====================================================================================\n");
 			System.out.println("                          Top 5 Movies based on Total Sales:                         \n");
 			System.out.println("=====================================================================================\n");
-			for(int i = 0; i < 5; i++) {
+			int m = Math.min(5, list.size());
+			for(int i = 0; i < m; i++) {
 				Movie tempMovie = list.get(i);
 				System.out.println("Movie Title: " + tempMovie.getTitle());
 				System.out.println("Total Ticket Sales: " + tempMovie.getTotalSales());
@@ -296,7 +297,8 @@ public class MovieInfoManager2 {
 			System.out.println("=====================================================================================\n");
 			System.out.println("                          Top 5 Movies based on Average Ratings:                     \n");
 			System.out.println("=====================================================================================\n");
-			for(int i = 0; i < 5; i++) {
+			int m = Math.min(5, list.size());
+			for(int i = 0; i < m; i++) {
 				Movie tempMovie = list.get(i);
 				System.out.println("Movie Title: " + tempMovie.getTitle());
 				System.out.println("Average Rating: " + tempMovie.getAverageRating());
@@ -304,4 +306,5 @@ public class MovieInfoManager2 {
 			}
 		}
 	}
+
 }

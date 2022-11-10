@@ -28,6 +28,7 @@ public class CustomerLoginUI {
 
         else {
             System.out.println("Login failed!");
+            LoginUI.execute();
         }
 		sc.close();
 	}
