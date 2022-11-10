@@ -37,6 +37,10 @@ public Showtime(int time, int date, String cineplex , String movie){
                 this.layout[x][y].Seat(SeatTypes.COUPLE, SeatStatus.VACANT, x+65, y);
                 continue;
              }
+             if (x == 7 | x == 8){
+                this.layout[x][y].Seat(SeatTypes.DELUXE, SeatStatus.VACANT, x+65, y);
+                continue;
+             }
              this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.VACANT, x+65, y);
         }
 }
@@ -92,6 +96,20 @@ public void printLayout(){
                     }
                     y++;
             }
+
+            else if(layout[x][y].getSeatType() == SeatTypes.DELUXE){
+                
+                if (layout[x][y].getSeatStatus() == SeatStatus.VACANT){
+                    System.out.print("[/]");
+                }
+                else if ((layout[x][y].getSeatStatus() == SeatStatus.OCCUPIED)){
+                    System.out.print("[X]");
+                }
+                else{
+                    System.out.print("   ");
+                }
+                
+        }
             }
 
             System.out.println();

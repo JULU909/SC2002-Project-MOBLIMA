@@ -156,21 +156,31 @@ public class Moblima {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
-        int numberSeats = booking.askTickets();
-        
-        Pricing price = new Pricing();
-        choosenShowtime.printLayout();
-        ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+        while (true){
+            int numberSeats = booking.askTickets();
+            Pricing price = new Pricing();
+            choosenShowtime.printLayout();
+            ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
+            Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            int confirmation = booking.confirmTicket(ticket);
+            if (confirmation == 1) {
+                System.out.println("Purchase successful!  ");
+                ticketHandle.uploadTicket(ticket);
+                break;
+            } else if (confirmation == 0){
+                continue;
+            }
+            else {
+                Thread.sleep(1000);
+                booking.failExitDialouge();
+                break;
+            }
 
-        int confirmation = booking.confirmTicket(ticket);
-        if (confirmation == 1) {
-            System.out.println("Done! ");
-            ticketHandle.uploadTicket(ticket);
-        } else {
-            return;
         }
-
+        
+        
+        
+        
     }
 
     public static void bookingHistory() throws IOException, InterruptedException {
