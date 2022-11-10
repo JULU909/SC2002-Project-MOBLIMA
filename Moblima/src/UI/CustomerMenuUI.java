@@ -1,5 +1,4 @@
 import UI.BookedHistoryUI;
-import UI.BookedTicketsUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
 import UI.StaffLoginUI;
@@ -16,12 +15,10 @@ import enums.Day;
 import enums.UserType;
 import system.*;
 
-public class Moblima {
+public class CustomerMenuUI {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-
+    public static void execute(Customer customer) {
         do {
-
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
             int selection=0;
@@ -41,8 +38,9 @@ public class Moblima {
 
                     try {
                         selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 2) throw new Exception();
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
+
+                    
                     //Display all movies
                     if (selection == 1) {
                         new SearchMovieUI().DisplayAll();
@@ -58,6 +56,7 @@ public class Moblima {
                     } else if (selection == 4) {
                         movieRanking(false);
                     } else {
+                        System.out.println("Error: invalid input!");
                         break;
                     }
                     // new SearchMovieUI().DisplayOne(selection); // selection refers to the index
@@ -73,9 +72,9 @@ public class Moblima {
                     System.out.println(
                             "Do you want to View ALL Movie details or View ONE Movie detail? \n1) View All Movie details\n2) View ONE Movie detail (by index, cannot be 0 or negative)\n");
                     System.out.println("Your Choice please: ");
+
                     try {
                         selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 2) {sc.close(); throw new Exception();}
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
 
                     MovieInfoManager2 m1 = new MovieInfoManager2();
@@ -92,11 +91,11 @@ public class Moblima {
                         System.out.println("Enter name of movie to display: ");
                         String title = sc.nextLine();
                         int index = m1.findMovieCSV(title, list);
-                        if (index == -1) System.out.println("Movie not found! ");
                         // System.out.println("Select the index of the movie you want to display: ");
                         // selection = sc.nextInt(); sc.nextLine();
-                        else m1.printOne(list, index);
+                        m1.printOne(list, index);
                     }
+                    else System.out.println("Error: invalid input!");
 
                     break;
 
@@ -106,6 +105,7 @@ public class Moblima {
                 case 4:
                     bookingHistory();
                     break;
+
                 case 5:
                     seatDetails();
                     break;
@@ -127,7 +127,6 @@ public class Moblima {
     }
 
     public static int mainDisplayOptions() {
-
         int choice = 0;
         Scanner sc = new Scanner(System.in);
         do {
@@ -140,29 +139,21 @@ public class Moblima {
                             "(1) Search/List Movies\n\n" +
                             "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n" +
                             "(4) View booking history\n\n" +
-                            "(5) User Settings\n\n(6) Exit\n\n(7) Login \n\nChoices (1~6): ");
+                            "(5) User Settings\n\n(6) Exit\n\n\n\nChoices (1~6): ");
 
             try {
                 System.out.print("\nWhat is your choice:  ");
-                choice = sc.nextInt();
-                if (choice >= 1 && choice <= 7)
+                    choice = sc.nextInt(); sc.nextLine();
+                if (choice >= 1 && choice <= 6)
                     break;
                 else
                     throw new Exception();
-                // choice = Integer.parseInt(sc.next());
-            } catch (Exception e) {
-                choice = sc.nextInt();
-                if (choice >= 1 && choice <= 7)
-                    break;
-                else {
-                    System.out.println("Please enter a valid option");
-                }
-            }
-
+                } catch (Exception e) {System.out.print("Please enter a valid option");}
+                
         } while (choice < 1 || choice > 6);
-
         return choice;
     }
+}
 
     public static void movieListing() {
 
