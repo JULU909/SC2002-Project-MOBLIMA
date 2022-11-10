@@ -20,10 +20,7 @@ import system.*;
 public class Moblima2 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
-        
         LoginUI.execute();
-        
-        
     } 
 
 }

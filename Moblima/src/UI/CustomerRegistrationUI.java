@@ -11,7 +11,7 @@ public class CustomerRegistrationUI {
     public void CustomerRegistrationUI(Customer customer){
         this.customer = customer;
     }
-	public static void execute() throws FileNotFoundException, IOException {
+	public static void execute() throws FileNotFoundException, IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Registration for Customer Cinema database----");
         String username, password, mobileNumber, email; int age=0; ArrayList<Customer> database;
@@ -75,5 +75,6 @@ public class CustomerRegistrationUI {
 
         System.out.println("Customer account successfully registered in database!");
 		sc.close();
+        LoginUI.execute();
 	}
 }

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CustomerLoginUI {
     public String filepath = "Moblima/src/Data/Customers.csv";
 
-	public static void execute() {
+	public static void execute() throws FileNotFoundException, IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Login to Customer Cinema database----");
 		System.out.println("Enter username: ");
@@ -23,8 +23,7 @@ public class CustomerLoginUI {
         if (CustomerManager.validateCustomer(username, password, database)){
             System.out.println("Login success!");
             Customer customer = CustomerManager.findCustomer(username, database);
-            CustomerMenuUI menu = new CustomerMenuUI(customer);
-            menu.execute(customer);
+            CustomerMenuUI.execute(customer);
         }
 
         else {

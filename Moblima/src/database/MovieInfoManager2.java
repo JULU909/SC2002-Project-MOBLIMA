@@ -221,6 +221,7 @@ public class MovieInfoManager2 {
     		System.out.println("Average Rating: " + tempMovie.getAverageRating());
     		System.out.println("Genre: " + tempMovie.getGenre());
     		System.out.println("Runtime: " + tempMovie.getrunTime());
+			System.out.println();
     		i++;
     	}
     	return;

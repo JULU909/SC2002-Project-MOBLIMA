@@ -1,3 +1,4 @@
+package UI;
 import UI.BookedHistoryUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
