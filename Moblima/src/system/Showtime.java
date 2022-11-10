@@ -29,8 +29,12 @@ public Showtime(int time, int date, String cineplex , String movie){
     for (int x = 0 ;  x < this.layout.length ; x++){
         for(int y = 0 ; y < this.layout[x].length; y++){
              this.layout[x][y] = new Seat();
-             if (y == 7 || y == 24){
+             if (y == 6 || y == 23){
                 this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.EMPTY, x+65, y);
+                continue;
+             }
+             if (x >= 9){
+                this.layout[x][y].Seat(SeatTypes.COUPLE, SeatStatus.VACANT, x+65, y);
                 continue;
              }
              this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.VACANT, x+65, y);
@@ -62,6 +66,7 @@ public void printLayout(){
         System.out.printf("%c ", characters);
         characters++;
             for(int y = 0 ; y < layout[x].length; y++){
+                if (layout[x][y].getSeatType() == SeatTypes.SINGLE){
                 if (layout[x][y].getSeatStatus() == SeatStatus.VACANT){
                     System.out.print("[ ]");
                 }
@@ -71,11 +76,30 @@ public void printLayout(){
                 else{
                     System.out.print("      ");
                 }
+
+            }
+
+            else if(layout[x][y].getSeatType() == SeatTypes.COUPLE){
+                
+                    if (layout[x][y].getSeatStatus() == SeatStatus.VACANT){
+                        System.out.print("[    ]");
+                    }
+                    else if ((layout[x][y].getSeatStatus() == SeatStatus.OCCUPIED)){
+                        System.out.print("[X  X]");
+                    }
+                    else{
+                        System.out.print("      ");
+                    }
+                    y++;
+            }
             }
 
             System.out.println();
     }
-    System.out.println("[X] Indicates the seat is previously booked , [ ] Indicates that the seat is avaliable");
+    System.out.println("[X] Indicates the seat is previously booked , [ ] Indicates that the seat is avaliable , ");
+    System.out.println("[    ] Indicates a couple seat              , [/] Indicates a deluxe seat ");
+    System.out.println("Couple & Deluxe seats charge a surplus ");
+
 
        /* int count = 0;
         System.out.print("    ");

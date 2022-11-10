@@ -91,7 +91,7 @@ public class Moblima {
                         // Scanner sc = new Scanner(System.in);
                         System.out.println("Enter name of movie to display: ");
                         String title = sc.nextLine();
-                        int index = m1.findMovieCSV(title, list);
+                        int index = MovieInfoManager2.findMovieCSV(title, list);
                         if (index == -1) System.out.println("Movie not found! ");
                         // System.out.println("Select the index of the movie you want to display: ");
                         // selection = sc.nextInt(); sc.nextLine();

@@ -225,6 +225,25 @@ public class MovieInfoManager2 {
     	}
     	return;
     }
+    
+    public void printOne(ArrayList<Movie> list, int index) {
+    	Movie tempMovie = list.get(index);
+    	System.out.println("Title: " + tempMovie.getTitle());
+		System.out.println("Synopsis: " + tempMovie.getSynopsis());
+		System.out.println("Director: " + tempMovie.getDirector());
+		ArrayList<String> cast = tempMovie.getCast();
+		int j = 0;
+		while(j!=cast.size())
+		{
+			System.out.println("Cast member " + j+1 + " : " +cast.get(j));
+			j++;
+		}
+		System.out.println("Movie type: " + tempMovie.getType());
+		System.out.println("Age Rating: " + tempMovie.getAgeRating());
+		System.out.println("Average Rating: " + tempMovie.getAverageRating());
+		System.out.println("Genre: " + tempMovie.getGenre());
+		System.out.println("Runtime: " + tempMovie.getrunTime());
+    }
 
 	public void printOne(ArrayList<Movie> list, int index) {
     	int i = 0;
