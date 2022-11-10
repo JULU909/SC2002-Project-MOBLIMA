@@ -215,6 +215,10 @@ public class Moblima {
                 bt.printAllTickets(userTickets);
                 bt.individualTicketmenu(userTickets);
                 break;
+            case 2: 
+                String ticketID = bt.getTicketID();
+                Ticket ticket = tk.getTicket(ticketID);
+                bt.printTicket(ticket);
 
 
         }

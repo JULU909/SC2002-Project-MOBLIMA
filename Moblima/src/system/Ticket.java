@@ -28,6 +28,10 @@ public class Ticket {
         this.date = date;
     }
 
+    public Ticket(){
+        
+    }
+
     public ArrayList <Seat> getSeats(){
         return this.seats;
     }
