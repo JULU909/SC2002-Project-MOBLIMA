@@ -50,7 +50,7 @@ public class MovieInfoManager2 {
     	String genre = movie.getGenre();
     	String runtime = movie.getrunTime();
     	
-    	ArrayList<Review> review = movie.getReviews();
+    	ArrayList<Review> review = movie.getReviews(); //Reviews contains String user, int rating, String prose
     	
     	//Write them all into CSV
     	writer.append(title);
@@ -346,20 +346,20 @@ public class MovieInfoManager2 {
 		}
 	}
 	
-	/*public static void main (String[] args) throws FileNotFoundException, IOException {
+	public static void main (String[] args) throws FileNotFoundException, IOException {
 		MovieInfoManager2 mm = new MovieInfoManager2();
 		ArrayList<String> cast = new ArrayList<String>();
 		cast.add("dude1");
 		cast.add("add2");
 		ArrayList<Review> review = new ArrayList<Review>();
-		Review review1 = new Review("name",5,"i like");
-		Review review2 = new Review("name2",1,"i do not like");
+		Review review1 = new Review("john",5,"alien good");
+		Review review2 = new Review("jack",1,"alien bad");
 		review.add(review1);
 		review.add(review2);
-		Movie movie = new Movie("top gun","f14","dude",cast,MovieType.TWOD,AgeRating.PG13,MovieStatus.NOW_SHOWING,0,0,"Action","1H30M",review);
+		Movie movie = new Movie("alien","alien bad","guy",cast,MovieType.TWOD,AgeRating.NC16,MovieStatus.NOW_SHOWING,0,0,"Action/Horror","2H30M",review);
 		mm.addMoviecsv(movie);
 		ArrayList<Movie> list = mm.readMovieCSV();
 		System.out.println(list.get(0).getReviews().get(0).getProse());
 		System.out.println(list.get(0).getReviews().get(0).getReviewer());
-	}*/
+	}
 }
