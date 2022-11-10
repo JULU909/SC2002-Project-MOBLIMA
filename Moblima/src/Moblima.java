@@ -34,14 +34,14 @@ public class Moblima {
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
-                            "Do you want to Display All Movies or Display one Movie? \n1) Display All Movies\n2) Display ONE movie (by index, cannot be 0 or negative)\n3) Top 5 movies based on ticket sales\n4) Top 5 movies based on average ratings\n");
+                            "Do you want to Display All Movies or Display one Movie? \n1) Display All Movies\n2) Display ONE movie \n3) Top 5 movies based on ticket sales\n4) Top 5 movies based on average ratings\n");
                     System.out.println("Your Choice please: ");
 
                     // new SearchMovieUI().DisplayAll();
 
                     try {
                         selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 2) throw new Exception();
+                        if (selection < 0 || selection > 4) throw new Exception();
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
                     //Display all movies
                     if (selection == 1) {
@@ -71,7 +71,7 @@ public class Moblima {
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
-                            "How would you like to view the movie details? \n1) View All Movie details\n2) View ONE Movie detail 3) View top 5 movies by sales\n4) View top 5 movies by rating (by index, cannot be 0 or negative)\n");
+                            "How would you like to view the movie details? \n1) View All Movie details\n2) View ONE Movie detail \n3) View top 5 movies by sales\n4) View top 5 movies by rating (by index, cannot be 0 or negative)\n");
                     System.out.println("Your Choice please: ");
                     try {
                         selection = sc.nextInt(); sc.nextLine();
