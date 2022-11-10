@@ -25,7 +25,7 @@ public class StaffManager {
 
     public static int getLength()throws FileNotFoundException, IOException {
         int count = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Staff.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 count++;
@@ -35,7 +35,7 @@ public class StaffManager {
     }
     public static ArrayList<Staff> getDataAll() throws FileNotFoundException, IOException{
         ArrayList<Staff> data = new ArrayList<Staff>(getLength());
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Staff.csv"))) {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
@@ -45,7 +45,7 @@ public class StaffManager {
                 }
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
-                Staff s = new Staff(list.get(1), list.get(2));
+                Staff s = new Staff(list.get(0), list.get(1));
                 data.add(s);
                 count++;
             }
