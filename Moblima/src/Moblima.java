@@ -25,7 +25,6 @@ public class Moblima {
             int selection=0;
             switch (choice) {
                 case 1:
-                    while(true){
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
@@ -182,10 +181,6 @@ public class Moblima {
                 bt.printAllTickets(userTickets);
                 bt.individualTicketmenu(userTickets);
                 break;
-            case 2: 
-                String ticketID = bt.getTicketID();
-                Ticket ticket = tk.getTicket(ticketID);
-                bt.printTicket(ticket);
 
 
         }
