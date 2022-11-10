@@ -30,43 +30,6 @@ public class Moblima {
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
-                            "                          Searching Movies                                           \n");
-                    System.out.println(
-                            "=====================================================================================\n");
-                    System.out.println(
-                            "Do you want to Display All Movies or Display one Movie? \n1) Display All Movies\n2) Display ONE movie \n3) Top 5 movies based on ticket sales\n4) Top 5 movies based on average ratings\n");
-                    System.out.println("Your Choice please: ");
-
-                    // new SearchMovieUI().DisplayAll();
-
-                    try {
-                        selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 4) throw new Exception();
-                    } catch (Exception e) {System.out.println("Error: invalid input!");}
-                    //Display all movies
-                    if (selection == 1) {
-                        new SearchMovieUI().DisplayAll();
-                    //Display one movie
-                    } else if (selection == 2) {
-                        System.out.println("\nSelect the index of the movie you want to display: ");
-                        selection = sc.nextInt();
-                        new SearchMovieUI().DisplayOne(selection);
-                    //Top 5 baased on ticketSales
-                    } else if (selection == 3) {
-                        movieRanking(true);
-                    //Top 5 based on avgRatings
-                    } else if (selection == 4) {
-                        movieRanking(false);
-                    } else {
-                        break;
-                    }
-                    // new SearchMovieUI().DisplayOne(selection); // selection refers to the index
-                    break;
-
-                case 2:
-                    System.out.println(
-                            "=====================================================================================\n");
-                    System.out.println(
                             "                          Viewing Movie Details                                      \n");
                     System.out.println(
                             "=====================================================================================\n");
@@ -105,6 +68,10 @@ public class Moblima {
                     } 
                     break;
 
+                case 2:
+                    seatDetails();
+                    break;
+
                 case 3:
                     purchaseTicket();
                     break;
@@ -112,12 +79,9 @@ public class Moblima {
                     bookingHistory();
                     break;
                 case 5:
-                    seatDetails();
+                    //
                     break;
-                case 7:
-                    LoginUI.execute();
-                    break;
-                case 8:
+                case 6:
                     exitDialouge();
                 default:
                     sc.close();
@@ -145,12 +109,12 @@ public class Moblima {
                             "(1) Search/List Movies\n\n" +
                             "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n" +
                             "(4) View booking history\n\n" +
-                            "(5) User Settings\n\n(6) Exit\n\n(7) Login \n\nChoices (1~6): ");
+                            "(5) User Settings\n\n(6) Exit\n\n \n\nChoices (1~6): ");
 
             try {
                 System.out.print("\nWhat is your choice:  ");
-                choice = sc.nextInt();
-                if (choice >= 1 && choice <= 7)
+                choice = sc.nextInt(); sc.nextLine();
+                if (choice >= 1 && choice <= 6)
                     break;
                 else
                     throw new Exception();
