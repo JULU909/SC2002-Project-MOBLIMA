@@ -166,7 +166,7 @@ public class ShowtimeManager {
     	String header = "Cineplex";
     	while ((line = br.readLine()) != null) {
     		
-    		String[] split = line.split(",", 4); //convert each column to individual attributes
+    		String split[] = line.split(",", 4); //convert each column to individual attributes
     		if(split[0].equals(header)) //ignore header
     			continue;
     		

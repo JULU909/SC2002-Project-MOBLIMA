@@ -1,6 +1,4 @@
 import UI.BookedHistoryUI;
-
-//import UI.BookedTicketsUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
 import UI.StaffLoginUI;

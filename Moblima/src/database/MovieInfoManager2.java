@@ -22,7 +22,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager2 {
 	private String filename;
 
-    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath(); //"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";//new File("movieInformation2.csv").getAbsolutePath();
 
     public MovieInfoManager2(){
         this.filename = FILENAME;
@@ -50,8 +50,6 @@ public class MovieInfoManager2 {
     	String genre = movie.getGenre();
     	String runtime = movie.getrunTime();
     	
-    	ArrayList<Review> review = movie.getReviews(); //Reviews contains String user, int rating, String prose
-    	
     	//Write them all into CSV
     	writer.append(title);
     	writer.append(",");
@@ -63,7 +61,7 @@ public class MovieInfoManager2 {
     	int i = 1;
     	writer.append(cast.get(0));
     	while(i!=cast.size()) { //Add cast members into one column in CSV
-    		writer.append("'"); //' splits between different cast members
+    		writer.append("'");
     		writer.append(cast.get(i));
     		i++;
     	}
@@ -81,25 +79,6 @@ public class MovieInfoManager2 {
     	writer.append(genre);
     	writer.append(",");
     	writer.append(runtime);
-    	writer.append(",");
-    	
-    	i=1;
-    	writer.append(review.get(0).getReviewer());
-    	writer.append("'");//' splits between different attributes of review
-    	writer.append(review.get(0).getProse());
-    	writer.append("'");
-    	writer.append(String.valueOf(review.get(0).getRating()));
-    	while(i!=review.size())
-    	{
-    		writer.append("`");//` splits between different reviews in array list
-    		writer.append(review.get(i).getReviewer());
-        	writer.append("'");
-        	writer.append(review.get(i).getProse());
-        	writer.append("'");
-        	writer.append(String.valueOf(review.get(i).getRating()));
-        	i++;
-    	}
-    	
     	writer.append("\n");
     	
     	//cleanup
@@ -115,14 +94,14 @@ public class MovieInfoManager2 {
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
     		
-    		String[] split = line.split(",", 12); //Convert each column to individual attributes
+    		String split[] = line.split(",", 11); //Convert each column to individual attributes
     		if(split[0].equals(header)) //Ignore header
     			continue;
     		
     		String title = split[0];
     		String synopsis = split[1];
     		String director = split[2];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'")));//' splits between different cast members
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'")));
 
     		MovieType type = MovieType.valueOf(split[4]);
     		AgeRating ageRating = AgeRating.valueOf(split[5]);
@@ -132,23 +111,8 @@ public class MovieInfoManager2 {
     		String genre = split[9];
     		String runTime = split[10];
     		
-    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
-    		ArrayList<Review> reviews = new ArrayList<Review>();
-    		int i = 0;
-    		while(i!=reviewStr.size())
-    		{
-    			String[] splitReview = reviewStr.get(i).split("'");//' splits between different attributes of review
-    			String reviewer = splitReview[0];
-    			String proseReview = splitReview[1];
-    			int ratingReview = Integer.valueOf(splitReview[2]);
-    			Review tempReview = new Review(reviewer,ratingReview,proseReview);
-    			reviews.add(tempReview);
-    			i++;
-    		}
-    		
-    		
     		//Create a movie object
-    		Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime,reviews);
+    		Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime);
     		//And add it to the array list
     		list.add(tempMovie);
     	}
@@ -187,8 +151,6 @@ public class MovieInfoManager2 {
         	String genre = movie.getGenre();
         	String runtime = movie.getrunTime();
         	
-        	ArrayList<Review> review = movie.getReviews();
-        	
         	//And add it to the CSV
         	writer.append(title);
         	writer.append(",");
@@ -200,7 +162,7 @@ public class MovieInfoManager2 {
         	int j=1;
         	writer.append(cast.get(0));
         	while(j!=cast.size()) { //Adding cast into one column of CSV
-        		writer.append("'");//' splits between different cast members
+        		writer.append("'");
         		writer.append(cast.get(j));
         		j++;
         	}
@@ -218,23 +180,6 @@ public class MovieInfoManager2 {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
-        	
-        	int k=1;
-        	writer.append(review.get(0).getReviewer());
-        	writer.append("'");//' splits between different attributes of review
-        	writer.append(review.get(0).getProse());
-        	writer.append("'");
-        	writer.append(String.valueOf(review.get(0).getRating()));
-        	while(k!=review.size())
-        	{
-        		writer.append("`");//` splits between different reviews in array list
-        		writer.append(review.get(k).getReviewer());
-        		writer.append("'");
-        		writer.append(review.get(k).getProse());
-            	writer.append("'");
-            	writer.append(String.valueOf(review.get(k).getRating()));
-            	k++;
-        	}
         	writer.append("\n");
         	i++;
     	}
@@ -255,13 +200,6 @@ public class MovieInfoManager2 {
 		writeMovieCSV(list);
     	return list; //Return list if movie not present
     }
-    
-    /*public void updateAverageRating() throws FileNotFoundException, IOException {
-    	MovieInfoManager2 mm = new MovieInfoManager2();
-    	ArrayList<Movie> list = mm.readMovieCSV();
-    	int rating = 0;
-    	int i = 0;
-    }*/
     
     public void printAll(ArrayList<Movie> list) {
     	int i = 0;
@@ -306,6 +244,27 @@ public class MovieInfoManager2 {
 		System.out.println("Runtime: " + tempMovie.getrunTime());
     }
 
+	public void printOne(ArrayList<Movie> list, int index) {
+    	int i = 0;
+    	while(i<index) i++;
+    	Movie tempMovie = list.get(i);
+		System.out.println("Title: " + tempMovie.getTitle());
+		System.out.println("Synopsis: " + tempMovie.getSynopsis());
+		System.out.println("Director: " + tempMovie.getDirector());
+		ArrayList<String> cast = tempMovie.getCast();
+		int j = 0;
+		while(j!=cast.size())
+		{
+			System.out.println("Cast member " + j+1 + " : " +cast.get(j));
+			j++;
+		}
+		System.out.println("Movie type: " + tempMovie.getType());
+		System.out.println("Age Rating: " + tempMovie.getAgeRating());
+		System.out.println("Average Rating: " + tempMovie.getAverageRating());
+		System.out.println("Genre: " + tempMovie.getGenre());
+		System.out.println("Runtime: " + tempMovie.getrunTime());
+    	return;
+    }
 
 	public void rankByRatings(boolean byTicketSales) throws FileNotFoundException, IOException {
 		ArrayList<Movie> list = readMovieCSV();
@@ -345,21 +304,4 @@ public class MovieInfoManager2 {
 			}
 		}
 	}
-	
-	/*public static void main (String[] args) throws FileNotFoundException, IOException {
-		MovieInfoManager2 mm = new MovieInfoManager2();
-		ArrayList<String> cast = new ArrayList<String>();
-		cast.add("dude1");
-		cast.add("add2");
-		ArrayList<Review> review = new ArrayList<Review>();
-		Review review1 = new Review("john",5,"alien good");
-		Review review2 = new Review("jack",1,"alien bad");
-		review.add(review1);
-		review.add(review2);
-		Movie movie = new Movie("alien","alien bad","guy",cast,MovieType.TWOD,AgeRating.NC16,MovieStatus.NOW_SHOWING,0,0,"Action/Horror","2H30M",review);
-		mm.addMoviecsv(movie);
-		ArrayList<Movie> list = mm.readMovieCSV();
-		System.out.println(list.get(0).getReviews().get(0).getProse());
-		System.out.println(list.get(0).getReviews().get(0).getReviewer());
-	}*/
 }
