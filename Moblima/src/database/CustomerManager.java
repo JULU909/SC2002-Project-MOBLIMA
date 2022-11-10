@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 import system.Showtime;
 
+import java.io.FileWriter; //for writing to csv
+
 public class CustomerManager {
     private static String filename;
     private ArrayList<Customer> data;
@@ -53,7 +55,14 @@ public class CustomerManager {
         return data;
     }
 
-
+    public static boolean duplicateUsername(String username, ArrayList<Customer> database){
+        for (Customer c : database){
+            if(c.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    } 
 
     public static Customer findCustomer(String username, ArrayList<Customer> database){
         for (Customer c : database){
@@ -72,4 +81,34 @@ public class CustomerManager {
         }
         return false;
     } 
+
+    public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException{ //Add a movie into CSV
+    	//Writer will write into filename, true allows appending
+    	FileWriter writer = new FileWriter(filename,true);
+    	
+    	//Get each attribute out from customer
+    	String username = customer.getUsername();
+    	String mobileNumber = customer.getmobileNumber();
+    	String email = customer.getEmailAddress();
+        int age = customer.getAge();
+        String password = customer.getPassword();
+
+    	//Write them all into CSV
+    	writer.append(username);
+    	writer.append(",");
+    	writer.append(password);
+    	writer.append(",");
+    	writer.append(String.valueOf(age));
+    	writer.append(",");
+        writer.append(mobileNumber);
+    	writer.append(",");
+        writer.append(email);
+        writer.append("\n");;
+
+    	
+    	//cleanup
+    	writer.flush();
+    	writer.close();
+    	
+    }
 }
