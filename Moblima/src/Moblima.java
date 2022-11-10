@@ -1,5 +1,4 @@
 import UI.BookedHistoryUI;
-import UI.BookedTicketsUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
 import UI.StaffLoginUI;
@@ -21,7 +20,6 @@ public class Moblima {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         do {
-
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
             int selection=0;
@@ -120,16 +118,9 @@ public class Moblima {
                     throw new Exception();
                 // choice = Integer.parseInt(sc.next());
             } catch (Exception e) {
-                choice = sc.nextInt();
-                if (choice >= 1 && choice <= 7)
-                    break;
-                else {
                     System.out.println("Please enter a valid option");
                 }
-            }
-
-        } while (choice < 1 || choice > 6);
-
+            } while (choice < 1 || choice > 6);
         return choice;
     }
 

@@ -23,7 +23,8 @@ public class CustomerLoginUI {
         if (CustomerManager.validateCustomer(username, password, database)){
             System.out.println("Login success!");
             Customer customer = CustomerManager.findCustomer(username, database);
-            CustomerMenuUI.execute(customer);
+            CustomerMenuUI menu = new CustomerMenuUI(customer);
+            menu.execute();
         }
 
         else {
