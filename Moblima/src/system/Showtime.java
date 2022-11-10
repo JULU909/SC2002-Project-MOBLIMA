@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import database.ShowtimeManager;
 import database.TicketManager;
+import database.Customer;
 import enums.*;
 
 public class Showtime {
@@ -12,19 +13,45 @@ public class Showtime {
     private String cineplex;
     private Seat [][] layout;
     private String movie;
+    private Customer customer;
 
 
 
+// for use by customers
+public Showtime(int time, int date, String cineplex , String movie, Customer customer){
+    this.date = date;
+    this.time = time;
+    this.cineplex = cineplex;
+    this.layout = new Seat[11][32];
+    this.movie = movie;
+    this.customer = customer;
+    
 
+
+
+    for (int x = 0 ;  x < this.layout.length ; x++){
+        for(int y = 0 ; y < this.layout[x].length; y++){
+             this.layout[x][y] = new Seat();
+             if (y == 6 || y == 23){
+                this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.EMPTY, x+65, y);
+                continue;
+             }
+             if (x >= 9){
+                this.layout[x][y].Seat(SeatTypes.COUPLE, SeatStatus.VACANT, x+65, y);
+                continue;
+             }
+             this.layout[x][y].Seat(SeatTypes.SINGLE, SeatStatus.VACANT, x+65, y);
+        }
+}
+}
+
+// for use by staff
 public Showtime(int time, int date, String cineplex , String movie){
     this.date = date;
     this.time = time;
     this.cineplex = cineplex;
     this.layout = new Seat[11][32];
     this.movie = movie;
-    
-
-
 
     for (int x = 0 ;  x < this.layout.length ; x++){
         for(int y = 0 ; y < this.layout[x].length; y++){
@@ -119,7 +146,7 @@ public void setLayout() throws IOException{
     
 
     ArrayList <Seat> bookedSeats = new ArrayList<>();
-    TicketManager n = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
+    TicketManager n = new TicketManager("Moblima/src/Data/TicketsBooked.csv", customer);
     bookedSeats = n.getAllBookedSeats(cineplex , Integer.toString(time), Integer.toString(date) , movie);
     System.out.print(bookedSeats);
     for (int i  = 0 ; i < bookedSeats.size() ; i ++){

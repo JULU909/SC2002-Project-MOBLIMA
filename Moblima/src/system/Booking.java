@@ -1,6 +1,7 @@
 package system;
 import enums.*;
 import java.util.ArrayList;
+import database.Customer;
 
 // Imports all the enums to be used in the Class
 
@@ -18,6 +19,9 @@ public class Booking {
     private Seat seat;
     private Showtime showtime;
     private int price;
+    private Customer customer;
+
+    
 
     
 }

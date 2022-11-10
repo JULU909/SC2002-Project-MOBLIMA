@@ -18,12 +18,12 @@ import enums.UserType;
 import system.*;
 
 public class CustomerMenuUI {
-    Customer customer;
+    private static Customer customer;
     public CustomerMenuUI(Customer customer){
         this.customer = customer;
     }
 
-    public static void execute(Customer customer) throws IOException, InterruptedException throws FileNotFoundException, IOException, InterruptedException {
+    public static void execute() throws IOException, InterruptedException, FileNotFoundException, IOException, InterruptedException {
         do {
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
@@ -147,7 +147,7 @@ public class CustomerMenuUI {
         BookingDisplay booking = new BookingDisplay();
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
         int showtimesLength = Showtimes.getLength();
-        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
+        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv", customer);
 
         // Getting user inputs.
         String cineplex = booking.askCineplex();
@@ -165,7 +165,7 @@ public class CustomerMenuUI {
         Pricing price = new Pricing();
         choosenShowtime.printLayout();
         ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+        Ticket ticket = new Ticket(customer, 20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
 
         int confirmation = booking.confirmTicket(ticket);
         if (confirmation == 1) {
@@ -179,7 +179,7 @@ public class CustomerMenuUI {
 
     public static void bookingHistory() throws IOException, InterruptedException {
         BookedHistoryUI bt = new BookedHistoryUI();
-        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
+        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv", customer);
         ArrayList <Ticket> userTickets = tk.getUserTickets("John");
         int input  = bt.mainUI();
         switch (input) {

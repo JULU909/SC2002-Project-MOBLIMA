@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.regex.*;  
 public class CustomerRegistrationUI {
     public String filepath = "Moblima/src/Data/Customers.csv";
-    Customer customer;
-    public void CustomerRegistrationUI(Customer customer){
-        this.customer = customer;
-    }
+
 	public static void execute() {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Registration for Customer Cinema database----");
