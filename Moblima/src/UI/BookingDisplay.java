@@ -12,6 +12,7 @@ import database.User;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
@@ -173,7 +174,11 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     System.out.println("Ticked ID       : " + ticket.getID());
     System.out.println("User            : " + user.getUsername());
     
-    System.out.println("To confirm & make payment type 1 , : ");
+    System.out.println("Confirmation dialouge : ");
+    System.out.println("------------------------");
+    System.out.println("0 : Change seats     :     ");
+    System.out.println("1 : Confirm purchase :     ");
+    System.out.println("2 : Decline purhcase :    [Exit to main menu] ");
     choice = sc.nextInt();
     return choice;
       
@@ -187,9 +192,39 @@ public static void successExitDialouge() {
 
 }
 
+public static void getAges(int numSeats) {
+    System.out.println("Enter number of movie Viewers per age group : ");
+    System.out.println("----------------------------------------------");
+    System.out.println("");
+    while(true){
+    System.out.println("Child : ");
+    Scanner sc = new Scanner(System.in);
+    int count = 0; 
+    count+= sc.nextInt();
+    System.out.println("Adult : ");
+    count+= sc.nextInt();
+    System.out.println("Senior : ");
+    count+= sc.nextInt();
+    if (count == numSeats){
+        System.out.println("The sum of moviegoers doesnt add up ! re-enter your values : ");
+
+    }
+    else{
+        break;
+    }
+    }
+
+}
+
+
 public static void failExitDialouge() {
     System.out.println("Your Ticket has been removed, Have a pleasant day!.");
     return;
+
+}
+
+public void cancelBooking() {
+
 
 }
 
