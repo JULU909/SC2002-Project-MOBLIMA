@@ -71,11 +71,11 @@ public class Moblima {
                     System.out.println(
                             "=====================================================================================\n");
                     System.out.println(
-                            "Do you want to View ALL Movie details or View ONE Movie detail? \n1) View All Movie details\n2) View ONE Movie detail (by index, cannot be 0 or negative)\n");
+                            "How would you like to view the movie details? \n1) View All Movie details\n2) View ONE Movie detail 3) View top 5 movies by sales\n4) View top 5 movies by rating (by index, cannot be 0 or negative)\n");
                     System.out.println("Your Choice please: ");
                     try {
                         selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 2) {sc.close(); throw new Exception();}
+                        if (selection < 0 || selection > 4) {sc.close(); throw new Exception();}
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
 
                     MovieInfoManager2 m1 = new MovieInfoManager2();
@@ -97,7 +97,12 @@ public class Moblima {
                         // selection = sc.nextInt(); sc.nextLine();
                         else m1.printOne(list, index);
                     }
-
+                    else if (selection == 3) {
+                        movieRanking(true);
+                    //Top 5 based on avgRatings
+                    } else if (selection == 4) {
+                        movieRanking(false);
+                    } 
                     break;
 
                 case 3:
