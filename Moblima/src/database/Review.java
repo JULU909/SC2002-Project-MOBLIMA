@@ -4,9 +4,10 @@ public class Review {
     Customer reviewer;
     int rating;
     String prose;
+    String title;
 
-    public Review(Customer reviewer, int rating, String prose){
-        this.reviewer = reviewer; this.rating = rating; this.prose = prose;
+    public Review(Customer reviewer, int rating, String prose, String title){
+        this.reviewer = reviewer; this.rating = rating; this.prose = prose; this.title = title;
     }
     Customer getReviewer(){
         return this.reviewer;
@@ -38,5 +39,13 @@ public class Review {
     
     void setProse(String prose){
         this.prose = prose;
+    }
+    
+    String getTitle() {
+    	return this.title;
+    }
+    
+    void setTitle(String title) {
+    	this.title = title;
     }
 }
