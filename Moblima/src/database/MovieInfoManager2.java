@@ -24,8 +24,6 @@ public class MovieInfoManager2 {
 
     public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";//new File("movieInformation2.csv").getAbsolutePath();
 
-
-
     public MovieInfoManager2(){
         this.filename = FILENAME;
     }
@@ -88,6 +86,7 @@ public class MovieInfoManager2 {
     	writer.close();
     	
     }
+	
     public ArrayList<Movie> readMovieCSV() throws FileNotFoundException, IOException{ //Read CSV
     	ArrayList<Movie> list = new ArrayList<Movie>(); //Create array list of movies
     	BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -269,6 +268,8 @@ public class MovieInfoManager2 {
 
 	public void rankByRatings(boolean byTicketSales) throws FileNotFoundException, IOException {
 		ArrayList<Movie> list = readMovieCSV();
+		int len = list.size();
+		if (len > 5) len = 5;
 		if(byTicketSales) {
 			Collections.sort(list, new Comparator<Movie>() {
 				@Override
@@ -279,7 +280,7 @@ public class MovieInfoManager2 {
 			System.out.println("=====================================================================================\n");
 			System.out.println("                          Top 5 Movies based on Total Sales:                         \n");
 			System.out.println("=====================================================================================\n");
-			for(int i = 0; i < 5; i++) {
+			for(int i = 0; i < len; i++) {
 				Movie tempMovie = list.get(i);
 				System.out.println("Movie Title: " + tempMovie.getTitle());
 				System.out.println("Total Ticket Sales: " + tempMovie.getTotalSales());
@@ -295,7 +296,7 @@ public class MovieInfoManager2 {
 			System.out.println("=====================================================================================\n");
 			System.out.println("                          Top 5 Movies based on Average Ratings:                     \n");
 			System.out.println("=====================================================================================\n");
-			for(int i = 0; i < 5; i++) {
+			for(int i = 0; i < len; i++) {
 				Movie tempMovie = list.get(i);
 				System.out.println("Movie Title: " + tempMovie.getTitle());
 				System.out.println("Average Rating: " + tempMovie.getAverageRating());

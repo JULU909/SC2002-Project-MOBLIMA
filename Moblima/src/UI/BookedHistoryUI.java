@@ -76,15 +76,20 @@ public class BookedHistoryUI {
     }
 
     public  void individualTicketmenu(ArrayList <Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
+        while (true){
         System.out.println("To view a specific booking further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
         System.out.println("--------------------------------------------------------------------------  " );
         String temp = sc.next();
         if (Integer.valueOf(temp) == 0 ){
-            return;
+            break;
+            
         }
-        if ( Integer.valueOf(temp) < userTickets.size()){
+        if ( Integer.valueOf(temp) <= userTickets.size()){
             printTicketSeats((Integer.valueOf(temp)-1), userTickets);
         }
+        
+        }
+        return;
     }
 
     public void noBookings(){
@@ -138,7 +143,7 @@ public class BookedHistoryUI {
         System.out.println("--------------------------------------------------------");
         String input = sc.next();
         if (input.equals("0")){
-            return "n";
+            return "null";
         }
         else  return input;
 
@@ -156,6 +161,24 @@ public class BookedHistoryUI {
             System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
             System.out.println("-------------" );
+    }
+
+    public void printTicket(Ticket ticket ) throws InterruptedException{
+        
+        System.out.println("Your ticket details  : " );
+        System.out.println("---------------------- " );
+        Thread.sleep(1000);
+        System.out.println( );
+        System.out.println("Ticket ID       : " +ticket.getID() );
+        System.out.println("Cineplex        : " + ticket.getShowtime().getCineplex() );
+        System.out.println("Movie date      : " + ticket.getShowtime().getTime() );
+        System.out.println("Movie Time      : " + ticket.getDate() );
+        System.out.println("Movie Name      : " + ticket.getShowtime().getMovie() );
+        System.out.println("Seats purchased : " + ticket.getSeats().size()  );
+        System.out.println("-------------" );
+        System.out.println("Press any key to return ! " );
+        sc.next();
+
     }
 
 }
