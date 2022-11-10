@@ -1,20 +1,18 @@
 package database;
 
 public class Review {
-    /*Customer reviewer*/;
-    String reviewer;
+    Customer reviewer;
     int rating;
     String prose;
-   /* String title;*/
 
-    public Review(String reviewer, int rating, String prose/*, String title*/){
-        this.reviewer = reviewer; this.rating = rating; this.prose = prose; /*this.title = title;*/
+    public Review(Customer reviewer, int rating, String prose){
+        this.reviewer = reviewer; this.rating = rating; this.prose = prose;
     }
-    String getReviewer(){
+    Customer getReviewer(){
         return this.reviewer;
     }
 
-    void setReviewer(String reviewer){
+    void setReviewer(Customer reviewer){
         this.reviewer = reviewer;
     }
 /* 
@@ -41,12 +39,4 @@ public class Review {
     void setProse(String prose){
         this.prose = prose;
     }
-    
-   /* String getTitle() {
-    	return this.title;
-    }
-    
-    void setTitle(String title) {
-    	this.title = title;
-    }*/
 }

@@ -1,5 +1,3 @@
-package UI;
-
 import UI.BookedHistoryUI;
 import UI.BookingDisplay;
 import UI.SearchMovieUI;
@@ -23,7 +21,7 @@ public class CustomerMenuUI {
         this.customer = customer;
     }
 
-    public static void execute(Customer customer) throws IOException, InterruptedException throws FileNotFoundException, IOException, InterruptedException {
+    public static void execute(Customer customer) throws IOException, InterruptedException {
         do {
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
@@ -128,7 +126,6 @@ public class CustomerMenuUI {
             } while (choice < 1 || choice > 6);
         return choice;
     }
-
 
     public static void movieListing() {
 

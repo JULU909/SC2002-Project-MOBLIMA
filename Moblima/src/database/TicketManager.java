@@ -151,53 +151,6 @@ public class TicketManager {
     return bookedTickets;
     
     }
-
-    public Ticket getTicket(String ticketID) throws IOException {
-
-        Ticket bookedTicket = new Ticket();
-        try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/TicketsBooked.csv"))) {
-            String line;
-            int count = 0;
-
-            while ((line = br.readLine()) != null) {
-                if (count==0){
-                    count++;
-                    continue;
-                }
-                String[] values = line.split(",");
-                List<String> list = Arrays.asList(values);
-                
-                if (list.get(0).equals(ticketID)){
-                    ArrayList <Seat> bookedSeats = new ArrayList();
-                    String seats = list.get(6).toString();
-                    int z = 0 ;
-                    for (int i = 0 ; i < (list.get(6).length())/4 ; i++){
-                        
-                        Seat tempSeat = new Seat();
-                        String col = seats.substring(0,2);
-                        String row = seats.substring(2,4);
-                        seats = seats.substring(4);
-                        tempSeat.Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, Integer.valueOf(row), Integer.valueOf(col));
-                        bookedSeats.add(tempSeat);
-                       
-                    }
-                    int date =  Integer.valueOf(list.get(5));
-                    int time = Integer.valueOf(list.get(4));
-                    String cineplex = list.get(2);
-                    String movie = list.get(3);
-                    Showtime tempShowtime = new Showtime(time, date,cineplex , movie);
-                    Ticket tempTicket = new Ticket(10, bookedSeats , tempShowtime , date );
-                    bookedTicket = tempTicket;
-                    return bookedTicket;
-                }
-
-
-    }
-}
-return bookedTicket;
-    
-
-}
 }
 
 

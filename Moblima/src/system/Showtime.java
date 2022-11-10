@@ -116,7 +116,7 @@ public void printLayout(){
 }
 
 public void setLayout() throws IOException{  
-    
+
 
     ArrayList <Seat> bookedSeats = new ArrayList<>();
     TicketManager n = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
@@ -127,7 +127,7 @@ public void setLayout() throws IOException{
         int col = bookedSeats.get(i).getCol();
    
 
-        this.layout[row-65][col-1].getSeatStatus();
+        this.layout[row-65][col-1].Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, row, col);
     }
    
 }
@@ -136,11 +136,9 @@ public void setLayout() throws IOException{
 
 
 
+public void checkAvailability(){
 
 
-public SeatStatus checkAvailability(int row , int col){
-
-    return this.layout[row-65][col-1].getSeatStatus();
 }
 
 public int getDate() {
