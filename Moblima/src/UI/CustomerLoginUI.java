@@ -24,7 +24,7 @@ public class CustomerLoginUI {
             System.out.println("Login success!");
             Customer customer = CustomerManager.findCustomer(username, database);
             CustomerMenuUI menu = new CustomerMenuUI(customer);
-            menu.execute();
+            menu.execute(customer);
         }
 
         else {

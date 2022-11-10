@@ -67,8 +67,10 @@ public class Moblima {
                     } else if (selection == 4) {
                         movieRanking(false);
                     } 
+                
                     break;
-
+                    }
+                    
                 case 2:
                     seatDetails();
                     break;

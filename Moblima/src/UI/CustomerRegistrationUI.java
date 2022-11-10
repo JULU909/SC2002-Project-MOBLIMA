@@ -11,13 +11,13 @@ public class CustomerRegistrationUI {
     public void CustomerRegistrationUI(Customer customer){
         this.customer = customer;
     }
-	public static void execute() {
+	public static void execute() throws FileNotFoundException, IOException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Registration for Customer Cinema database----");
         String username, password, mobileNumber, email; int age=0; ArrayList<Customer> database;
-        try{
-            database = CustomerManager.getDataAll();
-        }  catch (Exception e) {System.out.println("Error! Customer Database not found!"); sc.close(); return;}
+        
+        database = CustomerManager.getDataAll();
+          
 
         do {
             System.out.println("Enter username: ");

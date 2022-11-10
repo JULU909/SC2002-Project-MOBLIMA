@@ -27,7 +27,7 @@ public class CustomerManager {
 
     public static int getLength() throws FileNotFoundException, IOException {
         int count = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Customers.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 count++;
@@ -37,7 +37,7 @@ public class CustomerManager {
     }
     static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Customers.csv"))) {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
@@ -47,7 +47,7 @@ public class CustomerManager {
                 }
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
-                Customer c = new Customer(list.get(1), list.get(2), Integer.parseInt(list.get(3)), list.get(5), list.get(6));
+                Customer c = new Customer(list.get(0), list.get(1), Integer.parseInt(list.get(2)), list.get(3), list.get(4));
                 data.add(c);
                 count++;
             }
