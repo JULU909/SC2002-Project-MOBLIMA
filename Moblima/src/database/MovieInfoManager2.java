@@ -22,7 +22,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager2 {
 	private String filename;
 
-    public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";//new File("movieInformation2.csv").getAbsolutePath();
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath(); //"Moblima/src/Data/movieInformation2.csv";
 
     public MovieInfoManager2(){
         this.filename = FILENAME;
@@ -49,6 +49,8 @@ public class MovieInfoManager2 {
     	double averageRating = movie.getAverageRating();
     	String genre = movie.getGenre();
     	String runtime = movie.getrunTime();
+    	
+    	ArrayList<Review> review = movie.getReviews();
     	
     	//Write them all into CSV
     	writer.append(title);
@@ -79,6 +81,25 @@ public class MovieInfoManager2 {
     	writer.append(genre);
     	writer.append(",");
     	writer.append(runtime);
+    	writer.append(",");
+    	
+    	i=1;
+    	writer.append(review.get(0).getReviewer());
+    	writer.append("'");
+    	writer.append(review.get(0).getProse());
+    	writer.append("'");
+    	writer.append(String.valueOf(review.get(0).getRating()));
+    	while(i!=review.size())
+    	{
+    		writer.append("`");
+    		writer.append(review.get(i).getReviewer());
+        	writer.append("'");
+        	writer.append(review.get(i).getProse());
+        	writer.append("'");
+        	writer.append(String.valueOf(review.get(i).getRating()));
+        	i++;
+    	}
+    	
     	writer.append("\n");
     	
     	//cleanup
@@ -94,7 +115,7 @@ public class MovieInfoManager2 {
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
     		
-    		String[] split = line.split(",", 11); //Convert each column to individual attributes
+    		String[] split = line.split(",", 12); //Convert each column to individual attributes
     		if(split[0].equals(header)) //Ignore header
     			continue;
     		
@@ -111,8 +132,23 @@ public class MovieInfoManager2 {
     		String genre = split[9];
     		String runTime = split[10];
     		
+    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));
+    		ArrayList<Review> reviews = new ArrayList<Review>();
+    		int i = 0;
+    		while(i!=reviewStr.size())
+    		{
+    			String[] splitReview = reviewStr.get(i).split("'");
+    			String reviewer = splitReview[0];
+    			String proseReview = splitReview[1];
+    			int ratingReview = Integer.valueOf(splitReview[2]);
+    			Review tempReview = new Review(reviewer,ratingReview,proseReview);
+    			reviews.add(tempReview);
+    			i++;
+    		}
+    		
+    		
     		//Create a movie object
-    		Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime);
+    		Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime,reviews);
     		//And add it to the array list
     		list.add(tempMovie);
     	}
@@ -151,6 +187,8 @@ public class MovieInfoManager2 {
         	String genre = movie.getGenre();
         	String runtime = movie.getrunTime();
         	
+        	ArrayList<Review> review = movie.getReviews();
+        	
         	//And add it to the CSV
         	writer.append(title);
         	writer.append(",");
@@ -180,6 +218,23 @@ public class MovieInfoManager2 {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
+        	
+        	int k=1;
+        	writer.append(review.get(0).getReviewer());
+        	writer.append("'");
+        	writer.append(review.get(0).getProse());
+        	writer.append("'");
+        	writer.append(String.valueOf(review.get(0).getRating()));
+        	while(k!=review.size())
+        	{
+        		writer.append("`");
+        		writer.append(review.get(k).getReviewer());
+        		writer.append("'");
+        		writer.append(review.get(k).getProse());
+            	writer.append("'");
+            	writer.append(String.valueOf(review.get(k).getRating()));
+            	k++;
+        	}
         	writer.append("\n");
         	i++;
     	}
@@ -201,9 +256,11 @@ public class MovieInfoManager2 {
     	return list; //Return list if movie not present
     }
     
-    /*public void updateAverageRating() {
-    	String review = new File("reviewInfo.csv").getAbsolutePath();
+    /*public void updateAverageRating() throws FileNotFoundException, IOException {
+    	MovieInfoManager2 mm = new MovieInfoManager2();
+    	ArrayList<Movie> list = mm.readMovieCSV();
     	int rating = 0;
+    	int i = 0;
     }*/
     
     public void printAll(ArrayList<Movie> list) {
@@ -288,4 +345,21 @@ public class MovieInfoManager2 {
 			}
 		}
 	}
+	
+	/*public static void main (String[] args) throws FileNotFoundException, IOException {
+		MovieInfoManager2 mm = new MovieInfoManager2();
+		ArrayList<String> cast = new ArrayList<String>();
+		cast.add("dude1");
+		cast.add("add2");
+		ArrayList<Review> review = new ArrayList<Review>();
+		Review review1 = new Review("name",5,"i like");
+		Review review2 = new Review("name2",1,"i do not like");
+		review.add(review1);
+		review.add(review2);
+		Movie movie = new Movie("top gun","f14","dude",cast,MovieType.TWOD,AgeRating.PG13,MovieStatus.NOW_SHOWING,0,0,"Action","1H30M",review);
+		mm.addMoviecsv(movie);
+		ArrayList<Movie> list = mm.readMovieCSV();
+		System.out.println(list.get(0).getReviews().get(0).getProse());
+		System.out.println(list.get(0).getReviews().get(0).getReviewer());
+	}*/
 }
