@@ -7,7 +7,7 @@ import database.*;
 import UI.*;
 
 public class LoginUI {
-	public static void execute() {
+	public static void execute() throws FileNotFoundException, IOException, InterruptedException {
 		System.out.println("=====================================================================================\n"+
                            "=====================================================================================\n"+
                            "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
