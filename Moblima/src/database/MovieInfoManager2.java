@@ -201,6 +201,11 @@ public class MovieInfoManager2 {
     	return list; //Return list if movie not present
     }
     
+    /*public void updateAverageRating() {
+    	String review = new File("reviewInfo.csv").getAbsolutePath();
+    	int rating = 0;
+    }*/
+    
     public void printAll(ArrayList<Movie> list) {
     	int i = 0;
     	while(i!=list.size()) {
