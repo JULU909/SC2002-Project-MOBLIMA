@@ -94,7 +94,7 @@ public class MovieInfoManager2 {
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
     		
-    		String split[] = line.split(",", 11); //Convert each column to individual attributes
+    		String[] split = line.split(",", 11); //Convert each column to individual attributes
     		if(split[0].equals(header)) //Ignore header
     			continue;
     		
