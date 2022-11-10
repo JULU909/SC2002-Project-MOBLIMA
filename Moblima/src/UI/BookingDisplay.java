@@ -156,7 +156,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     int choice = 0;
     ArrayList <Seat> bookedSeats = ticket.getSeats();
     int price = ticket.getPrice();
-    User user = ticket.getCustomer();
+    User user = ticket.getUser();
     Showtime bookedShowtime = ticket.getShowtime();
     System.out.println("These are the details of your Booking : ");
     System.out.println("--------------------------------------- ");

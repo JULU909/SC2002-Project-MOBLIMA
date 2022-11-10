@@ -16,10 +16,8 @@ import java.util.Date;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import database.Customer;
 
 public class BookedHistoryUI {
-    private Customer customer;
     Scanner sc = new Scanner(System.in);
 
     public int mainUI(){
@@ -52,7 +50,7 @@ public class BookedHistoryUI {
             noBookings();
         }
         Scanner sc  = new Scanner(System.in);
-        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv",customer);
+        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
 
         
         System.out.println("You have " + userTickets.size() + " tickets purchased : " );
