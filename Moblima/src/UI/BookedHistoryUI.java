@@ -2,8 +2,7 @@ package UI;
 
 import enums.*;
 import system.Cineplex;
-import java.util.ArrayList; // import the ArrayList class
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import system.Seat;
