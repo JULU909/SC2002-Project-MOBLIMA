@@ -24,6 +24,7 @@ import java.lang.reflect.Array;
 
 public class TicketManager {
     private String filename;
+    private Customer customer;
     private ArrayList<Ticket> data;
 
     public TicketManager(String string) {
@@ -41,7 +42,7 @@ public class TicketManager {
         StringBuilder line = new StringBuilder();
         line.append(ticket.getID());
         line.append(',');
-        line.append(ticket.getUser().getUsername());
+        line.append(ticket.getCustomer().getUsername());
         line.append(',');
         line.append(ticket.getShowtime().getCineplex());
         line.append(',');
@@ -141,7 +142,7 @@ public class TicketManager {
                         String cineplex = list.get(2);
                         String movie = list.get(3);
                         Showtime tempShowtime = new Showtime(time, date,cineplex , movie);
-                        Ticket tempTicket = new Ticket(10, bookedSeats , tempShowtime , date );
+                        Ticket tempTicket = new Ticket(customer, 10, bookedSeats , tempShowtime , date );
                         bookedTickets.add(tempTicket);
                     }
 
