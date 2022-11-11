@@ -62,6 +62,8 @@ public ArrayList askSeats(int number){
     ArrayList <Seat> seats = new ArrayList<Seat>();
     System.out.println( "Please Enter your seat numbers (EG : A1) : ");
     System.out.println( "------------------------------------------- ");
+    while (true){
+    try {
     for (int i = 0 ; i < number; i++){
         String seat = sc.nextLine();
         Seat TempSeat = new Seat();
@@ -70,7 +72,12 @@ public ArrayList askSeats(int number){
         TempSeat.Seat(null, null, seat.charAt(0), Integer.valueOf(strNew));
         seats.add(TempSeat);
     }
-    
+        break;}
+    catch (NumberFormatException e){
+        System.out.println("Enter the a proper seat number please!");
+        continue;
+    }
+    }
     return seats;
 }
 

@@ -1,15 +1,11 @@
 package View;
 
 import enums.*;
-import system.Cineplex;
+import model.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import system.Seat;
-import system.Showtime;
-import system.Ticket;
-import database.TicketManager;
-import database.User;
+import entities.*;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -79,7 +75,7 @@ public class BookedHistoryUI {
         
     }
 
-    public  void individualTicketmenu(ArrayList <Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
+    public  void individualTicketmenu(ArrayList <entities.Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
         System.out.println("To view a specific booking further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
         System.out.println("--------------------------------------------------------------------------  " );
         String temp = sc.next();
@@ -160,7 +156,7 @@ public class BookedHistoryUI {
             System.out.println("-------------" );
             System.out.println("Press any key to exit." );
             System.out.println("" );
-            System.out.println("------------------------");1
+            System.out.println("------------------------");
             String input = sc.next();
     }
 

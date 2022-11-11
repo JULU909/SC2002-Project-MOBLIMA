@@ -5,12 +5,13 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
+import entities.Ticket;
 import View.BookedHistoryUI;
 import View.BookingDisplay;
 import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
+import controllers.BookingController;
 import entities.*;
 import enums.AgeGroup;
 import enums.Cinema;
@@ -22,6 +23,7 @@ import model.*;
 
 public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
+        BookingController bookingController = new BookingController();
         do {
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
@@ -74,7 +76,7 @@ public class CustomerMenuUI {
                     break;
 
                 case 3:
-                    purchaseTicket(customer);
+                    bookingController.purchaseTicket(customer);
                     break;
                 case 4:
                     bookingHistory(customer);
