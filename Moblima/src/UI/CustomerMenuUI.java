@@ -131,8 +131,25 @@ public class CustomerMenuUI {
 
     }
 
-    public static void seatDetails() {
+    public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
+        // Connection to the managers and UI
+        BookingDisplay booking = new BookingDisplay();
+        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
+        int showtimesLength = Showtimes.getLength();
+        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
 
+        // Getting user inputs.
+        String cineplex = booking.askCineplex();
+        String[] movies = Showtimes.getMovies(showtimesLength);
+        int movieChoice = booking.askMovie(movies);
+        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex);
+        LocalDate inputDate = booking.askDate();
+        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
+        int showtimeChoice = booking.askTiming(showtimes);
+        Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
+        choosenShowtime.setDate(Integer.valueOf(formattedDate));
+        choosenShowtime.setLayout(); 
+        choosenShowtime.printLayout();
     }
 
     public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException {
