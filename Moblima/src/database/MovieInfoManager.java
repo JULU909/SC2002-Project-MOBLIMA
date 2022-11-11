@@ -257,6 +257,65 @@ public class MovieInfoManager {
     	return list; //Return list if movie not present
     }
     
+    public void updateAverageRating() throws FileNotFoundException, IOException { //Update all movies ratings
+    	ArrayList<Movie> list = readMovieCSV(); //Convert CSV to Array list of movies
+    	int i = 0;
+    	int j = 1;
+    	int totalRating = 0;
+    	double avgRating = 0;
+    	while(i!=list.size())
+    	{
+    		Movie tempMovie = list.get(i); //Go through whole list
+    		ArrayList<Review> listReview = tempMovie.getReviews(); //Pick up all their reviews
+    		while(j<=listReview.size())
+    		{
+    			int rating = listReview.get(j).getRating(); //Read each rating
+    			totalRating+=rating; //Add all the ratings up
+    			j++; //Increment j
+    		}
+    		if(j==0)//If no reviews
+    			avgRating = 0; 
+    		else if(j==1) //If only 1 review
+    			avgRating = totalRating;
+    		else
+    			avgRating = totalRating/(j-1); //If more than 1 review EG. 3 reviews, j will be 4
+    		j=1; //Reset j
+    		tempMovie.setAverageRating(avgRating); //Set that rating in movie
+    		list.set(i, tempMovie); //Set movie with new values
+    		i++;
+    	}
+    	writeMovieCSV(list); //Rewrite into CSV
+    }
+    
+    public void updateAverageRating(String title) throws FileNotFoundException, IOException { //Update movie title's rating
+    	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
+    	int i = findMovieCSV(title,list);//Find position of that movie in array list
+    	Movie tempMovie = list.get(i);//Get that movie
+    	ArrayList<Review> listReview = tempMovie.getReviews(); //Pick up all their reviews
+    	int j = 1;
+    	int totalRating = 0;
+    	while(j<=listReview.size())
+		{
+			int rating = listReview.get(j).getRating(); //Get each rating
+			totalRating+=rating;// And add them up
+			j++;//Increment j
+		}
+    	double avgRating = 0;
+    	if(j==0)//If no reviews
+    		avgRating = 0;
+    	else if(j==1)//If only 1 review
+        	avgRating = totalRating;
+        else
+        	avgRating = totalRating/(j-1); //If more than 1 review
+		j=1;//Reset j
+		tempMovie.setAverageRating(avgRating);//Set that rating in movie
+		list.set(i, tempMovie);//Set movie with new values
+		
+		writeMovieCSV(list);//Rewrite into CSV
+    	
+    	
+    }
+    
     public void printAll(ArrayList<Movie> list) {
     	int i = 0;
     	while(i!=list.size()) {
