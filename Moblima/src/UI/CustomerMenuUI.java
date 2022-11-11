@@ -77,7 +77,7 @@ public class CustomerMenuUI {
                     bookingHistory(customer);
                     break;
                 case 5:
-                    //
+                    CustomerSettingsUI.settingsText(customer);
                     break;
                 case 6:
                     exitDialouge();
