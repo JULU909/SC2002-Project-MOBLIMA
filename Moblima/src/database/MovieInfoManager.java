@@ -37,7 +37,7 @@ public class MovieInfoManager {
     
     public void addMoviecsv(Movie movie) throws FileNotFoundException, IOException{ //Add a movie into CSV
     	//Writer will write into filename, true allows appending
-    	FileWriter writer = new FileWriter(FILENAME,true);
+    	FileWriter writer = new FileWriter(filename,true);
     	
     	//Get each attribute out from movie
     	String title = movie.getTitle();
