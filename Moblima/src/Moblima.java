@@ -161,7 +161,7 @@ public class Moblima {
             Pricing price = new Pricing();
             choosenShowtime.printLayout();
             ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-            Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            Ticket ticket = new Ticket(null, 20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
             int confirmation = booking.confirmTicket(ticket);
             if (confirmation == 1) {
                 System.out.println("Purchase successful!  ");

@@ -147,7 +147,6 @@ public void setLayout() throws IOException{
     ArrayList <Seat> bookedSeats = new ArrayList<>();
     TicketManager n = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
     bookedSeats = n.getAllBookedSeats(cineplex , Integer.toString(time), Integer.toString(date) , movie);
-    System.out.print(bookedSeats);
     for (int i  = 0 ; i < bookedSeats.size() ; i ++){
         int row  = bookedSeats.get(i).getRow();
         int col = bookedSeats.get(i).getCol();

@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import system.*;
 import database.*;
+import enums.AgeGroup;
 import enums.Day;
 import enums.UserType;
 import system.*;
@@ -153,20 +154,34 @@ public class CustomerMenuUI {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
-        int numberSeats = booking.askTickets();
-        
-        Pricing price = new Pricing();
-        choosenShowtime.printLayout();
-        ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        Ticket ticket = new Ticket(customer, 20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+       
+        while (true){
+            int numberSeats = booking.askTickets();
+            
+            choosenShowtime.printLayout();
+            ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
+            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
+           
+            
+            Pricing price = new Pricing();
+            Double cost  = price.getPrice(ages,inputDate);
+            Ticket ticket = new Ticket(customer, cost, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            int confirmation = booking.confirmTicket(ticket);
+            if (confirmation == 1) {
+                System.out.println("Purchase successful!  ");
+                ticketHandle.uploadTicket(ticket);
+                break;
+            } else if (confirmation == 0){
+                continue;
+            }
+            else {
+                Thread.sleep(1000);
+                booking.failExitDialouge();
+                break;
+            }
 
-        int confirmation = booking.confirmTicket(ticket);
-        if (confirmation == 1) {
-            System.out.println("Done! ");
-            ticketHandle.uploadTicket(ticket);
-        } else {
-            return;
         }
+        
 
     }
 
