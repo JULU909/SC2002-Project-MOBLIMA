@@ -73,7 +73,7 @@ public class CustomerMenuUI {
                     purchaseTicket(customer);
                     break;
                 case 4:
-                    bookingHistory();
+                    bookingHistory(customer);
                     break;
                 case 5:
                     //
@@ -170,10 +170,10 @@ public class CustomerMenuUI {
 
     }
 
-    public static void bookingHistory() throws IOException, InterruptedException {
+    public static void bookingHistory(Customer customer) throws IOException, InterruptedException {
         BookedHistoryUI bt = new BookedHistoryUI();
         TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-        ArrayList <Ticket> userTickets = tk.getUserTickets("John");
+        ArrayList <Ticket> userTickets = tk.getUserTickets(customer.getUsername());
         int input  = bt.mainUI();
         switch (input) {
             case 1:
