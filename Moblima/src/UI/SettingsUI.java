@@ -54,7 +54,7 @@ public class SettingsUI {
 			
 			case 2:
 				Movie newMovie = MovieSettings.addMovie(); //Create movie
-				MovieInfoManager2 adder = new MovieInfoManager2();
+				MovieInfoManager adder = new MovieInfoManager();
 				adder.addMoviecsv(newMovie); //Add to movieInfo CSV
 				break;
 			
