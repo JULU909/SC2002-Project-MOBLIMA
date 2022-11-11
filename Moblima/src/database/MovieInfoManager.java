@@ -22,7 +22,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager {
 	private String filename;
 
-    public final static String FILENAME = "Moblima/src/Data/movieInformation2.csv";//new File("movieInformation2.csv").getAbsolutePath();
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();//"Moblima/src/Data/movieInformation2.csv";//
 
 
 
@@ -37,7 +37,7 @@ public class MovieInfoManager {
     
     public void addMoviecsv(Movie movie) throws FileNotFoundException, IOException{ //Add a movie into CSV
     	//Writer will write into filename, true allows appending
-    	FileWriter writer = new FileWriter(filename,true);
+    	FileWriter writer = new FileWriter(FILENAME,true);
     	
     	//Get each attribute out from movie
     	String title = movie.getTitle();
@@ -85,6 +85,12 @@ public class MovieInfoManager {
     	writer.append(",");
 
     	i=1;
+    	if(review.size()==0)
+    	{
+    		writer.append("\n");
+    		return;
+    	}
+    		
     	writer.append(review.get(0).getReviewer());
     	writer.append("'");
     	writer.append(review.get(0).getProse());

@@ -140,5 +140,9 @@ public class StaffSettingsUI {
 		}
 		
 	}
+	public static void main(String[] args) throws FileNotFoundException, IOException
+	{
+		settingsText();
+	}
 
 }
