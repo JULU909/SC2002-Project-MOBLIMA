@@ -40,15 +40,31 @@ public String askCineplex(){
     Scanner sc = new Scanner(System.in);
     CineplexTypes [] list ;
     list = CineplexTypes.values();
+    int choice;
+    while(true){
+    try{
     System.out.println( "Please select cineplex : ");
     System.out.println( "------------------------ ");
     for (int i = 0 ; i < list.length; i++){
         System.out.println(i+1 + " : " + list[i]);
     }
 
-    int choice;
+    
     choice = sc.nextInt();
+    if (choice > list.length || choice <= 0  ){
+        System.out.println("Enter a valid input! ");
+        continue;
+    }
+    }catch (InputMismatchException e){
+    String error = sc.next();
+    System.out.println("Enter a valid input! ");
+    continue;
+    
+    }
     return (list[choice-1]).name();
+
+}
+    
 }
 
 public ArrayList askSeats(int number){
@@ -89,12 +105,19 @@ public int askTickets(){
      */
     Scanner sc = new Scanner(System.in);
     
-    
-    System.out.println( "Please Enter number of seats you wanna book : ");
+    while (true){
+    try {System.out.println( "Please Enter number of seats you wanna book : ");
     System.out.println( "--------------------------------------------- ");
     int choice = 0 ;
     choice = sc.nextInt();
-    return choice;
+    return choice;}
+    catch (InputMismatchException e){
+        System.out.println("Please enter a number!");
+        String error = sc.next();
+        continue;
+    }
+    }
+    
 }
 
 
@@ -110,19 +133,37 @@ public int askMovie(String [] movies){
     int count= 0;
     System.out.println("Please select the number corresponding to a movie : ");
     System.out.println( "-------------------------------------------------- ");
+    while (true){
+        try{
     while(movies[count] != null){
         System.out.println(count+1 + " :  " + movies[count]);
         count++;
     }
     int choice = 0 ;
     choice = sc.nextInt();
+    if (choice <= 0 ||choice > count){
+        System.out.println("Enter a valid input! ");
+        continue;
+    }
     return choice;
+    }catch (InputMismatchException e ) {
+    System.out.println("Enter a valid input! ");
+    String error = sc.next(); // catch the enter;
+    continue;
+    }
+    }
 }
 
 public int askTiming(ArrayList <Showtime>showtimes){
     Scanner sc = new Scanner(System.in);
     int count= 0;
-    System.out.println("Please select the showtime of your liking! : ");
+    if(showtimes.size() == 0){
+        System.out.println( "No showtime for this specific date! ");
+        System.out.println( "------------------------------------------ ");
+        return -1;
+    }
+    while(true){
+    try {System.out.println("Please select the showtime of your liking! : ");
     System.out.println( "------------------------------------------ ");
     for(int i =0 ; i < showtimes.size() ; i++){
         Showtime temp = showtimes.get(i);
@@ -131,7 +172,18 @@ public int askTiming(ArrayList <Showtime>showtimes){
     }
     int choice = 0 ;
     choice = sc.nextInt();
+    if ( choice <=0 ||choice > showtimes.size()){
+        System.out.println("Enter a valid input! ");
+
+        continue;
+    }
     return choice;
+    }catch (InputMismatchException e ) {
+        System.out.println("Enter a valid input! ");
+        String error = sc.next(); // catch the enter;
+        continue;
+        }
+    }
 }
 
 public LocalDate askDate(){
@@ -141,7 +193,8 @@ public LocalDate askDate(){
         LocalDate [] bookingDates = new LocalDate[7];
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
         DateTimeFormatter dayFormatters = DateTimeFormatter.ofPattern("EEEE");
-        System.out.println("Please select the Date of your liking! : ");
+        while(true){
+        try {System.out.println("Please select the Date of your liking! : ");
         System.out.println( "--------------------------------------- ");
         for (int i = 0 ; i <7 ; i ++){
             bookingDates[i] = LocalDate.now().plusDays(i);
@@ -150,13 +203,26 @@ public LocalDate askDate(){
             System.out.println((i+1)+ " : "+ modifiedDate + " " + day);
             
         }
+
+        int choice = sc.nextInt();
+        if(choice <= 0 || choice >= 8){
+            System.out.println("Enter a valid input! ");
+            continue;
+        }
+        return  bookingDates[choice-1];
+        }catch (InputMismatchException e ) {
+            System.out.println("Enter a valid input! ");
+            String error = sc.next(); // catch the enter;
+            continue;
+            }
+
+    }
         
         
        
         
 
-		int choice = sc.nextInt();
-        return  bookingDates[choice-1];
+		
 		
 }
 
