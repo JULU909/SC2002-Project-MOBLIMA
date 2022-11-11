@@ -19,6 +19,7 @@ import java.util.Arrays;
 import system.*;
 import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.text.ParseException;
 
 
 
@@ -33,7 +34,7 @@ public class TicketManager {
 
     
 
-    public void uploadTicket(Ticket ticket) throws IOException{
+    public void uploadTicket(Ticket ticket) throws IOException, ParseException{
         
         FileWriter fileWriter = new FileWriter("Moblima/src/Data/TicketsBooked.csv",true);
 

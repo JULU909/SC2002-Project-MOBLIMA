@@ -7,6 +7,7 @@ import UI.LoginUI;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -21,7 +22,7 @@ import enums.UserType;
 import system.*;
 
 public class CustomerMenuUI {
-    public static void execute(Customer customer) throws IOException, InterruptedException {
+    public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         do {
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
@@ -156,7 +157,7 @@ public class CustomerMenuUI {
         choosenShowtime.printLayout();
     }
 
-    public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException {
+    public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");

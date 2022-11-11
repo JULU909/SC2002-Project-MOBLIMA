@@ -4,11 +4,12 @@ import java.util.Scanner;
 import database.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class CustomerLoginUI {
     public String filepath = "Moblima/src/Data/Customers.csv";
 
-	public static void execute() throws FileNotFoundException, IOException, InterruptedException {
+	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Login to Customer Cinema database----");
 		System.out.println("Enter username: ");
