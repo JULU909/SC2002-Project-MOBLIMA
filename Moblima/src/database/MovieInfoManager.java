@@ -174,7 +174,8 @@ public class MovieInfoManager {
 
 	public static int fuzzyMatching(String user_inputed, String lmaoArr_indexString){
 		//debug : System.out.printf("%d",getLevenshteinDistance(user_inputed, lmaoArr_indexString));
-		if(getLevenshteinDistance(user_inputed, lmaoArr_indexString) <3){
+		if(getLevenshteinDistance(user_inputed, lmaoArr_indexString) <5){
+			System.out.println("You may have a typo in your input, however, we found the closest Movie match:");
 			return 1;
 		}
 		else{
