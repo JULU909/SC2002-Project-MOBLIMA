@@ -20,8 +20,8 @@ public class RegisterStaff {
 	}
 	
 	public static void addStaffCSV(Staff newStaff) throws IOException {
-		String StaffPath = new File("Staff.csv").getAbsolutePath();
-		FileWriter writer = new FileWriter(StaffPath,true); //Append to Staff.csv
+		//String StaffPath = new File("Moblima/src/Data/Staff.csv");
+		FileWriter writer = new FileWriter("Moblima/src/Data/Staff.csv",true); //Append to Staff.csv
 		String username = newStaff.getUsername(); //Convert to individual attributes
 		String password = newStaff.getPassword();
 		

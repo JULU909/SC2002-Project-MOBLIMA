@@ -12,6 +12,7 @@ public class Showtime {
     private String cineplex;
     private Seat [][] layout;
     private String movie;
+    private String cinemaType;
 
 
 
@@ -46,6 +47,13 @@ public Showtime(int time, int date, String cineplex , String movie){
 }
 }
 
+public void setCinemaType(String type){
+    this.cinemaType = type;
+}
+
+public String getCinemaType(String type){
+    return this.cinemaType;
+}
 
 public void printLayout(){
     int characters = 'A';        

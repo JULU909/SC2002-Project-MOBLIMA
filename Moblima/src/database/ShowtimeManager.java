@@ -166,7 +166,7 @@ public class ShowtimeManager {
     	String header = "Cineplex";
     	while ((line = br.readLine()) != null) {
     		
-    		String split[] = line.split(",", 4); //convert each column to individual attributes
+    		String split[] = line.split(",", 5); //convert each column to individual attributes
     		if(split[0].equals(header)) //ignore header
     			continue;
     		
@@ -174,7 +174,9 @@ public class ShowtimeManager {
     		int time = Integer.parseInt(split[1]);
     		int date = Integer.parseInt(split[2]);
     		String movie = split[3];
+            String type = split[4];
     		Showtime tempTime = new Showtime (time,date,cineplex,movie); //create show time object with each attribute
+            tempTime.setCinemaType(type);
     		showtimes.add(tempTime); //And add show time to array list
     	}
     	

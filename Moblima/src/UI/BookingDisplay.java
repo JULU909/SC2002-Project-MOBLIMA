@@ -8,7 +8,7 @@ import java.util.Scanner;
 import system.Seat;
 import system.Showtime;
 import system.Ticket;
-import database.User;
+import database.Customer;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -116,7 +116,7 @@ public int askTiming(ArrayList <Showtime>showtimes){
     System.out.println( "------------------------------------------ ");
     for(int i =0 ; i < showtimes.size() ; i++){
         Showtime temp = showtimes.get(i);
-        System.out.println(i+1 + " :  " + temp.getTime());
+        System.out.println(i+1 + " :  " + temp.getTime() + " " + temp.getCinemaType(null) );
         count++;
     }
     int choice = 0 ;
@@ -157,7 +157,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     int choice = 0;
     ArrayList <Seat> bookedSeats = ticket.getSeats();
     int price = ticket.getPrice();
-    User user = ticket.getUser();
+    Customer customer = ticket.getCustomer();
     Showtime bookedShowtime = ticket.getShowtime();
     System.out.println("These are the details of your Booking : ");
     System.out.println("--------------------------------------- ");
@@ -172,7 +172,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     }
 
     System.out.println("Ticked ID       : " + ticket.getID());
-    System.out.println("User            : " + user.getUsername());
+    System.out.println("User            : " + customer.getUsername());
     
     System.out.println("Confirmation dialouge : ");
     System.out.println("------------------------");
