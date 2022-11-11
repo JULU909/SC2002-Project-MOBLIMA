@@ -156,7 +156,12 @@ public void setLayout() throws IOException{
         int row  = bookedSeats.get(i).getRow();
         int col = bookedSeats.get(i).getCol();
    
-
+        if ((col)>= 7){
+            col +=1;
+        }
+        if ((col)>= 25){
+            col +=2;
+        }
         this.layout[row-65][col-1].setOccupied();
     }
    
@@ -167,6 +172,12 @@ public void setLayout() throws IOException{
 
 
 public SeatStatus getSeatStatus(int row , int col ){
+    if ((row)>= 7){
+        row +=1;
+    }
+    if ((row)>= 25){
+        row +=2;
+    }
     return this.layout[col-65][row-1].getSeatStatus();
 }
 
@@ -206,11 +217,24 @@ public String getShowTimeDetails(){
     return String.format("Time: %s\nDate: %s\nCineplex: %s\nMovie Title: %s\n ", time, date, cineplex, movie);
 }
 
-public SeatTypes getSeatType(int row , int col ){
-    return this.layout[col-65][row-1].getSeatType();
+public SeatTypes getSeatType(int col , int row ){
+    return this.layout[row-65][col-1].getSeatType();
 }
 
 public String returnTitle(){
     return String.format("Movie: %s",movie);
+}
+
+public int validSeat(int row , int col){
+    if (row >  11 || row < 0){
+        return -1;
+    }
+    else if (col-65 > 32 || col-65 < 0){
+        return -1;
+    }
+    else if(this.layout[row-65][col-1].getSeatStatus() == SeatStatus.EMPTY){
+        return -1;
+    }
+    return 1;
 }
 }
