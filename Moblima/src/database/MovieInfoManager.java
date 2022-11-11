@@ -163,7 +163,6 @@ public class MovieInfoManager {
     	while(i!=list.size()) {
     		if(list.get(i).getTitle().equals(title)) //Match title
     			return i; //Return position
-    		i++;
 
 			if(fuzzyMatching(title,list.get(i).getTitle()) == 1){
 				return i;
