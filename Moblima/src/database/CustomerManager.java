@@ -64,6 +64,20 @@ public class CustomerManager {
         return false;
     } 
 
+    public static void removeCustomerCSV(String username) throws FileNotFoundException, IOException {
+        ArrayList<Customer> database = getDataAll();
+        int i=0;
+        for (Customer c : database){
+            if(c.getUsername().equals(username)){
+                break;
+            }
+            i++;
+        }
+        if (i == database.size()) return;
+        database.remove(i);
+        writeCustomerCSV(database);
+    } 
+
     public static Customer findCustomer(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -82,7 +96,38 @@ public class CustomerManager {
         return false;
     } 
 
-    public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException{ //Add a movie into CSV
+    public static void writeCustomerCSV(ArrayList<Customer> database) throws FileNotFoundException, IOException { //Add a movie into CSV
+    	//Writer will write into filename, true allows appending
+    	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",false);
+    	
+        for (Customer customer : database){
+            //Get each attribute out from customer
+            String username = customer.getUsername();
+            String mobileNumber = customer.getmobileNumber();
+            String email = customer.getEmailAddress();
+            int age = customer.getAge();
+            String password = customer.getPassword();
+
+            //Write them all into CSV
+            writer.append(username);
+            writer.append(",");
+            writer.append(password);
+            writer.append(",");
+            writer.append(String.valueOf(age));
+            writer.append(",");
+            writer.append(mobileNumber);
+            writer.append(",");
+            writer.append(email);
+            writer.append("\n");
+        }
+    	
+    	//cleanup
+    	writer.flush();
+    	writer.close();
+    }
+
+
+    public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",true);
     	
@@ -109,6 +154,5 @@ public class CustomerManager {
     	//cleanup
     	writer.flush();
     	writer.close();
-    	
     }
 }

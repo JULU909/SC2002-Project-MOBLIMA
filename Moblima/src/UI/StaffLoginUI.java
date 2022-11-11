@@ -24,7 +24,7 @@ public class StaffLoginUI {
         if (StaffManager.validateStaff(username, password, database)){
             System.out.println("Login success!");
             try {
-                SettingsUI.settingsText();
+                StaffSettingsUI.settingsText();
             } catch (Exception e) {System.out.println("Error! Database not found!");}
             
             
