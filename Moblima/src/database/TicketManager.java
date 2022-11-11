@@ -58,6 +58,8 @@ public class TicketManager {
             line.append(ticket.getSeats().get(i).getRow() );
         }
         line.append(',');
+        line.append(ticket.getPrice());
+        line.append(',');
         bufferWrt.write(line.toString());
         bufferWrt.close();
     }

@@ -16,7 +16,9 @@ public class Seat {
     private int row;
     private int col;
 
-
+    public void setOccupied(){
+        this.seatStatus = seatStatus.OCCUPIED;
+    }
 
 
     public void Seat(SeatTypes seatType,SeatStatus seatStatus, int row , int col){

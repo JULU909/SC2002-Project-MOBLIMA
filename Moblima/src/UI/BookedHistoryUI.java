@@ -35,6 +35,8 @@ public class BookedHistoryUI {
         System.out.println( "1 : List all previous bookings ");
         System.out.println( "2 : Search based on TicketID   ");
         System.out.println( "3 : Search based on Movie name ");
+        System.out.println( "4 : Exit ");
+
         int userInput = sc.nextInt();
         return userInput;
     }
@@ -65,7 +67,9 @@ public class BookedHistoryUI {
             System.out.println("Movie date      : " + userTickets.get(i).getShowtime().getTime() );
             System.out.println("Movie Time      : " + userTickets.get(i).getDate() );
             System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
+            
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
+            System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
             System.out.println("-------------" );
 
 
@@ -89,7 +93,7 @@ public class BookedHistoryUI {
 
     public void noBookings(){
         System.out.println("You have yet to make a Booking with us !. Press any key to Exit" );
-        System.out.println("System will exit to home page on default in 10 Seconds. " );
+        System.out.println("" );
         System.out.println("----------------------------------------------------------------");
         long start = System.currentTimeMillis();
         long end = start + 10 * 1000;
@@ -126,21 +130,18 @@ public class BookedHistoryUI {
         System.out.println("---------------" );
 
 
-        System.out.println("Total Price : " + userTickets.get(i).getPrice()+ "$");
+        System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );;
 
 
     }
 
     public  String getTicketID() throws IOException, InterruptedException{
 
-        System.out.println("Please enter your Ticket ID :     {Press 0 to go back}" );
+        System.out.println("Please enter your Ticket ID :     " );
        
-        System.out.println("--------------------------------------------------------");
+        System.out.println("-----------------------------");
         String input = sc.next();
-        if (input.equals("0")){
-            return "n";
-        }
-        else  return input;
+        return input;
 
     }
 
@@ -154,8 +155,40 @@ public class BookedHistoryUI {
             System.out.println("Movie date      : " + userTickets.get(i).getShowtime().getTime() );
             System.out.println("Movie Time      : " + userTickets.get(i).getDate() );
             System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
+            System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
             System.out.println("-------------" );
+    }
+
+    public  void printByTicketID(String idString ,ArrayList <Ticket> userTickets) throws InterruptedException{
+        int check = 0;
+        for (int i = 0 ; i < userTickets.size(); i++){
+            Ticket temp = userTickets.get(i);
+            if (temp.getID().equals(idString)){
+                System.out.println( );
+                System.out.println("Ticket ID       : " + userTickets.get(i).getID() );
+                System.out.println("Cineplex        : " + userTickets.get(i).getShowtime().getCineplex() );
+                System.out.println("Movie date      : " + userTickets.get(i).getShowtime().getTime() );
+                System.out.println("Movie Time      : " + userTickets.get(i).getDate() );
+                System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
+                System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
+                System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
+                System.out.println("-------------" );
+                check =1;
+                break;
+            }
+
+
+        }
+
+        if (check == 0){
+            System.out.println("No such booking exists. Will exit to previous menu" );
+            System.out.println("" );
+            System.out.println("----------------------------------------------------------------");
+            Thread.sleep(1000);
+            return;
+        }
+
     }
 
 }
