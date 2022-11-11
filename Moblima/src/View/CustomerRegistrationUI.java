@@ -19,7 +19,7 @@ public class CustomerRegistrationUI {
           
 
         do {
-            System.out.println("Enter username: ");
+            System.out.println("Enter username (username is final and cannot be changed later!): ");
             username = sc.nextLine();
             if (username.isEmpty() || username.equals(" ")) { 
                 System.out.println("Invalid input!");
