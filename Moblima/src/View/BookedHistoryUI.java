@@ -149,7 +149,7 @@ public class BookedHistoryUI {
             System.out.println("Ticket ID       : " + userTickets.get(i).getID() );
             System.out.println("Cineplex        : " + userTickets.get(i).getShowtime().getCineplex() );
             System.out.println("Movie date      : " + userTickets.get(i).getShowtime().getTime() );
-            System.out.println("Movie Time      : " + userTickets.get(i).getDate(). );
+            System.out.println("Movie Time      : " + userTickets.get(i).getDate() );
             System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
             System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );

@@ -7,7 +7,6 @@ import java.util.ArrayList; // import the ArrayList class
 import java.util.Arrays;
 import java.util.Scanner;
 
-import entities.Cineplex;
 import entities.Seat;
 import entities.Showtime;
 import entities.Ticket;
