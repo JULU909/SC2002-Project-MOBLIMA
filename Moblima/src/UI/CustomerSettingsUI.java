@@ -3,6 +3,7 @@ import java.io.File;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,14 +11,13 @@ import database.Customer;
 import database.CustomerManager;
 
 public class CustomerSettingsUI {
-	public static void settingsText(Customer customer) throws FileNotFoundException, IOException, InterruptedException {
+	public static void settingsText(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
 		
 		Scanner sc = new Scanner(System.in);
 		String customerpath = new File("Customers.csv").getAbsolutePath();
-		ArrayList<Customer> database = new ArrayList<Customer>(); 
 		
-		while(choice<9) {
+		while(choice<5) {
 			System.out.println("1) Update password.");
 			System.out.println("2) Update email address.");
 			System.out.println("3) Update phone number.");

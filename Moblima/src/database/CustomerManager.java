@@ -99,7 +99,7 @@ public class CustomerManager {
     public static void writeCustomerCSV(ArrayList<Customer> database) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",false);
-    	
+    	writer.append("username,password,age,mobile number,email address\n");
         for (Customer customer : database){
             //Get each attribute out from customer
             String username = customer.getUsername();
