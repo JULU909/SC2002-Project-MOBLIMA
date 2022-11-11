@@ -88,6 +88,10 @@ public class MovieInfoManager {
     	if(review.size()==0)
     	{
     		writer.append("\n");
+        	
+    		//cleanup
+        	writer.flush();
+        	writer.close();
     		return;
     	}
     		
