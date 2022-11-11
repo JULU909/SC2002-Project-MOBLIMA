@@ -56,9 +56,9 @@ public class MovieInfoManager {
     	
     	//Write them all into CSV
     	writer.append(title);
-    	writer.append(",");
+    	writer.append(",``");
     	writer.append(synopsis);
-    	writer.append(",");
+    	writer.append("``,");
     	writer.append(director);
     	writer.append(",");
     	
@@ -125,27 +125,25 @@ public class MovieInfoManager {
     	String line;
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
-    		
-    		String split[] = line.split(",", 12); //Convert each column to individual attributes
-    		if(split[0].equals(header)) //Ignore header
-    			continue;
-    		
-    		String title = split[0];
-    		String synopsis = split[1];
-    		String director = split[2];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'"))); //' splits between different cast members
+    		String split[] = line.split("``", 0); //Convert each column to individual attributes
+			if(split[0].equals(header)) continue; //Ignore header
+			String title = split[0].split(",")[0];
+			String synopsis = split[1];
+    		split = split[2].split(",", 0); //Convert each column to individual attributes
+    		String director = split[1];
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[2].split("'"))); //' splits between different cast members
 
-    		MovieType type = MovieType.valueOf(split[4]);
-    		AgeRating ageRating = AgeRating.valueOf(split[5]);
-    		MovieStatus status = MovieStatus.valueOf(split[6]);
-    		int totalSales = Integer.parseInt(split[7]);
-    		double averageRating = Double.parseDouble(split[8]);
-    		String genre = split[9];
-    		String runTime = split[10];
+    		MovieType type = MovieType.valueOf(split[3]);
+    		AgeRating ageRating = AgeRating.valueOf(split[4]);
+    		MovieStatus status = MovieStatus.valueOf(split[5]);
+    		int totalSales = Integer.parseInt(split[6]);
+    		double averageRating = Double.parseDouble(split[7]);
+    		String genre = split[8];
+    		String runTime = split[9];
     		int size = split.length;
-    		if(size<12) //If no reviews written, split[11] will not exist
+    		if(size<11) //If no reviews written, split[11] will not exist
     			return list;
-    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
+    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[10].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		
     		int i = 0;
