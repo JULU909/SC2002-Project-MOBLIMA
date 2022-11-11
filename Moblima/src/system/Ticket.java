@@ -1,6 +1,10 @@
 package system;
 import enums.*;
+
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+
 import system.Showtime;
 import database.Customer;
 
@@ -43,8 +47,8 @@ public class Ticket {
 
     public String getID(){
         Seat mainSeat = seats.get(0);
-        
-        String ID = Integer.toString(mainSeat.getCol()) + Integer.toString(mainSeat.getRow()) +  Integer.toString(showtime.getTime()) +   Integer.toString(date) ;
+        String d = Integer.toString(date) ;
+        String ID = Integer.toString(mainSeat.getCol()) + Integer.toString(mainSeat.getRow()) +     "2022" + d.substring(0, 2)  + d.substring(2, 4) +  Integer.toString(showtime.getTime());
         return ID;
     
         

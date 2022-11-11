@@ -8,6 +8,7 @@ import UI.LoginUI;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -19,7 +20,7 @@ import system.*;
 
 public class Moblima2 {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
+    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException {
         
         LoginUI.execute();
     } 
