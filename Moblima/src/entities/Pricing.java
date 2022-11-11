@@ -14,15 +14,9 @@ import enums.SeatTypes;
 import model.*;
 
 public class Pricing {
-<<<<<<< HEAD
     public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate ,ArrayList <Seat> userSeats,
     Showtime choosenShowtime) throws FileNotFoundException, IOException{
         double basedPrice = 7;
-=======
-	private static double basedPrice = 7;
-    public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate) throws FileNotFoundException, IOException{
-        
->>>>>>> c27dc80e0f2582e9f7983d10e14bcbf6b8bd1b04
         double totalPrice = 0;
         DayOfWeek day = DayOfWeek.of(inputDate.get(ChronoField.DAY_OF_WEEK));
         HolidayManager hm = new HolidayManager();
