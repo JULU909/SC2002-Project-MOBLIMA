@@ -13,8 +13,9 @@ import enums.AgeGroup;
 import model.*;
 
 public class Pricing {
+	private static double basedPrice = 7;
     public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate) throws FileNotFoundException, IOException{
-        double basedPrice = 7;
+        
         double totalPrice = 0;
         DayOfWeek day = DayOfWeek.of(inputDate.get(ChronoField.DAY_OF_WEEK));
         HolidayManager hm = new HolidayManager();
@@ -22,7 +23,7 @@ public class Pricing {
 
         //Checking if weekend or holiday
         if (day == DayOfWeek.SUNDAY || day == DayOfWeek.SATURDAY || day == DayOfWeek.FRIDAY || holidayDataList.contains(inputDate)) {
-            basedPrice += 3.5;
+            this.basedPrice += 3.5;
         }
         totalPrice = basedPrice * ageGroups.size();
         
@@ -34,4 +35,13 @@ public class Pricing {
         }
         return totalPrice;
     }
+    
+    public double getBasedPrice() {
+    	return this.basedPrice;
+    }
+    
+    public void setBasedPrice(double basedPrice) {
+    	this.basedPrice = basedPrice;
+    }
+
 }
