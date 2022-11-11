@@ -78,9 +78,15 @@ public class StaffSettingsUI {
 				break;
 			
 			case 4: 
-				String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
 				movieList = mm.readMovieCSV(); //Convert CSV to array list
-				int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
+				System.out.println("Current movies: ");
+				int k = 0;
+				while(k!=movieList.size())
+				{
+					System.out.println("- " + movieList.get(k).getTitle()); //Show all movies in database
+				}
+				String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
+				k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
 				if(k == -1) //If it does not exist
 				{
 					System.out.println("Movie does not exist! Exiting...");
@@ -140,9 +146,6 @@ public class StaffSettingsUI {
 		}
 		
 	}
-	/*public static void main(String[] args) throws FileNotFoundException, IOException
-	{
-		settingsText();
-	}*/
+
 
 }
