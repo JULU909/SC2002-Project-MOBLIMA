@@ -1,19 +1,18 @@
-import UI.BookedHistoryUI;
-import UI.BookingDisplay;
-import UI.SearchMovieUI;
-import UI.StaffLoginUI;
-import UI.LoginUI;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import system.*;
-import database.*;
+
+import View.BookedHistoryUI;
+import View.BookingDisplay;
+import View.LoginUI;
+import View.SearchMovieUI;
+import View.StaffLoginUI;
+import entities.*;
 import enums.Day;
 import enums.UserType;
-import system.*;
+import model.*;
 
 public class Moblima {
 
