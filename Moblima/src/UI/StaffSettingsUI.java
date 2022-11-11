@@ -29,7 +29,7 @@ public class StaffSettingsUI {
 		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
 		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		
-		while(choice<9) {
+		while(choice<11) {
 			System.out.println("1) Set day.");
 			System.out.println("2) Add movie.");
 			System.out.println("3) Update movie.");
@@ -38,7 +38,9 @@ public class StaffSettingsUI {
 			System.out.println("6) Edit show time.");
 			System.out.println("7) Remove show time.");
 			System.out.println("8) Register Staff.");
-			System.out.println("9) Exit.");
+			System.out.println("9) Display top 5 by total sales");
+			System.out.println("10) Display top 5 by ratings");
+			System.out.println("11) Exit.");
 
 			try {
 				choice = sc.nextInt();
@@ -120,7 +122,15 @@ public class StaffSettingsUI {
 				RegisterStaff.addStaffCSV(newStaff);
 				System.out.println("Staff member " + newStaff.getUsername() + " added to database.");
 				break;
+				
 			case 9:
+				mm.rankByRatings(true);
+				break;
+			case 10:
+				mm.rankByRatings(false);
+				break;
+
+			case 11:
 				System.out.println("Exiting settings...");
 				return;
 			default:
