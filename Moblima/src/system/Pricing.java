@@ -32,7 +32,6 @@ public class Pricing {
                 totalPrice -= 2;
             }   
         }
-        System.out.println(totalPrice);
         return totalPrice;
     }
 }

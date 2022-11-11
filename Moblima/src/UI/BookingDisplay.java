@@ -117,7 +117,7 @@ public int askTiming(ArrayList <Showtime>showtimes){
     System.out.println( "------------------------------------------ ");
     for(int i =0 ; i < showtimes.size() ; i++){
         Showtime temp = showtimes.get(i);
-        System.out.println(i+1 + " :  " + temp.getTime() + " " + temp.getCinemaType(null) );
+        System.out.println(i+1 + " :  " + temp.getTime() + " " + temp.getCinemaType() );
         count++;
     }
     int choice = 0 ;

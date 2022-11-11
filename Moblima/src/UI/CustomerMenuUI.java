@@ -13,7 +13,9 @@ import java.util.*;
 import system.*;
 import database.*;
 import enums.AgeGroup;
+import enums.Cinema;
 import enums.Day;
+import enums.SeatTypes;
 import enums.UserType;
 import system.*;
 
@@ -171,18 +173,31 @@ public class CustomerMenuUI {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
+
        
         while (true){
             int numberSeats = booking.askTickets();
-            
             choosenShowtime.printLayout();
             ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
             ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
-           
+            double temp = 0;
+            for (int i = 0 ; i <userSeats.size(); i++){
+               SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
+               if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
+                temp+=0.5;
+
+               }
+            }
+            if(choosenShowtime.getCinemaType().equals("GOLD")){
+                temp+=0.5;
+            }
+            else if (choosenShowtime.getCinemaType().equals("PREMIUM")){
+                temp+=1;
+            }
             
             Pricing price = new Pricing();
             Double cost  = price.getPrice(ages,inputDate);
-            Ticket ticket = new Ticket(customer, cost, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            Ticket ticket = new Ticket(customer, (cost+temp), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
             int confirmation = booking.confirmTicket(ticket);
             if (confirmation == 1) {
                 System.out.println("Purchase successful!  ");
@@ -206,16 +221,33 @@ public class CustomerMenuUI {
         BookedHistoryUI bt = new BookedHistoryUI();
         TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
         ArrayList <Ticket> userTickets = tk.getUserTickets(customer.getUsername());
+        while (true){
         int input  = bt.mainUI();
         switch (input) {
             case 1:
                 bt.printAllTickets(userTickets);
                 bt.individualTicketmenu(userTickets);
                 break;
+            case 2: 
+                String id = bt.getTicketID();
+                bt.printByTicketID(id, userTickets);
+                break;
+            case 3 :
+                break;
+            
+            case 4: 
+                return;
+
+            default : 
+                Thread.sleep(1000);
+                System.out.println("Enter a number within the options");
+                Thread.sleep(1000);
+                break;
+                
 
 
         }
-
+        }
     }
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {

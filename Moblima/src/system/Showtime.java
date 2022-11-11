@@ -51,7 +51,7 @@ public void setCinemaType(String type){
     this.cinemaType = type;
 }
 
-public String getCinemaType(String type){
+public String getCinemaType(){
     return this.cinemaType;
 }
 
@@ -152,7 +152,7 @@ public void setLayout() throws IOException{
         int col = bookedSeats.get(i).getCol();
    
 
-        this.layout[row-65][col-1].Seat(SeatTypes.SINGLE, SeatStatus.OCCUPIED, row, col);
+        this.layout[row-65][col-1].setOccupied();
     }
    
 }
@@ -200,6 +200,10 @@ public void setCineplex(String cineplex) {
 
 public String getShowTimeDetails(){
     return String.format("Time: %s\nDate: %s\nCineplex: %s\nMovie Title: %s\n ", time, date, cineplex, movie);
+}
+
+public SeatTypes getSeatType(int row , int col ){
+    return this.layout[col-65][row-1].getSeatType();
 }
 
 public String returnTitle(){
