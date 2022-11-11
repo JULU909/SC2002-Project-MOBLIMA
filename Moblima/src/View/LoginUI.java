@@ -22,14 +22,14 @@ public class LoginUI {
 			System.out.println("2. CUSTOMER Registration");
 			System.out.println("3. STAFF Login");
 			System.out.println("4. Exit Moblima");
-//			try {
+			try {
 				System.out.print("\nWhat is your choice:  ");
 				choice = sc.nextInt(); sc.nextLine();	
 				if (choice >=1 && choice <=4) break;
-//				else throw new Exception();
-//			} catch (Exception e) {
-//					System.out.println("Please enter a valid option");
-//			}
+				else throw new Exception();
+			} catch (Exception e) {
+					System.out.println("Please enter a valid option");
+			}
 		} while (choice <1 || choice >4);
 			
 			switch (choice) {

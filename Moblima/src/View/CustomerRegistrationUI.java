@@ -60,8 +60,8 @@ public class CustomerRegistrationUI {
         do {
             System.out.println("Enter email: ");
             email = sc.nextLine();
-            if (email.isEmpty() || email.equals(" ")) { 
-                System.out.println("Invalid input!");
+            if (email.isEmpty() || email.equals(" ") || (email.contains("@") == false)) { 
+                System.out.println("Invalid email address!");
             }
             else break;      
         } while (true);
