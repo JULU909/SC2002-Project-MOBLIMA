@@ -12,6 +12,7 @@ import database.Customer;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -156,7 +157,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     Scanner sc = new Scanner(System.in);
     int choice = 0;
     ArrayList <Seat> bookedSeats = ticket.getSeats();
-    int price = ticket.getPrice();
+    Double price = ticket.getPrice();
     Customer customer = ticket.getCustomer();
     Showtime bookedShowtime = ticket.getShowtime();
     System.out.println("These are the details of your Booking : ");
@@ -164,6 +165,7 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     Thread.sleep(1000);
     System.out.println("Show time booked : " + bookedShowtime.getTime());
     System.out.println("Date booked      : " + ticket.getDate());
+    System.out.println("Total cost       : " + ticket.getPrice());
     System.out.println("Number of seats  : " + bookedSeats.size());
     Thread.sleep(1000);
     System.out.println();
@@ -192,20 +194,35 @@ public static void successExitDialouge() {
 
 }
 
-public static void getAges(int numSeats) {
+public static ArrayList <AgeGroup> getAges(int numSeats) {
+    ArrayList ages= new ArrayList<AgeGroup>();
     System.out.println("Enter number of movie Viewers per age group : ");
     System.out.println("----------------------------------------------");
     System.out.println("");
     while(true){
+    try{
+    ages = new ArrayList<AgeGroup>();
     System.out.println("Child : ");
     Scanner sc = new Scanner(System.in);
     int count = 0; 
-    count+= sc.nextInt();
+    int answer  = sc.nextInt();
+    count+= answer;
+    for (int i = 0 ; i < answer; i++){
+        ages.add(AgeGroup.CHILD);
+    }
     System.out.println("Adult : ");
-    count+= sc.nextInt();
+    answer  = sc.nextInt();
+    count+= answer;
+    for (int i = 0 ; i < answer; i++){
+        ages.add(AgeGroup.ADULT);
+    }
     System.out.println("Senior : ");
-    count+= sc.nextInt();
-    if (count == numSeats){
+    answer  = sc.nextInt();
+    count+= answer;
+    for (int i = 0 ; i < answer; i++){
+        ages.add(AgeGroup.SENIOR);
+    }
+    if (count != numSeats){
         System.out.println("The sum of moviegoers doesnt add up ! re-enter your values : ");
 
     }
@@ -213,7 +230,11 @@ public static void getAges(int numSeats) {
         break;
     }
     }
-
+    catch(InputMismatchException e){
+        System.out.println("That is not an integer, please try again." );
+    }
+    }
+    return ages;
 }
 
 

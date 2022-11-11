@@ -17,12 +17,12 @@ public class Ticket {
     
     private ArrayList <Seat> seats;
     private Showtime showtime;
-    private int price;
+    private double price;
     private int date;
     private Customer customer;
     private int ticketID;
-    public Ticket(Customer customer, int price, ArrayList <Seat> seats , Showtime showtime , int date ){
-        this.price = price;
+    public Ticket(Customer customer, Double cost, ArrayList <Seat> seats , Showtime showtime , int date ){
+        this.price = cost;
         this.showtime = showtime;
         this.seats = seats;
         this.date = date;
@@ -33,7 +33,7 @@ public class Ticket {
         return this.seats;
     }
 
-    public int getPrice(){
+    public Double getPrice(){
         return this.price;
     }
     
