@@ -48,7 +48,11 @@ public class Ticket {
     public String getID(){
         Seat mainSeat = seats.get(0);
         String d = Integer.toString(date) ;
-        String ID = Integer.toString(mainSeat.getCol()) + Integer.toString(mainSeat.getRow()) +     "2022" + d.substring(0, 2)  + d.substring(2, 4) +  Integer.toString(showtime.getTime());
+        String column = Integer.toString(mainSeat.getCol());
+        if (Integer.toString(mainSeat.getCol()).length() ==1 ){
+             column = "0" + Integer.toString(mainSeat.getCol());
+        }
+        String ID = column + Integer.toString(mainSeat.getRow()) +     "2022" + d.substring(0, 2)  + d.substring(2, 4) +  Integer.toString(showtime.getTime());
         return ID;
     
         
