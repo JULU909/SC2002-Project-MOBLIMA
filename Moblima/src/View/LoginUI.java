@@ -46,6 +46,5 @@ public class LoginUI {
 					System.out.println("Thank you for using MOBLIMA. Exiting...");
 					break;
 			}
-		sc.close();
 	}
 }

@@ -1,13 +1,12 @@
 package View;
-import java.io.File;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import entities.DaySettings;
 import entities.MovieSettings;
+import entities.Pricing;
 import entities.RegisterStaff;
 import entities.Showtime;
 import entities.ShowtimeSettings;
@@ -30,7 +29,7 @@ public class StaffSettingsUI {
 		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		
 		while(choice<11) {
-			System.out.println("1) Set day.");
+			System.out.println("1) Set ticket base price.");
 			System.out.println("2) Add movie.");
 			System.out.println("3) Update movie.");
 			System.out.println("4) Remove movie.");
@@ -50,8 +49,12 @@ public class StaffSettingsUI {
 			
 			switch(choice) {
 			case 1:
-				enums.Day day = DaySettings.setDay();
-				System.out.println("Day set to " + day); 
+				Pricing price = new Pricing();
+				System.out.println("Current base price is " + price.getBasedPrice());
+				System.out.println("Enter new base price ");
+				double basedPrice = sc.nextDouble();
+				price.setBasedPrice(basedPrice);
+				System.out.println("Base price set to " + price.getBasedPrice()); 
 				break;
 			
 			case 2:
@@ -78,9 +81,15 @@ public class StaffSettingsUI {
 				break;
 			
 			case 4: 
-				String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
 				movieList = mm.readMovieCSV(); //Convert CSV to array list
-				int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
+				System.out.println("Current movies: ");
+				int k = 0;
+				while(k!=movieList.size())
+				{
+					System.out.println("- " + movieList.get(k).getTitle()); //Show all movies in database
+				}
+				String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
+				k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
 				if(k == -1) //If it does not exist
 				{
 					System.out.println("Movie does not exist! Exiting...");
@@ -140,9 +149,6 @@ public class StaffSettingsUI {
 		}
 		
 	}
-	/*public static void main(String[] args) throws FileNotFoundException, IOException
-	{
-		settingsText();
-	}*/
+
 
 }

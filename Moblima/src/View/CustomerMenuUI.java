@@ -26,9 +26,10 @@ public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
         BookingHistoryController bookingHistoryController = new BookingHistoryController();
+        int choice = 0;
         do {
             Scanner sc = new Scanner(System.in);
-            int choice = mainDisplayOptions();
+            choice = mainDisplayOptions();
             int selection=0;
             switch (choice) {
                 case 1:
@@ -91,12 +92,10 @@ public class CustomerMenuUI {
                     break;
                 case 7:
                     exitDialouge();
-                default:
-                    sc.close();
-                    break;
+                    LoginUI.execute();
             }
             // choice
-        } while (true);
+        } while (choice != 7);
 
         // PaymentUI pay = new PaymentUI();
         // pay.printPayment();
@@ -204,8 +203,7 @@ public class CustomerMenuUI {
     }
 
     public static void exitDialouge() {
-        System.out.println("Thank you for using Moblima, Have a pleasant day!.");
-        System.exit(0);
+        System.out.println("Thank you for using Moblima! Logging out...");
 
     }
 
