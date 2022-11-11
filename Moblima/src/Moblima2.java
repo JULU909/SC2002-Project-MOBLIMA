@@ -7,9 +7,9 @@ import java.util.*;
 
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
+import controllers.LoginController;
 import entities.*;
 import enums.Day;
 import enums.UserType;
@@ -19,7 +19,7 @@ public class Moblima2 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException {
         
-        LoginUI.execute();
+        LoginController.execute();
     } 
 
 }

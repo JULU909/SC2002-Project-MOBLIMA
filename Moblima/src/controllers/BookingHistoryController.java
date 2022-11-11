@@ -8,7 +8,6 @@ import java.util.*;
 import enums.*;
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import entities.*;

@@ -8,7 +8,6 @@ import java.util.*;
 import enums.*;
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import entities.*;
@@ -46,14 +45,9 @@ public class BookingController {
             int numberSeats = booking.askTickets();
             choosenShowtime.printLayout();
             ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-            double temp = 0;
             int check = 0;
             for (int i = 0 ; i <userSeats.size(); i++){
-                SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
-                if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
-                 temp+=0.5;
-                 
-                }
+                
                 if (choosenShowtime.getSeatStatus(userSeats.get(i).getCol(),userSeats.get(i).getRow()).equals(SeatStatus.OCCUPIED)){
                  System.out.println("Seats you booked were booked , retry !");
                  check =1;
@@ -67,17 +61,11 @@ public class BookingController {
             ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
             
             
-            
-            if(choosenShowtime.getCinemaType().equals("GOLD")){
-                temp+=0.5;
-            }
-            else if (choosenShowtime.getCinemaType().equals("PREMIUM")){
-                temp+=1;
-            }
+        
             
             Pricing price = new Pricing();
             Double cost  = price.getPrice(ages,inputDate,userSeats, choosenShowtime);
-            Ticket ticket = new Ticket(customer, (cost+temp), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            Ticket ticket = new Ticket(customer, (cost), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
             int confirmation = booking.confirmTicket(ticket);
             if (confirmation == 1) {
                 System.out.println("Purchase successful!  ");

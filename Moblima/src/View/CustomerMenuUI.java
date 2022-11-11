@@ -8,11 +8,12 @@ import java.util.*;
 import entities.Ticket;
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import controllers.BookingController;
 import controllers.BookingHistoryController;
+import controllers.LoginController;
+import controllers.SeatDetailController;
 import entities.*;
 import enums.AgeGroup;
 import enums.Cinema;
@@ -92,7 +93,7 @@ public class CustomerMenuUI {
                     break;
                 case 7:
                     exitDialouge();
-                    LoginUI.execute();
+                    LoginController.execute();
             }
             // choice
         } while (choice != 7);
@@ -142,24 +143,8 @@ public class CustomerMenuUI {
     }
 
     public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
-        // Connection to the managers and UI
-        BookingDisplay booking = new BookingDisplay();
-        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
-        int showtimesLength = Showtimes.getLength();
-        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-
-        // Getting user inputs.
-        String cineplex = booking.askCineplex();
-        String[] movies = Showtimes.getMovies(showtimesLength);
-        int movieChoice = booking.askMovie(movies);
-        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex);
-        LocalDate inputDate = booking.askDate();
-        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
-        int showtimeChoice = booking.askTiming(showtimes);
-        Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
-        choosenShowtime.setDate(Integer.valueOf(formattedDate));
-        choosenShowtime.setLayout(); 
-        choosenShowtime.printLayout();
+        SeatDetailController sdc = new SeatDetailController();
+        sdc.getSeatDetails();
     }
 
     public static void movieReview(Customer customer) throws FileNotFoundException, IOException {

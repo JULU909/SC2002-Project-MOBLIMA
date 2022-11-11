@@ -1,23 +1,39 @@
 package View;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
+import enums.*;
+import model.Customer;
+
+import java.util.ArrayList; // import the ArrayList class
+
+import java.util.Arrays;
 import java.util.Scanner;
 
-import View.*;
-import model.*;
+import entities.Seat;
+import entities.Showtime;
+import entities.Ticket;
 
-public class LoginUI {
-	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
-		System.out.println("=====================================================================================\n"+
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.InputMismatchException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
+
+public class LoginDisplay {
+    Scanner sc = new Scanner(System.in);
+
+    public void printBanner(){
+        System.out.println("=====================================================================================\n"+
                            "=====================================================================================\n"+
                            "        Welcome to MOvie Booking and LIsting Management Application (MOBLIMA)       \n"+
                            "=====================================================================================\n"+
                            "=====================================================================================\n");
-		Scanner sc = new Scanner(System.in);
-		int choice=0;
-		do {
+    }
+
+    public int getMenuOption(){
+        int choice =-1;
+        do {
 			System.out.println("1. CUSTOMER Login");
 			System.out.println("2. CUSTOMER Registration");
 			System.out.println("3. STAFF Login");
@@ -31,20 +47,11 @@ public class LoginUI {
 					System.out.println("Please enter a valid option");
 			}
 		} while (choice <1 || choice >4);
-			
-			switch (choice) {
-				case 1:
-					CustomerLoginUI.execute();
-					break;
-				case 2:
-					CustomerRegistrationUI.execute();
-					break;
-				case 3:
-					StaffLoginUI.execute();
-					break;
-				case 4:
-					System.out.println("Thank you for using MOBLIMA. Exiting...");
-					break;
-			}
-	}
+
+        return choice;
+    }
+
+    public void printExitText(){
+        System.out.println("Thank you for using MOBLIMA. Exiting...");
+    }
 }

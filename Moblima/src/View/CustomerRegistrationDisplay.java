@@ -1,23 +1,14 @@
 package View;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.regex.*;
 
-import model.*;  
-public class CustomerRegistrationUI {
-    public String filepath = "Moblima/src/Data/Customers.csv";
+import View.*;
+import model.*;
+public class CustomerRegistrationDisplay {
+    Scanner sc = new Scanner(System.in);
 
-	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
-        Scanner sc = new Scanner(System.in);
-		System.out.println("----Registration for Customer Cinema database----");
-        String username, password, mobileNumber, email; int age=0; ArrayList<Customer> database;
+    public String getUsername(){
         
-        database = CustomerManager.getDataAll();
-          
-
+        String username;
         do {
             System.out.println("Enter username (username is final and cannot be changed later!): ");
             username = sc.nextLine();
@@ -29,7 +20,12 @@ public class CustomerRegistrationUI {
             }
             else break;      
         } while (true);
-		
+
+        return username;
+    }
+
+    public String getPassword(){
+        String password;
         do {
             System.out.println("Enter password: ");
             password = sc.nextLine();
@@ -38,7 +34,11 @@ public class CustomerRegistrationUI {
             }
             else break;      
         } while (true);
+        return password;
+    }
 
+    public int getAge(){
+        int age;
         do {
             try {
                 System.out.println("Enter age: ");
@@ -47,7 +47,12 @@ public class CustomerRegistrationUI {
                 else throw new Exception();
             } catch (Exception e) {System.out.println("Invalid input!");}         
         } while (true);
-        
+        return age;
+
+    }
+
+    public String getNumber(){
+        String mobileNumber;
         do {
             try {
                 System.out.println("Enter phone number: ");
@@ -56,7 +61,11 @@ public class CustomerRegistrationUI {
                 break;
             } catch (Exception e) {System.out.println("Invalid input!");}         
         } while (true);
-		
+        return mobileNumber;
+    }
+
+    public String getEmail(){
+        String email;
         do {
             System.out.println("Enter email: ");
             email = sc.nextLine();
@@ -66,13 +75,10 @@ public class CustomerRegistrationUI {
             else break;      
         } while (true);
 
-        Customer customer = new Customer(username, password, age, mobileNumber, email);
-        
-        try{
-            CustomerManager.addCustomerCSV(customer);
-        }  catch (Exception e) {System.out.println("Error! Customer Database not found!"); sc.close(); return;}
+        return email;
+    }
 
+    public void printSuccess(){
         System.out.println("Customer account successfully registered in database!");
-        LoginUI.execute();
-	}
+    }
 }

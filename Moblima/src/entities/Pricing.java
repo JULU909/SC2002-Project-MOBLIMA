@@ -21,11 +21,11 @@ public class Pricing {
         DayOfWeek day = DayOfWeek.of(inputDate.get(ChronoField.DAY_OF_WEEK));
         HolidayManager hm = new HolidayManager();
         ArrayList<LocalDate> holidayDataList = hm.readHolidayDataCSV();
-        
+        Double price = this.basedPrice;
         for (int i = 0 ; i <userSeats.size(); i++){
             SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
             if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
-                basedPrice+=0.5;
+                price+=0.5;
              
             }
             
@@ -36,16 +36,16 @@ public class Pricing {
         
         
         if(choosenShowtime.getCinemaType().equals("GOLD")){
-            basedPrice+=0.5;
+            price+=0.5;
         }
         else if (choosenShowtime.getCinemaType().equals("PREMIUM")){
-            basedPrice+=1;
+            price+=1;
         }
         //Checking if weekend or holiday
         if (day == DayOfWeek.SUNDAY || day == DayOfWeek.SATURDAY || day == DayOfWeek.FRIDAY || holidayDataList.contains(inputDate)) {
-            this.basedPrice += 3.5;
+            price += 3.5;
         }
-        totalPrice = basedPrice * ageGroups.size();
+        totalPrice = price * ageGroups.size();
         
         //Give discount to child and senior
         for (AgeGroup ageGroup : ageGroups) {

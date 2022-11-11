@@ -154,13 +154,17 @@ public int askMovie(String [] movies){
     }
 }
 
-public int askTiming(ArrayList <Showtime>showtimes){
+public int askTiming(ArrayList <Showtime>showtimes) throws InterruptedException{
     Scanner sc = new Scanner(System.in);
     int count= 0;
     if(showtimes.size() == 0){
         System.out.println( "No showtime for this specific date! ");
         System.out.println( "------------------------------------------ ");
+        Thread.sleep(1000);
+        System.out.println( "Enter any key to exit ");
+        sc.next();
         return -1;
+        
     }
     while(true){
     try {System.out.println("Please select the showtime of your liking! : ");
@@ -326,9 +330,6 @@ public static void failExitDialouge() {
 
 }
 
-public void cancelBooking() {
 
-
-}
 
 }

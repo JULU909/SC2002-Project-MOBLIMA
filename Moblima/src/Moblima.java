@@ -6,9 +6,9 @@ import java.util.*;
 
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
+import controllers.LoginController;
 import entities.*;
 import enums.Day;
 import enums.UserType;
