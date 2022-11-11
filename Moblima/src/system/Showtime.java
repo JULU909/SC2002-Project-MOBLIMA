@@ -161,9 +161,8 @@ public void setLayout() throws IOException{
 
 
 
-public void checkAvailability(){
-
-
+public SeatStatus getSeatStatus(int row , int col ){
+    return this.layout[col-65][row-1].getSeatStatus();
 }
 
 public int getDate() {

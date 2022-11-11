@@ -57,7 +57,7 @@ public class BookedHistoryUI {
         
         System.out.println("You have " + userTickets.size() + " tickets purchased : " );
         System.out.println("----------------------------" );
-
+        Thread.sleep(1000);
         for (int i = 0 ; i < userTickets.size(); i++){
             System.out.println("Ticket " + (i+1) + "      :" );
             //Thread.sleep(1000);
@@ -86,7 +86,7 @@ public class BookedHistoryUI {
         if (Integer.valueOf(temp) == 0 ){
             return;
         }
-        if ( Integer.valueOf(temp) < userTickets.size()){
+        if ( Integer.valueOf(temp) <= userTickets.size()){
             printTicketSeats((Integer.valueOf(temp)-1), userTickets);
         }
     }
@@ -153,11 +153,15 @@ public class BookedHistoryUI {
             System.out.println("Ticket ID       : " + userTickets.get(i).getID() );
             System.out.println("Cineplex        : " + userTickets.get(i).getShowtime().getCineplex() );
             System.out.println("Movie date      : " + userTickets.get(i).getShowtime().getTime() );
-            System.out.println("Movie Time      : " + userTickets.get(i).getDate() );
+            System.out.println("Movie Time      : " + userTickets.get(i).getDate(). );
             System.out.println("Movie Name      : " + userTickets.get(i).getShowtime().getMovie() );
             System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
             System.out.println("-------------" );
+            System.out.println("Press any key to exit." );
+            System.out.println("" );
+            System.out.println("------------------------");1
+            String input = sc.next();
     }
 
     public  void printByTicketID(String idString ,ArrayList <Ticket> userTickets) throws InterruptedException{
@@ -175,8 +179,18 @@ public class BookedHistoryUI {
                 System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
                 System.out.println("-------------" );
                 check =1;
+                System.out.println("" );
+
+                System.out.println("Press any key to exit." );
+                System.out.println("" );
+                System.out.println("------------------------");
+                String input = sc.next();
                 break;
             }
+
+            
+
+
 
 
         }
@@ -189,6 +203,14 @@ public class BookedHistoryUI {
             return;
         }
 
+    }
+
+    public  String getMovieName() throws InterruptedException{
+
+        System.out.println("Enter the movie name you would like to search" );
+        System.out.println("-----------------------------");
+        String input = sc.next();
+        return input;
     }
 
 }

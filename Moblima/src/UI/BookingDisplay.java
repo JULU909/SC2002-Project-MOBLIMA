@@ -175,16 +175,23 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
 
     System.out.println("Ticked ID       : " + ticket.getID());
     System.out.println("User            : " + customer.getUsername());
-    
+   
+    while(true){
+    try {  
     System.out.println("Confirmation dialouge : ");
     System.out.println("------------------------");
     System.out.println("0 : Change seats     :     ");
     System.out.println("1 : Confirm purchase :     ");
     System.out.println("2 : Decline purhcase :    [Exit to main menu] ");
     choice = sc.nextInt();
-    return choice;
+    return choice;}
+    catch(InputMismatchException e){
+        System.out.println("Please enter a valid input ");
+        String temp = sc.next();
+        continue;
+    }
       
-    
+}
     
 }
 

@@ -15,6 +15,7 @@ import database.*;
 import enums.AgeGroup;
 import enums.Cinema;
 import enums.Day;
+import enums.SeatStatus;
 import enums.SeatTypes;
 import enums.UserType;
 import system.*;
@@ -179,14 +180,26 @@ public class CustomerMenuUI {
             int numberSeats = booking.askTickets();
             choosenShowtime.printLayout();
             ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
             double temp = 0;
+            int check = 0;
             for (int i = 0 ; i <userSeats.size(); i++){
-               SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
-               if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
-                temp+=0.5;
-
-               }
+                SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
+                if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
+                 temp+=0.5;
+                 
+                }
+                if (choosenShowtime.getSeatStatus(userSeats.get(i).getCol(),userSeats.get(i).getRow()).equals(SeatStatus.OCCUPIED)){
+                 System.out.println("Seats you booked were booked , retry !");
+                 check =1;
+                 break;
+                 
+                }
+             }
+            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
+            
+            
+            if (check == 1){
+                continue;
             }
             if(choosenShowtime.getCinemaType().equals("GOLD")){
                 temp+=0.5;
@@ -233,6 +246,11 @@ public class CustomerMenuUI {
                 bt.printByTicketID(id, userTickets);
                 break;
             case 3 :
+                String movie = bt.getMovieName();
+                ArrayList<Ticket>matchingTickets = tk.searchByMovie(userTickets, movie);
+                bt.printAllTickets(matchingTickets);
+                
+
                 break;
             
             case 4: 
