@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import enums.*;
 import model.ShowtimeManager;
 import model.TicketManager;
+/**
+ * Represents the class of Shpwtimes, which holds the information of the several showtimes available.
+ * @author Harish Vasanth
+ */
+
 
 public class Showtime {
     private int time;

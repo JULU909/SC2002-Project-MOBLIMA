@@ -12,6 +12,7 @@ import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import controllers.BookingController;
+import controllers.BookingHistoryController;
 import entities.*;
 import enums.AgeGroup;
 import enums.Cinema;
@@ -24,6 +25,7 @@ import model.*;
 public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
+        BookingHistoryController bookingHistoryController = new BookingHistoryController();
         do {
             Scanner sc = new Scanner(System.in);
             int choice = mainDisplayOptions();
@@ -79,7 +81,7 @@ public class CustomerMenuUI {
                     bookingController.purchaseTicket(customer);
                     break;
                 case 4:
-                    bookingHistory(customer);
+                    bookingHistoryController.getBookingHistory(customer);;
                     break;
                 case 5:
                     CustomerSettingsUI.settingsText(customer);
@@ -158,118 +160,8 @@ public class CustomerMenuUI {
         choosenShowtime.printLayout();
     }
 
-    public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
-        // Connection to the managers and UI
-        BookingDisplay booking = new BookingDisplay();
-        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
-        int showtimesLength = Showtimes.getLength();
-        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-
-        // Getting user inputs.
-        String cineplex = booking.askCineplex();
-        String[] movies = Showtimes.getMovies(showtimesLength);
-        int movieChoice = booking.askMovie(movies);
-        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex);
-        LocalDate inputDate = booking.askDate();
-        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
-        int showtimeChoice = booking.askTiming(showtimes);
-        Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
-        choosenShowtime.setDate(Integer.valueOf(formattedDate));
-        choosenShowtime.setLayout();
-
-       
-        while (true){
-            int numberSeats = booking.askTickets();
-            choosenShowtime.printLayout();
-            ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-            double temp = 0;
-            int check = 0;
-            for (int i = 0 ; i <userSeats.size(); i++){
-                SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
-                if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
-                 temp+=0.5;
-                 
-                }
-                if (choosenShowtime.getSeatStatus(userSeats.get(i).getCol(),userSeats.get(i).getRow()).equals(SeatStatus.OCCUPIED)){
-                 System.out.println("Seats you booked were booked , retry !");
-                 check =1;
-                 break;
-                 
-                }
-             }
-            if (check == 1){
-                continue;
-            }
-            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
-            
-            
-            
-            if(choosenShowtime.getCinemaType().equals("GOLD")){
-                temp+=0.5;
-            }
-            else if (choosenShowtime.getCinemaType().equals("PREMIUM")){
-                temp+=1;
-            }
-            
-            Pricing price = new Pricing();
-            Double cost  = price.getPrice(ages,inputDate);
-            Ticket ticket = new Ticket(customer, (cost+temp), userSeats, choosenShowtime, Integer.valueOf(formattedDate));
-            int confirmation = booking.confirmTicket(ticket);
-            if (confirmation == 1) {
-                System.out.println("Purchase successful!  ");
-                ticketHandle.uploadTicket(ticket);
-                break;
-            } else if (confirmation == 0){
-                continue;
-            }
-            else {
-                Thread.sleep(1000);
-                booking.failExitDialouge();
-                break;
-            }
-
-        }
-        
-
-    }
-
-    public static void bookingHistory(Customer customer) throws IOException, InterruptedException {
-        BookedHistoryUI bt = new BookedHistoryUI();
-        TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-        ArrayList <Ticket> userTickets = tk.getUserTickets(customer.getUsername());
-        while (true){
-        int input  = bt.mainUI();
-        switch (input) {
-            case 1:
-                bt.printAllTickets(userTickets);
-                bt.individualTicketmenu(userTickets);
-                break;
-            case 2: 
-                String id = bt.getTicketID();
-                bt.printByTicketID(id, userTickets);
-                break;
-            case 3 :
-                String movie = bt.getMovieName();
-                ArrayList<Ticket>matchingTickets = tk.searchByMovie(userTickets, movie);
-                bt.printAllTickets(matchingTickets);
-                
-
-                break;
-            
-            case 4: 
-                return;
-
-            default : 
-                Thread.sleep(1000);
-                System.out.println("Enter a number within the options");
-                Thread.sleep(1000);
-                break;
-                
-
-
-        }
-        }
-    }
+    
+   
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
         MovieInfoManager m1 = new MovieInfoManager();

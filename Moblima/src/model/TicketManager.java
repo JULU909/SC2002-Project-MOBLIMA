@@ -72,10 +72,7 @@ public class TicketManager {
             int count = 0;
 
             while ((line = br.readLine()) != null) {
-                if (count==0){
-                    count++;
-                    continue;
-                }
+                
                 String[] values = line.split(",");
                 List<String> list = Arrays.asList(values);
                 
@@ -117,10 +114,7 @@ public class TicketManager {
                 int count = 0;
     
                 while ((line = br.readLine()) != null) {
-                    if (count==0){
-                        count++;
-                        continue;
-                    }
+                    
                     String[] values = line.split(",");
                     List<String> list = Arrays.asList(values);
                     
