@@ -17,7 +17,7 @@ import system.Showtime;
 import system.ShowtimeSettings;
 
 
-public class SettingsUI {
+public class CustomerSettingsUI {
 	public static void settingsText() throws FileNotFoundException, IOException {
 		int choice = 0;
 		
