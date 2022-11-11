@@ -195,12 +195,13 @@ public class CustomerMenuUI {
                  
                 }
              }
-            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
-            
-            
             if (check == 1){
                 continue;
             }
+            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
+            
+            
+            
             if(choosenShowtime.getCinemaType().equals("GOLD")){
                 temp+=0.5;
             }
