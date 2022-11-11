@@ -43,7 +43,7 @@ public class CustomerMenuUI {
                         if (selection < 0 || selection > 4) {sc.close(); throw new Exception();}
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
 
-                    MovieInfoManager2 m1 = new MovieInfoManager2();
+                    MovieInfoManager m1 = new MovieInfoManager();
                     // MovieInfoManager m1 = new MovieInfoManager();
                     ArrayList<Movie> list = m1.readMovieCSV();
 
@@ -56,7 +56,7 @@ public class CustomerMenuUI {
                         // Scanner sc = new Scanner(System.in);
                         System.out.println("Enter name of movie to display: ");
                         String title = sc.nextLine();
-                        int index = MovieInfoManager2.findMovieCSV(title, list);
+                        int index = MovieInfoManager.findMovieCSV(title, list);
                         if (index == -1) System.out.println("Movie not found! ");
                         // System.out.println("Select the index of the movie you want to display: ");
                         // selection = sc.nextInt(); sc.nextLine();
@@ -192,7 +192,7 @@ public class CustomerMenuUI {
     }
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
-        MovieInfoManager2 m1 = new MovieInfoManager2();
+        MovieInfoManager m1 = new MovieInfoManager();
         m1.rankByRatings(byTicketSales);
     }
 
