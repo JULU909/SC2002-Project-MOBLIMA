@@ -22,7 +22,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager {
 	private String filename;
 
-    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv"*/;
 
 
 
@@ -82,9 +82,7 @@ public class MovieInfoManager {
     	writer.append(genre);
     	writer.append(",");
     	writer.append(runtime);
-    	writer.append(",");
-
-    	i=1;
+    	
     	if(review.size()==0)
     	{
     		writer.append("\n");
@@ -94,7 +92,8 @@ public class MovieInfoManager {
         	writer.close();
     		return;
     	}
-    		
+    	i=1;
+    	writer.append(",");
     	writer.append(review.get(0).getReviewer());
     	writer.append("'");
     	writer.append(review.get(0).getProse());
@@ -142,7 +141,9 @@ public class MovieInfoManager {
     		double averageRating = Double.parseDouble(split[8]);
     		String genre = split[9];
     		String runTime = split[10];
-    		
+    		int size = split.length;
+    		if(size<12) //If no reviews written, split[11] will not exist
+    			return list;
     		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		
@@ -245,8 +246,18 @@ public class MovieInfoManager {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
-        	writer.append("\n");
         	
+        	
+        	
+        	if(review.size()==0)
+        	{
+        		writer.append("\n");
+            	//cleanup
+            	writer.flush();
+            	writer.close();
+            	return;
+        	}
+        	writer.append(",");
         	int k=1;
         	writer.append(review.get(0).getReviewer());
         	writer.append("'");
@@ -263,6 +274,7 @@ public class MovieInfoManager {
             	writer.append(String.valueOf(review.get(k).getRating()));
             	k++;
         	}
+        	writer.append("\n");
         	i++;
     	}
     	
@@ -343,6 +355,11 @@ public class MovieInfoManager {
     public void updateTotalSales(String title,int sales) throws FileNotFoundException, IOException {
     	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
     	int i = findMovieCSV(title,list);//Find position of that movie in array list
+    	if(i==-1)
+    	{
+    		System.out.println("Movie does not exist! No changes to total sales.");
+    		return;
+    	}
     	list.get(i).setTotalSales(sales);//Update its sales
     	writeMovieCSV(list); //Rewrite into CSV
     }
