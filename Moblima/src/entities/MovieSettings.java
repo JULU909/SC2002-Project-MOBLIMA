@@ -7,6 +7,7 @@ import enums.AgeRating;
 import enums.MovieStatus;
 import enums.MovieType;
 import model.Movie;
+import model.StaffErrorChecker;
 
 public class MovieSettings {
 public static Movie createMovie() { //create a Movie object
@@ -30,7 +31,13 @@ public static Movie createMovie() { //create a Movie object
 			System.out.printf("Enter cast member %d (Enter END to stop inputting): \n", i);
 			String input = sc.nextLine();
 			if(input.equals("END"))
-				break;
+				if(StaffErrorChecker.checkCast(cast))
+					break;
+				else
+				{
+					System.out.println("Cast cannot be empty!");
+					continue;
+				}
 			i++;
 			cast.add(input);
 		}
@@ -49,6 +56,10 @@ public static Movie createMovie() { //create a Movie object
 		
 		System.out.println("Enter runtime (xHxxM): ");
 		String runTime = sc.nextLine();
+		while(!StaffErrorChecker.checkRuntime(runTime)) {
+			System.out.println("Enter runtime (xHxxM): ");
+			runTime = sc.nextLine();
+		}
 		
 		//Create movie object with those attributes
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
@@ -110,7 +121,7 @@ public static void editMovie(Movie movie) { //Edit movie
 			ArrayList<String> cast = movie.getCast();
 
 			i = 0;
-			if(cast.size() == 0) {
+			if(!StaffErrorChecker.checkCast(cast)) {
 				System.out.println(movie.getTitle()  + " has no cast members! Exiting...");
 				break;
 			}
@@ -175,14 +186,11 @@ public static void editMovie(Movie movie) { //Edit movie
 			input = sc.nextLine();
 			Character H = input.charAt(1);
 			Character M = input.charAt(4);
-			if(H.equals('H') && M.equals('M') && Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(2)) && Character.isDigit(input.charAt(3)))
+			if(StaffErrorChecker.checkRuntime(input))
 			{
 				movie.setrunTime(input);
 				System.out.println("Movie runtime set to: " + input);
 			}
-			else
-				System.out.println("Invalid format! Runtime format is xHxxM, x is a digit.");
-			
 			break;
 		case 10:
 			System.out.println("Exiting...");
@@ -201,5 +209,7 @@ public static String removeMovie() {
 	return sc.nextLine();
 	
 }
-
+public static void main(String[] args) {
+	MovieSettings.addMovie();
+}
 }
