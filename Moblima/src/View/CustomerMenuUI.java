@@ -84,9 +84,12 @@ public class CustomerMenuUI {
                     bookingHistoryController.getBookingHistory(customer);;
                     break;
                 case 5:
-                    CustomerSettingsUI.settingsText(customer);
+                    movieReview(customer);
                     break;
                 case 6:
+                    CustomerSettingsUI.settingsText(customer);
+                    break;
+                case 7:
                     exitDialouge();
                 default:
                     sc.close();
@@ -113,13 +116,13 @@ public class CustomerMenuUI {
                             "=====================================================================================\n" +
                             "(1) Search/List Movies\n\n" +
                             "(2) Check seat availability and selection of seat/s\n\n(3) Book and purchase ticket\n\n" +
-                            "(4) View booking history\n\n" +
-                            "(5) User Settings\n\n(6) Exit\n\n \n\nChoices (1~6): ");
+                            "(4) View booking history\n\n" + "(5) Write a new Movie Review/See Movie's review(s)\n\n" +
+                            "(6) User Settings\n\n(7) Exit\n\n \n\nChoices (1~7): ");
 
             try {
                 System.out.print("\nWhat is your choice:  ");
                 choice = sc.nextInt(); sc.nextLine();
-                if (choice >= 1 && choice <= 6)
+                if (choice >= 1 && choice <= 7)
                     break;
                 else
                     throw new Exception();
@@ -127,7 +130,7 @@ public class CustomerMenuUI {
             } catch (Exception e) {
                     System.out.println("Please enter a valid option");
                 }
-            } while (choice < 1 || choice > 6);
+            } while (choice < 1 || choice > 7);
         return choice;
     }
 
@@ -160,8 +163,30 @@ public class CustomerMenuUI {
         choosenShowtime.printLayout();
     }
 
-    
-   
+    public static void movieReview(Customer customer) throws FileNotFoundException, IOException {
+        MovieInfoManager m1 = new MovieInfoManager();
+        int op = 1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=====================================================================================\n");
+		System.out.println("                    Write a new Movie Review/See Movie's review(s)                   \n");
+		System.out.println("=====================================================================================\n");
+        do {
+            System.out.println("Select an option:");
+            System.out.println("1) Give a movie review\n\n2) See a movie's review(s)\n\n3) Return to main menu");
+            op = sc.nextInt();
+            if(op < 1 || op > 3)  {
+                System.out.println("Invalid option, please try again\n\n");
+            } else {
+                switch(op){
+                    case 1: m1.newMovieReview(customer);
+                            break;
+                    case 2: m1.viewMovieRating();
+                            break;
+                    case 3: return;      
+                }
+            }
+        } while (op < 1 || op > 3);
+    }
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
         MovieInfoManager m1 = new MovieInfoManager();
