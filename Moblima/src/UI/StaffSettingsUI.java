@@ -22,8 +22,8 @@ public class StaffSettingsUI {
 		int choice = 0;
 		
 		Scanner sc = new Scanner(System.in);
-		String Showfilepath = new File("Showtimes.csv").getAbsolutePath();
-		String MovieInfoPath = new File("movieInformation2.csv").getAbsolutePath();
+		String Showfilepath = "Moblima/src/Data/Showtimes.csv"; //new File("Showtimes.csv").getAbsolutePath();
+		String MovieInfoPath = "Moblima/src/Data/movieInformation2.csv"; //new File("movieInformation2.csv").getAbsolutePath(); 
 		ShowtimeManager sm = new ShowtimeManager(Showfilepath);
 		MovieInfoManager mm = new MovieInfoManager(MovieInfoPath);
 		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
