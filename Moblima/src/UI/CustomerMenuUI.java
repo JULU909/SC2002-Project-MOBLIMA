@@ -17,6 +17,11 @@ import enums.UserType;
 import system.*;
 
 public class CustomerMenuUI {
+    Customer customer;
+    public CustomerMenuUI(Customer customer){
+        this.customer = customer;
+    }
+
     public static void execute(Customer customer) throws IOException, InterruptedException {
         do {
             Scanner sc = new Scanner(System.in);
@@ -70,7 +75,7 @@ public class CustomerMenuUI {
                     break;
 
                 case 3:
-                    purchaseTicket(customer);
+                    purchaseTicket();
                     break;
                 case 4:
                     bookingHistory();
@@ -135,7 +140,7 @@ public class CustomerMenuUI {
 
     }
 
-    public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException {
+    public static void purchaseTicket() throws FileNotFoundException, IOException, InterruptedException {
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
@@ -158,7 +163,7 @@ public class CustomerMenuUI {
         Pricing price = new Pricing();
         choosenShowtime.printLayout();
         ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        Ticket ticket = new Ticket(customer, 20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+        Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
 
         int confirmation = booking.confirmTicket(ticket);
         if (confirmation == 1) {
