@@ -110,6 +110,10 @@ public static void editMovie(Movie movie) { //Edit movie
 			ArrayList<String> cast = movie.getCast();
 
 			i = 0;
+			if(cast.size() == 0) {
+				System.out.println(movie.getTitle()  + " has no cast members! Exiting...");
+				break;
+			}
 			while(i<cast.size()) {
 				
 				for(i = 0;i<cast.size();i++) {
@@ -128,9 +132,8 @@ public static void editMovie(Movie movie) { //Edit movie
 					System.out.println("Invalid input! Exiting...");
 					break;
 				}
-				cast.remove(i-1); //Remove cast member from array list
 				System.out.println("Enter new cast member name: "); 
-				cast.add(sc.nextLine()); //And replace them with new cast member
+				cast.set(i-1,sc.nextLine()); //Edit cast member in array list
 			}
 			System.out.println("New cast set to: ");
 			for(i = 0;i<cast.size();i++) {
@@ -170,8 +173,16 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 9:
 			System.out.println("Enter movie runtime (xHxxM): ");
 			input = sc.nextLine();
-			movie.setrunTime(input);
-			System.out.println("Movie runtime set to: " + input);
+			Character H = input.charAt(1);
+			Character M = input.charAt(4);
+			if(H.equals('H') && M.equals('M') && Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(2)) && Character.isDigit(input.charAt(3)))
+			{
+				movie.setrunTime(input);
+				System.out.println("Movie runtime set to: " + input);
+			}
+			else
+				System.out.println("Invalid format! Runtime format is xHxxM, x is a digit.");
+			
 			break;
 		case 10:
 			System.out.println("Exiting...");
