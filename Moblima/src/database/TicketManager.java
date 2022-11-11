@@ -24,6 +24,7 @@ import java.lang.reflect.Array;
 
 public class TicketManager {
     private String filename;
+    private Customer customer;
     private ArrayList<Ticket> data;
 
     public TicketManager(String string) {
@@ -41,7 +42,7 @@ public class TicketManager {
         StringBuilder line = new StringBuilder();
         line.append(ticket.getID());
         line.append(',');
-        line.append(ticket.getUser().getUsername());
+        line.append(ticket.getCustomer().getUsername());
         line.append(',');
         line.append(ticket.getShowtime().getCineplex());
         line.append(',');
@@ -64,7 +65,6 @@ public class TicketManager {
     public ArrayList <Seat> getAllBookedSeats(String cineplex, String time , String date , String movie) throws IOException {
         ArrayList <Seat> bookedSeats = new ArrayList();
         int numSeats = 0;
-        System.out.println(date);
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/TicketsBooked.csv"))) {
             String line;
             int count = 0;
@@ -140,8 +140,10 @@ public class TicketManager {
                         int time = Integer.valueOf(list.get(4));
                         String cineplex = list.get(2);
                         String movie = list.get(3);
+                        
+                        Double cost = Double.valueOf(list.get(6));
                         Showtime tempShowtime = new Showtime(time, date,cineplex , movie);
-                        Ticket tempTicket = new Ticket(10, bookedSeats , tempShowtime , date );
+                        Ticket tempTicket = new Ticket(customer, cost, bookedSeats , tempShowtime , date );
                         bookedTickets.add(tempTicket);
                     }
 

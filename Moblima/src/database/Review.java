@@ -1,18 +1,18 @@
 package database;
 
 public class Review {
-    Customer reviewer;
+    String reviewer;
     int rating;
     String prose;
 
-    public Review(Customer reviewer, int rating, String prose){
+    public Review(String reviewer, int rating, String prose){
         this.reviewer = reviewer; this.rating = rating; this.prose = prose;
     }
-    Customer getReviewer(){
+    String getReviewer(){
         return this.reviewer;
     }
 
-    void setReviewer(Customer reviewer){
+    void setReviewer(String reviewer){
         this.reviewer = reviewer;
     }
 /* 

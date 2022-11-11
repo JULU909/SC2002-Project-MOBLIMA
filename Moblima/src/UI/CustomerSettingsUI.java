@@ -1,12 +1,13 @@
 package UI;
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import database.Movie;
-import database.MovieInfoManager2;
+import database.MovieInfoManager;
 import database.ShowtimeManager;
 import database.Staff;
 import system.DaySettings;
@@ -16,7 +17,7 @@ import system.Showtime;
 import system.ShowtimeSettings;
 
 
-public class SettingsUI {
+public class CustomerSettingsUI {
 	public static void settingsText() throws FileNotFoundException, IOException {
 		int choice = 0;
 		
@@ -24,7 +25,7 @@ public class SettingsUI {
 		String Showfilepath = new File("Showtimes.csv").getAbsolutePath();
 		String MovieInfoPath = new File("movieInformation2.csv").getAbsolutePath();
 		ShowtimeManager sm = new ShowtimeManager(Showfilepath);
-		MovieInfoManager2 mm = new MovieInfoManager2(MovieInfoPath);
+		MovieInfoManager mm = new MovieInfoManager(MovieInfoPath);
 		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
 		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		
@@ -53,14 +54,15 @@ public class SettingsUI {
 			
 			case 2:
 				Movie newMovie = MovieSettings.addMovie(); //Create movie
-				mm.addMoviecsv(newMovie); //Add to movieInfo CSV
+				MovieInfoManager adder = new MovieInfoManager();
+				adder.addMoviecsv(newMovie); //Add to movieInfo CSV
 				break;
 			
 			case 3: 
 				System.out.println("Enter movie title to edit: ");
 				String TitletoEdit = sc.nextLine();
 				movieList = mm.readMovieCSV(); //Convert CSV to array list
-				int j = MovieInfoManager2.findMovieCSV(TitletoEdit, movieList); //Find it in array list
+				int j = MovieInfoManager.findMovieCSV(TitletoEdit, movieList); //Find it in array list
 				if(j == -1) //If it does not exist
 				{
 					System.out.println("Movie does not exist! Exiting...");
@@ -76,7 +78,7 @@ public class SettingsUI {
 			case 4: 
 				String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
 				movieList = mm.readMovieCSV(); //Convert CSV to array list
-				int k = MovieInfoManager2.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
+				int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
 				if(k == -1) //If it does not exist
 				{
 					System.out.println("Movie does not exist! Exiting...");

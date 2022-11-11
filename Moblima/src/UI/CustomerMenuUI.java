@@ -12,16 +12,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import system.*;
 import database.*;
+import enums.AgeGroup;
 import enums.Day;
 import enums.UserType;
 import system.*;
 
 public class CustomerMenuUI {
-    Customer customer;
-    public CustomerMenuUI(Customer customer){
-        this.customer = customer;
-    }
-
     public static void execute(Customer customer) throws IOException, InterruptedException {
         do {
             Scanner sc = new Scanner(System.in);
@@ -43,7 +39,7 @@ public class CustomerMenuUI {
                         if (selection < 0 || selection > 4) {sc.close(); throw new Exception();}
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
 
-                    MovieInfoManager2 m1 = new MovieInfoManager2();
+                    MovieInfoManager m1 = new MovieInfoManager();
                     // MovieInfoManager m1 = new MovieInfoManager();
                     ArrayList<Movie> list = m1.readMovieCSV();
 
@@ -56,7 +52,7 @@ public class CustomerMenuUI {
                         // Scanner sc = new Scanner(System.in);
                         System.out.println("Enter name of movie to display: ");
                         String title = sc.nextLine();
-                        int index = MovieInfoManager2.findMovieCSV(title, list);
+                        int index = MovieInfoManager.findMovieCSV(title, list);
                         if (index == -1) System.out.println("Movie not found! ");
                         // System.out.println("Select the index of the movie you want to display: ");
                         // selection = sc.nextInt(); sc.nextLine();
@@ -75,10 +71,10 @@ public class CustomerMenuUI {
                     break;
 
                 case 3:
-                    purchaseTicket();
+                    purchaseTicket(customer);
                     break;
                 case 4:
-                    bookingHistory();
+                    bookingHistory(customer);
                     break;
                 case 5:
                     //
@@ -136,11 +132,28 @@ public class CustomerMenuUI {
 
     }
 
-    public static void seatDetails() {
+    public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
+        // Connection to the managers and UI
+        BookingDisplay booking = new BookingDisplay();
+        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
+        int showtimesLength = Showtimes.getLength();
+        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
 
+        // Getting user inputs.
+        String cineplex = booking.askCineplex();
+        String[] movies = Showtimes.getMovies(showtimesLength);
+        int movieChoice = booking.askMovie(movies);
+        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex);
+        LocalDate inputDate = booking.askDate();
+        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
+        int showtimeChoice = booking.askTiming(showtimes);
+        Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
+        choosenShowtime.setDate(Integer.valueOf(formattedDate));
+        choosenShowtime.setLayout(); 
+        choosenShowtime.printLayout();
     }
 
-    public static void purchaseTicket() throws FileNotFoundException, IOException, InterruptedException {
+    public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException {
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
@@ -158,27 +171,41 @@ public class CustomerMenuUI {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
-        int numberSeats = booking.askTickets();
-        
-        Pricing price = new Pricing();
-        choosenShowtime.printLayout();
-        ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
-        Ticket ticket = new Ticket(20, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+       
+        while (true){
+            int numberSeats = booking.askTickets();
+            
+            choosenShowtime.printLayout();
+            ArrayList<Seat> userSeats = booking.askSeats(numberSeats);
+            ArrayList<AgeGroup> ages = booking.getAges(numberSeats);
+           
+            
+            Pricing price = new Pricing();
+            Double cost  = price.getPrice(ages,inputDate);
+            Ticket ticket = new Ticket(customer, cost, userSeats, choosenShowtime, Integer.valueOf(formattedDate));
+            int confirmation = booking.confirmTicket(ticket);
+            if (confirmation == 1) {
+                System.out.println("Purchase successful!  ");
+                ticketHandle.uploadTicket(ticket);
+                break;
+            } else if (confirmation == 0){
+                continue;
+            }
+            else {
+                Thread.sleep(1000);
+                booking.failExitDialouge();
+                break;
+            }
 
-        int confirmation = booking.confirmTicket(ticket);
-        if (confirmation == 1) {
-            System.out.println("Done! ");
-            ticketHandle.uploadTicket(ticket);
-        } else {
-            return;
         }
+        
 
     }
 
-    public static void bookingHistory() throws IOException, InterruptedException {
+    public static void bookingHistory(Customer customer) throws IOException, InterruptedException {
         BookedHistoryUI bt = new BookedHistoryUI();
         TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-        ArrayList <Ticket> userTickets = tk.getUserTickets("John");
+        ArrayList <Ticket> userTickets = tk.getUserTickets(customer.getUsername());
         int input  = bt.mainUI();
         switch (input) {
             case 1:
@@ -192,7 +219,7 @@ public class CustomerMenuUI {
     }
 
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
-        MovieInfoManager2 m1 = new MovieInfoManager2();
+        MovieInfoManager m1 = new MovieInfoManager();
         m1.rankByRatings(byTicketSales);
     }
 

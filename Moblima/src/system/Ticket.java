@@ -2,7 +2,7 @@ package system;
 import enums.*;
 import java.util.ArrayList;
 import system.Showtime;
-import database.User;
+import database.Customer;
 
 // Imports all the enums to be used in the Class
 
@@ -17,22 +17,23 @@ public class Ticket {
     
     private ArrayList <Seat> seats;
     private Showtime showtime;
-    private int price;
+    private double price;
     private int date;
-    private User user = new User("John Doe","123");
+    private Customer customer;
     private int ticketID;
-    public Ticket(int price, ArrayList <Seat> seats , Showtime showtime , int date ){
-        this.price = price;
+    public Ticket(Customer customer, Double cost, ArrayList <Seat> seats , Showtime showtime , int date ){
+        this.price = cost;
         this.showtime = showtime;
         this.seats = seats;
         this.date = date;
+        this.customer=customer;
     }
 
     public ArrayList <Seat> getSeats(){
         return this.seats;
     }
 
-    public int getPrice(){
+    public Double getPrice(){
         return this.price;
     }
     
@@ -53,8 +54,8 @@ public class Ticket {
         return this.date;
     }
 
-    public User getUser(){
-        return this.user;
+    public Customer getCustomer(){
+        return this.customer;
     }
 
     
