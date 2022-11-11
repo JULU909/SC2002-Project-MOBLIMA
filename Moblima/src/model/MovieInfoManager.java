@@ -88,6 +88,10 @@ public class MovieInfoManager {
     	if(review.size()==0)
     	{
     		writer.append("\n");
+        	
+    		//cleanup
+        	writer.flush();
+        	writer.close();
     		return;
     	}
     		
@@ -333,9 +337,14 @@ public class MovieInfoManager {
 		tempMovie.setAverageRating(avgRating);//Set that rating in movie
 		list.set(i, tempMovie);//Set movie with new values
 		
-		writeMovieCSV(list);//Rewrite into CSV
-    	
-    	
+		writeMovieCSV(list);//Rewrite into CSV	
+    }
+    
+    public void updateTotalSales(String title,int sales) throws FileNotFoundException, IOException {
+    	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
+    	int i = findMovieCSV(title,list);//Find position of that movie in array list
+    	list.get(i).setTotalSales(sales);//Update its sales
+    	writeMovieCSV(list); //Rewrite into CSV
     }
     
     public void printAll(ArrayList<Movie> list) {
