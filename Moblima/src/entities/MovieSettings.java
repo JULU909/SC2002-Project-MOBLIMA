@@ -110,6 +110,10 @@ public static void editMovie(Movie movie) { //Edit movie
 			ArrayList<String> cast = movie.getCast();
 
 			i = 0;
+			if(cast.size() == 0) {
+				System.out.println(movie.getTitle()  + " has no cast members! Exiting...");
+				break;
+			}
 			while(i<cast.size()) {
 				
 				for(i = 0;i<cast.size();i++) {
@@ -169,8 +173,16 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 9:
 			System.out.println("Enter movie runtime (xHxxM): ");
 			input = sc.nextLine();
-			movie.setrunTime(input);
-			System.out.println("Movie runtime set to: " + input);
+			Character H = input.charAt(1);
+			Character M = input.charAt(4);
+			if(H.equals('H') && M.equals('M') && Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(2)) && Character.isDigit(input.charAt(3)))
+			{
+				movie.setrunTime(input);
+				System.out.println("Movie runtime set to: " + input);
+			}
+			else
+				System.out.println("Invalid format! Runtime format is xHxxM, x is a digit.");
+			
 			break;
 		case 10:
 			System.out.println("Exiting...");
