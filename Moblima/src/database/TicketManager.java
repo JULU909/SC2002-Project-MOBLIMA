@@ -65,7 +65,6 @@ public class TicketManager {
     public ArrayList <Seat> getAllBookedSeats(String cineplex, String time , String date , String movie) throws IOException {
         ArrayList <Seat> bookedSeats = new ArrayList();
         int numSeats = 0;
-        System.out.println(date);
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/TicketsBooked.csv"))) {
             String line;
             int count = 0;
@@ -141,8 +140,10 @@ public class TicketManager {
                         int time = Integer.valueOf(list.get(4));
                         String cineplex = list.get(2);
                         String movie = list.get(3);
+                        
+                        Double cost = Double.valueOf(list.get(6));
                         Showtime tempShowtime = new Showtime(time, date,cineplex , movie);
-                        Ticket tempTicket = new Ticket(customer, 10, bookedSeats , tempShowtime , date );
+                        Ticket tempTicket = new Ticket(customer, cost, bookedSeats , tempShowtime , date );
                         bookedTickets.add(tempTicket);
                     }
 
