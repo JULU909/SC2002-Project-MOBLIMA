@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import database.*;
 import enums.UserType;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class StaffLoginUI {
-    public String filepath = "Moblima/src/Data/Staff.csv";
+    public String filepath = "Moblima/src/Data/Staff.csv"; 
 
 	public static void execute() throws IOException, InterruptedException, FileNotFoundException {
         Scanner sc = new Scanner(System.in);
