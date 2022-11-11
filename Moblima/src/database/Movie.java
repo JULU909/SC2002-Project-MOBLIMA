@@ -31,11 +31,11 @@ public class Movie {
 	} //constructor for exisiting movie
 	
 	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, 
-			int totalSales, double averageRating, String genre, String runTime)
+			int totalSales, double averageRating, String genre, String runTime,ArrayList<Review> reviews)
 	{
 		this.title = title;  this.synopsis = synopsis; this.director = director; this.cast = cast; this.type = type; this.ageRating = ageRating;
-		this.status = status; this.totalSales=totalSales; this.averageRating = averageRating;  this.genre = genre; this.runTime=runTime;
-	} //constructor for exisiting movie without review
+		this.status = status; this.totalSales=totalSales; this.averageRating = averageRating;  this.genre = genre; this.runTime=runTime; this.reviews = reviews;	}
+	//constructor for exisiting movie re-arranged in case someone was using the above constructor
 	
 	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, String genre, String runTime) {
 		this.title = title;
