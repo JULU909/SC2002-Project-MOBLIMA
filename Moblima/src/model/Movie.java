@@ -137,8 +137,6 @@ public class Movie {
     }
     */
 		reviews.add(review);
-    double r = (averageRating * reviews.size() + review.getRating()) / (reviews.size()+1);
-		setAverageRating(r);
     //noOfReviews++;
     return true;
 	}
