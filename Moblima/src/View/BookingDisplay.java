@@ -158,6 +158,11 @@ public int askMovie(String [] movies){
 public int askTiming(ArrayList <Showtime>showtimes){
     Scanner sc = new Scanner(System.in);
     int count= 0;
+    if(showtimes.size() == 0){
+        System.out.println( "No showtime for this specific date! ");
+        System.out.println( "------------------------------------------ ");
+        return -1;
+    }
     while(true){
     try {System.out.println("Please select the showtime of your liking! : ");
     System.out.println( "------------------------------------------ ");
