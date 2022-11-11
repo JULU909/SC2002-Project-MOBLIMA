@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import entities.DaySettings;
 import entities.MovieSettings;
+import entities.Pricing;
 import entities.RegisterStaff;
 import entities.Showtime;
 import entities.ShowtimeSettings;
@@ -30,7 +31,7 @@ public class StaffSettingsUI {
 		ArrayList<Movie> movieList = new ArrayList<Movie>();
 		
 		while(choice<11) {
-			System.out.println("1) Set day.");
+			System.out.println("1) Set ticket base price.");
 			System.out.println("2) Add movie.");
 			System.out.println("3) Update movie.");
 			System.out.println("4) Remove movie.");
@@ -50,8 +51,12 @@ public class StaffSettingsUI {
 			
 			switch(choice) {
 			case 1:
-				enums.Day day = DaySettings.setDay();
-				System.out.println("Day set to " + day); 
+				Pricing price = new Pricing();
+				System.out.println("Current base price is " + price.getBasedPrice());
+				System.out.println("Enter new base price ");
+				double basedPrice = sc.nextDouble();
+				price.setBasedPrice(basedPrice);
+				System.out.println("Base price set to " + price.getBasedPrice()); 
 				break;
 			
 			case 2:
