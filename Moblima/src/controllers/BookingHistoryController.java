@@ -36,8 +36,6 @@ public class BookingHistoryController {
                 String movie = bt.getMovieName();
                 ArrayList<Ticket>matchingTickets = tk.searchByMovie(userTickets, movie);
                 bt.printAllTickets(matchingTickets);
-                
-
                 break;
             
             case 4: 

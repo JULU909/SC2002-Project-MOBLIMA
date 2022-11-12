@@ -45,7 +45,7 @@ public class BookedHistoryUI {
          * @return String
          */
         if (userTickets.size() == 0 ){
-            noBookings();
+            noBookings(); return;
         }
         Scanner sc  = new Scanner(System.in);
         TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
@@ -67,15 +67,15 @@ public class BookedHistoryUI {
             System.out.println("Seats purchased : " + userTickets.get(i).getSeats().size()  );
             System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );
             System.out.println("-------------" );
-
-
-
         }
 
         
     }
 
     public  void individualTicketmenu(ArrayList <entities.Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
+        if (userTickets.size() == 0 ){
+            return;
+        }
         System.out.println("To view a specific booking further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
         System.out.println("--------------------------------------------------------------------------  " );
         String temp = sc.next();
@@ -88,22 +88,11 @@ public class BookedHistoryUI {
     }
 
     public void noBookings(){
-        System.out.println("You have yet to make a Booking with us !. Press any key to Exit" );
+        System.out.println("You have yet to make a Booking with us !" );
         System.out.println("" );
         System.out.println("----------------------------------------------------------------");
-        long start = System.currentTimeMillis();
-        long end = start + 10 * 1000;
-        String temp;
-        while (System.currentTimeMillis() < end) {
-             temp = sc.next();
-             break;
-
         }
 
-
-
-
-    }
 
     public  void printTicketSeats(int index ,ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
         int i = index;
