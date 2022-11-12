@@ -8,9 +8,13 @@ import java.util.Scanner;
 import controllers.LoginController;
 import controllers.StaffSettingsController;
 
-
+/**
+ * This class holds the method to print all the text in staff settings
+ * @author Tham Holdon
+ *
+ */
 public class StaffSettingsUI {
-	/*
+	/**
 	 * This method prints all the text for a staff member to interact with
 	 */
 	public static void settingsText() throws FileNotFoundException, IOException, InterruptedException, ParseException {

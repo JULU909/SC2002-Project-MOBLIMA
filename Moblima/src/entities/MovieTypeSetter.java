@@ -4,12 +4,12 @@ import java.util.Scanner;
 import enums.MovieType;
 
 public class MovieTypeSetter {
-	/*
+	/**
 	 * This class allows the setting of a movie's movie type
 	 * @author Tham Holdon
 	 */
 	public static MovieType typeSetter() {
-		/*
+		/**
 		 * This method lets the user decide which movie type a movie is to have
 		 * @return The movie type a movie is to have
 		 */

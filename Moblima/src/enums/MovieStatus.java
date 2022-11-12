@@ -1,5 +1,5 @@
 package enums;
-/*
+/**
  * This enumeration shows the different statuses a movie can have
  */
 public enum MovieStatus {
