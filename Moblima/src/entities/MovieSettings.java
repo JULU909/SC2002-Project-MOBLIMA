@@ -7,6 +7,7 @@ import enums.AgeRating;
 import enums.MovieStatus;
 import enums.MovieType;
 import model.Movie;
+import model.StaffErrorChecker;
 
 public class MovieSettings {
 public static Movie createMovie() { //create a Movie object
@@ -30,7 +31,13 @@ public static Movie createMovie() { //create a Movie object
 			System.out.printf("Enter cast member %d (Enter END to stop inputting): \n", i);
 			String input = sc.nextLine();
 			if(input.equals("END"))
-				break;
+				if(StaffErrorChecker.checkCast(cast))
+					break;
+				else
+				{
+					System.out.println("Cast cannot be empty!");
+					continue;
+				}
 			i++;
 			cast.add(input);
 		}
@@ -49,6 +56,10 @@ public static Movie createMovie() { //create a Movie object
 		
 		System.out.println("Enter runtime (xHxxM): ");
 		String runTime = sc.nextLine();
+		while(!StaffErrorChecker.checkRuntime(runTime)) {
+			System.out.println("Enter runtime (xHxxM): ");
+			runTime = sc.nextLine();
+		}
 		
 		//Create movie object with those attributes
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
@@ -110,6 +121,10 @@ public static void editMovie(Movie movie) { //Edit movie
 			ArrayList<String> cast = movie.getCast();
 
 			i = 0;
+			if(!StaffErrorChecker.checkCast(cast)) {
+				System.out.println(movie.getTitle()  + " has no cast members! Exiting...");
+				break;
+			}
 			while(i<cast.size()) {
 				
 				for(i = 0;i<cast.size();i++) {
@@ -128,9 +143,8 @@ public static void editMovie(Movie movie) { //Edit movie
 					System.out.println("Invalid input! Exiting...");
 					break;
 				}
-				cast.remove(i-1); //Remove cast member from array list
 				System.out.println("Enter new cast member name: "); 
-				cast.add(sc.nextLine()); //And replace them with new cast member
+				cast.set(i-1,sc.nextLine()); //Edit cast member in array list
 			}
 			System.out.println("New cast set to: ");
 			for(i = 0;i<cast.size();i++) {
@@ -170,8 +184,13 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 9:
 			System.out.println("Enter movie runtime (xHxxM): ");
 			input = sc.nextLine();
-			movie.setrunTime(input);
-			System.out.println("Movie runtime set to: " + input);
+			Character H = input.charAt(1);
+			Character M = input.charAt(4);
+			if(StaffErrorChecker.checkRuntime(input))
+			{
+				movie.setrunTime(input);
+				System.out.println("Movie runtime set to: " + input);
+			}
 			break;
 		case 10:
 			System.out.println("Exiting...");
@@ -190,5 +209,7 @@ public static String removeMovie() {
 	return sc.nextLine();
 	
 }
-
+public static void main(String[] args) {
+	MovieSettings.addMovie();
+}
 }

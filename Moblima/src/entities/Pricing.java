@@ -10,21 +10,42 @@ import java.util.Calendar;
 import java.util.List;
 
 import enums.AgeGroup;
+import enums.SeatTypes;
 import model.*;
 
 public class Pricing {
-    public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate) throws FileNotFoundException, IOException{
-        double basedPrice = 7;
+	private static double basedPrice = 7;
+    public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate ,ArrayList <Seat> userSeats,
+    Showtime choosenShowtime) throws FileNotFoundException, IOException{
         double totalPrice = 0;
         DayOfWeek day = DayOfWeek.of(inputDate.get(ChronoField.DAY_OF_WEEK));
         HolidayManager hm = new HolidayManager();
         ArrayList<LocalDate> holidayDataList = hm.readHolidayDataCSV();
-
+        Double price = this.basedPrice;
+        for (int i = 0 ; i <userSeats.size(); i++){
+            SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
+            if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
+                price+=0.5;
+             
+            }
+            
+         }
+        
+        
+        
+        
+        
+        if(choosenShowtime.getCinemaType().equals("GOLD")){
+            price+=0.5;
+        }
+        else if (choosenShowtime.getCinemaType().equals("PREMIUM")){
+            price+=1;
+        }
         //Checking if weekend or holiday
         if (day == DayOfWeek.SUNDAY || day == DayOfWeek.SATURDAY || day == DayOfWeek.FRIDAY || holidayDataList.contains(inputDate)) {
-            basedPrice += 3.5;
+            price += 3.5;
         }
-        totalPrice = basedPrice * ageGroups.size();
+        totalPrice = price * ageGroups.size();
         
         //Give discount to child and senior
         for (AgeGroup ageGroup : ageGroups) {
@@ -34,4 +55,13 @@ public class Pricing {
         }
         return totalPrice;
     }
+    
+    public double getBasedPrice() {
+    	return Pricing.basedPrice;
+    }
+    
+    public void setBasedPrice(double basedPrice) {
+    	Pricing.basedPrice = basedPrice;
+    }
+
 }

@@ -2,6 +2,7 @@ package View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import controllers.LoginController;
 import enums.UserType;
 import model.*;
 
@@ -37,7 +38,7 @@ public class StaffLoginUI {
         else {
             System.out.println("Login failed!");
             // go back to previous menu
-            LoginUI.execute();
+            LoginController.execute();
         }
 		sc.close();
 	}

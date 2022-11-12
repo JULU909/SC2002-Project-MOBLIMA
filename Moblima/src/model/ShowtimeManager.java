@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
 
-public class ShowtimeManager {
+public class ShowtimeManager extends Datamanager {
     private String filename;
     private Showtime[] data;
     private Showtime temp;
@@ -98,7 +98,7 @@ public class ShowtimeManager {
         return names;
     }
 
-    public ArrayList<Showtime> getShowtimes(String movie, String cineplex) throws FileNotFoundException, IOException{ //Get all show times of certain movie and cineplex in CSV
+    public ArrayList<Showtime> getShowtimes(String movie, String cineplex , int date) throws FileNotFoundException, IOException{ //Get all show times of certain movie and cineplex in CSV
 
         ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
         ArrayList<Showtime> list = new ArrayList<Showtime>();
@@ -107,7 +107,7 @@ public class ShowtimeManager {
                 int i = 0;
                 while(i!=showtimes.size())
                 {
-                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex)) //Find rows with same movie and cineplex
+                	if(showtimes.get(i).getMovie().equals(movie) && showtimes.get(i).getCineplex().equals(cineplex) && (showtimes.get(i).getDate() == date)) //Find rows with same movie and cineplex
                 	{
                 		list.add(showtimes.get(i)); // Add it to list array list
                 	}

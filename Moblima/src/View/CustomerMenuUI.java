@@ -8,11 +8,12 @@ import java.util.*;
 import entities.Ticket;
 import View.BookedHistoryUI;
 import View.BookingDisplay;
-import View.LoginUI;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import controllers.BookingController;
 import controllers.BookingHistoryController;
+import controllers.LoginController;
+import controllers.SeatDetailController;
 import entities.*;
 import enums.AgeGroup;
 import enums.Cinema;
@@ -26,9 +27,10 @@ public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
         BookingHistoryController bookingHistoryController = new BookingHistoryController();
+        int choice = 0;
         do {
             Scanner sc = new Scanner(System.in);
-            int choice = mainDisplayOptions();
+            choice = mainDisplayOptions();
             int selection=0;
             switch (choice) {
                 case 1:
@@ -91,12 +93,10 @@ public class CustomerMenuUI {
                     break;
                 case 7:
                     exitDialouge();
-                default:
-                    sc.close();
-                    break;
+                    LoginController.execute();
             }
             // choice
-        } while (true);
+        } while (choice != 7);
 
         // PaymentUI pay = new PaymentUI();
         // pay.printPayment();
@@ -143,24 +143,8 @@ public class CustomerMenuUI {
     }
 
     public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
-        // Connection to the managers and UI
-        BookingDisplay booking = new BookingDisplay();
-        ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
-        int showtimesLength = Showtimes.getLength();
-        TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-
-        // Getting user inputs.
-        String cineplex = booking.askCineplex();
-        String[] movies = Showtimes.getMovies(showtimesLength);
-        int movieChoice = booking.askMovie(movies);
-        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex);
-        LocalDate inputDate = booking.askDate();
-        String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
-        int showtimeChoice = booking.askTiming(showtimes);
-        Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
-        choosenShowtime.setDate(Integer.valueOf(formattedDate));
-        choosenShowtime.setLayout(); 
-        choosenShowtime.printLayout();
+        SeatDetailController sdc = new SeatDetailController();
+        sdc.getSeatDetails();
     }
 
     public static void movieReview(Customer customer) throws FileNotFoundException, IOException {
@@ -204,8 +188,7 @@ public class CustomerMenuUI {
     }
 
     public static void exitDialouge() {
-        System.out.println("Thank you for using Moblima, Have a pleasant day!.");
-        System.exit(0);
+        System.out.println("Thank you for using Moblima! Logging out...");
 
     }
 
