@@ -17,6 +17,7 @@ import model.Movie;
 import model.MovieInfoManager;
 import model.ShowtimeManager;
 import model.Staff;
+import enums.MovieStatus;
 
 /** This class controls StaffSettingsUI
  * @author Tham Holdon
@@ -83,7 +84,10 @@ public class StaffSettingsController {
 			System.out.println("Movie does not exist! Exiting...");
 			return; //Exit
 		}
-		movieList.remove(k); //Otherwise, remove it from array list
+		Movie movie = movieList.get(k); //Otherwise, get it from array list
+		movie.setMovieStatus(MovieStatus.END_OF_SHOWING);
+		movieList.remove(k); //Remove it from array list
+		movieList.add(movie);
 		mm.writeMovieCSV(movieList); //Then write the list it to CSV
 		System.out.println(TitletoRemove + " removed!");
 		return;
