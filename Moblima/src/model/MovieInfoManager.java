@@ -141,8 +141,13 @@ public class MovieInfoManager {
     		String genre = split[8];
     		String runTime = split[9];
     		int size = split.length;
-    		if(size<11) //If no reviews written, split[11] will not exist
-    			return list;
+    		if(size<11) {
+			//If no reviews written, split[10] will not exist
+				ArrayList<Review> reviews = new ArrayList<Review>();
+    			Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime,reviews);
+    			list.add(tempMovie);
+				continue;
+			}
     		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[10].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		
