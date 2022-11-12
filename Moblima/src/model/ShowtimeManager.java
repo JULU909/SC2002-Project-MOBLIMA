@@ -20,7 +20,7 @@ public class ShowtimeManager extends Datamanager {
     private Showtime[] data;
     private Showtime temp;
 
-    public final static String FILENAME = "Moblima/src/Data/Showtimes.csv";
+    public final static String FILENAME = /*"Moblima/src/Data/Showtimes.csv";*/ new File("Showtimes.csv").getAbsolutePath();
 
     public ShowtimeManager(){
         this.filename = FILENAME;
