@@ -10,7 +10,6 @@ public class CustomerRegistrationUI {
     Scanner sc = new Scanner(System.in);
 
     public String getUsername() throws FileNotFoundException, IOException {
-        
         String username;
         do {
             ArrayList <Customer> database = CustomerManager.getDataAll();

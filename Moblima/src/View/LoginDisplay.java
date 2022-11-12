@@ -53,5 +53,6 @@ public class LoginDisplay {
 
     public void printExitText(){
         System.out.println("Thank you for using MOBLIMA. Exiting...");
+        java.lang.System.exit(0); 
     }
 }
