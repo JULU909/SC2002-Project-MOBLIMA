@@ -80,6 +80,7 @@ public static void editMovie(Movie movie) { //Edit movie
 	//Choose which attribute to edit
 	while(choice<10) {
 		System.out.println("---Movie Editor---");
+		System.out.println("Editing " + movie.getTitle());
 		System.out.println("1) Title");
 		System.out.println("2) Synopsis");
 		System.out.println("3) Director");
@@ -104,7 +105,7 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 2:
 			System.out.println("Enter synopsis: ");
 			input = sc.nextLine();
-			movie.setTitle(input);
+			movie.setSynopsis(input);
 			System.out.println("Synopsis set to " + input);
 			break;
 			

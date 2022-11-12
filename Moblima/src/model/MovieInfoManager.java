@@ -203,8 +203,9 @@ public class MovieInfoManager {
     	FileWriter writer = new FileWriter(filename);
     	
     	int i =0;
-    	while(i!=list.size()) //Go through every movie in array list
+    	while(i<list.size()) //Go through every movie in array list
     	{
+    		
     		//Get every attribute
     		Movie movie = list.get(i);
         	String title = movie.getTitle();
@@ -220,7 +221,6 @@ public class MovieInfoManager {
         	String runtime = movie.getrunTime();
         	
         	ArrayList<Review> review = movie.getReviews();
-        	
         	//And add it to the CSV
         	writer.append(title);
         	writer.append(",``");
@@ -256,10 +256,8 @@ public class MovieInfoManager {
         	if(review.size()==0)
         	{
         		writer.append("\n");
-            	//cleanup
-            	writer.flush();
-            	writer.close();
-            	return;
+        		i++;
+            	continue;
         	}
         	writer.append(",");
         	int k=1;
