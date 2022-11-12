@@ -18,7 +18,6 @@ import controllers.SeatDetailController;
 import entities.*;
 import enums.AgeGroup;
 import enums.Cinema;
-import enums.Day;
 import enums.SeatStatus;
 import enums.SeatTypes;
 import enums.UserType;
