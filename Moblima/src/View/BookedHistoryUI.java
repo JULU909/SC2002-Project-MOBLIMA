@@ -9,6 +9,7 @@ import entities.*;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -23,6 +24,7 @@ public class BookedHistoryUI {
          * After the cineplex is obtained, it will be returned as a String
          * @return String
          */
+        while(true){
     
         CineplexTypes [] list ;
         list = CineplexTypes.values();
@@ -32,9 +34,15 @@ public class BookedHistoryUI {
         System.out.println( "2 : Search based on TicketID   ");
         System.out.println( "3 : Search based on Movie name ");
         System.out.println( "4 : Exit ");
-
+        try{
         int userInput = sc.nextInt();
-        return userInput;
+        return userInput;}
+        catch (InputMismatchException e){
+            System.out.println("Please enter a valid input!");
+            System.out.println("---------------------------");
+
+        }
+        }
     }
 
     public  void printAllTickets(ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
@@ -76,8 +84,9 @@ public class BookedHistoryUI {
         if (userTickets.size() == 0 ){
             return;
         }
-        System.out.println("To view a specific booking further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
-        System.out.println("--------------------------------------------------------------------------  " );
+        while(true){
+        System.out.println("To view a specific booking's seat details further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
+        System.out.println("----------------------------------------------------------------------------------------------------  " );
         String temp = sc.next();
         if (Integer.valueOf(temp) == 0 ){
             return;
@@ -85,12 +94,13 @@ public class BookedHistoryUI {
         if ( Integer.valueOf(temp) <= userTickets.size()){
             printTicketSeats((Integer.valueOf(temp)-1), userTickets);
         }
+        }
     }
 
     public void noBookings(){
-        System.out.println("You have yet to make a Booking with us !" );
+        System.out.println("No corresponding booking found!" );
         System.out.println("" );
-        System.out.println("----------------------------------------------------------------");
+        System.out.println("-------------------------------");
         }
 
 
@@ -110,10 +120,10 @@ public class BookedHistoryUI {
             char row = (char) seats.get(x).getRow();
             int col = seats.get(x).getCol();
             System.out.println("Seat  "+ (x+1) +"       : " + row + col);
-           
+            System.out.println(userTickets.get(i).getShowtime().getSeatType(col,row));
+
         }
         System.out.println("---------------" );
-
 
         System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );;
 
@@ -185,6 +195,9 @@ public class BookedHistoryUI {
             System.out.println("" );
             System.out.println("----------------------------------------------------------------");
             Thread.sleep(1000);
+            
+
+
             return;
         }
 

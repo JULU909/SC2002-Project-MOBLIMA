@@ -35,6 +35,8 @@ public class SeatDetailController {
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
         choosenShowtime.printLayout();
+        booking.printExitMessage();
+        return;
 
     }
 }

@@ -23,9 +23,12 @@ public class BookingController {
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
         int showtimesLength = Showtimes.getLength();
         TicketManager ticketHandle = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
-
         // Getting user inputs.
         String cineplex = booking.askCineplex();
+        if (cineplex.equals("exit")){
+            return;
+        }
+
         String[] movies = Showtimes.getMovies(showtimesLength);
         int movieChoice = booking.askMovie(movies);
         
@@ -49,7 +52,7 @@ public class BookingController {
             for (int i = 0 ; i <userSeats.size(); i++){
                 
                 if (choosenShowtime.getSeatStatus(userSeats.get(i).getCol(),userSeats.get(i).getRow()).equals(SeatStatus.OCCUPIED)){
-                 System.out.println("Seats you booked were booked , retry !");
+                 System.out.println("Seats you want to book have been previously booked by another customer, select other seats!");
                  check =1;
                  break;
                  
