@@ -119,9 +119,9 @@ public class StaffSettingsController {
 			System.out.println("Showtime does not exist! Exiting...");
 			return; //Exit program
 		}
-		sm.writeShowtimecsv(showList); //Convert array list to CSV
 		ShowtimeSettings.editShowtime(toEdit); //Edit the show time
 		showList.set(i, toEdit); //And change the show time in the CSV
+		sm.writeShowtimecsv(showList); //Convert array list to CSV
 		return;
 	}
 	/**
