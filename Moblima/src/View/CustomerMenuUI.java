@@ -83,7 +83,7 @@ public class CustomerMenuUI {
                     bookingController.purchaseTicket(customer);
                     break;
                 case 4:
-                    bookingHistoryController.getBookingHistory(customer);;
+                    bookingHistoryController.getBookingHistory(customer);
                     break;
                 case 5:
                     movieReview(customer);
