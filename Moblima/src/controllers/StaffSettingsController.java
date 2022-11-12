@@ -32,6 +32,7 @@ public class StaffSettingsController {
 		Movie newMovie = MovieSettings.addMovie(); //Create movie
 		MovieInfoManager mm = new MovieInfoManager();
 		mm.addMoviecsv(newMovie); //Add to movieInfo CSV
+		System.out.println(newMovie.getTitle() + " added!");
 		return;
 	}
 	
@@ -53,6 +54,7 @@ public class StaffSettingsController {
 		
 		movieList.set(j,MovietoEdit); //Then set it back to the array list
 		mm.writeMovieCSV(movieList); //Finally, write it to the CSV
+		System.out.println(MovietoEdit + " successfully edited!");
 		return;
 	}
 	
@@ -69,6 +71,7 @@ public class StaffSettingsController {
 		}
 		movieList.remove(k); //Otherwise, remove it from array list
 		mm.writeMovieCSV(movieList); //Then write the list it to CSV
+		System.out.println(TitletoRemove + " removed!");
 		return;
 	}
 	
