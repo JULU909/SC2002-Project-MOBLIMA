@@ -21,9 +21,11 @@ public class SeatDetailController {
 
         // Getting user inputs.
         String cineplex = booking.askCineplex();
+        MovieInfoManager movieManager = new MovieInfoManager();
+        ArrayList<Movie> showingMovies = movieManager.findShowingMovies();
         String[] movies = Showtimes.getMovies(showtimesLength);
-        int movieChoice = booking.askMovie(movies);
-        
+        int movieChoice = booking.askMovie(showingMovies);
+        String movieName = showingMovies.get(movieChoice).getTitle();
         LocalDate inputDate = booking.askDate();
         String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
         ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex ,Integer.valueOf(formattedDate) );
