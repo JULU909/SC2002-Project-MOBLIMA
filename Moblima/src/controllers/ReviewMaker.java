@@ -1,14 +1,12 @@
-package entities;
+package controllers;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Customer;
-import model.Movie;
+import entities.Review;
 import model.MovieInfoManager;
-import model.Review;
 
 public class ReviewMaker {
 	public static void newMovieReview(Customer customer) throws FileNotFoundException, IOException { 

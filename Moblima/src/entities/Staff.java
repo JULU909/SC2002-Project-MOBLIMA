@@ -1,4 +1,4 @@
-package model;
+package entities;
 import enums.UserType;
 
 public class Staff extends User{

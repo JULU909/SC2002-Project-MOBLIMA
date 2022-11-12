@@ -1,13 +1,14 @@
-package entities;
+package controllers;
 
 import java.util.Scanner;
+
+import entities.AgeRatingSetter;
+
 import java.util.ArrayList;
 
 import enums.AgeRating;
 import enums.MovieStatus;
 import enums.MovieType;
-import model.Movie;
-import model.StaffErrorChecker;
 /**
  * This class allows the user to decide what movies to add/edit/remove from the movieInformation CSV
  * @author Tham Holdon

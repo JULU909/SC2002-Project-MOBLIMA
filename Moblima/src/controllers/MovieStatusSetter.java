@@ -1,4 +1,4 @@
-package entities;
+package controllers;
 
 import enums.MovieStatus;
 import java.util.Scanner;

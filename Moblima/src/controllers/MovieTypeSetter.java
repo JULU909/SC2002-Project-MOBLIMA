@@ -1,4 +1,4 @@
-package entities;
+package controllers;
 import java.util.Scanner;
 
 import enums.MovieType;

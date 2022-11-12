@@ -1,5 +1,6 @@
-package model;
+package entities;
 import java.util.*;
+
 import enums.AgeGroup;
 import enums.UserType;
 

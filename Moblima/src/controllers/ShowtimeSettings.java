@@ -1,5 +1,7 @@
-package entities;
+package controllers;
 import java.util.Scanner;
+
+import entities.Showtime;
 /**
  * This class allows the adding,editing and removing of show times
  * @author Tham Holdon
