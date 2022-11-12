@@ -20,7 +20,7 @@ public class ShowtimeManager  {
     private Showtime[] data;
     private Showtime temp;
 
-    public final static String FILENAME = "Moblima/src/Data/Showtimes.csv";
+    public final static String FILENAME = /*"Moblima/src/Data/Showtimes.csv";*/ new File("Showtimes.csv").getAbsolutePath();
 
     public ShowtimeManager(){   
         this.filename = FILENAME;
@@ -125,7 +125,8 @@ public class ShowtimeManager  {
     		if(list.get(i).getMovie().equals(showtime.getMovie()) //Find exact match
     				&& list.get(i).getDate() == showtime.getDate() 
     				&& list.get(i).getCineplex().equals(showtime.getCineplex()) 
-    				&& list.get(i).getTime() == showtime.getTime())
+    				&& list.get(i).getTime() == showtime.getTime()
+    				&& list.get(i).getCinemaType().equals(showtime.getCinemaType()))
     			return i; //Return its position
     		i++; //Increment if not found
     	}
@@ -143,6 +144,7 @@ public class ShowtimeManager  {
     	int time = showtime.getTime();
     	int date = showtime.getDate();
     	String movie = showtime.getMovie();
+    	String cinemaType = showtime.getCinemaType();
     	
     	//Append them all into CSV
     	writer.append(cineplex);
@@ -152,6 +154,8 @@ public class ShowtimeManager  {
     	writer.append(String.valueOf(date));
     	writer.append(",");
     	writer.append(movie);
+    	writer.append(",");
+    	writer.append(cinemaType);
     	writer.append("\n");
     	
     	//cleanup
@@ -210,6 +214,7 @@ public class ShowtimeManager  {
         	int time = list.get(i).getTime();
         	int date = list.get(i).getDate();
         	String movie = list.get(i).getMovie();
+        	String cinemaType = list.get(i).getCinemaType();
         	
         	//Append them all into CSV
         	writer.append(cineplex);
@@ -219,6 +224,8 @@ public class ShowtimeManager  {
         	writer.append(String.valueOf(date));
         	writer.append(",");
         	writer.append(movie);
+        	writer.append(",");
+        	writer.append(cinemaType);
         	writer.append("\n");
         	
         	i++;

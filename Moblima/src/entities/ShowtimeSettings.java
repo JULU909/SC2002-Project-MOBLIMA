@@ -9,11 +9,15 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		String movie = sc.nextLine();
 		System.out.println("Enter cineplex: ");
 		String cineplex = sc.nextLine();
+		System.out.println("Enter cinemaType: ");
+		String cinemaType = sc.nextLine();
 		System.out.println("Enter time: ");
 		int time = sc.nextInt();
 		System.out.println("Enter date(DDMMYY): ");
 		int date = sc.nextInt();
+		
 		Showtime showtime = new Showtime(time,date,cineplex,movie);
+		showtime.setCinemaType(cinemaType);
 		return showtime;
 	}
 	
@@ -28,13 +32,14 @@ public class ShowtimeSettings { //static functions so that object does not need 
 
 		int choice=0;
 
-		while(choice<5) {
+		while(choice<6) {
 			System.out.println("---Showtime editor---");
 			System.out.println("1) Edit movie");
 			System.out.println("2) Edit cineplex");
-			System.out.println("3) Edit time");
-			System.out.println("4) Edit date");
-			System.out.println("5) Exit");
+			System.out.println("3) Edit cinema type");
+			System.out.println("4) Edit time");
+			System.out.println("5) Edit date");
+			System.out.println("6) Exit");
 			String input;
 			int number;
 			choice = sc.nextInt();
@@ -54,20 +59,26 @@ public class ShowtimeSettings { //static functions so that object does not need 
 				System.out.println("Cineplex edited to " + input);
 				break;
 			case 3:
+				System.out.println("Enter cinema type: ");
+				input = sc.nextLine();
+				showtime.setCinemaType(input);
+				System.out.println("Cinema type edited to " + input);
+				break;
+			case 4:
 				System.out.println("Enter time: ");
 				number = sc.nextInt();
 				sc.nextLine(); // eat the \n
 				showtime.setTime(number);
 				System.out.println("Time edited to " + number);
 				break;
-			case 4:
+			case 5:
 				System.out.println("Enter date(DDMMYY): ");
 				number = sc.nextInt();
 				sc.nextLine(); // eat the \n
 				showtime.setDate(number);
 				System.out.println("Date edited to " + number);
 				break;
-			case 5:
+			case 6:
 				System.out.println("Exiting...");
 				return;
 			default:

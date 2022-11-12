@@ -42,7 +42,7 @@ public class StaffSettingsController {
 	public static void editMovie() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie >movieList = mm.readMovieCSV(); //Convert CSV to array list
-		StaffSettingsController.showMovies(movieList);
+		StaffSettingsController.showMovies();
 		System.out.println("Enter movie title to edit: ");
 		Scanner sc = new Scanner(System.in);
 		String TitletoEdit = sc.nextLine();
@@ -63,8 +63,8 @@ public class StaffSettingsController {
 	
 	public static void removeMovie() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
-		ArrayList<Movie>movieList = mm.readMovieCSV(); //Convert CSV to array list
-		StaffSettingsController.showMovies(movieList);
+		ArrayList<Movie>movieList = mm.readMovieCSV();
+		StaffSettingsController.showMovies();
 		String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
 		int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
 		if(k == -1) //If it does not exist
@@ -79,6 +79,7 @@ public class StaffSettingsController {
 	}
 	
 	public static void addShowtime() throws FileNotFoundException, IOException {
+		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
 		Showtime newShowtime = ShowtimeSettings.addShowtime(); //Get show time to add
 		sm.addShowtimecsv(newShowtime); //And add it to CSV
@@ -86,6 +87,7 @@ public class StaffSettingsController {
 	}
 	
 	public static void editShowtime() throws FileNotFoundException, IOException {
+		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
 		ArrayList<Showtime> showList = sm.readShowtimecsv();
 		System.out.println("Enter showtime to edit.");
@@ -98,14 +100,14 @@ public class StaffSettingsController {
 			System.out.println("Showtime does not exist! Exiting...");
 			return; //Exit program
 		}
-		showList.remove(i);//Otherwise remove the show time that needs editing in array list
 		sm.writeShowtimecsv(showList); //Convert array list to CSV
 		ShowtimeSettings.editShowtime(toEdit); //Edit the show time
-		sm.addShowtimecsv(toEdit); //And add the show time to the CSV
+		showList.set(i, toEdit); //And add the show time back to the CSV
 		return;
 	}
 	
 	public static void removeShowtime() throws FileNotFoundException, IOException {
+		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
 		ArrayList<Showtime> showList = sm.readShowtimecsv();
 		Showtime ShowTimetoRemove = ShowtimeSettings.removeShowtime(); //Find which show time to remove
@@ -155,8 +157,10 @@ public class StaffSettingsController {
 		return;
 	}
 	
-	public static void showMovies(ArrayList<Movie> movieList) {
+	public static void showMovies() throws FileNotFoundException, IOException {
 		System.out.println("Current movies: ");
+		MovieInfoManager mm = new MovieInfoManager();
+		ArrayList<Movie>movieList = mm.readMovieCSV();
 		int k = 0;
 		while(k!=movieList.size())
 		{
