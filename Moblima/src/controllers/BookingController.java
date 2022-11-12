@@ -42,7 +42,7 @@ public class BookingController {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
-
+        String movieName = choosenShowtime.getMovie();
        
         while (true){
             int numberSeats = booking.askTickets();
@@ -73,6 +73,8 @@ public class BookingController {
             if (confirmation == 1) {
                 System.out.println("Purchase successful!  ");
                 ticketHandle.uploadTicket(ticket);
+                MovieInfoManager mm = new MovieInfoManager(); 
+                mm.updateTotalSales(movieName,numberSeats);
                 break;
             } else if (confirmation == 0){
                 continue;
