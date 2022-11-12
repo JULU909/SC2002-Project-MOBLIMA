@@ -1,7 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.io.FileWriter; //for writing to csv
  */
 public class MovieInfoManager  {
 	private String filename;
-    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv";*/
 
 
 
@@ -292,9 +292,6 @@ public class MovieInfoManager  {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
-        	writer.append("\n");
-        	
-        	
         	
         	if(review.size()==0)
         	{
@@ -320,6 +317,7 @@ public class MovieInfoManager  {
             	k++;
         	}
         	i++;
+        	writer.append("\n");
     	}
     	
     	//cleanup
