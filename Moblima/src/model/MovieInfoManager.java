@@ -23,7 +23,7 @@ import java.io.FileWriter; //for writing to csv
 public class MovieInfoManager {
 	private String filename;
 
-    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv";*/
 
 
 
@@ -218,9 +218,9 @@ public class MovieInfoManager {
         	
         	//And add it to the CSV
         	writer.append(title);
-        	writer.append(",");
+        	writer.append(",``");
         	writer.append(synopsis);
-        	writer.append(",");
+        	writer.append("``,");
         	writer.append(director);
         	writer.append(",");
         
