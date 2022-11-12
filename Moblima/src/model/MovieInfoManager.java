@@ -265,9 +265,9 @@ public class MovieInfoManager  {
         	
         	//And add it to the CSV
         	writer.append(title);
-        	writer.append(",");
+        	writer.append(",``");
         	writer.append(synopsis);
-        	writer.append(",");
+        	writer.append("``,");
         	writer.append(director);
         	writer.append(",");
         
@@ -292,7 +292,6 @@ public class MovieInfoManager  {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
-        	writer.append("\n");
         	
         	
         	
@@ -319,6 +318,8 @@ public class MovieInfoManager  {
             	writer.append(String.valueOf(review.get(k).getRating()));
             	k++;
         	}
+			
+        	writer.append("\n");
         	i++;
     	}
     	
