@@ -186,7 +186,20 @@ public class MovieInfoManager  {
     	
     	return list;
     }
-    
+    /**
+     * This method will read the movie CSV and return the list of movies that have status PREVIEW and NOWSHOWING
+     * @return Returns an array list of movies for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */	
+	public ArrayList<Movie> findShowingMovies() throws FileNotFoundException, IOException{ //Remove movie from array list
+    	ArrayList<Movie> list = readMovieCSV();
+		ArrayList<Movie> target = new ArrayList<Movie>();
+		for (Movie movie : list){
+			if (movie.getMovieStatus() == MovieStatus.PREVIEW || movie.getMovieStatus() == MovieStatus.NOW_SHOWING) target.add(movie);
+		}
+    	return target;
+    }
     /**
      * This method will find a specific movie in the array list
      * @param title, the title of the movie to find
