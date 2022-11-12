@@ -1,5 +1,6 @@
 package View;
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -27,7 +28,6 @@ public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
         BookingHistoryController bookingHistoryController = new BookingHistoryController();
-        SeatDetailController seatDetailController = new SeatDetailController();
         int choice = 0;
         do {
             Scanner sc = new Scanner(System.in);
@@ -77,7 +77,7 @@ public class CustomerMenuUI {
                     break;
 
                 case 2:
-                    seatDetailController.getSeatDetails();
+                    seatDetails();
                     break;
 
                 case 3:
@@ -163,9 +163,9 @@ public class CustomerMenuUI {
                 System.out.println("Invalid option, please try again\n\n");
             } else {
                 switch(op){
-                    case 1: m1.newMovieReview(customer);
+                    case 1: ReviewMaker.newMovieReview(customer);
                             break;
-                    case 2: m1.viewMovieRating();
+                    case 2: ReviewMaker.viewMovieRating();
                             break;
                     case 3: return;      
                 }

@@ -2,8 +2,15 @@ package entities;
 
 import enums.MovieStatus;
 import java.util.Scanner;
-
+/**
+ * This class allows the setting of a movie's movie status
+ * @author Tham Holdon
+ */
 public class MovieStatusSetter {
+/**
+ * This method lets a user choose which movie status a movie is to have
+ * @return The movie status chosen
+ */
 	public static MovieStatus statusSetter() {
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;

@@ -1,17 +1,17 @@
 package View;
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
 import controllers.LoginController;
-import enums.UserType;
 import model.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 
 public class StaffLoginUI {
+	
     public String filepath = "Moblima/src/Data/Staff.csv"; 
 
 	public static void execute() throws IOException, InterruptedException, FileNotFoundException, ParseException {

@@ -1,5 +1,7 @@
 package enums;
-
+/**
+ * This enumeration shows the different age classifications a movie can have
+ */
 public enum AgeRating {
     G,
     PG,

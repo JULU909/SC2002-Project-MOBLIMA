@@ -1,7 +1,14 @@
 package entities;
 import java.util.Scanner;
-
+/**
+ * This class allows the adding,editing and removing of show times
+ * @author Tham Holdon
+ */
 public class ShowtimeSettings { //static functions so that object does not need to be created
+	/**
+	 * This method asks the user attributes of a show time to wish to create
+	 * @return A show time of attributes they have inputed
+	 */
 	public static Showtime createShowtime() { //create a show time object
 		
 		Scanner sc = new Scanner(System.in);
@@ -20,13 +27,19 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		showtime.setCinemaType(cinemaType);
 		return showtime;
 	}
-	
+	/**
+	 * This method informs the user that a show time is being added
+	 * @return A show time of attributes they wish to add to showTime CSV
+	 */
 	public static Showtime addShowtime() { //Add a show time object
 		System.out.println("Adding showtime...");
 		return createShowtime();
 		
 	}
-	
+	/**
+	 * This method allows the user to edit the various attributes of a show time they wish to edit
+	 * @param showtime , the show time object they wish to edit
+	 */
 	public static void editShowtime(Showtime showtime) { //Edit a show time object
 		Scanner sc = new Scanner(System.in);
 
@@ -89,7 +102,10 @@ public class ShowtimeSettings { //static functions so that object does not need 
 
 		}
 	}
-	
+	/**
+	 * This method informs the user that a show time is to be removed
+	 * @return A show time with attributes they wish to remove
+	 */
 	public static Showtime removeShowtime() { //Remove a show time object
 		System.out.println("Removing showtime...");
 		return createShowtime();
