@@ -30,7 +30,6 @@ public class BookingController {
         }
         MovieInfoManager movieManager = new MovieInfoManager();
         ArrayList<Movie> showingMovies = movieManager.findShowingMovies();
-        String[] movies = Showtimes.getMovies(showtimesLength);
         int movieChoice = booking.askMovie(showingMovies);
         String movieName = showingMovies.get(movieChoice).getTitle();
         LocalDate inputDate = booking.askDate();
