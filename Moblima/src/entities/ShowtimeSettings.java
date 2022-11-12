@@ -1,6 +1,9 @@
 package entities;
 import java.util.Scanner;
-
+/*
+ * This class allows the adding,editing and removing of show times
+ * @author Tham Holdon
+ */
 public class ShowtimeSettings { //static functions so that object does not need to be created
 	public static Showtime createShowtime() { //create a show time object
 		

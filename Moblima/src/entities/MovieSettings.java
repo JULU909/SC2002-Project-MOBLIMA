@@ -8,8 +8,15 @@ import enums.MovieStatus;
 import enums.MovieType;
 import model.Movie;
 import model.StaffErrorChecker;
-
+/*
+ * This class allows the user to decide what movies to add/edit/remove from the movieInformation CSV
+ * @author Tham Holdon
+ */
 public class MovieSettings {
+	/*
+	 * This method asks the user to input various attributes needed to create a movie object
+	 * @return A movie object with their stated attributes
+	 */
 public static Movie createMovie() { //create a Movie object
 		
 		Scanner sc = new Scanner(System.in);
@@ -65,13 +72,19 @@ public static Movie createMovie() { //create a Movie object
 		Movie movie = new Movie(title,synopsis,director,cast,type,rating,status,genre,runTime);
 		return movie;
 	}
-
+/*
+ * This method informs the user that a movie is being created
+ * @return The movie with parameters that they wish to add to the movieInformation CSV
+ */
 public static Movie addMovie() { //Add movie
 	System.out.println("Adding movie...");
 	return createMovie();
 	
 	}
-
+/*
+ * This method allows the user to decide which attribute of a stated movie the wish to edit
+ * @param movie , the movie they wish to edit
+ */
 public static void editMovie(Movie movie) { //Edit movie
 	Scanner sc = new Scanner(System.in);
 	int choice = 0;
@@ -203,6 +216,9 @@ public static void editMovie(Movie movie) { //Edit movie
 	}
 	
 }
+/*
+ * This method allows the user to enter the title of the movie they wish to delete from movieInformation cSV
+ */
 public static String removeMovie() {
 	Scanner sc = new Scanner(System.in);
 	System.out.println("Removing movie...");
@@ -210,7 +226,5 @@ public static String removeMovie() {
 	return sc.nextLine();
 	
 }
-public static void main(String[] args) {
-	MovieSettings.addMovie();
-}
+
 }

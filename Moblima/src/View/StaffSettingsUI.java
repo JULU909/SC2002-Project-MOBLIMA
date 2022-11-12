@@ -10,6 +10,9 @@ import controllers.StaffSettingsController;
 
 
 public class StaffSettingsUI {
+	/*
+	 * This method prints all the text for a staff member to interact with
+	 */
 	public static void settingsText() throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
 		
@@ -90,8 +93,5 @@ public class StaffSettingsUI {
 		}
 		
 	}
-	
-public static void main(String [] args) throws FileNotFoundException, IOException, InterruptedException, ParseException {
-	StaffSettingsUI.settingsText();
-}
+
 }

@@ -18,8 +18,13 @@ import model.MovieInfoManager;
 import model.ShowtimeManager;
 import model.Staff;
 
+/* This class controls StaffSettingsUI
+ * @author Tham Holdon
+ */
 public class StaffSettingsController {
-	
+	/*
+	 * This method sets the base price of a movie ticket
+	 */
 	public static void setPrice() {
 		Scanner sc = new Scanner(System.in);
 		Pricing price = new Pricing();
@@ -30,7 +35,9 @@ public class StaffSettingsController {
 		System.out.println("Base price set to " + price.getBasedPrice());
 		return;
 	}
-	
+	/*
+	 * This method adds a movie into the movieInformation CSV
+	 */
 	public static void addMovie() throws FileNotFoundException, IOException {
 		Movie newMovie = MovieSettings.addMovie(); //Create movie
 		MovieInfoManager mm = new MovieInfoManager();
@@ -38,7 +45,9 @@ public class StaffSettingsController {
 		System.out.println(newMovie.getTitle() + " added!");
 		return;
 	}
-	
+	/*
+	 * This method edits a movie in movieInformation CSV
+	 */
 	public static void editMovie() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie >movieList = mm.readMovieCSV(); //Convert CSV to array list
@@ -60,7 +69,9 @@ public class StaffSettingsController {
 		System.out.println(MovietoEdit + " successfully edited!");
 		return;
 	}
-	
+	/*
+	 * This method removes a movie in movieInformation CSV
+	 */
 	public static void removeMovie() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie>movieList = mm.readMovieCSV();
@@ -77,7 +88,9 @@ public class StaffSettingsController {
 		System.out.println(TitletoRemove + " removed!");
 		return;
 	}
-	
+	/*
+	 * This method adds a show time into show time CSV
+	 */
 	public static void addShowtime() throws FileNotFoundException, IOException {
 		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
@@ -85,7 +98,9 @@ public class StaffSettingsController {
 		sm.addShowtimecsv(newShowtime); //And add it to CSV
 		return;
 	}
-	
+	/*
+	 * This method edits a show time in show time CSV
+	 */
 	public static void editShowtime() throws FileNotFoundException, IOException {
 		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
@@ -105,7 +120,9 @@ public class StaffSettingsController {
 		showList.set(i, toEdit); //And add the show time back to the CSV
 		return;
 	}
-	
+	/*
+	 * This method removes a show time in show time CSV
+	 */
 	public static void removeShowtime() throws FileNotFoundException, IOException {
 		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager();
@@ -115,8 +132,10 @@ public class StaffSettingsController {
 		sm.writeShowtimecsv(showList); //Rewrite CSV
 		return;
 	}
-
-		public static void addHoliday() throws FileNotFoundException, IOException {
+	/*
+	 * This method adds a holiday into holiday CSV
+	 */
+	public static void addHoliday() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		HolidayManager hm = new HolidayManager();
 		System.out.println("Enter holiday name.");
@@ -128,8 +147,10 @@ public class StaffSettingsController {
 		System.out.println("Holiday date successfully added!");
 		return;
 	}
-	
-		public static void removeHoliday() throws FileNotFoundException, IOException {
+	/*
+	 * This method removes a holiday in holiday CSV
+	 */
+	public static void removeHoliday() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		HolidayManager hm = new HolidayManager();ShowtimeManager sm = new ShowtimeManager();
 		hm.printHolidaysCSV();
@@ -138,25 +159,35 @@ public class StaffSettingsController {
 		hm.removeHolidayCSV(i);
 		return;
 	}
+	/*
+	 * This method allows a staff member to add another staff member into the Staff CSV
+	 */
 	public static void registerStaff() throws IOException {
 		Staff newStaff = RegisterStaff.registerStaff();
 		RegisterStaff.addStaffCSV(newStaff);
 		System.out.println("Staff member " + newStaff.getUsername() + " added to database.");
 		return;
 	}
-	
+	/*
+	 * This method calls the function to print the top 5 movies by sales
+	 */
 	public static void rankMovieSales() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		mm.rankByRatings(true);
 		return;
 	}
 	
+	/*
+	 * This method calls the function to print the top 5 movies by ratings
+	 */
 	public static void rankMovieRatings() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		mm.rankByRatings(false);
 		return;
 	}
-	
+	/*
+	 * This method shows all the movie titles currently in movieInformation CSV
+	 */
 	public static void showMovies() throws FileNotFoundException, IOException {
 		System.out.println("Current movies: ");
 		MovieInfoManager mm = new MovieInfoManager();
