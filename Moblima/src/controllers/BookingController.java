@@ -28,13 +28,14 @@ public class BookingController {
         if (cineplex.equals("exit")){
             return;
         }
-
+        MovieInfoManager movieManager = new MovieInfoManager();
+        ArrayList<Movie> showingMovies = movieManager.findShowingMovies();
         String[] movies = Showtimes.getMovies(showtimesLength);
-        int movieChoice = booking.askMovie(movies);
-        
+        int movieChoice = booking.askMovie(showingMovies);
+       String movieName = showingMovies.get(movieChoice).getTitle();
         LocalDate inputDate = booking.askDate();
         String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
-        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movies[movieChoice - 1], cineplex ,Integer.valueOf(formattedDate) );
+        ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movieName, cineplex ,Integer.valueOf(formattedDate) );
         int showtimeChoice = booking.askTiming(showtimes);
         if(showtimeChoice == -1){
             return;
