@@ -27,7 +27,6 @@ public class CustomerMenuUI {
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
         BookingHistoryController bookingHistoryController = new BookingHistoryController();
-        SeatDetailController seatDetailController = new SeatDetailController();
         int choice = 0;
         do {
             Scanner sc = new Scanner(System.in);
@@ -77,7 +76,7 @@ public class CustomerMenuUI {
                     break;
 
                 case 2:
-                    seatDetailController.getSeatDetails();
+                    seatDetails();
                     break;
 
                 case 3:
