@@ -2,14 +2,12 @@ package model;
 
 import java.io.BufferedReader;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 import enums.AgeRating;
 import enums.MovieStatus;
