@@ -104,7 +104,7 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 2:
 			System.out.println("Enter synopsis: ");
 			input = sc.nextLine();
-			movie.setTitle(input);
+			movie.setSynopsis(input);
 			System.out.println("Synopsis set to " + input);
 			break;
 			

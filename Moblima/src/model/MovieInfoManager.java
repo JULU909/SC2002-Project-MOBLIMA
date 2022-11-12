@@ -220,7 +220,6 @@ public class MovieInfoManager {
         	String runtime = movie.getrunTime();
         	
         	ArrayList<Review> review = movie.getReviews();
-        	
         	//And add it to the CSV
         	writer.append(title);
         	writer.append(",``");

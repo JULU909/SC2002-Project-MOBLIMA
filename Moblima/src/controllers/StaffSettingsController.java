@@ -36,11 +36,12 @@ public class StaffSettingsController {
 	}
 	
 	public static void editMovie() throws FileNotFoundException, IOException {
+		MovieInfoManager mm = new MovieInfoManager();
+		ArrayList<Movie >movieList = mm.readMovieCSV(); //Convert CSV to array list
+		StaffSettingsController.showMovies(movieList);
 		System.out.println("Enter movie title to edit: ");
 		Scanner sc = new Scanner(System.in);
-		MovieInfoManager mm = new MovieInfoManager();
 		String TitletoEdit = sc.nextLine();
-		ArrayList<Movie >movieList = mm.readMovieCSV(); //Convert CSV to array list
 		int j = MovieInfoManager.findMovieCSV(TitletoEdit, movieList); //Find it in array list
 		if(j == -1) //If it does not exist
 		{
@@ -48,9 +49,9 @@ public class StaffSettingsController {
 			return; //Exit
 		}
 		Movie MovietoEdit = movieList.get(j); //Otherwise get its details
-		movieList.remove(j); //Remove it from the array list
 		MovieSettings.editMovie(MovietoEdit); //Edit the movie
-		movieList.add(MovietoEdit); //Then add it back to the array list
+		
+		movieList.set(j,MovietoEdit); //Then set it back to the array list
 		mm.writeMovieCSV(movieList); //Finally, write it to the CSV
 		return;
 	}
@@ -58,14 +59,9 @@ public class StaffSettingsController {
 	public static void removeMovie() throws FileNotFoundException, IOException {
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie>movieList = mm.readMovieCSV(); //Convert CSV to array list
-		System.out.println("Current movies: ");
-		int k = 0;
-		while(k!=movieList.size())
-		{
-			System.out.println("- " + movieList.get(k).getTitle()); //Show all movies in database
-		}
+		StaffSettingsController.showMovies(movieList);
 		String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
-		k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
+		int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
 		if(k == -1) //If it does not exist
 		{
 			System.out.println("Movie does not exist! Exiting...");
@@ -129,5 +125,15 @@ public class StaffSettingsController {
 		MovieInfoManager mm = new MovieInfoManager();
 		mm.rankByRatings(false);
 		return;
+	}
+	
+	public static void showMovies(ArrayList<Movie> movieList) {
+		System.out.println("Current movies: ");
+		int k = 0;
+		while(k!=movieList.size())
+		{
+			System.out.println("- " + movieList.get(k).getTitle()); //Show all movies in database
+			k++;
+		}
 	}
 }
