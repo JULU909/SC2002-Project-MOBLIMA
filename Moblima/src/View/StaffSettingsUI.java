@@ -2,32 +2,19 @@ package View;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.Scanner;
 
+import controllers.LoginController;
 import controllers.StaffSettingsController;
-import entities.MovieSettings;
-import entities.Pricing;
-import entities.RegisterStaff;
-import entities.Showtime;
-import entities.ShowtimeSettings;
-import model.Movie;
-import model.MovieInfoManager;
-import model.ShowtimeManager;
-import model.Staff;
 
 
 public class StaffSettingsUI {
-	public static void settingsText() throws FileNotFoundException, IOException {
+	public static void settingsText() throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
 		
 		Scanner sc = new Scanner(System.in);
-		String Showfilepath = "Moblima/src/Data/Showtimes.csv"; //new File("Showtimes.csv").getAbsolutePath();
-		String MovieInfoPath = "Moblima/src/Data/movieInformation2.csv"; //new File("movieInformation2.csv").getAbsolutePath(); 
-		ShowtimeManager sm = new ShowtimeManager(Showfilepath);
-		MovieInfoManager mm = new MovieInfoManager(MovieInfoPath);
-		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
-		ArrayList<Movie> movieList = new ArrayList<Movie>();
+
 		
 		while(choice<11) {
 			System.out.println("1) Set ticket base price.");
@@ -37,10 +24,12 @@ public class StaffSettingsUI {
 			System.out.println("5) Add show time.");
 			System.out.println("6) Edit show time.");
 			System.out.println("7) Remove show time.");
-			System.out.println("8) Register Staff.");
-			System.out.println("9) Display top 5 by total sales");
-			System.out.println("10) Display top 5 by ratings");
-			System.out.println("11) Exit.");
+			System.out.println("8) Add holiday.");
+			System.out.println("9) Remove holiday.");
+			System.out.println("10) Register Staff.");
+			System.out.println("11) Display top 5 by total sales");
+			System.out.println("12) Display top 5 by ratings");
+			System.out.println("13) Exit.");
 
 			try {
 				choice = sc.nextInt();
@@ -75,18 +64,24 @@ public class StaffSettingsUI {
 				StaffSettingsController.removeShowtime();
 				break;
 			case 8:
+				StaffSettingsController.addHoliday();
+				break;
+			case 9:
+				StaffSettingsController.removeHoliday();
+				break;
+			case 10:
 				StaffSettingsController.registerStaff();
 				break;
 				
-			case 9:
+			case 11:
 				StaffSettingsController.rankMovieSales();
 				break;
-			case 10:
+			case 12:
 				StaffSettingsController.rankMovieRatings();
 				break;
-
-			case 11:
+			case 13:
 				System.out.println("Exiting settings...");
+				LoginController.execute();
 				return;
 			default:
 				System.out.println("Please enter a valid input!");
@@ -95,8 +90,6 @@ public class StaffSettingsUI {
 		}
 		
 	}
-	/*public static void main (String[] args) throws FileNotFoundException, IOException {
-		StaffSettingsUI.settingsText();
-	}*/
+	
 
 }

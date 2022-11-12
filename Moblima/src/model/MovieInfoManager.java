@@ -198,8 +198,9 @@ public class MovieInfoManager extends Datamanager {
     	FileWriter writer = new FileWriter(filename);
     	
     	int i =0;
-    	while(i!=list.size()) //Go through every movie in array list
+    	while(i<list.size()) //Go through every movie in array list
     	{
+    		
     		//Get every attribute
     		Movie movie = list.get(i);
         	String title = movie.getTitle();
@@ -247,6 +248,15 @@ public class MovieInfoManager extends Datamanager {
         	writer.append(runtime);
         	writer.append("\n");
         	
+        	
+        	
+        	if(review.size()==0)
+        	{
+        		writer.append("\n");
+        		i++;
+            	continue;
+        	}
+        	writer.append(",");
         	int k=1;
         	writer.append(review.get(0).getReviewer());
         	writer.append("'");

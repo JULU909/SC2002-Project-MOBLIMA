@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,6 +11,8 @@ import entities.Pricing;
 import entities.RegisterStaff;
 import entities.Showtime;
 import entities.ShowtimeSettings;
+import model.Holiday;
+import model.HolidayManager;
 import model.Movie;
 import model.MovieInfoManager;
 import model.ShowtimeManager;
@@ -32,6 +35,7 @@ public class StaffSettingsController {
 		Movie newMovie = MovieSettings.addMovie(); //Create movie
 		MovieInfoManager mm = new MovieInfoManager();
 		mm.addMoviecsv(newMovie); //Add to movieInfo CSV
+		System.out.println(newMovie.getTitle() + " added!");
 		return;
 	}
 	
@@ -53,6 +57,7 @@ public class StaffSettingsController {
 		
 		movieList.set(j,MovietoEdit); //Then set it back to the array list
 		mm.writeMovieCSV(movieList); //Finally, write it to the CSV
+		System.out.println(MovietoEdit + " successfully edited!");
 		return;
 	}
 	
@@ -69,6 +74,7 @@ public class StaffSettingsController {
 		}
 		movieList.remove(k); //Otherwise, remove it from array list
 		mm.writeMovieCSV(movieList); //Then write the list it to CSV
+		System.out.println(TitletoRemove + " removed!");
 		return;
 	}
 	
@@ -107,7 +113,29 @@ public class StaffSettingsController {
 		sm.writeShowtimecsv(showList); //Rewrite CSV
 		return;
 	}
+
+		public static void addHoliday() throws FileNotFoundException, IOException {
+		Scanner sc = new Scanner(System.in);
+		HolidayManager hm = new HolidayManager();
+		System.out.println("Enter holiday name.");
+		String name = sc.nextLine();
+		System.out.println("Enter holiday date (yyyy-MM-dd).");
+		LocalDate date = LocalDate.parse(sc.nextLine());
+		Holiday newHoliday = new Holiday(name, date); //Get show time to add
+		hm.addHolidayCSV(newHoliday); //And add it to CSV
+		System.out.println("Holiday date successfully added!");
+		return;
+	}
 	
+		public static void removeHoliday() throws FileNotFoundException, IOException {
+		Scanner sc = new Scanner(System.in);
+		HolidayManager hm = new HolidayManager();ShowtimeManager sm = new ShowtimeManager();
+		hm.printHolidaysCSV();
+		System.out.println("Enter index of date to remove: ");
+		int i = sc.nextInt(); sc.nextLine();
+		hm.removeHolidayCSV(i);
+		return;
+	}
 	public static void registerStaff() throws IOException {
 		Staff newStaff = RegisterStaff.registerStaff();
 		RegisterStaff.addStaffCSV(newStaff);
