@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
 
-public class ShowtimeManager extends Datamanager {
+public class ShowtimeManager  {
     private String filename;
     private Showtime[] data;
     private Showtime temp;

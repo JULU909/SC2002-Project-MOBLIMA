@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import java.io.FileWriter; //for writing to csv
 
-public class MovieInfoManager extends Datamanager {
+public class MovieInfoManager  {
 	private String filename;
 
     public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";

@@ -13,11 +13,11 @@ import java.util.List;
 // getDataAll()
 // getDataRow(int Row)
 
-public class Datamanager {
-    private String filename;
-    private String[] data;
+public interface Datamanager {
+    String filename;
+    String[] data;
 
-    public void Datamanager(String filename) {
+    public static void Datamanager(String filename) {
 		this.filename = filename;
 	}
 

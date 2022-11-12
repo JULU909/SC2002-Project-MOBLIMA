@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class HolidayManager extends Datamanager {
+public class HolidayManager {
     private String filename;
 
     public final static String FILENAME = "Moblima/src/Data/holidays.csv";

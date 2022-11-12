@@ -10,7 +10,7 @@ import entities.Showtime;
 
 import java.util.ArrayList;
 
-public class StaffManager extends Datamanager{
+public class StaffManager  {
     private static String filename;
     private ArrayList<Staff> data;
     private Showtime temp;

@@ -22,7 +22,7 @@ import java.text.ParseException;
 
 
 
-public class TicketManager extends Datamanager{
+public class TicketManager  {
     private String filename;
     private Customer customer;
     private ArrayList<Ticket> data;

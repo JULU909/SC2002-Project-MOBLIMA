@@ -40,8 +40,8 @@ public class BookedHistoryUI {
         catch (InputMismatchException e){
             System.out.println("Please enter a valid input!");
             System.out.println("---------------------------");
-
-        }
+            String error = sc.next();
+            }
         }
     }
 
