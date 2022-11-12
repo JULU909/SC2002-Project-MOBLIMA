@@ -34,6 +34,6 @@ public class Holiday {
     }
 
     public String toString(){
-        return (this.getHolidayName() + ": " + this.getHolidayDate() + " - " + this.getHolidayDateString());
+        return (this.getHolidayName() + ": " + this.getHolidayDateString());
     }
 }

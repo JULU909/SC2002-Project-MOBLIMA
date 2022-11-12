@@ -15,10 +15,9 @@ import enums.Day;
 import enums.UserType;
 import model.*;
 
-public class Moblima2 {
+public class Moblima {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException {
-        
+    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException { 
         LoginController.execute();
     } 
 

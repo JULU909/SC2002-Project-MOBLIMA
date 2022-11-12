@@ -48,12 +48,12 @@ public class HolidayManager extends Datamanager {
     }
 
     public ArrayList<LocalDate> readHolidayDataCSV() throws FileNotFoundException, IOException { //Read CSV
-    	ArrayList<LocalDate> holidayDateList = new ArrayList<LocalDate>(); //Create array list of movies
+    	ArrayList<LocalDate> holidayDateList = new ArrayList<LocalDate>();
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String line;
     	String header = "Holiday";
     	while ((line = br.readLine()) != null) {
-    		String split[] = line.split(",", 11); 
+    		String split[] = line.split(",", 0); 
     		if(split[0].equals(header)) //Ignore header
     			continue;
     		LocalDate holidayDate = LocalDate.parse(split[1]);
@@ -62,5 +62,73 @@ public class HolidayManager extends Datamanager {
     	}
         br.close();
     	return holidayDateList;
+    }
+
+	public void addHolidayCSV(Holiday holiday) throws FileNotFoundException, IOException { 
+    	//Writer will write into filename, true allows appending
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	FileWriter writer = new FileWriter(filename,true);
+    	
+    	//Get each attribute out from customer
+    	String name = holiday.getHolidayName();
+    	LocalDate date = holiday.getHolidayDate();
+
+    	//Write them all into CSV
+    	writer.append(name);
+    	writer.append(",");
+    	writer.append(date.format(formatter));
+        writer.append("\n");
+
+    	//cleanup
+    	writer.flush();
+    	writer.close();
+    }
+
+	public void printHolidaysCSV() throws FileNotFoundException, IOException {
+		ArrayList<Holiday> list = readHolidayCSV();
+		int i=0;
+		for (Holiday h : list){
+			System.out.println(i + ")  "+ h.toString());
+			i++;
+		}
+	}
+
+	public ArrayList<Holiday> removeHolidayCSV(int i) throws FileNotFoundException, IOException { //Remove movie from array list
+		ArrayList<Holiday> list = new ArrayList<Holiday>();
+		list = readHolidayCSV();
+    	if(i>=0 && i < list.size()) {
+    		list.remove(i); // And remove it
+			writeHolidayCSV(list);
+    		System.out.println("Holiday removed!");
+    		return list;
+    	}
+    	System.out.println("Holiday does not exist! Exiting...");
+    	return list; //Return list if movie not present
+    }
+
+	public void writeHolidayCSV(ArrayList<Holiday> list) throws FileNotFoundException, IOException{
+    	//FileWriter to write to CSV, no true because it's rewriting    	
+    	FileWriter writer = new FileWriter(filename);
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    	int i =0;
+    	while(i!=list.size()) //Go through every movie in array list
+    	{
+    		//Get every attribute
+    		Holiday holiday = list.get(i);
+        	String name = holiday.getHolidayName();
+			LocalDate date = holiday.getHolidayDate();
+        	
+        	//And add it to the CSV
+			writer.append(name);
+			writer.append(",");
+			writer.append(date.format(formatter));
+			writer.append("\n");
+        	i++;
+    	}
+    	
+    	//cleanup
+    	writer.flush();
+    	writer.close();
     }
 }
