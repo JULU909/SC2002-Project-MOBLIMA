@@ -8,11 +8,11 @@ public class Review {
     public Review(String reviewer, int rating, String prose){
         this.reviewer = reviewer; this.rating = rating; this.prose = prose;
     }
-    String getReviewer(){
+    public String getReviewer(){
         return this.reviewer;
     }
 
-    void setReviewer(String reviewer){
+    public void setReviewer(String reviewer){
         this.reviewer = reviewer;
     }
 /* 
@@ -24,19 +24,19 @@ public class Review {
         this.movie = movie;
     }
 */
-    int getRating(){
+    public int getRating(){
         return this.rating;
     }
 
-    void setRating(int rating){
+    public void setRating(int rating){
         this.rating = rating;
     }
 
-    String getProse(){
+    public String getProse(){
         return this.prose;
     }
     
-    void setProse(String prose){
+    public void setProse(String prose){
         this.prose = prose;
     }
 }
