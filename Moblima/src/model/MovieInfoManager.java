@@ -24,7 +24,7 @@ import java.io.FileWriter; //for writing to csv
  */
 public class MovieInfoManager  {
 	private String filename;
-    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv";*/
+    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
 
 
 
@@ -321,7 +321,6 @@ public class MovieInfoManager  {
 			
         	writer.append("\n");
         	i++;
-        	writer.append("\n");
     	}
     	
     	//cleanup
@@ -633,7 +632,10 @@ public static int getLevenshteinDistance(CharSequence s, CharSequence t) {
     // actually has the most recent cost counts
     return p[n];
 }
-
+public static void main(String [] args) throws FileNotFoundException, IOException {
+	MovieInfoManager mm = new MovieInfoManager();
+	ArrayList<Movie> test = mm.readMovieCSV();
+}
 }
 
 
