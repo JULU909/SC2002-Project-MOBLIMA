@@ -162,9 +162,9 @@ public class CustomerMenuUI {
                 System.out.println("Invalid option, please try again\n\n");
             } else {
                 switch(op){
-                    case 1: m1.newMovieReview(customer);
+                    case 1: ReviewMaker.newMovieReview(customer);
                             break;
-                    case 2: m1.viewMovieRating();
+                    case 2: ReviewMaker.viewMovieRating();
                             break;
                     case 3: return;      
                 }

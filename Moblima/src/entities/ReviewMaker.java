@@ -11,7 +11,7 @@ import model.MovieInfoManager;
 import model.Review;
 
 public class ReviewMaker {
-	public void newMovieReview(Customer customer) throws FileNotFoundException, IOException { 
+	public static void newMovieReview(Customer customer) throws FileNotFoundException, IOException { 
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie> list = mm.readMovieCSV();	
 		int rating = -1;
@@ -62,7 +62,7 @@ public class ReviewMaker {
 		System.out.println("Review successfully added!");
 	}
 
-	public int newMovieRating(Scanner sc) {
+	public static int newMovieRating(Scanner sc) {
 		while (!sc.hasNextInt()) {
 			System.out.println("Please enter a whole number for rating and within the range of 1 to 5:");
 			sc.next();
@@ -72,7 +72,7 @@ public class ReviewMaker {
 		return rating;
 	}
 
-	public void viewMovieRating() throws FileNotFoundException, IOException { 
+	public static void viewMovieRating() throws FileNotFoundException, IOException { 
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie> list = mm.readMovieCSV();	
 		int movieOpt = 0;
@@ -110,7 +110,7 @@ public class ReviewMaker {
 		System.out.println();
 	}
 
-	public int newMovieOption(Scanner sc) {
+	public static int newMovieOption(Scanner sc) {
 		while (!sc.hasNextInt()) {
 			System.out.println("Please enter a valid option:");
 			sc.next();
