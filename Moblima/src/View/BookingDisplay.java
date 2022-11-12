@@ -293,7 +293,7 @@ public static void successExitDialouge() {
 }
 
 public static ArrayList <AgeGroup> getAges(int numSeats) {
-    ArrayList ages= new ArrayList<AgeGroup>();
+    ArrayList<AgeGroup> ages= new ArrayList<AgeGroup>();
     System.out.println("Enter number of movie Viewers per age group {child , adult & senior} : ");
     System.out.println("-----------------------------------------------------------------------");
     System.out.println("");
