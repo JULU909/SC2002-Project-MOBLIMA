@@ -1,5 +1,6 @@
 package controllers;
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -12,7 +13,6 @@ import View.SearchMovieUI;
 import View.StaffLoginUI;
 import entities.*;
 import enums.AgeGroup;
-import enums.Day;
 import enums.UserType;
 import model.*;
 
