@@ -45,13 +45,17 @@ public String askCineplex(){
     try{
     System.out.println( "Please select cineplex : ");
     System.out.println( "------------------------ ");
+    System.out.println(0+ " : " + "Exit");
+
     for (int i = 0 ; i < list.length; i++){
         System.out.println(i+1 + " : " + list[i]);
     }
-
+    
+    
+    
     
     choice = sc.nextInt();
-    if (choice > list.length || choice <= 0  ){
+    if (choice > list.length || choice < 0  ){
         System.out.println("Enter a valid input! ");
         continue;
     }
@@ -60,6 +64,9 @@ public String askCineplex(){
     System.out.println("Enter a valid input! ");
     continue;
     
+    }
+    if (choice == 0){
+        return "exit";
     }
     return (list[choice-1]).name();
 
@@ -110,6 +117,10 @@ public int askTickets(){
     System.out.println( "--------------------------------------------- ");
     int choice = 0 ;
     choice = sc.nextInt();
+    if (choice <= 0){
+        System.out.println("Please enter a valid input!");
+
+    }
     return choice;}
     catch (InputMismatchException e){
         System.out.println("Please enter a number!");
@@ -242,9 +253,10 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
     System.out.println("These are the details of your Booking : ");
     System.out.println("--------------------------------------- ");
     Thread.sleep(1000);
+    String date = String.valueOf(ticket.getDate());
     System.out.println("Show time booked : " + bookedShowtime.getTime());
-    System.out.println("Date booked      : " + ticket.getDate());
-    System.out.println("Total cost       : " + ticket.getPrice());
+    System.out.println("Date booked      : " + date.substring(0,2) + "-" + date.substring(2,4) +'-' + date.substring(4,6));
+    System.out.println("Total cost       : " +"$ " +ticket.getPrice());
     System.out.println("Number of seats  : " + bookedSeats.size());
     Thread.sleep(1000);
     System.out.println();
@@ -282,8 +294,8 @@ public static void successExitDialouge() {
 
 public static ArrayList <AgeGroup> getAges(int numSeats) {
     ArrayList ages= new ArrayList<AgeGroup>();
-    System.out.println("Enter number of movie Viewers per age group : ");
-    System.out.println("----------------------------------------------");
+    System.out.println("Enter number of movie Viewers per age group {child , adult & senior} : ");
+    System.out.println("-----------------------------------------------------------------------");
     System.out.println("");
     while(true){
     try{
@@ -326,6 +338,14 @@ public static ArrayList <AgeGroup> getAges(int numSeats) {
 
 public static void failExitDialouge() {
     System.out.println("Your Ticket has been removed, Have a pleasant day!.");
+    return;
+
+}
+
+public static void printExitMessage(){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Press any key to exit");
+    sc.next();
     return;
 
 }

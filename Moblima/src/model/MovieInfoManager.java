@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 
 import enums.AgeRating;
 import enums.MovieStatus;
@@ -20,10 +19,10 @@ import java.util.ArrayList;
 
 import java.io.FileWriter; //for writing to csv
 
-public class MovieInfoManager {
+public class MovieInfoManager extends Datamanager {
 	private String filename;
 
-    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv";*/
+    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
 
 
 
@@ -56,9 +55,9 @@ public class MovieInfoManager {
     	
     	//Write them all into CSV
     	writer.append(title);
-    	writer.append(",``");
+    	writer.append(",");
     	writer.append(synopsis);
-    	writer.append("``,");
+    	writer.append(",");
     	writer.append(director);
     	writer.append(",");
     	
@@ -83,7 +82,9 @@ public class MovieInfoManager {
     	writer.append(genre);
     	writer.append(",");
     	writer.append(runtime);
-    	
+    	writer.append(",");
+
+    	i=1;
     	if(review.size()==0)
     	{
     		writer.append("\n");
@@ -93,8 +94,7 @@ public class MovieInfoManager {
         	writer.close();
     		return;
     	}
-    	i=1;
-    	writer.append(",");
+    		
     	writer.append(review.get(0).getReviewer());
     	writer.append("'");
     	writer.append(review.get(0).getProse());
@@ -125,30 +125,25 @@ public class MovieInfoManager {
     	String line;
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
-    		String split[] = line.split("``", 0); //Convert each column to individual attributes
-			if(split[0].equals(header)) continue; //Ignore header
-			String title = split[0].split(",")[0];
-			String synopsis = split[1];
-    		split = split[2].split(",", 0); //Convert each column to individual attributes
-    		String director = split[1];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[2].split("'"))); //' splits between different cast members
+    		
+    		String split[] = line.split(",", 12); //Convert each column to individual attributes
+    		if(split[0].equals(header)) //Ignore header
+    			continue;
+    		
+    		String title = split[0];
+    		String synopsis = split[1];
+    		String director = split[2];
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'"))); //' splits between different cast members
 
-    		MovieType type = MovieType.valueOf(split[3]);
-    		AgeRating ageRating = AgeRating.valueOf(split[4]);
-    		MovieStatus status = MovieStatus.valueOf(split[5]);
-    		int totalSales = Integer.parseInt(split[6]);
-    		double averageRating = Double.parseDouble(split[7]);
-    		String genre = split[8];
-    		String runTime = split[9];
-    		int size = split.length;
-    		if(size<11) {
-			//If no reviews written, split[10] will not exist
-				ArrayList<Review> reviews = new ArrayList<Review>();
-    			Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime,reviews);
-    			list.add(tempMovie);
-				continue;
-			}
-    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[10].split("`")));//` splits between different reviews in array list
+    		MovieType type = MovieType.valueOf(split[4]);
+    		AgeRating ageRating = AgeRating.valueOf(split[5]);
+    		MovieStatus status = MovieStatus.valueOf(split[6]);
+    		int totalSales = Integer.parseInt(split[7]);
+    		double averageRating = Double.parseDouble(split[8]);
+    		String genre = split[9];
+    		String runTime = split[10];
+    		
+    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		
     		int i = 0;
@@ -221,11 +216,12 @@ public class MovieInfoManager {
         	String runtime = movie.getrunTime();
         	
         	ArrayList<Review> review = movie.getReviews();
+        	
         	//And add it to the CSV
         	writer.append(title);
-        	writer.append(",``");
+        	writer.append(",");
         	writer.append(synopsis);
-        	writer.append("``,");
+        	writer.append(",");
         	writer.append(director);
         	writer.append(",");
         
@@ -250,6 +246,7 @@ public class MovieInfoManager {
         	writer.append(genre);
         	writer.append(",");
         	writer.append(runtime);
+        	writer.append("\n");
         	
         	
         	
@@ -276,7 +273,6 @@ public class MovieInfoManager {
             	writer.append(String.valueOf(review.get(k).getRating()));
             	k++;
         	}
-        	writer.append("\n");
         	i++;
     	}
     	
@@ -357,11 +353,6 @@ public class MovieInfoManager {
     public void updateTotalSales(String title,int sales) throws FileNotFoundException, IOException {
     	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
     	int i = findMovieCSV(title,list);//Find position of that movie in array list
-    	if(i==-1)
-    	{
-    		System.out.println("Movie does not exist! No changes to total sales.");
-    		return;
-    	}
     	list.get(i).setTotalSales(sales);//Update its sales
     	writeMovieCSV(list); //Rewrite into CSV
     }
@@ -447,113 +438,6 @@ public class MovieInfoManager {
 				System.out.println();
 			}
 		}
-	}
-
-	public void newMovieReview(Customer customer) throws FileNotFoundException, IOException { 
-		ArrayList<Movie> list = readMovieCSV();	
-		int rating = -1;
-		int movieOpt = 0;
-		//List all movie for user to sel
-		System.out.println("=====================================================================================\n");
-		System.out.println("                         Select a movie to give a review to:                         \n");
-		System.out.println("=====================================================================================\n");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i+1) + ") " + list.get(i).getTitle());
-		}
-		Scanner sc = new Scanner(System.in);
-
-		//Select movie option
-		while (movieOpt <= 0 || movieOpt > list.size()) {
-			movieOpt = newMovieOption(sc);
-			if(movieOpt <= 0 || movieOpt > list.size()) System.out.println("Please enter a valid option:");
-		}
-		System.out.println();
-
-		//Enter review
-		System.out.println("Write the review for '" + list.get(movieOpt-1).getTitle() + "':"); 
-        String review = sc.nextLine();
-		System.out.println();
-
-		//Enter rating
-		System.out.println("Give the movie '" +  list.get(movieOpt-1).getTitle() + "' a rating out of 5 (Rating must be within 1 to 5):");
-		while (rating < 0 || rating > 5) {
-			rating = newMovieRating(sc);
-			if(rating < 0 || rating > 5) System.out.println("Please enter a whole number for rating and within the range of 1 to 5:");
-		}
-
-		//Get that movie being reviewed
-		Movie tempMovie = list.get(movieOpt-1);
-
-		//update avgRating 
-		double avgRating = ((tempMovie.getAverageRating() * tempMovie.getReviews().size()) + rating)/(tempMovie.getReviews().size()+1);
-		tempMovie.setAverageRating(avgRating);
-
-		//Updating the review
-		Review rv = new Review(customer.getUsername(), rating, review);
-		tempMovie.addReview(rv);
-
-		//Update to CSV
-		list.set(movieOpt-1, tempMovie);
-		writeMovieCSV(list);
-
-		System.out.println("Review successfully added!");
-	}
-
-	public int newMovieRating(Scanner sc) {
-		while (!sc.hasNextInt()) {
-			System.out.println("Please enter a whole number for rating and within the range of 1 to 5:");
-			sc.next();
-		}
-		int rating = sc.nextInt();
-		sc.nextLine();
-		return rating;
-	}
-
-	public void viewMovieRating() throws FileNotFoundException, IOException { 
-		ArrayList<Movie> list = readMovieCSV();	
-		int movieOpt = 0;
-		System.out.println("=====================================================================================\n");
-		System.out.println("                         Select a movie to see review(s) for:                        \n");
-		System.out.println("=====================================================================================\n");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i+1) + ") " + list.get(i).getTitle());
-		}
-		Scanner sc = new Scanner(System.in);
-
-		//Select movie option
-		while (movieOpt <= 0 || movieOpt > list.size()) {
-			movieOpt = newMovieOption(sc);
-			if(movieOpt <= 0 || movieOpt > list.size()) System.out.println("Please enter a valid option:");
-		}
-
-		//Displaying movie's review
-		System.out.println();
-		System.out.println();
-		System.out.println("=====================================================================================\n");
-		System.out.println("                         Review(s) for '" + list.get(movieOpt-1).getTitle() + "''                        \n");
-		System.out.println("=====================================================================================\n");
-		int reviewSize = list.get(movieOpt-1).getReviews().size();
-		for (int i = 0; i < reviewSize; i++) {
-			Review rv = list.get(movieOpt-1).getReviews().get(i);
-			System.out.println("Reviewer's name:");
-			System.out.println(rv.reviewer+"\n");
-			System.out.println("Review:");
-			System.out.println(rv.prose+"\n");
-			System.out.println("Rating:");
-			System.out.println(rv.rating + "/5");
-			System.out.println("-----------------------------------------------------------------------------------------\n\n");
-		}
-		System.out.println();
-	}
-
-	public int newMovieOption(Scanner sc) {
-		while (!sc.hasNextInt()) {
-			System.out.println("Please enter a valid option:");
-			sc.next();
-		}
-		int movieOpt = sc.nextInt();
-		sc.nextLine();
-		return movieOpt;
 	}
 /**
  * <p>Find the Levenshtein distance between two Strings.</p>
