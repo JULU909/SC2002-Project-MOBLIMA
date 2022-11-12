@@ -14,13 +14,15 @@ import entities.Showtime;
 import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
-
+/*
+ * This class allows the adding/editing/removing of show times from Showtimes.csv
+ */
 public class ShowtimeManager  {
     private String filename;
     private Showtime[] data;
     private Showtime temp;
 
-    public final static String FILENAME = /*"Moblima/src/Data/Showtimes.csv";*/ new File("Showtimes.csv").getAbsolutePath();
+    public final static String FILENAME = "Moblima/src/Data/Showtimes.csv";;
 
     public ShowtimeManager(){   
         this.filename = FILENAME;
@@ -97,7 +99,13 @@ public class ShowtimeManager  {
        
         return names;
     }
-
+    /*
+     * This method will get all show times of a stated movie,cineplex and date
+     * @param movie , the title of the movie
+     * @param cineplex, the name of the cineplex
+     * @param date, the date of the show time
+     * @return An array list of show times that meet the 3 criteria
+     */
     public ArrayList<Showtime> getShowtimes(String movie, String cineplex , int date) throws FileNotFoundException, IOException{ //Get all show times of certain movie and cineplex in CSV
 
         ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
@@ -117,7 +125,12 @@ public class ShowtimeManager  {
             }
         
      
-    
+    /*
+     * This method will find the index of a specified show time 
+     * @param list, the list of all show times in Showtimes.csv
+     * @param showtime, the specific show time the user wishes to find
+     * @return The index of the show time in the array list
+     */
     public static int findShowtimecsv(ArrayList<Showtime> list, Showtime showtime)throws FileNotFoundException, IOException{ //Find index in array list
     	int i = 0;
 
@@ -133,7 +146,10 @@ public class ShowtimeManager  {
     	return -1; //Return -1 if its not in array list
     	
     }
-    
+    /*
+     * This method adds a show time into Showtimes.csv
+     * @param showtime, the show time to be added
+     */
     public void addShowtimecsv(Showtime showtime) throws FileNotFoundException, IOException{ //Add one show time to CSV
     	
     	//FileWriter to write to csv, true to allow appending    	
@@ -163,7 +179,10 @@ public class ShowtimeManager  {
     	writer.close();
     
     }
-    
+    /*
+     * This method will read every show time in Showtimes.csv
+     * @return An array list of every show time in Showtimes.csv
+     */
     public ArrayList<Showtime> readShowtimecsv() throws FileNotFoundException, IOException{ //Read whole CSV
     	ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
     	BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -187,7 +206,10 @@ public class ShowtimeManager  {
     	
     	return showtimes; //return array list
     }
-    
+    /*
+     * This method removes a specific show time in Showtimes.csv
+     * @return The array list of show times after removal
+     */
     public ArrayList<Showtime> removeShowtimecsv(ArrayList<Showtime> list, Showtime showtime) throws FileNotFoundException, IOException{ //Remove from array list, use for editing/remove a row
     	int i = findShowtimecsv(list,showtime); //Find its position
     	
@@ -201,7 +223,11 @@ public class ShowtimeManager  {
     	System.out.println("Showtime does not exist! Exiting..."); //If not found
     	return list; //Just return list
     }
-    
+    /*
+     * This method writes every show time in the array list.
+     * This will overwrite Showtimes.csv
+     * @param list , The array list of all show times that is to be written to Showtime.csv
+     */
     public void writeShowtimecsv(ArrayList<Showtime> list) throws FileNotFoundException, IOException { //Rewrite CSV, use for editing/removing a row
 
     	//FileWriter to write to CSV, no true because it's rewriting    	

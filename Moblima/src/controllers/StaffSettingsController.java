@@ -117,7 +117,7 @@ public class StaffSettingsController {
 		}
 		sm.writeShowtimecsv(showList); //Convert array list to CSV
 		ShowtimeSettings.editShowtime(toEdit); //Edit the show time
-		showList.set(i, toEdit); //And add the show time back to the CSV
+		showList.set(i, toEdit); //And change the show time in the CSV
 		return;
 	}
 	/*
