@@ -1,7 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.io.FileWriter; //for writing to csv
  */
 public class MovieInfoManager  {
 	private String filename;
-    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = new File("movieInformation2.csv").getAbsolutePath();/*"Moblima/src/Data/movieInformation2.csv";*/
 
 
 
@@ -321,6 +321,7 @@ public class MovieInfoManager  {
 			
         	writer.append("\n");
         	i++;
+        	writer.append("\n");
     	}
     	
     	//cleanup
@@ -419,7 +420,8 @@ public class MovieInfoManager  {
     public void updateTotalSales(String title,int sales) throws FileNotFoundException, IOException {
     	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
     	int i = findMovieCSV(title,list);//Find position of that movie in array list
-    	list.get(i).setTotalSales(sales);//Update its sales
+    	int currentSales = list.get(i).getTotalSales();
+    	list.get(i).setTotalSales(currentSales + sales);//Update its sales
     	writeMovieCSV(list); //Rewrite into CSV
     }
     
