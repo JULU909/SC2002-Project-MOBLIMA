@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+
 
 import entities.Showtime;
 
@@ -37,6 +39,7 @@ public class CustomerManager {
         return count;
     }
     static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
+        
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Customers.csv"))) {
             String line;
@@ -52,6 +55,7 @@ public class CustomerManager {
                 data.add(c);
                 count++;
             }
+
         }
         return data;
     }

@@ -86,8 +86,8 @@ public class StaffSettingsController {
 		}
 		Movie movie = movieList.get(k); //Otherwise, get it from array list
 		movie.setMovieStatus(MovieStatus.END_OF_SHOWING);
-		movieList.remove(k); //Remove it from array list
-		movieList.add(movie);
+		movieList.set(k,movie); //Remove it from array list
+		//movieList.add(movie);
 		mm.writeMovieCSV(movieList); //Then write the list it to CSV
 		System.out.println(TitletoRemove + " removed!");
 		return;
@@ -97,8 +97,9 @@ public class StaffSettingsController {
 	 */
 	public static void addShowtime() throws FileNotFoundException, IOException {
 		StaffSettingsController.showMovies();
-		ShowtimeManager sm = new ShowtimeManager();
+		ShowtimeManager sm = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
 		Showtime newShowtime = ShowtimeSettings.addShowtime(); //Get show time to add
+		
 		sm.addShowtimecsv(newShowtime); //And add it to CSV
 		return;
 	}

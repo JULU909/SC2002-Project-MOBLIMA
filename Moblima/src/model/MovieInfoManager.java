@@ -62,8 +62,12 @@ public class MovieInfoManager  {
     	
     	//Write them all into CSV
     	writer.append(title);
-    	writer.append(",");
-    	writer.append(synopsis);
+		writer.append(",");
+		writer.append("`");
+		writer.append("`");
+		writer.append(synopsis);
+		writer.append("`");
+		writer.append("`");
     	writer.append(",");
     	writer.append(director);
     	writer.append(",");
@@ -430,7 +434,8 @@ public class MovieInfoManager  {
      */
     public void printAll(ArrayList<Movie> list) {
     	int i = 0;
-    	while(i!=list.size()) {
+		Scanner sc = new Scanner(System.in);
+		    	while(i!=list.size()) {
     		Movie tempMovie = list.get(i);
     		System.out.println("Title: " + tempMovie.getTitle());
     		System.out.println("Synopsis: " + tempMovie.getSynopsis());
@@ -439,7 +444,7 @@ public class MovieInfoManager  {
     		int j = 0;
     		while(j!=cast.size())
     		{
-    			System.out.println("Cast member " + j+1 + " : " +cast.get(j));
+    			System.out.println("Cast member " + (j+1) + " : " +cast.get(j));
     			j++;
     		}
     		System.out.println("Movie type: " + tempMovie.getType());
@@ -447,9 +452,12 @@ public class MovieInfoManager  {
     		System.out.println("Average Rating: " + tempMovie.getAverageRating());
     		System.out.println("Genre: " + tempMovie.getGenre());
     		System.out.println("Runtime: " + tempMovie.getrunTime());
+			System.out.println("Showing Status: " + tempMovie.getMovieStatus());
 			System.out.println();
     		i++;
     	}
+		System.out.println("Press Any Key to Continue");
+		sc.next();
     	return;
     }
     

@@ -23,7 +23,7 @@ public class StaffSettingsUI {
 		Scanner sc = new Scanner(System.in);
 
 		
-		while(choice<11) {
+		while(choice<13) {
 			System.out.println("1) Set ticket base price.");
 			System.out.println("2) Add movie.");
 			System.out.println("3) Edit movie.");

@@ -58,9 +58,12 @@ public class ReviewMaker {
 		//Update to CSV
 		list.set(movieOpt-1, tempMovie);
 		mm.writeMovieCSV(list);
-		mm.updateAverageRating(tempMovie.getTitle());
+		//mm.updateAverageRating(tempMovie.getTitle());
 
 		System.out.println("Review successfully added!");
+	
+		System.out.println("Press Any Key to Continue");
+		sc.next();
 	}
 
 	public static int newMovieRating(Scanner sc) {
@@ -108,6 +111,8 @@ public class ReviewMaker {
 			System.out.println(rv.getRating() + "/5");
 			System.out.println("-----------------------------------------------------------------------------------------\n\n");
 		}
+		System.out.println("Press Any Key to Continue");
+		sc.next();
 		System.out.println();
 	}
 

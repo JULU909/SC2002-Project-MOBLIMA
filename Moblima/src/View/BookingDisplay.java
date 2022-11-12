@@ -160,7 +160,7 @@ public int askMovie(ArrayList <Movie> movies){
         System.out.println("Enter a valid input! ");
         continue;
     }
-    return choice;
+    return (choice-1);
     }catch (InputMismatchException e ) {
     System.out.println("Enter a valid input! ");
     String error = sc.next(); // catch the enter;
