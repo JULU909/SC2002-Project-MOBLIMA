@@ -1,6 +1,7 @@
 package View;
 import enums.*;
 import model.Customer;
+import model.Movie;
 
 import java.util.ArrayList; // import the ArrayList class
 
@@ -132,7 +133,7 @@ public int askTickets(){
 }
 
 
-public int askMovie(String [] movies){
+public int askMovie(ArrayList <Movie> movies){
     /** 
      * This method prints the UI to get the specific movie the user wants to book.
      * After the movie is obtained, it will returned as a integer.
@@ -146,10 +147,13 @@ public int askMovie(String [] movies){
     System.out.println( "-------------------------------------------------- ");
     while (true){
         try{
-    while(movies[count] != null){
-        System.out.println(count+1 + " :  " + movies[count]);
-        count++;
-    }
+    
+     for(int i = 0 ; i < movies.size(); i++){
+            System.out.println(count+1 + " :  " + movies.get(i).getTitle());
+            count++;
+        }
+        
+    
     int choice = 0 ;
     choice = sc.nextInt();
     if (choice <= 0 ||choice > count){

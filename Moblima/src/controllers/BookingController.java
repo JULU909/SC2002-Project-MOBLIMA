@@ -30,9 +30,8 @@ public class BookingController {
         }
         MovieInfoManager movieManager = new MovieInfoManager();
         ArrayList<Movie> showingMovies = movieManager.findShowingMovies();
-        String[] movies = Showtimes.getMovies(showtimesLength);
         int movieChoice = booking.askMovie(showingMovies);
-       String movieName = showingMovies.get(movieChoice).getTitle();
+        String movieName = showingMovies.get(movieChoice).getTitle();
         LocalDate inputDate = booking.askDate();
         String formattedDate = inputDate.format(DateTimeFormatter.ofPattern("ddMMyy"));
         ArrayList<Showtime> showtimes = Showtimes.getShowtimes(movieName, cineplex ,Integer.valueOf(formattedDate) );
@@ -43,7 +42,6 @@ public class BookingController {
         Showtime choosenShowtime = showtimes.get(showtimeChoice - 1);
         choosenShowtime.setDate(Integer.valueOf(formattedDate));
         choosenShowtime.setLayout();
-        String movieName = choosenShowtime.getMovie();
        
         while (true){
             int numberSeats = booking.askTickets();
