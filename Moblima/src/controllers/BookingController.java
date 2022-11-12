@@ -79,7 +79,7 @@ public class BookingController {
             }
             else {
                 Thread.sleep(1000);
-                booking.failExitDialouge();
+                BookingDisplay.failExitDialouge();
                 break;
             }
 
