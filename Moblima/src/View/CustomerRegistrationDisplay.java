@@ -6,6 +6,7 @@ import java.util.Scanner;
 import model.CustomerManager;
 
 import View.*;
+import entities.Customer;
 import model.*;
 public class CustomerRegistrationDisplay {
     Scanner sc = new Scanner(System.in);

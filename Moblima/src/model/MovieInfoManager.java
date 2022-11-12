@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+import entities.Movie;
+import entities.Review;
 import enums.AgeRating;
 import enums.MovieStatus;
 import enums.MovieType;

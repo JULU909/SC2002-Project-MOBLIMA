@@ -1,13 +1,13 @@
 package View;
 import enums.*;
-import model.Customer;
-import model.Movie;
 
 import java.util.ArrayList; // import the ArrayList class
 
 import java.util.Arrays;
 import java.util.Scanner;
 
+import entities.Customer;
+import entities.Movie;
 import entities.Seat;
 import entities.Showtime;
 import entities.Ticket;

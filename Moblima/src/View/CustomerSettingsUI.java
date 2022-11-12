@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Customer;
+import entities.Customer;
 import model.CustomerManager;
 
 public class CustomerSettingsUI {

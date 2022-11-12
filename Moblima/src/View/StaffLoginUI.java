@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controllers.LoginController;
+import entities.Staff;
 import model.*;
 
 import java.io.FileNotFoundException;

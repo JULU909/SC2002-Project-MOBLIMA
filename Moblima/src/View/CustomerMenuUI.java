@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import entities.Ticket;
+
 import View.BookedHistoryUI;
 import View.BookingDisplay;
 import View.SearchMovieUI;
@@ -14,6 +14,7 @@ import View.StaffLoginUI;
 import controllers.BookingController;
 import controllers.BookingHistoryController;
 import controllers.LoginController;
+import controllers.ReviewMaker;
 import controllers.SeatDetailController;
 import entities.*;
 import enums.AgeGroup;

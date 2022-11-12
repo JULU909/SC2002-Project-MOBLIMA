@@ -6,17 +6,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import entities.MovieSettings;
+import entities.Holiday;
+import entities.Movie;
 import entities.Pricing;
 import entities.RegisterStaff;
 import entities.Showtime;
-import entities.ShowtimeSettings;
-import model.Holiday;
+import entities.Staff;
 import model.HolidayManager;
-import model.Movie;
 import model.MovieInfoManager;
 import model.ShowtimeManager;
-import model.Staff;
 import enums.MovieStatus;
 
 /** This class controls StaffSettingsUI

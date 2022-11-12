@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
+import entities.Customer;
 import entities.Showtime;
 
 import java.util.ArrayList;

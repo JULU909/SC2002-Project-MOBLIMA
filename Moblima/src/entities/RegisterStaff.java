@@ -5,8 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import model.Staff;
-
 public class RegisterStaff {
 	public static Staff registerStaff() {
 		Scanner sc = new Scanner(System.in);

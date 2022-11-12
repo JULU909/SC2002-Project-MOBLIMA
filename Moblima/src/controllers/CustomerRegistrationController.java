@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.util.regex.*;
 
 import View.CustomerRegistrationDisplay;
+import entities.Customer;
 import model.*;  
 public class CustomerRegistrationController {
     public String filepath = "Moblima/src/Data/Customers.csv";

@@ -1,6 +1,8 @@
 package model;
 import java.util.ArrayList;
 
+import entities.User;
+
 public class Database {
 	/*
      * Adds, deletes, and finds position of a user within the database
