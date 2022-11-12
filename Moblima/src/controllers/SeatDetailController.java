@@ -12,7 +12,7 @@ import model.*;
 import entities.*;
 
 public class SeatDetailController {
-    public void getSeatDetails() throws NumberFormatException, FileNotFoundException, IOException{
+    public void getSeatDetails() throws NumberFormatException, FileNotFoundException, IOException, InterruptedException{
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
         ShowtimeManager Showtimes = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");

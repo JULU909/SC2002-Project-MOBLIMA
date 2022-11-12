@@ -1,15 +1,19 @@
 package View;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import model.CustomerManager;
 
 import View.*;
 import model.*;
 public class CustomerRegistrationDisplay {
     Scanner sc = new Scanner(System.in);
 
-    public String getUsername(){
-        
+    public String getUsername() throws FileNotFoundException, IOException {
         String username;
         do {
+            ArrayList<Customer> database = CustomerManager.getDataAll();
             System.out.println("Enter username (username is final and cannot be changed later!): ");
             username = sc.nextLine();
             if (username.isEmpty() || username.equals(" ")) { 
