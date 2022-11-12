@@ -3,12 +3,12 @@ package entities;
 import java.util.Scanner;
 
 import enums.AgeRating;
-/*
+/**
  * This class allows the setting of a movie's age rating
  * @author Tham Holdon
  */
 public class AgeRatingSetter {
-	/*
+	/**
 	 * This method lets a user decide the age rating a movie is to have
 	 * @return The age rating a movie is to have
 	 */

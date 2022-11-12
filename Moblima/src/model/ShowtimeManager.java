@@ -14,7 +14,7 @@ import entities.Showtime;
 import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
-/*
+/**
  * This class allows the adding/editing/removing of show times from Showtimes.csv
  */
 public class ShowtimeManager  {
@@ -99,7 +99,7 @@ public class ShowtimeManager  {
        
         return names;
     }
-    /*
+    /**
      * This method will get all show times of a stated movie,cineplex and date
      * @param movie , the title of the movie
      * @param cineplex, the name of the cineplex
@@ -125,7 +125,7 @@ public class ShowtimeManager  {
             }
         
      
-    /*
+    /**
      * This method will find the index of a specified show time 
      * @param list, the list of all show times in Showtimes.csv
      * @param showtime, the specific show time the user wishes to find
@@ -146,7 +146,7 @@ public class ShowtimeManager  {
     	return -1; //Return -1 if its not in array list
     	
     }
-    /*
+    /**
      * This method adds a show time into Showtimes.csv
      * @param showtime, the show time to be added
      */
@@ -179,7 +179,7 @@ public class ShowtimeManager  {
     	writer.close();
     
     }
-    /*
+    /**
      * This method will read every show time in Showtimes.csv
      * @return An array list of every show time in Showtimes.csv
      */
@@ -206,7 +206,7 @@ public class ShowtimeManager  {
     	
     	return showtimes; //return array list
     }
-    /*
+    /**
      * This method removes a specific show time in Showtimes.csv
      * @return The array list of show times after removal
      */
@@ -223,7 +223,7 @@ public class ShowtimeManager  {
     	System.out.println("Showtime does not exist! Exiting..."); //If not found
     	return list; //Just return list
     }
-    /*
+    /**
      * This method writes every show time in the array list.
      * This will overwrite Showtimes.csv
      * @param list , The array list of all show times that is to be written to Showtime.csv

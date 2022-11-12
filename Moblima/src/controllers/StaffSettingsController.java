@@ -18,11 +18,11 @@ import model.MovieInfoManager;
 import model.ShowtimeManager;
 import model.Staff;
 
-/* This class controls StaffSettingsUI
+/** This class controls StaffSettingsUI
  * @author Tham Holdon
  */
 public class StaffSettingsController {
-	/*
+	/**
 	 * This method sets the base price of a movie ticket
 	 */
 	public static void setPrice() {
@@ -35,7 +35,7 @@ public class StaffSettingsController {
 		System.out.println("Base price set to " + price.getBasedPrice());
 		return;
 	}
-	/*
+	/**
 	 * This method adds a movie into the movieInformation CSV
 	 */
 	public static void addMovie() throws FileNotFoundException, IOException {
@@ -45,7 +45,7 @@ public class StaffSettingsController {
 		System.out.println(newMovie.getTitle() + " added!");
 		return;
 	}
-	/*
+	/**
 	 * This method edits a movie in movieInformation CSV
 	 */
 	public static void editMovie() throws FileNotFoundException, IOException {
@@ -69,7 +69,7 @@ public class StaffSettingsController {
 		System.out.println(MovietoEdit + " successfully edited!");
 		return;
 	}
-	/*
+	/**
 	 * This method removes a movie in movieInformation CSV
 	 */
 	public static void removeMovie() throws FileNotFoundException, IOException {
@@ -88,7 +88,7 @@ public class StaffSettingsController {
 		System.out.println(TitletoRemove + " removed!");
 		return;
 	}
-	/*
+	/**
 	 * This method adds a show time into show time CSV
 	 */
 	public static void addShowtime() throws FileNotFoundException, IOException {
@@ -98,7 +98,7 @@ public class StaffSettingsController {
 		sm.addShowtimecsv(newShowtime); //And add it to CSV
 		return;
 	}
-	/*
+	/**
 	 * This method edits a show time in show time CSV
 	 */
 	public static void editShowtime() throws FileNotFoundException, IOException {
@@ -120,7 +120,7 @@ public class StaffSettingsController {
 		showList.set(i, toEdit); //And change the show time in the CSV
 		return;
 	}
-	/*
+	/**
 	 * This method removes a show time in show time CSV
 	 */
 	public static void removeShowtime() throws FileNotFoundException, IOException {
@@ -132,7 +132,7 @@ public class StaffSettingsController {
 		sm.writeShowtimecsv(showList); //Rewrite CSV
 		return;
 	}
-	/*
+	/**
 	 * This method adds a holiday into holiday CSV
 	 */
 	public static void addHoliday() throws FileNotFoundException, IOException {
@@ -147,7 +147,7 @@ public class StaffSettingsController {
 		System.out.println("Holiday date successfully added!");
 		return;
 	}
-	/*
+	/**
 	 * This method removes a holiday in holiday CSV
 	 */
 	public static void removeHoliday() throws FileNotFoundException, IOException {
@@ -159,7 +159,7 @@ public class StaffSettingsController {
 		hm.removeHolidayCSV(i);
 		return;
 	}
-	/*
+	/**
 	 * This method allows a staff member to add another staff member into the Staff CSV
 	 */
 	public static void registerStaff() throws IOException {
@@ -168,7 +168,7 @@ public class StaffSettingsController {
 		System.out.println("Staff member " + newStaff.getUsername() + " added to database.");
 		return;
 	}
-	/*
+	/**
 	 * This method calls the function to print the top 5 movies by sales
 	 */
 	public static void rankMovieSales() throws FileNotFoundException, IOException {
@@ -177,7 +177,7 @@ public class StaffSettingsController {
 		return;
 	}
 	
-	/*
+	/**
 	 * This method calls the function to print the top 5 movies by ratings
 	 */
 	public static void rankMovieRatings() throws FileNotFoundException, IOException {
@@ -185,7 +185,7 @@ public class StaffSettingsController {
 		mm.rankByRatings(false);
 		return;
 	}
-	/*
+	/**
 	 * This method shows all the movie titles currently in movieInformation CSV
 	 */
 	public static void showMovies() throws FileNotFoundException, IOException {

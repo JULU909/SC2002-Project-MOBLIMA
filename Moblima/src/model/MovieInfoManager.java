@@ -139,24 +139,31 @@ public class MovieInfoManager  {
     	String header = "Title";
     	while ((line = br.readLine()) != null) {
     		
-    		String split[] = line.split(",", 12); //Convert each column to individual attributes
-    		if(split[0].equals(header)) //Ignore header
-    			continue;
-    		
-    		String title = split[0];
-    		String synopsis = split[1];
-    		String director = split[2];
-    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[3].split("'"))); //' splits between different cast members
+    		String split[] = line.split("``", 0); //Convert each column to individual attributes
+			if(split[0].equals(header)) continue; //Ignore header
+			String title = split[0].split(",")[0];
+			String synopsis = split[1];
+    		split = split[2].split(",", 0); //Convert each column to individual attributes
+    		String director = split[1];
+    		ArrayList<String> cast = new ArrayList<String>(Arrays.asList(split[2].split("'"))); //' splits between different cast members
 
-    		MovieType type = MovieType.valueOf(split[4]);
-    		AgeRating ageRating = AgeRating.valueOf(split[5]);
-    		MovieStatus status = MovieStatus.valueOf(split[6]);
-    		int totalSales = Integer.parseInt(split[7]);
-    		double averageRating = Double.parseDouble(split[8]);
-    		String genre = split[9];
-    		String runTime = split[10];
+    		MovieType type = MovieType.valueOf(split[3]);
+    		AgeRating ageRating = AgeRating.valueOf(split[4]);
+    		MovieStatus status = MovieStatus.valueOf(split[5]);
+    		int totalSales = Integer.parseInt(split[6]);
+    		double averageRating = Double.parseDouble(split[7]);
+    		String genre = split[8];
+    		String runTime = split[9];
+    		int size = split.length;
+    		if(size<11) {
+    			//If no reviews written, split[10] will not exist
+    				ArrayList<Review> reviews = new ArrayList<Review>();
+        			Movie tempMovie = new Movie(title,synopsis,director,cast,type,ageRating,status,totalSales,averageRating,genre,runTime,reviews);
+        			list.add(tempMovie);
+    				continue;
+    			}
     		
-    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[11].split("`")));//` splits between different reviews in array list
+    		ArrayList<String> reviewStr = new ArrayList<String>(Arrays.asList(split[10].split("`")));//` splits between different reviews in array list
     		ArrayList<Review> reviews = new ArrayList<Review>();
     		
     		int i = 0;
@@ -325,7 +332,7 @@ public class MovieInfoManager  {
 		writeMovieCSV(list);
     	return list; //Return list if movie not present
     }
-    /*
+    /**
      * This method calculates the average rating of the movie from all ratings related to the movie.
      * After calculating, it will update that value into the CSV
      */
@@ -359,7 +366,7 @@ public class MovieInfoManager  {
     	writeMovieCSV(list); //Rewrite into CSV
     }
    
-    /*
+    /**
      * This method updates the averageRating of a specific movie
      * @param title, the title of the movie
      */
@@ -390,7 +397,7 @@ public class MovieInfoManager  {
 		writeMovieCSV(list);//Rewrite into CSV	
     }
     
-    /*
+    /**
      * This method updates the total sales of a certain movie
      * @param title , the title of the movie
      * @param sales, the number of sales of the movie
@@ -402,7 +409,7 @@ public class MovieInfoManager  {
     	writeMovieCSV(list); //Rewrite into CSV
     }
     
-    /*
+    /**
      * This method prints out all the details of all movies stored in the CSV, except for the reviews
      * @param list, the array list of movies in the CSV
      */
@@ -431,7 +438,7 @@ public class MovieInfoManager  {
     	return;
     }
     
-    /*
+    /**
      * This method prints all the details of one movie stored in the CSV, except for the reviews
      * @param list, the array list of movies in the CSV
      * @param index, the position of the movie specified in the array list
@@ -454,7 +461,7 @@ public class MovieInfoManager  {
 		System.out.println("Genre: " + tempMovie.getGenre());
 		System.out.println("Runtime: " + tempMovie.getrunTime());
     }
-    /*
+    /**
      * This method ranks the movies either by ratings or by total number of sales
      * @param byTicketSales , true will print by ticket sales, false will print by ratings
      */
