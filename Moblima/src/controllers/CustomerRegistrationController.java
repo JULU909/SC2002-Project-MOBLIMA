@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.regex.*;
 
-import View.CustomerRegistrationDisplay;
+import View.CustomerRegistrationUI;
 import model.*;  
 public class CustomerRegistrationController {
     public String filepath = "Moblima/src/Data/Customers.csv";
@@ -18,7 +18,7 @@ public class CustomerRegistrationController {
         
         database = CustomerManager.getDataAll();
           
-        CustomerRegistrationDisplay crd = new CustomerRegistrationDisplay();
+        CustomerRegistrationUI crd = new CustomerRegistrationUI();
         username = crd.getUsername();
         password = crd.getPassword();
         age = crd.getAge();
