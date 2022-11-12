@@ -3,21 +3,10 @@ package View;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.security.auth.login.LoginContext;
 import controllers.LoginController;
 import controllers.StaffSettingsController;
-import entities.MovieSettings;
-import entities.Pricing;
-import entities.RegisterStaff;
-import entities.Showtime;
-import entities.ShowtimeSettings;
-import model.Movie;
-import model.MovieInfoManager;
-import model.ShowtimeManager;
-import model.Staff;
 
 
 public class StaffSettingsUI {
@@ -25,12 +14,7 @@ public class StaffSettingsUI {
 		int choice = 0;
 		
 		Scanner sc = new Scanner(System.in);
-		String Showfilepath = "Moblima/src/Data/Showtimes.csv"; //new File("Showtimes.csv").getAbsolutePath();
-		String MovieInfoPath = "Moblima/src/Data/movieInformation2.csv"; //new File("movieInformation2.csv").getAbsolutePath(); 
-		ShowtimeManager sm = new ShowtimeManager(Showfilepath);
-		MovieInfoManager mm = new MovieInfoManager(MovieInfoPath);
-		ArrayList<Showtime> showList = new ArrayList<Showtime>(); 
-		ArrayList<Movie> movieList = new ArrayList<Movie>();
+
 		
 		while(choice<11) {
 			System.out.println("1) Set ticket base price.");
@@ -107,8 +91,5 @@ public class StaffSettingsUI {
 		
 	}
 	
-	/*public static void main (String[] args) throws FileNotFoundException, IOException {
-		StaffSettingsUI.settingsText();
-	}*/
 
 }
