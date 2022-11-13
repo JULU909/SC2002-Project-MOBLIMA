@@ -16,7 +16,19 @@ import enums.AgeGroup;
 import enums.UserType;
 import model.*;
 
+/**	Control Class that manages the History of the bookings
+ * @author 
+ * @version 1.0
+ */
+
+
 public class BookingHistoryController {
+    /**
+     * This method displays the History of all the booked Tickets, by id or by ALL tickets
+     * @param customer customer object with attributes such as age, ageGroup, mobileNumber, emailAddress, movieHistory
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void getBookingHistory(Customer customer) throws IOException, InterruptedException {
         BookedHistoryUI bt = new BookedHistoryUI();
         TicketManager tk = new TicketManager("Moblima/src/Data/TicketsBooked.csv");
@@ -46,11 +58,7 @@ public class BookingHistoryController {
                 System.out.println("Enter a number within the options");
                 Thread.sleep(1000);
                 break;
-                
-
-
-        }
+            }
         }
     }
-
 }
