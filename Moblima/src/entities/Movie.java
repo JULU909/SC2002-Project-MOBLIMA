@@ -9,7 +9,7 @@ import enums.MovieStatus;
 
 /**
  * This class initialises all relevant Movie Attributes with getter and setter functions for the movie attributes
- * @author
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */

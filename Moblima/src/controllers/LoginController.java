@@ -10,7 +10,7 @@ import model.*;
 
 
 /**	Control Class that manages the Login of MOBLIMA
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
