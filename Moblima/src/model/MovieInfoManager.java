@@ -57,8 +57,8 @@ public class MovieInfoManager  {
     	ArrayList<String> cast = movie.getCast();
     	MovieType type = movie.getType();
     	AgeRating ageRating = movie.getAgeRating();
-	    	MovieStatus status = movie.getMovieStatus();
-	    	int totalSales = movie.getTotalSales();
+	    MovieStatus status = movie.getMovieStatus();
+	    int totalSales = movie.getTotalSales();
     	double averageRating = movie.getAverageRating();
     	String genre = movie.getGenre();
     	String runtime = movie.getrunTime();
@@ -242,6 +242,7 @@ public class MovieInfoManager  {
     	while(i!=list.size()) {
     		if(list.get(i).getTitle().equals(title)) //Match title
     			return i; //Return position
+    		i++;
     	}
     	return -1;
     }
@@ -678,10 +679,6 @@ public static int getLevenshteinDistance(CharSequence s, CharSequence t) {
     // our last action in the above loop was to switch d and p, so p now
     // actually has the most recent cost counts
     return p[n];
-}
-public static void main(String [] args) throws FileNotFoundException, IOException {
-	MovieInfoManager mm = new MovieInfoManager();
-	ArrayList<Movie> test = mm.readMovieCSV();
 }
 }
 
