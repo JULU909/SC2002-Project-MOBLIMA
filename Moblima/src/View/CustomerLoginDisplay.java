@@ -2,6 +2,13 @@ package View;
 
 import java.util.Scanner;
 
+/**
+ * Displays the Customer Login to the Cinema with relevant getter and setter functions for username and password
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class CustomerLoginDisplay {
     public String getUsername(){
         Scanner sc = new Scanner(System.in);

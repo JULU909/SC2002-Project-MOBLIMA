@@ -5,7 +5,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * This class registers the staff and adds the staff object and its relevant attributes to the csv
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
+
 public class RegisterStaff {
+	/**
+     * This method registers a staff
+     * @return returns a Staff object, which is a child of user class
+     */
+
 	public static Staff registerStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter new staff username: "); //Get new staff user name
@@ -17,6 +30,11 @@ public class RegisterStaff {
 		return newStaff;
 	}
 	
+	/**
+     * This method appends the staff into the csv file
+	 * @param newStaff A staff object
+	 * @throws IOException
+     */
 	public static void addStaffCSV(Staff newStaff) throws IOException {
 		//String StaffPath = new File("Moblima/src/Data/Staff.csv");
 		FileWriter writer = new FileWriter("Moblima/src/Data/Staff.csv",true); //Append to Staff.csv

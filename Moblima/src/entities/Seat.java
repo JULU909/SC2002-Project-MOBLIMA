@@ -5,6 +5,8 @@ import enums.*;
 /**
  * Represents the class of Seats, which holds the information at the instance a seat is selected to be booked.
  * @author Harish Vasanth
+ * @version 1.0
+ * @since 2022-11-13
  */
 
 
@@ -26,6 +28,10 @@ public class Seat {
         this.col = col;
 
     }
+
+    /**
+     Relevant getter and setter functions for Row, Column, SeatType and seatStatus
+    */
 
     public void setRowCol(int row, int col){
 

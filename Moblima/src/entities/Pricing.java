@@ -13,8 +13,27 @@ import enums.AgeGroup;
 import enums.SeatTypes;
 import model.*;
 
+/**
+ * This class initialises all relevant pricing for the movie tickets
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
+
 public class Pricing {
 	private static double basedPrice = 7;
+
+    /**
+     * This method adds a movie into the CSV
+     * @param ageGroups a List Array of ENUMERATIONS ADULT,SENIOR,CHILD
+     * @param inputDate Real time input Date, java.time library
+     * @param userSeats , a List Array of Seat objects containing attributes
+     * @param choosenShowtime , A Showtime object containing many attributes of showtime
+     * @return returns a double, which is the total price of all the tickets bought by the customer object
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public double getPrice(List<AgeGroup> ageGroups, LocalDate inputDate ,ArrayList <Seat> userSeats,
     Showtime choosenShowtime) throws FileNotFoundException, IOException{
         double totalPrice = 0;
@@ -26,15 +45,9 @@ public class Pricing {
             SeatTypes s =  choosenShowtime.getSeatType(userSeats.get(i).getCol(),userSeats.get(i).getRow());
             if (s.equals(SeatTypes.DELUXE) || s.equals(SeatTypes.COUPLE)){
                 price+=0.5;
-             
             }
-            
          }
-        
-        
-        
-        
-        
+
         if(choosenShowtime.getCinemaType().equals("GOLD")){
             price+=0.5;
         }
@@ -56,6 +69,9 @@ public class Pricing {
         return totalPrice;
     }
     
+    /**
+     * These methods are getter and setter functions
+     */
     public double getBasedPrice() {
     	return Pricing.basedPrice;
     }

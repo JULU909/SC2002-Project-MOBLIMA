@@ -8,6 +8,13 @@ import model.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Displays the Search Movie UI for existing customers
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class SearchingMoviesMenuUI {
     public static void execute(){
         int choice = 0;

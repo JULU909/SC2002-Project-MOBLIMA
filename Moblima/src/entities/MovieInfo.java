@@ -1,9 +1,12 @@
 package entities;
 
-/*
- * This file is useful to initialse the attributes of MovieInfo, and contains a getAll() function to return the details of a movie
- * 
+/**
+ * This Class is useful to initialse the attributes of MovieInfo, and contains a getAll() function to return the details of a movie
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
  */
+
 
 public class MovieInfo {
     private int index;

@@ -1,5 +1,12 @@
 package entities;
 
+/**
+ * This Class is a parent class and intialises all Person attributes with getter and setter functions
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 class Person{ //delete this cause it's already in database?
     private String firstName;
     private String lastName;

@@ -24,7 +24,22 @@ import enums.SeatTypes;
 import enums.UserType;
 import model.*;
 
+/**
+ * Displays the Customer Menu UI that customers interact with to interact/book/search for movies and also to edit personal information
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class CustomerMenuUI {
+
+    /**
+     * This method displays the movie details, can search all movies, one movie, by top 5(by sales or avgRatings)
+     * @param customer a customer object class to read information from
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws ParseException
+     */
     public static void execute(Customer customer) throws IOException, InterruptedException, ParseException {
         BookingController bookingController = new BookingController();
         BookingHistoryController bookingHistoryController = new BookingHistoryController();
@@ -103,7 +118,9 @@ public class CustomerMenuUI {
         // pay.printPayment();
 
     }
-
+    /**
+     * This method displays the List of choices the user has and receives the user inputs
+     */
     public static int mainDisplayOptions() {
 
         int choice = 0;
@@ -148,6 +165,13 @@ public class CustomerMenuUI {
         sdc.getSeatDetails();
     }
 
+
+    /**
+     * This method enables customer to write a movieReview (string/int)
+     * @param customer a customer object class to read information from
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void movieReview(Customer customer) throws FileNotFoundException, IOException {
         MovieInfoManager m1 = new MovieInfoManager();
         int op = 1;
@@ -173,6 +197,12 @@ public class CustomerMenuUI {
         } while (op < 1 || op > 3);
     }
 
+    /**
+     * This method enables customer to search by movieRanking
+     * @param byTicketSales boolean, true denoting by Ticket sales, false denoting by avgRating
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void movieRanking(boolean byTicketSales) throws FileNotFoundException, IOException {
         MovieInfoManager m1 = new MovieInfoManager();
         m1.rankByRatings(byTicketSales);

@@ -18,7 +18,10 @@ import entities.Holiday;
 
 /**	Reads and writes to the CSV containing holiday information
  * @author Kit Ye
+ * @version 1.0
+ * @since 2022-11-13
  */
+
 public class HolidayManager {
     private String filename;
 

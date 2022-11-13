@@ -20,6 +20,12 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 
+/**
+ * Displays the Login Display for our main application, MOBLIMA
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class LoginDisplay {
     Scanner sc = new Scanner(System.in);
 

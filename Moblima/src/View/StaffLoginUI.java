@@ -11,6 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Displays the UI for staff to login
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
+
 public class StaffLoginUI {
 	
     public String filepath = "Moblima/src/Data/Staff.csv"; 

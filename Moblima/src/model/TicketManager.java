@@ -20,18 +20,30 @@ import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 
-
+/**
+ * This class manages all ticket related queries and ticket interactions
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
+ */
 
 public class TicketManager  {
     private String filename;
     private Customer customer;
-    private ArrayList<Ticket> data;
+    private ArrayList<Ticket> data; 
 
     public TicketManager(String string) {
         this.filename = filename;
     }
 
     
+
+    /**
+     * This method writes a Ticket to the database
+     * @param ticket , a ticket Object
+     * @throws ParseException
+     * @throws IOException
+     */
 
     public void uploadTicket(Ticket ticket) throws IOException, ParseException{
         
@@ -63,6 +75,17 @@ public class TicketManager  {
         bufferWrt.write(line.toString());
         bufferWrt.close();
     }
+
+
+    /**
+     * This method gets All booket seats
+     * @param cineplex , a ticket Object
+     * @param time 
+     * @param date
+     * @param movie
+     * @return returns an array list of all seat objects
+     * @throws IOException
+     */
 
     public ArrayList <Seat> getAllBookedSeats(String cineplex, String time , String date , String movie) throws IOException {
         ArrayList <Seat> bookedSeats = new ArrayList();
@@ -102,6 +125,13 @@ public class TicketManager  {
             return bookedSeats;
         }
 
+
+    /**
+     * This method gets and returns All user tickets
+     * @param username an attribute of the user class
+     * @return returns an array list of all ticket objects
+     * @throws IOException
+     */
 
         public ArrayList <Ticket> getUserTickets(String username) throws IOException {
 
@@ -149,6 +179,13 @@ public class TicketManager  {
     return bookedTickets;
     
     }
+
+    /**
+     * This method searches for tickets by movie title.
+     * @param tickets an array list of all ticket objects
+     * @param username an attribute of the user class
+     * @return returns an array list of all ticket objects
+     */
 
     public ArrayList<Ticket> searchByMovie(ArrayList<Ticket> tickets, String movie){
         ArrayList<Ticket> matchingTickets = new ArrayList<Ticket>();

@@ -23,6 +23,7 @@ import java.io.FileWriter; //for writing to csv
 /**	Reads and writes to the CSV containing movie information
  * @author Tham Holdon
  * @author Jia Wei
+ * @version 1.0
  * @author Kit Ye
  */
 public class MovieInfoManager  {

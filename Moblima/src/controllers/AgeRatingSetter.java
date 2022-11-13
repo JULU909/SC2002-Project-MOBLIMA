@@ -7,6 +7,8 @@ import enums.AgeRating;
 /**
  * This class allows the setting of a movie's age rating
  * @author Tham Holdon
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class AgeRatingSetter {
 	/**

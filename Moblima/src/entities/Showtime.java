@@ -8,6 +8,8 @@ import model.TicketManager;
 /**
  * Represents the class of Shpwtimes, which holds the information of the several showtimes available.
  * @author Harish Vasanth
+ * @version 1.0
+ * @since 2022-11-13
  */
 
 
@@ -21,6 +23,13 @@ public class Showtime {
 
 
 
+/**
+ * This constructor initialises the seats of the cineplex
+ * @param time 
+ * @param date
+ * @param cineplex 
+ * @param movie 
+ */
 
 public Showtime(int time, int date, String cineplex , String movie){
     this.date = date;
@@ -29,9 +38,6 @@ public Showtime(int time, int date, String cineplex , String movie){
     this.layout = new Seat[11][32];
     this.movie = movie;
     
-
-
-
     for (int x = 0 ;  x < this.layout.length ; x++){
         for(int y = 0 ; y < this.layout[x].length; y++){
              this.layout[x][y] = new Seat();
@@ -59,6 +65,10 @@ public void setCinemaType(String type){
 public String getCinemaType(){
     return this.cinemaType;
 }
+
+/**
+ * This methods prints the Layout of the cineplex
+ */
 
 public void printLayout(){
     int characters = 'A';        
@@ -146,6 +156,10 @@ public void printLayout(){
     */
 }
 
+/**
+ * This method sets the Layout of the cineplex 
+ */
+
 public void setLayout() throws IOException{  
 
 
@@ -170,6 +184,9 @@ public void setLayout() throws IOException{
 
 
 
+/**
+ * The methods below are relevant getter and setter methods for seatStatus, date, time, Movie, Cineplex, Title, Showtime.
+ */
 
 public SeatStatus getSeatStatus(int row , int col ){
     if ((row)>= 7){
@@ -224,6 +241,10 @@ public SeatTypes getSeatType(int col , int row ){
 public String returnTitle(){
     return String.format("Movie: %s",movie);
 }
+
+/**
+ * This method checks for the validity of a seat
+ */
 
 public int validSeat(int row , int col){
     if (row >  11 || row < 0){
