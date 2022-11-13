@@ -272,7 +272,7 @@ public LocalDate askDate(){
 * This method prints the UI to ask the user whether they wanna confirm the ticket, change seats or decline purchase,
 * The payment is assumed to be done no matter what the scenario. Returns their option to the controller class
 * @param ticket, the ticket to be confirmed
-* *@return int, the choice made when confirming the booking
+* @return int, the choice made when confirming the booking
 */
 public int confirmTicket(Ticket ticket) throws InterruptedException{
 
@@ -330,7 +330,7 @@ public static void successExitDialouge() {
 * This method collects the tally of the different age groups the purchase of tickets is for and it returns
 * and array of AgeGroup objects corresponding to the tally.
 * @param numSeats, the number of seats to book
-* *@return ArrayList of age groups
+* @return ArrayList of age groups
 */
 public static ArrayList <AgeGroup> getAges(int numSeats) {
 
