@@ -8,6 +8,14 @@ import model.CustomerManager;
 import View.*;
 import entities.Customer;
 import model.*;
+
+/**
+ * Displays the Customer Registration UI for new users
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class CustomerRegistrationDisplay {
     Scanner sc = new Scanner(System.in);
 

@@ -15,6 +15,15 @@ import entities.*;
 import enums.UserType;
 import model.*;
 
+
+/**
+ * The entry point of our application, MOBLIMA and redirects the user (new/existing/staff) to the UI class
+ * @author Holdon, Kit Ye, Harish, Manfred, Jia Wei
+ * @version 1.0
+ * @since 1.0
+ */
+
+
 public class Moblima {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException { 

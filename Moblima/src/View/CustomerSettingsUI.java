@@ -10,6 +10,13 @@ import java.util.Scanner;
 import entities.Customer;
 import model.CustomerManager;
 
+/**
+ * Displays the Customer Settings UI for existing users
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class CustomerSettingsUI {
 	public static void settingsText(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
