@@ -17,7 +17,7 @@ import enums.UserType;
 import model.*;
 
 /**	Control Class for Customers to interact with to book seat
- * @author 
+ * @author Harish Vasanth
  * @version 1.0
  * @since 2022-11-13
  */

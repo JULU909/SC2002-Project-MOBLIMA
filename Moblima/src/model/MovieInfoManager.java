@@ -31,12 +31,17 @@ public class MovieInfoManager  extends FileManager{
     public final static String FILENAME = /*new File("movieinformation.csv").getAbsolutePath();*/"Moblima/src/Data/movieinformation.csv";
 
 
-
+	/**
+     * Constructs the MovieInfoManager with the default file name
+     */
     public MovieInfoManager(){
 		super(FILENAME);
         this.filename = FILENAME;
     }
-
+	/**
+     * Constructs the MovieInfoManager with the inputed file name
+	 * @param String
+     */
     public MovieInfoManager(String filename) {
 		super(filename);
         this.filename = filename;

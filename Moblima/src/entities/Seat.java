@@ -9,17 +9,25 @@ import enums.*;
  * @since 2022-11-13
  */
 
-
+/**
+     * Constructor for seat object. Sets the seat type , status, row and column
+     * @param int
+     * @param int
+     * @param seatType
+     * @param seatStatus
+     */
 public class Seat {
     private SeatTypes seatType;
     private SeatStatus seatStatus;
     private int row;
     private int col;
 
-    public void setOccupied(){
-        this.seatStatus = seatStatus.OCCUPIED;
-    }
-
+    
+ /**
+     * Setting the row and column of the specific seat booked.
+     * @param int
+     * @param int
+     */
 
     public void Seat(SeatTypes seatType,SeatStatus seatStatus, int row , int col){
         this.seatType = seatType;
@@ -28,30 +36,54 @@ public class Seat {
         this.col = col;
 
     }
+    /**
+     * Setting the seat status as occupied so it appears as booked.
+     * 
+     * 
+   */
+    public void setOccupied(){
+        this.seatStatus = seatStatus.OCCUPIED;
+    }
 
     /**
      Relevant getter and setter functions for Row, Column, SeatType and seatStatus
     */
-
+    /**
+     * Setting the row and column of the specific seat booked.
+     * @param int
+     * @param int
+     */
     public void setRowCol(int row, int col){
 
         this.row = row;
         this.col = col;
         
     }
-
+    /**
+     * Getting the row of the specific seat booked.
+     * @return int
+     */
     public int getRow() {
     return row;
     }
-
+    /**
+     * Getting the coloumn of the specific seat booked.
+     * @return int
+     */
     public int getCol() {
     return col;
     }
-
+     /**
+     * Getting the seat type of the specific seat booked.
+     * @return SeatTypes
+     */
     public SeatTypes getSeatType() {
     return seatType;
     }
-
+    /**
+     * Getting the seat status of the specific seat booked.
+     * @return SeatStatus
+     */
     public SeatStatus getSeatStatus() {
     return seatStatus;
     
