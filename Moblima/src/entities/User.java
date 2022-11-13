@@ -3,6 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import enums.UserType;
 
+/**
+ * This class initializes all User attributes with relevant getter and setter methods
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
+ */
 
 public class User{
 	private String username;
@@ -13,6 +19,10 @@ public class User{
 		this.password = password;
 	}
 	
+/**
+ * These methods are getter and setter methods for username, password, userType
+ */
+
 	public void setUsername(String username) { 
 		this.username = username;
 		
@@ -55,6 +65,14 @@ public class User{
 	public UserType getUserType() {
 		return this.UserType;
 	}
+
+/**
+ * This method validates the User to check for appropriate data fields
+ * @param username an attribute of customer object
+ * @param password an attribute of customer object
+ * @param database a List of array of User Objects
+ * @return boolean: true if user is valid, false if user is invalid
+ */
 
 	public static boolean validateUser(String username, String password, ArrayList<User> database) {
 		for (User u : database){
