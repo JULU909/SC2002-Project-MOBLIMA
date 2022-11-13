@@ -229,6 +229,16 @@ public class MovieInfoManager  {
     	}
     	return -1; //If not present, return -1
     }
+    
+    public static int findExactMovieCSV(String title, ArrayList<Movie> list) {
+    	int i = 0;
+		//title is input from user
+    	while(i!=list.size()) {
+    		if(list.get(i).getTitle().equals(title)) //Match title
+    			return i; //Return position
+    	}
+    	return -1;
+    }
 
 	public static int fuzzyMatching(String user_inputed, String lmaoArr_indexString){
 		//debug : System.out.printf("%d",getLevenshteinDistance(user_inputed, lmaoArr_indexString));
