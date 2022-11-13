@@ -196,7 +196,7 @@ public class CustomerManager extends FileManager {
 
     /**
     *This method appends the customer into the last row of the csv
-    @param customer 
+    @param customer The customer to be added to the customer CSV
     @throws FileNotFoundException
     @throws IOException
     */

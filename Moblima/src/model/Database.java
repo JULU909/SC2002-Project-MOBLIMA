@@ -11,9 +11,11 @@ import entities.User;
  */
 
 public class Database {
-	/*
-     * Adds, deletes, and finds position of a user within the database
-     */
+	/**
+	 * Adds, deletes, and finds position of a user within the database
+	 * @param user The user to add to the database
+	 * @param database The array list of users in the database
+	 */
 	public static void addToDatabase(User user, ArrayList<User> database) {
 		int j = findUserPos(user, database);
 		if(j!=-1)
@@ -51,6 +53,7 @@ public class Database {
     *This method  is a supplimentary method used by deleteUser to find the position of the user in the database
     @param user user object that we want to find
     @param database a List of array of the User object
+    @return The index of the user in the database
     */
 	public static int findUserPos(User user, ArrayList<User> database) { //find position
 		int j;

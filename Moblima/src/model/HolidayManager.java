@@ -24,14 +24,21 @@ import entities.Holiday;
 
 public class HolidayManager extends FileManager {
     private String filename;
-
+    /**
+     * The default file name
+     */
     public final static String FILENAME = "Moblima/src/Data/holidays.csv";
-
+    /**
+     * Constructs the holiday manager with the default file name
+     */
     public HolidayManager(){
 		super(FILENAME);
         this.filename = FILENAME;
     }
-
+    /**
+     * Constructs the holiday manager with a specific filename
+     * @param filename The name of the file
+     */
     public HolidayManager(String filename) {
 		super(filename);
         this.filename = filename;

@@ -22,29 +22,47 @@ public class User{
 /**
  * These methods are getter and setter methods for username, password, userType
  */
-
+	/**
+	 * This method sets a username for the User
+	 * @param username The username to be set for the user object
+	 */
 	public void setUsername(String username) { 
 		this.username = username;
 		
 	}
-	
+	/**
+	 * This method gets the username of the user
+	 * @return The username of the user as a string
+	 */
 	public String getUsername() {
 		return this.username;
 	}
-	
+	/**
+	 * This method sets the password for the user
+	 * @param password The password to be set for the user
+	 */
 	public void setPassword(String password) { //set password directly
 		this.password = password;
 	}
-
+	/**
+	 * This method gets the password of the user
+	 * @return The password of the user as a String
+	 */
 	public String getPassword() { //set password directly
 		return this.password;
 	}
-	
+	/**
+	 * This method sets the user type of the user
+	 * @param type The type the user is to have
+	 */
 	public void setUserType(UserType type) { 
 		this.UserType = type;
 		
 	}
-	
+	/**
+	 * This method gets the user type of the user
+	 * @return The UserType of the user
+	 */
 	public UserType getUserType() {
 		return this.UserType;
 	}

@@ -18,8 +18,13 @@ import model.CustomerManager;
  */
 
 public class CustomerSettingsUI {
-    /**
+	/**
 	 * This method prints all the settings text for a customer member to interact with
+	 * @param customer The customer accessing the customer settings
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws ParseException
 	 */
 	public static void settingsText(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
