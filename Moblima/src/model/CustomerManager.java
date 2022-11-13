@@ -15,11 +15,10 @@ import java.io.FileWriter; //for writing to csv
 
 /**
  * This class manages everything related to the customer
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
-
 public class CustomerManager {
     private static String filename;
     private ArrayList<Customer> data;
@@ -54,12 +53,11 @@ public class CustomerManager {
     }
 
     /**
-    *This method gets the Length of the csv file by iterating through all rows
-    @return int denoting the length
-    @throws FileNotFoundException
-    @throws IOException
-    */
-
+     * This method reads from a csv file (Customers.csv), splits the columns into a String[5], and returns the ArrayList
+     * @return Returns an ArrayList of Customer for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
         
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
@@ -81,12 +79,12 @@ public class CustomerManager {
         }
         return data;
     }
+	/**
+     * This method checks if a username exists inside the an ArrayList
+     * @param username the username to be checked against the database
+     * @param database the list of existing users to be checked against the username
+     * @return Returns true if the username is found in the database, false otherwise
 
-    /**
-    *This method detects for duplicate Usernames
-    @param username an attribute of customer
-    @param database a list array of customer objects
-    @return boolean: true if duplicate, false if not
     */
     public static boolean duplicateUsername(String username, ArrayList<Customer> database){
         for (Customer c : database){
@@ -96,11 +94,13 @@ public class CustomerManager {
         }
         return false;
     } 
-
-    /**
-    *This method removes the customer from the csv by username
-    @param username an attribute of customer
-    */
+	/**
+     * This method removes a row from the csv file, by username, if it exists in the file.
+     * @param username the username to be removed
+     * @return Returns true if the username is found in the database, false otherwise
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void removeCustomerCSV(String username) throws FileNotFoundException, IOException {
         ArrayList<Customer> database = getDataAll();
         int i=0;
@@ -114,13 +114,12 @@ public class CustomerManager {
         database.remove(i);
         writeCustomerCSV(database);
     } 
-
-    /**
-    *This method finds the customer from the database
-    @param username an attribute of customer
-    @param database a list array of customer objects
-    @return Customer: Customer Object that is to be found, null if cannot find
-    */
+	/**
+     * This method checks finds a customer inside an ArrayList by username, and returns it if it does
+     * @param username the username to be checked against the database
+     * @param database the list of existing customers to be checked against the username
+     * @return Returns the customer object if the username is found in the database, null otherwise
+     */
     public static Customer findCustomer(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -129,14 +128,13 @@ public class CustomerManager {
         }
         return null;
     } 
-
-    /**
-    *This method validates the csutomer
-    @param username an attribute of customer
-    @param password an attribute of customer
-    @param database a list array of customer objects
-    @return boolean: true if duplicate, false if not
-    */
+	/**
+     * This method reads from an ArrayList, and checks if a username and password corresponding to a customer exists in the list
+     * @param username the username to be checked against the database
+     * @param password the username and password to be checked against the database
+     * @param database the list of existing customers to be checked against the username and password
+     * @return Returns true if the username and password of a customer is found in the database, false otherwise
+     */
     public static boolean validateCustomer(String username, String password, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username) && c.getPassword().equals(password)){
@@ -145,7 +143,12 @@ public class CustomerManager {
         }
         return false;
     } 
-
+	/**
+     * This method overwrites the csv file with customer data from the ArrayList.
+	 * @param list An array list of Customer for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     /**
     *This method writes the customer into the CSV file
     @param database a list array of customer objects

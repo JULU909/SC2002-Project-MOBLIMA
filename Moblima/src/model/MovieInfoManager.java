@@ -24,7 +24,7 @@ import java.io.FileWriter; //for writing to csv
  * @author Tham Holdon
  * @author Jia Wei
  * @version 1.0
- * 
+ * @author Kit Ye
  */
 public class MovieInfoManager  {
 	private String filename;
@@ -271,7 +271,6 @@ public class MovieInfoManager  {
      * @throws FileNotFoundException
      * @throws IOException
      */
-
     public void writeMovieCSV(ArrayList<Movie> list) throws FileNotFoundException, IOException{
     	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);

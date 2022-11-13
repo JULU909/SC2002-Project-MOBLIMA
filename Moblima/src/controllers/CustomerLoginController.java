@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 /**	Control Class that checks and validates the Customer Login
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */

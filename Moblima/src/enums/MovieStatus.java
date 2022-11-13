@@ -7,5 +7,4 @@ public enum MovieStatus {
     PREVIEW,
     NOW_SHOWING,
     END_OF_SHOWING
-
 }

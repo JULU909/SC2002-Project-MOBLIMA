@@ -4,13 +4,12 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.regex.*;
 import View.CustomerRegistrationDisplay;
 import entities.Customer;
 import model.*;  
 
 /**	Control Class that manages the Customer Registration as new user
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */

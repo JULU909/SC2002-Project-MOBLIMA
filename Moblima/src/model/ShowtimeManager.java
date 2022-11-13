@@ -34,7 +34,6 @@ public class ShowtimeManager  {
     }
 
 
-
     public ShowtimeManager(String filename) {
         this.filename = filename;
     }
@@ -56,12 +55,9 @@ public class ShowtimeManager  {
         }
         return count;
     }
-    // object.getDataAll(object.getLength())
-
-
     /**
-     * This method gets all of the Showtime data in the csv file
-     * @return Returns an array of Showtime Objects
+     * This methods gets the number of showtimes in the csv
+     * @return Returns an integer length of the number of showtimes inside the csv
      * @throws FileNotFoundException
      * @throws IOException
      */

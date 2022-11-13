@@ -17,7 +17,7 @@ import model.*;
 
 
 /**
- * The entry point of our application, MOBLIMA and redirects the user (new/existing/staff) to the UI class
+ * The entry point of our application, MOBLIMA and redirects the user (new/existing/staff) to the UI class LoginController.
  * @author Holdon, Kit Ye, Harish, Manfred, Jia Wei
  * @version 1.0
  * @since 1.0
