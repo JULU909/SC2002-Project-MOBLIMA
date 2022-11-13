@@ -532,7 +532,10 @@ public class MovieInfoManager  {
 			for(int i = 0; i < m; i++) {
 				Movie tempMovie = list.get(i);
 				System.out.println("Movie Title: " + tempMovie.getTitle());
-				System.out.println("Average Rating: " + tempMovie.getAverageRating());
+				if(tempMovie.getAverageRating() == 0)
+					System.out.println("Average Rating: NA");
+				else
+					System.out.printf("Average Rating: %.2f \n" , tempMovie.getAverageRating());
 				System.out.println();
 			}
 		}

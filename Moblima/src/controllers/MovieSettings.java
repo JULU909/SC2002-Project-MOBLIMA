@@ -3,6 +3,7 @@ package controllers;
 import java.util.Scanner;
 
 import entities.AgeRatingSetter;
+import entities.Movie;
 
 import java.util.ArrayList;
 
