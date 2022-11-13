@@ -31,29 +31,6 @@ import java.io.FileNotFoundException;
 
     public SearchMovieUI(){
         s1 = new ShowtimeManager(FILENAME);
-        // Scanner sc = new Scanner(System.in);
-        // while(choice != -1){
-            // System.out.println("Input the following fields:");
-            // System.out.println("Choice 1: Search/List Movie");
-            // System.out.println("Choice 2: Display all Movie details, including reviews and ratings");
-            // System.out.println("Choice -1: exit");
-            // choice = sc.nextInt();
-
-        //     switch(choice){
-        //         case 1:
-
-        //         break;
-
-        //         case 2:
-        //         DisplayAll();
-        //         break;
-
-        //         default:
-        //         System.out.println("Your choice: " + choice + " was not a valid input ");
-        //         break;
-        //     }
-        // }
-        // sc.close();
     }
 
 
@@ -107,13 +84,3 @@ import java.io.FileNotFoundException;
     }
 
 }
-
-
-
-    // public Showtime[] getDataAll(int length);
-
-
-    // public String[] getMovies(int length);
-
-
-    // public ArrayList getShowtimes(String movie, String cineplex);
