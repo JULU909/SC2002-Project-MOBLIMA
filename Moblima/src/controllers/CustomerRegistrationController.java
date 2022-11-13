@@ -5,13 +5,25 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.regex.*;
-
 import View.CustomerRegistrationDisplay;
 import entities.Customer;
 import model.*;  
+
+/**	Control Class that manages the History of the bookings
+ * @author 
+ * @version 1.0
+ */
+
 public class CustomerRegistrationController {
     public String filepath = "Moblima/src/Data/Customers.csv";
 
+    /**
+     * This method controls and Displays the Customer Registration Display, and inserts the Customer's input fields into the csv for Registration
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws FileNotFoundException
+     * @throws ParseException
+     */
 	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Registration for Customer Cinema database----");
