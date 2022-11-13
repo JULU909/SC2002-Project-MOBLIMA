@@ -13,6 +13,13 @@ import entities.Showtime;
 import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
+/**
+ * This class manages everything related to the customer
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class CustomerManager {
     private static String filename;
     private ArrayList<Customer> data;
@@ -20,6 +27,7 @@ public class CustomerManager {
 
     public final static String FILENAME = "Moblima/src/Data/Customers.csv";
 
+    // constructor initialises the default path to customer.csv if no input data is given
     public CustomerManager(){
         this.filename = FILENAME;
     }
@@ -28,6 +36,12 @@ public class CustomerManager {
         this.filename = filename;
     }
 
+    /**
+    *This method gets the Length of the csv file by iterating through all rows
+    @return int denoting the length
+    @throws FileNotFoundException
+    @throws IOException
+    */
     public static int getLength() throws FileNotFoundException, IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Customers.csv"))) {
@@ -38,6 +52,14 @@ public class CustomerManager {
         }
         return count;
     }
+
+    /**
+    *This method gets the Length of the csv file by iterating through all rows
+    @return int denoting the length
+    @throws FileNotFoundException
+    @throws IOException
+    */
+
     static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
         
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
@@ -60,6 +82,12 @@ public class CustomerManager {
         return data;
     }
 
+    /**
+    *This method detects for duplicate Usernames
+    @param username an attribute of customer
+    @param database a list array of customer objects
+    @return boolean: true if duplicate, false if not
+    */
     public static boolean duplicateUsername(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -69,6 +97,10 @@ public class CustomerManager {
         return false;
     } 
 
+    /**
+    *This method removes the customer from the csv by username
+    @param username an attribute of customer
+    */
     public static void removeCustomerCSV(String username) throws FileNotFoundException, IOException {
         ArrayList<Customer> database = getDataAll();
         int i=0;
@@ -83,6 +115,12 @@ public class CustomerManager {
         writeCustomerCSV(database);
     } 
 
+    /**
+    *This method finds the customer from the database
+    @param username an attribute of customer
+    @param database a list array of customer objects
+    @return Customer: Customer Object that is to be found, null if cannot find
+    */
     public static Customer findCustomer(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -92,6 +130,13 @@ public class CustomerManager {
         return null;
     } 
 
+    /**
+    *This method validates the csutomer
+    @param username an attribute of customer
+    @param password an attribute of customer
+    @param database a list array of customer objects
+    @return boolean: true if duplicate, false if not
+    */
     public static boolean validateCustomer(String username, String password, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username) && c.getPassword().equals(password)){
@@ -101,6 +146,12 @@ public class CustomerManager {
         return false;
     } 
 
+    /**
+    *This method writes the customer into the CSV file
+    @param database a list array of customer objects
+    @throws FileNotFoundException
+    @throws IOException
+    */
     public static void writeCustomerCSV(ArrayList<Customer> database) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",false);
@@ -132,6 +183,12 @@ public class CustomerManager {
     }
 
 
+    /**
+    *This method appends the customer into the last row of the csv
+    @param customer 
+    @throws FileNotFoundException
+    @throws IOException
+    */
     public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",true);
