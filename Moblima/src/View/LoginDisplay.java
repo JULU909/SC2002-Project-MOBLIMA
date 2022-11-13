@@ -28,7 +28,9 @@ import java.time.format.DateTimeFormatter;
 
 public class LoginDisplay {
     Scanner sc = new Scanner(System.in);
-
+	/**
+	 * This method prints the exit text when a user enters Moblima
+	 */
     public void printBanner(){
         System.out.println("=====================================================================================\n"+
                            "=====================================================================================\n"+
@@ -36,7 +38,9 @@ public class LoginDisplay {
                            "=====================================================================================\n"+
                            "=====================================================================================\n");
     }
-
+	/**
+	 * This method prints all the login and registration text for a staff member to interact with
+	 */
     public int getMenuOption(){
         int choice =-1;
         do {
@@ -56,7 +60,9 @@ public class LoginDisplay {
 
         return choice;
     }
-
+	/**
+	 * This method prints the exit text when a user exits Moblima
+	 */
     public void printExitText(){
         System.out.println("Thank you for using MOBLIMA. Exiting...");
         java.lang.System.exit(0); 

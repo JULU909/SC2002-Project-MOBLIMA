@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * This class initialises all relevant Holiday Attributes with getter and setter functions for Holiday. Also has a real time date and time library imported
- * @author
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
