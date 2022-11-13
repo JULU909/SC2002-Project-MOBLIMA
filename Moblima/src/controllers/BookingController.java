@@ -16,7 +16,21 @@ import enums.AgeGroup;
 import enums.UserType;
 import model.*;
 
+/**	Control Class for Customers to interact with to book seat
+ * @author 
+ * @version 1.0
+ */
+
+
 public class BookingController {
+    /**
+     * This method displays the bookingDisplay UI and gets all relevant information from Customer object to purchaseTicket
+     * @param customer customer object with attributes such as age, ageGroup, mobileNumber, emailAddress, movieHistory
+	 * @throws FileNotFoundException
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public static void purchaseTicket(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();

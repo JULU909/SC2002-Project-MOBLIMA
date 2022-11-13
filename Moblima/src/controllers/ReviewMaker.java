@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import entities.Customer;
+import entities.Movie;
 import entities.Review;
 import model.MovieInfoManager;
 
