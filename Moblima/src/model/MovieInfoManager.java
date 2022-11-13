@@ -509,7 +509,7 @@ public class MovieInfoManager  {
 		int j = 0;
 		while(j!=cast.size())
 		{
-			System.out.println("Cast member " + j+1 + " : " +cast.get(j));
+			System.out.println("Cast member " + (j+1) + " : " +cast.get(j));
 			j++;
 		}
 		System.out.println("Movie type: " + tempMovie.getType());
