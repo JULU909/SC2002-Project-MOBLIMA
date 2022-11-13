@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import entities.Holiday;
@@ -27,12 +28,28 @@ public class StaffSettingsController {
 	public static void setPrice() {
 		Scanner sc = new Scanner(System.in);
 		Pricing price = new Pricing();
-		System.out.println("Current base price is " + price.getBasedPrice());
-		System.out.println("Enter new base price ");
-		double basedPrice = sc.nextDouble();
-		price.setBasedPrice(basedPrice);
-		System.out.println("Base price set to " + price.getBasedPrice());
-		return;
+		double basedPrice;
+		while(true) {
+			try{System.out.println("Current base price is " + price.getBasedPrice());
+			System.out.println("Enter new base price ");
+			basedPrice = sc.nextDouble();
+			if(basedPrice<=0)
+			{
+				System.out.println("Enter a positive value!");
+				continue;
+			}
+				break;
+			}catch(InputMismatchException e ) {
+				System.out.println("Enter a valid input! ");
+		        String error = sc.next(); // catch the enter;
+		        continue;
+			}
+		}
+			price.setBasedPrice(basedPrice);
+			System.out.println("Base price set to " + price.getBasedPrice());
+			return;
+		
+
 	}
 	/**
 	 * This method adds a movie into the movieInformation CSV

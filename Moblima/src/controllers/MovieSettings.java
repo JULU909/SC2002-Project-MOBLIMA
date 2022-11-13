@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.Scanner;
 
-import entities.AgeRatingSetter;
 import entities.Movie;
 
 import java.util.ArrayList;
@@ -200,8 +199,6 @@ public static void editMovie(Movie movie) { //Edit movie
 		case 9:
 			System.out.println("Enter movie runtime (xHxxM): ");
 			input = sc.nextLine();
-			Character H = input.charAt(1);
-			Character M = input.charAt(4);
 			if(StaffErrorChecker.checkRuntime(input))
 			{
 				movie.setrunTime(input);
