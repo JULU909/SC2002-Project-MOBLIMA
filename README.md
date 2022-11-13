@@ -16,9 +16,11 @@ Java
 [Main Java File](https://github.com/JULU909/SC2002-Project-MOBLIMA/blob/main/Moblima/src/Moblima.java)
 
 Customer default username : user
+
 Customer default password : password
 
 Admin default username : admin
+
 Admin default passord : password
 
 Contributors
