@@ -130,7 +130,7 @@ public int askTickets(){
     System.out.println( "--------------------------------------------- ");
     int choice = 0 ;
     choice = sc.nextInt();
-    if (choice < 0){
+    if (choice <= 0){
         System.out.println("Please enter a valid input!");
 
     }
