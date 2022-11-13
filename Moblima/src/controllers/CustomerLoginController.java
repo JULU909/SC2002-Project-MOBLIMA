@@ -17,6 +17,9 @@ import java.text.ParseException;
  */
 
 public class CustomerLoginController {
+	/**
+	 * This is the location of Customers.csv
+	 */
     public String filepath = "Moblima/src/Data/Customers.csv";
 
 

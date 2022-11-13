@@ -29,14 +29,12 @@ import java.time.format.DateTimeFormatter;
 
 
 public class BookingDisplay {
-
-public String askCineplex(){
-
     /** 
      * This method prints the UI to get the Cineplex the user wants to watch the movie at
      * After the cineplex is obtained, it will be returned as a String
      * @return String
      */
+public String askCineplex(){
 
     Scanner sc = new Scanner(System.in);
     CineplexTypes [] list ;
@@ -74,13 +72,14 @@ public String askCineplex(){
 }
     
 }
-
+/** 
+ * This method prints the UI to get the Seats the user wants to book at the movie.
+ * After the Seats are obtained, it will be returned as a ArrayList of the item Seat
+ * @param number, the number of seats to book
+ * @return ArrayList of seat
+ */
 public ArrayList askSeats(int number){
-    /** 
-     * This method prints the UI to get the Seats the user wants to book at the movie.
-     * After the Seats are obtained, it will be returned as a ArrayList of the item Seat
-     * @return ArrayList <Seat>
-     */
+
     Scanner sc = new Scanner(System.in);
     ArrayList <Seat> seats = new ArrayList<Seat>();
     
@@ -117,14 +116,13 @@ public ArrayList askSeats(int number){
     }
     return seats;
 }
-
+/** 
+ * This method prints the UI to get the number of Seats the user wants to book at the movie.
+ * After the number is obtained, it will be as a integer.
+ * @return int
+ */
 public int askTickets(){
 
-    /** 
-     * This method prints the UI to get the number of Seats the user wants to book at the movie.
-     * After the number is obtained, it will be as a integer.
-     * @return int
-     */
     Scanner sc = new Scanner(System.in);
     
     while (true){
@@ -146,15 +144,16 @@ public int askTickets(){
     
 }
 
+/** 
+ * This method prints the UI to get the specific movie the user wants to book.
+ * After the movie is obtained, it will returned as a integer.
+ * @param movies, the list of movies available
+ * @return int, the choice of movie made
+ * 
+ */
 
 public int askMovie(ArrayList <Movie> movies){
-    /** 
-     * This method prints the UI to get the specific movie the user wants to book.
-     * After the movie is obtained, it will returned as a integer.
-     * @return int
-     * @param String
-     */
-
+ 
     Scanner sc = new Scanner(System.in);
     int count= 0;
     System.out.println("Please select the number corresponding to a movie : ");
@@ -183,14 +182,16 @@ public int askMovie(ArrayList <Movie> movies){
     }
 }
 
+/**
+ * This method prints the UI to get the specific showtime the user wants to book.
+ * After the movie is obtained, it will returned as a integer. If noshowtime is available,
+ * it prints an indicative message for that.
+ * @param showtimes, the list of showtimes
+ * @return int, the choice of which showtime made
+ * @throws InterruptedException
+ */
 public int askTiming(ArrayList <Showtime>showtimes) throws InterruptedException{
-      /** 
-     * This method prints the UI to get the specific showtime the user wants to book.
-     * After the movie is obtained, it will returned as a integer. If noshowtime is available,
-     * it prints an indicative message for that.
-     * @return int
-     * @param ArrayList <Showtime>
-     */
+
     Scanner sc = new Scanner(System.in);
     int count= 0;
     if(showtimes.size() == 0){
@@ -225,14 +226,14 @@ public int askTiming(ArrayList <Showtime>showtimes) throws InterruptedException{
         }
     }
 }
-
+	/** 
+	* This method prints the UI to get the specific date the user wants to book their movie.
+	* After the date is obtained, it will returned as a Date object. 
+	* 
+	*  @return Date, the date obtained
+	*/
 public LocalDate askDate(){
-      /** 
-     * This method prints the UI to get the specific date the user wants to book their movie.
-     * After the date is obtained, it will returned as a Date object. 
-     * @param void
-     * * @return Date
-     */
+
         Scanner sc = new Scanner(System.in);
         LocalDate date =  LocalDate.now();
         Calendar cal = Calendar.getInstance();
@@ -263,24 +264,18 @@ public LocalDate askDate(){
             }
 
     }
-        
-        
-       
-        
-
-		
-		
+	
 }
 
 
-
+/** 
+* This method prints the UI to ask the user whether they wanna confirm the ticket, change seats or decline purchase,
+* The payment is assumed to be done no matter what the scenario. Returns their option to the controller class
+* @param ticket, the ticket to be confirmed
+* *@return int, the choice made when confirming the booking
+*/
 public int confirmTicket(Ticket ticket) throws InterruptedException{
-     /** 
-     * This method prints the UI to ask the user whether they wanna confirm the ticket, change seats or decline purchase,
-     * The payment is assumed to be done no matter what the scenario. Returns their option to the controller class
-     * @param Ticket
-     * *@return int
-     */
+
     Scanner sc = new Scanner(System.in);
     int choice = 0;
     ArrayList <Seat> bookedSeats = ticket.getSeats();
@@ -322,23 +317,23 @@ public int confirmTicket(Ticket ticket) throws InterruptedException{
 }
     
 }
-
+/** 
+ * This method prints the UI indicate the tickets have been booked successfully.
+ */
 public static void successExitDialouge() {
-    /** 
-     * This method prints the UI indicate the tickets have been booked successfully.
-     */
+
     System.out.println("Your Ticket has been booked, Have a pleasant day!.");
     return;
 
 }
-
+/** 
+* This method collects the tally of the different age groups the purchase of tickets is for and it returns
+* and array of AgeGroup objects corresponding to the tally.
+* @param numSeats, the number of seats to book
+* *@return ArrayList of age groups
+*/
 public static ArrayList <AgeGroup> getAges(int numSeats) {
-     /** 
-     * This method collects the tally of the different age groups the purchase of tickets is for and it returns
-     * and array of AgeGroup objects corresponding to the tally.
-     * @param int
-     * *@return ArrayList <AgeGroup>
-     */
+
     ArrayList<AgeGroup> ages= new ArrayList<AgeGroup>();
     System.out.println("Enter number of movie Viewers per age group {child , adult & senior} : ");
     System.out.println("-----------------------------------------------------------------------");
@@ -381,21 +376,21 @@ public static ArrayList <AgeGroup> getAges(int numSeats) {
     return ages;
 }
 
-
+/** 
+ * This method prints the indicator that the tickets booked have been cancelled.
+ */
 public static void failExitDialouge() {
-    /** 
-     * This method prints the indicator that the tickets booked have been cancelled.
-     */
+ 
     System.out.println("Your Ticket has been removed, Have a pleasant day!.");
     return;
 
 }
-
+/** 
+ * This method prints a buffer so the user can read the message above before the main UI appears and asks for an
+ * input to exit.
+ */
 public static void printExitMessage(){
-    /** 
-     * This method prints a buffer so the user can read the message above before the main UI appears and asks for an
-     * input to exit.
-     */
+
     Scanner sc = new Scanner(System.in);
     System.out.println("Press any key to exit");
     sc.next();

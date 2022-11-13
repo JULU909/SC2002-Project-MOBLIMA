@@ -3,9 +3,9 @@ package enums;
 
 /**
  *  Cineplex that is used
- *  {@link #ALPHA}
- *  {@link #BETA}
- *  {@link #GAMMA}
+ *  ALPHA
+ *  BETA
+ *  GAMMA
  */
 
 

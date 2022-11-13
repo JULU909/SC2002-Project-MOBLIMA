@@ -64,7 +64,8 @@ public class HolidayManager extends FileManager {
     }
 
 	/**
-     * This method reads from a csv file (holidays.csv) row by row, splits the row into a String and stores this information into an ArrayList<LocalDate>
+     * This method reads from a csv file (holidays.csv) row by row, splits the row into a String 
+     * and stores this information into an ArrayList of local dates
      * @return Returns an array list of LocalDate for the code to read or write
      * @throws FileNotFoundException
      * @throws IOException

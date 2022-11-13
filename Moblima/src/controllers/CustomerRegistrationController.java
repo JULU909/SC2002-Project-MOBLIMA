@@ -15,6 +15,9 @@ import model.*;
  */
 
 public class CustomerRegistrationController {
+	/**
+	 * This is the location of Customers.csv
+	 */
     public String filepath = "Moblima/src/Data/Customers.csv";
 
     /**
