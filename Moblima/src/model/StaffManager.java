@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  * This class allows for the location/adding/validation of all staff in staff.csv
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
