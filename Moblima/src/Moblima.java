@@ -10,6 +10,7 @@ import View.BookingDisplay;
 import View.SearchMovieUI;
 import View.StaffLoginUI;
 import controllers.LoginController;
+import controllers.ShowtimeInitializer;
 import entities.*;
 //import enums.Day;
 import enums.UserType;
@@ -27,6 +28,8 @@ import model.*;
 public class Moblima {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ParseException { 
+    	ShowtimeInitializer si = new ShowtimeInitializer();
+    	si.execute();
         LoginController.execute();
     } 
 
