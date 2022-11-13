@@ -61,7 +61,7 @@ public class CustomerMenuUI {
                     System.out.println("Your Choice please: ");
                     try {
                         selection = sc.nextInt(); sc.nextLine();
-                        if (selection < 0 || selection > 4) {sc.close(); throw new Exception();}
+                        if (selection < 0 || selection > 4) {throw new Exception();}
                     } catch (Exception e) {System.out.println("Error: invalid input!");}
 
                     MovieInfoManager m1 = new MovieInfoManager();
