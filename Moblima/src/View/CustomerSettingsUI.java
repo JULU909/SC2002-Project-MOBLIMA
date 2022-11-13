@@ -17,7 +17,7 @@ public class CustomerSettingsUI {
 		Scanner sc = new Scanner(System.in);
 		String customerpath = new File("Customers.csv").getAbsolutePath();
 		
-		while(choice<5) {
+		while(choice!=5) {
 			System.out.println("1) Update password.");
 			System.out.println("2) Update email address.");
 			System.out.println("3) Update phone number.");
@@ -54,7 +54,7 @@ public class CustomerSettingsUI {
             do {
                     System.out.println("Enter new email address: ");
                     email = sc.nextLine();
-                    if (email.isEmpty() || email.equals(" ")) { 
+                    if (email.isEmpty() || email.equals(" ") || (email.contains("@") == false)) { 
                         System.out.println("Invalid input!");
                     }
                     else break;      
@@ -71,6 +71,9 @@ public class CustomerSettingsUI {
                 do {
                         System.out.println("Enter new phone number: ");
                         phone = sc.nextLine();
+                        try {
+                            Integer.parseInt(phone);
+                        } catch (Exception e) {System.out.println("Please enter a valid input!"); continue;}
                         if (phone.isEmpty() || phone.equals(" ")) { 
                             System.out.println("Invalid input!");
                         }
@@ -89,7 +92,9 @@ public class CustomerSettingsUI {
                 do {
                         System.out.println("Enter new age: ");
                         try {
-                            age = Integer.parseInt(sc.nextLine()); break;
+                            age = Integer.parseInt(sc.nextLine());
+                            if (age <=0) throw new Exception();
+                            break;
                         } catch (Exception e) { System.out.println("Invalid input!");}
                     } while (true);
 
