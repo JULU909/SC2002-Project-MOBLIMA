@@ -20,8 +20,13 @@ import enums.MovieStatus;
 
 /** This class controls StaffSettingsUI
  * @author Tham Holdon
+ * @version 1.0
+ * @since 2022-11-13
  */
+
+
 public class StaffSettingsController {
+
 	/**
 	 * This method sets the base price of a movie ticket
 	 */
@@ -48,9 +53,8 @@ public class StaffSettingsController {
 			price.setBasedPrice(basedPrice);
 			System.out.println("Base price set to " + price.getBasedPrice());
 			return;
-		
-
 	}
+	
 	/**
 	 * This method adds a movie into the movieInformation CSV
 	 */
