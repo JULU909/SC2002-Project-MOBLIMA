@@ -66,7 +66,7 @@ public class BookingController {
             for (int i = 0 ; i <userSeats.size(); i++){
                 
                 if (choosenShowtime.getSeatStatus(userSeats.get(i).getCol(),userSeats.get(i).getRow()).equals(SeatStatus.OCCUPIED)){
-                 System.out.println("Seats you want to book have been previously booked by another customer, select other seats!");
+                 System.out.println("Seats you want to book have been previously \nbooked by another customer, select other seats! \n ");
                  check =1;
                  break;
                  
