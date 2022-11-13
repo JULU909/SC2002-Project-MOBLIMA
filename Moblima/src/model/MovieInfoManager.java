@@ -26,18 +26,21 @@ import java.io.FileWriter; //for writing to csv
  * @version 1.0
  * @author Kit Ye
  */
-public class MovieInfoManager  {
+public class MovieInfoManager  extends FileManager{
 	private String filename;
     public final static String FILENAME = /*new File("movieinformation.csv").getAbsolutePath();*/"Moblima/src/Data/movieinformation.csv";
 
 
 
     public MovieInfoManager(){
+		super(FILENAME);
         this.filename = FILENAME;
     }
 
     public MovieInfoManager(String filename) {
+		super(filename);
         this.filename = filename;
+		
     }
     
     /**

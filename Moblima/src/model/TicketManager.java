@@ -27,13 +27,14 @@ import java.text.ParseException;
  * @since 2022-11-13
  */
 
-public class TicketManager  {
+public class TicketManager extends FileManager {
     private String filename;
     private Customer customer;
     private ArrayList<Ticket> data; 
-
+    private static String fileLink = "Moblima/src/Data/TicketsBooked.csv";
     public TicketManager(String string) {
-        this.filename = filename;
+        super(fileLink);
+        this.filename = fileLink;
     }
 
     

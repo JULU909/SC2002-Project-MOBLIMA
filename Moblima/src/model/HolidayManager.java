@@ -22,16 +22,18 @@ import entities.Holiday;
  * @since 2022-11-13
  */
 
-public class HolidayManager {
+public class HolidayManager extends FileManager {
     private String filename;
 
     public final static String FILENAME = "Moblima/src/Data/holidays.csv";
 
     public HolidayManager(){
+		super(FILENAME);
         this.filename = FILENAME;
     }
 
     public HolidayManager(String filename) {
+		super(filename);
         this.filename = filename;
     }
     

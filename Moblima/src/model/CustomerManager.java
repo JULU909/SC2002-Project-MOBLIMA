@@ -19,7 +19,7 @@ import java.io.FileWriter; //for writing to csv
  * @version 1.0
  * @since 2022-11-13
  */
-public class CustomerManager {
+public class CustomerManager extends FileManager {
     private static String filename;
     private ArrayList<Customer> data;
     private Showtime temp;
@@ -28,10 +28,12 @@ public class CustomerManager {
 
     // constructor initialises the default path to customer.csv if no input data is given
     public CustomerManager(){
+        super(FILENAME);
         this.filename = FILENAME;
     }
 
     public CustomerManager(String filename) {
+        super(filename);
         this.filename = filename;
     }
 

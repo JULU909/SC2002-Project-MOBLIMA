@@ -22,19 +22,23 @@ import java.io.FileWriter; //for writing to csv
  */
 
 
-public class ShowtimeManager  {
+public class ShowtimeManager  extends FileManager{
     private String filename;
     private Showtime[] data;
     private Showtime temp;
 
     public final static String FILENAME = /*new File("Showtimes.csv").getAbsolutePath();*/"Moblima/src/Data/Showtimes.csv";
+    
 
     public ShowtimeManager(){   
+        super(FILENAME);
         this.filename = FILENAME;
+        
     }
 
 
     public ShowtimeManager(String filename) {
+        super(filename);
         this.filename = filename;
     }
 

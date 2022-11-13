@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @since 2022-11-13
  */
 
-public class StaffManager  {
+public class StaffManager extends FileManager  {
     private static String filename;
     private ArrayList<Staff> data;
     private Showtime temp;
@@ -26,10 +26,12 @@ public class StaffManager  {
     public final static String FILENAME = "Moblima/src/Data/Staff.csv";
 
     public StaffManager(){
+        super(FILENAME);
         this.filename = FILENAME;
     }
 
     public StaffManager(String filename) {
+        super(filename);
         this.filename = filename;
     }
 
