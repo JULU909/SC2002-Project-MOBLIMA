@@ -1,9 +1,12 @@
 package entities;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import model.StaffManager;
 
 /**
  * This class registers the staff and adds the staff object and its relevant attributes to the csv
@@ -17,15 +20,30 @@ public class RegisterStaff {
 	/**
      * This method registers a staff
      * @return returns a Staff object, which is a child of user class
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
      */
 
-	public static Staff registerStaff() {
+	public static Staff registerStaff() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter new staff username: "); //Get new staff user name
-		String username = sc.nextLine();
-		System.out.println("Enter new staff password: "); //Get new staff password
-		String password = sc.nextLine();
-		Staff newStaff = new Staff(username,password); //Create new staff object
+		Staff newStaff = new Staff("temp","temp");
+		while(true)
+		{
+			System.out.println("Enter new staff username: "); //Get new staff user name
+			String username = sc.nextLine();
+			System.out.println("Enter new staff password: "); //Get new staff password
+			String password = sc.nextLine();
+			newStaff.setUsername(username);
+			newStaff.setPassword(password);
+			if(StaffManager.duplicateUsername(username, StaffManager.getDataAll()))
+			{
+				System.out.println("Staff username already exist!");
+				continue;
+			}
+			else
+				break;
+		}
+
 		
 		return newStaff;
 	}
