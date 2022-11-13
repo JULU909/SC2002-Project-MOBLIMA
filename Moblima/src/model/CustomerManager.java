@@ -20,9 +20,6 @@ import java.io.FileWriter; //for writing to csv
  * @since 2022-11-13
  */
 public class CustomerManager extends FileManager {
-    private static String filename;
-    private ArrayList<Customer> data;
-    private Showtime temp;
 /**
  * This is the location of Customers.csv
  */

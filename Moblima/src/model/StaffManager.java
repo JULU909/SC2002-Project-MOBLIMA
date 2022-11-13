@@ -20,9 +20,6 @@ import java.util.ArrayList;
  */
 
 public class StaffManager extends FileManager  {
-    private static String filename;
-    private ArrayList<Staff> data;
-    private Showtime temp;
 
     public final static String FILENAME = "Moblima/src/Data/Staff.csv";
 
