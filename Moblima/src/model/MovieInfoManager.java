@@ -356,6 +356,8 @@ public class MovieInfoManager  {
     /**
      * This method calculates the average rating of the movie from all ratings related to the movie.
      * After calculating, it will update that value into the CSV
+	 * @throws FileNotFoundException
+     * @throws IOException
      */
     public void updateAverageRating() throws FileNotFoundException, IOException { //Update all movies ratings
     	ArrayList<Movie> list = readMovieCSV(); //Convert CSV to Array list of movies
@@ -390,6 +392,8 @@ public class MovieInfoManager  {
     /**
      * This method updates the averageRating of a specific movie
      * @param title, the title of the movie
+	 * @throws FileNotFoundException
+     * @throws IOException
      */
     public void updateAverageRating(String title) throws FileNotFoundException, IOException { //Update movie title's rating
     	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
@@ -422,6 +426,8 @@ public class MovieInfoManager  {
      * This method updates the total sales of a certain movie
      * @param title , the title of the movie
      * @param sales, the number of sales of the movie
+	 * @throws FileNotFoundException
+     * @throws IOException
      */
     public void updateTotalSales(String title,int sales) throws FileNotFoundException, IOException {
     	ArrayList<Movie> list = readMovieCSV();//Convert CSV to Array list of movies
@@ -490,6 +496,8 @@ public class MovieInfoManager  {
     /**
      * This method ranks the movies either by ratings or by total number of sales
      * @param byTicketSales , true will print by ticket sales, false will print by ratings
+	 * @throws FileNotFoundException
+     * @throws IOException
      */
 	public void rankByRatings(boolean byTicketSales) throws FileNotFoundException, IOException {
 		ArrayList<Movie> list = readMovieCSV();

@@ -55,6 +55,12 @@ public class HolidayManager {
     	return list;
     }
 
+	/**
+     * This method reads from a csv file (holidays.csv) row by row, splits the row into a String and stores this information into an ArrayList<LocalDate>
+     * @return Returns an array list of LocalDate for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public ArrayList<LocalDate> readHolidayDataCSV() throws FileNotFoundException, IOException { //Read CSV
     	ArrayList<LocalDate> holidayDateList = new ArrayList<LocalDate>();
     	BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -72,6 +78,12 @@ public class HolidayManager {
     	return holidayDateList;
     }
 
+	/**
+     * This method adds a date and the name of a holiday into the csv
+	 * @param holiday, a holiday object, defined in entities
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
 	public void addHolidayCSV(Holiday holiday) throws FileNotFoundException, IOException { 
     	//Writer will write into filename, true allows appending
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -92,6 +104,12 @@ public class HolidayManager {
     	writer.close();
     }
 
+	/**
+     * This method prints out all rows of the holiday.csv file.
+     * 
+	 * @throws FileNotFoundException
+     * @throws IOException
+     */
 	public void printHolidaysCSV() throws FileNotFoundException, IOException {
 		ArrayList<Holiday> list = readHolidayCSV();
 		int i=0;
@@ -101,6 +119,13 @@ public class HolidayManager {
 		}
 	}
 
+	/**
+     * This method removes a row  from the csv file, by index.
+     * @return Returns an array list of Holiday for the code to read or write
+	 * @param i the index of the row you want to remove
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
 	public ArrayList<Holiday> removeHolidayCSV(int i) throws FileNotFoundException, IOException { //Remove movie from array list
 		ArrayList<Holiday> list = new ArrayList<Holiday>();
 		list = readHolidayCSV();
@@ -114,6 +139,13 @@ public class HolidayManager {
     	return list; //Return list if movie not present
     }
 
+
+	/**
+     * This method removes a column from the csv file, by index.
+	 * @param list An array list of Holiday for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
 	public void writeHolidayCSV(ArrayList<Holiday> list) throws FileNotFoundException, IOException{
     	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);
