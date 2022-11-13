@@ -100,13 +100,19 @@ public class BookedHistoryUI {
         while(true){
         System.out.println("To view a specific booking's seat details further, enter Ticket number { 1 - "+ userTickets.size() + " } or enter 0 to exit :" );
         System.out.println("----------------------------------------------------------------------------------------------------  " );
-        String temp = sc.next();
-        if (Integer.valueOf(temp) == 0 ){
-            return;
+        try {
+            String temp = sc.next();
+            if (Integer.valueOf(temp) == 0 ){
+                return;
+            }
+            if ( Integer.valueOf(temp) <= userTickets.size()){
+                printTicketSeats((Integer.valueOf(temp)-1), userTickets);
+            }
+        } catch(NumberFormatException ex) {
+            System.out.println("Please enter valid input");
+            continue;
         }
-        if ( Integer.valueOf(temp) <= userTickets.size()){
-            printTicketSeats((Integer.valueOf(temp)-1), userTickets);
-        }
+        
         }
     }
     /** 
