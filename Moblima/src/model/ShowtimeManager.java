@@ -15,8 +15,13 @@ import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
 /**
- * This class allows the adding/editing/removing of show times from Showtimes.csv
+ * This class allows for the location/adding/editing/removing of show times from Showtimes.csv
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
  */
+
+
 public class ShowtimeManager  {
     private String filename;
     private Showtime[] data;
@@ -34,7 +39,12 @@ public class ShowtimeManager  {
         this.filename = filename;
     }
 
-    
+    /**
+     * This method gets the length of the csv file
+     * @return Returns an int, which denotes the length of the rows of the file
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
 
     public int getLength()throws FileNotFoundException, IOException {
         int count = 0;
@@ -48,6 +58,13 @@ public class ShowtimeManager  {
     }
     // object.getDataAll(object.getLength())
 
+
+    /**
+     * This method gets all of the Showtime data in the csv file
+     * @return Returns an array of Showtime Objects
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public Showtime[] getDataAll() throws FileNotFoundException, IOException{
 
         data = new Showtime [getLength()];
@@ -69,6 +86,13 @@ public class ShowtimeManager  {
         }
         return data;
     }
+
+    /**
+     * This method gets all of the Movie data in the csv file
+     * @return Returns an array of String Objects
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
 
     public String[] getMovies(int length) throws FileNotFoundException, IOException{ //get all movies in csv
 

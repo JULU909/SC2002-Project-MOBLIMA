@@ -3,6 +3,13 @@ package entities;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * This class initialises all relevant Holiday Attributes with getter and setter functions for Holiday. Also has a real time date and time library imported
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class Holiday {
     private String holidayName;
     private LocalDate holidayDate;

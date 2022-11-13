@@ -4,7 +4,15 @@ import java.util.*;
 import enums.AgeGroup;
 import enums.UserType;
 
+/**
+ * Customer class is a child Class that extends from the Parent User Class
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class Customer extends User{
+
     /*
      * Creates a Customer with a given name and username, age, mobile number, email address and history of movies watched
      * @param age Age of this customer
@@ -13,7 +21,7 @@ public class Customer extends User{
      * @param emailAddress Email address of this customer
      * @param movieHistory List of movies previously watched by this customer
      */
-
+    
     private int age;
     private AgeGroup ageGroup;
     private String mobileNumber;

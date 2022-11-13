@@ -13,7 +13,7 @@ import entities.Showtime;
  * Represents the class of Seats, which holds the information at the instance a seat is selected to be booked.
  * @author Harish Vasanth
  * @version 1.0
- * @since 1.0
+ * @since 2022-11-13
  */
 
 public class Ticket {

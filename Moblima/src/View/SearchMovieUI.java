@@ -8,6 +8,13 @@ import model.ShowtimeManager;
 import java.io.FileNotFoundException;
 
 
+/**
+ * Displays the all or ONE movie from searching the database, showtimes.csv for movies
+ * @author 
+ * @version 1.0
+ * @since 1.0
+ */
+
 // SearchMovieUI is a Movie-goer module
 /*
 1. Search/List movie

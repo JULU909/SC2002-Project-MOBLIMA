@@ -3,6 +3,13 @@ import java.util.ArrayList;
 
 import entities.User;
 
+/**
+ * This class manages everything related to the database
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class Database {
 	/*
      * Adds, deletes, and finds position of a user within the database
@@ -21,6 +28,11 @@ public class Database {
 		return;
 	}
 	
+	/**
+    *This method deletes the User from the database
+    @param user user object that we want to delete
+    @param database a List of array of the User object
+    */
 	public static void deleteUser(User user, ArrayList<User> database) {
 		int j = findUserPos(user, database);
 		if(j!=-1)
@@ -34,7 +46,12 @@ public class Database {
 		return;
 		
 	}
-	
+
+	/**
+    *This method  is a supplimentary method used by deleteUser to find the position of the user in the database
+    @param user user object that we want to find
+    @param database a List of array of the User object
+    */
 	public static int findUserPos(User user, ArrayList<User> database) { //find position
 		int j;
 		for(j=0;j<database.size();j++) 
