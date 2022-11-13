@@ -13,7 +13,7 @@ import java.text.ParseException;
 
 /**
  * Displays the UI for staff to login
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 1.0
  */
@@ -22,7 +22,9 @@ import java.text.ParseException;
 public class StaffLoginUI {
 	
     public String filepath = "Moblima/src/Data/Staff.csv"; 
-
+	/**
+	 * This method prints all the staff login text for a staff member to interact with
+	 */
 	public static void execute() throws IOException, InterruptedException, FileNotFoundException, ParseException {
         Scanner sc = new Scanner(System.in);
 		System.out.println("----Login to Staff Cinema database----");

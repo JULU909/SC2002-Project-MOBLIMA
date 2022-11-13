@@ -12,12 +12,15 @@ import model.CustomerManager;
 
 /**
  * Displays the Customer Settings UI for existing users
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 1.0
  */
 
 public class CustomerSettingsUI {
+    /**
+	 * This method prints all the settings text for a customer member to interact with
+	 */
 	public static void settingsText(Customer customer) throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		int choice = 0;
 		
