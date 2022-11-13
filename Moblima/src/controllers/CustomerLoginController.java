@@ -10,9 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 
-/**	Control Class that manages the History of the bookings
+/**	Control Class that checks and validates the Customer Login
  * @author 
  * @version 1.0
+ * @since 2022-11-13
  */
 
 public class CustomerLoginController {
@@ -26,7 +27,7 @@ public class CustomerLoginController {
      * @throws FileNotFoundException
      * @throws ParseException
      */
-    
+
 	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
         Scanner sc = new Scanner(System.in);
 	

@@ -9,9 +9,10 @@ import View.CustomerRegistrationDisplay;
 import entities.Customer;
 import model.*;  
 
-/**	Control Class that manages the History of the bookings
+/**	Control Class that manages the Customer Registration as new user
  * @author 
  * @version 1.0
+ * @since 2022-11-13
  */
 
 public class CustomerRegistrationController {

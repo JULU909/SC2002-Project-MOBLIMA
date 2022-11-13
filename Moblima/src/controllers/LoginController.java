@@ -8,7 +8,23 @@ import java.util.Scanner;
 import View.*;
 import model.*;
 
+
+/**	Control Class that manages the Login of MOBLIMA
+ * @author 
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
+
 public class LoginController {
+
+	/**
+     * This method controls and displays the Customer Login Display, prompting the Customer to choose between Registering as new user, logining in as existing user or logining in as Staff
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws FileNotFoundException
+     * @throws ParseException
+     */
 	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
 		LoginDisplay ld = new LoginDisplay();
 		ld.printBanner();
