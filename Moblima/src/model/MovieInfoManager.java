@@ -28,7 +28,7 @@ import java.io.FileWriter; //for writing to csv
  */
 public class MovieInfoManager  {
 	private String filename;
-    public final static String FILENAME = /*new File("movieInformation2.csv").getAbsolutePath();*/"Moblima/src/Data/movieInformation2.csv";
+    public final static String FILENAME = /*new File("movieinformation.csv").getAbsolutePath();*/"Moblima/src/Data/movieinformation.csv";
 
 
 
