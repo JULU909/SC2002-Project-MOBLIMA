@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
 /**
- * This class manages everything related to the customer
+ * Reads and writes to the CSV containing customer information
  * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
