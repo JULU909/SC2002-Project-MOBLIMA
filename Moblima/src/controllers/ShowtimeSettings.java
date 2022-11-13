@@ -36,7 +36,7 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		if(!cinemaType.equals("PREMIUM") && !cinemaType.equals("GOLD") && !cinemaType.equals("STANDARD"))
 		{
 			System.out.println("Invalid cinema type! Defaulting to STANDARD");
-			cinemaType = "ALPHA";
+			cinemaType = "STANDARD";
 		}
 		while(true) {
 			try {
@@ -123,7 +123,7 @@ public class ShowtimeSettings { //static functions so that object does not need 
 				if(!input.equals("PREMIUM") && !input.equals("GOLD") && !input.equals("STANDARD"))
 				{
 					System.out.println("Invalid cinema type! Defaulting to STANDARD");
-					input = "ALPHA";
+					input = "STANDARD";
 				}
 				showtime.setCinemaType(input);
 				System.out.println("Cinema type edited to " + input);
