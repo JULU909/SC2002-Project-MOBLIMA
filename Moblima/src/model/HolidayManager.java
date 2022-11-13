@@ -141,7 +141,7 @@ public class HolidayManager {
 
 
 	/**
-     * This method removes a column from the csv file, by index.
+     * This method writes a column from the csv file to the last row.
 	 * @param list An array list of Holiday for the code to read or write
      * @throws FileNotFoundException
      * @throws IOException
