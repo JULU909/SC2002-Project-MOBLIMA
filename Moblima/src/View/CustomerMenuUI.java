@@ -26,7 +26,7 @@ import model.*;
 
 /**
  * Displays the Customer Menu UI that customers interact with to interact/book/search for movies and also to edit personal information
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 1.0
  */
@@ -119,7 +119,10 @@ public class CustomerMenuUI {
 
     }
     /**
-     * This method displays the List of choices the user has and receives the user inputs
+     * This method displays the seat details of the movies to the user
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws ParseException
      */
     public static int mainDisplayOptions() {
 
@@ -152,20 +155,14 @@ public class CustomerMenuUI {
         return choice;
     }
 
-    public static void movieListing() {
-
-    }
-
-    public static void movieDetails() {
-
-    }
-
+    /**
+     * This method displays the List of choices the user has and receives the user inputs
+     * @return the choice selected by the user
+     */
     public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
         SeatDetailController sdc = new SeatDetailController();
         sdc.getSeatDetails();
     }
-
-
     /**
      * This method enables customer to write a movieReview (string/int)
      * @param customer a customer object class to read information from
@@ -198,7 +195,7 @@ public class CustomerMenuUI {
     }
 
     /**
-     * This method enables customer to search by movieRanking
+     * This method enables customer to search movies by movieRanking
      * @param byTicketSales boolean, true denoting by Ticket sales, false denoting by avgRating
      * @throws FileNotFoundException
      * @throws IOException

@@ -11,14 +11,19 @@ import model.*;
 
 /**
  * Displays the Customer Registration UI for new users
- * @author 
+ * @author Kit Ye
  * @version 1.0
  * @since 1.0
  */
 
 public class CustomerRegistrationDisplay {
     Scanner sc = new Scanner(System.in);
-
+    /**
+     * This method gets the username from a user by prompting them to enter it. If the username already exists in the database, it will prompt the user to enter another
+     * @return username
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public String getUsername() throws FileNotFoundException, IOException {
         String username;
         do {
@@ -36,7 +41,10 @@ public class CustomerRegistrationDisplay {
 
         return username;
     }
-
+    /**
+     * This method gets the password from a user by prompting them to enter it
+     * @return password
+     */
     public String getPassword(){
         String password;
         do {
@@ -49,7 +57,10 @@ public class CustomerRegistrationDisplay {
         } while (true);
         return password;
     }
-
+    /**
+     * This method gets the age from a user by prompting them to enter it
+     * @return age
+     */
     public int getAge(){
         int age;
         do {
@@ -63,7 +74,10 @@ public class CustomerRegistrationDisplay {
         return age;
 
     }
-
+    /**
+     * This method gets the mobile number from a user by prompting them to enter it
+     * @return mobile number
+     */
     public String getNumber(){
         String mobileNumber;
         do {
@@ -76,7 +90,10 @@ public class CustomerRegistrationDisplay {
         } while (true);
         return mobileNumber;
     }
-
+    /**
+     * This method gets the age from a user by prompting them to enter it
+     * @return email
+     */
     public String getEmail(){
         String email;
         do {
@@ -90,7 +107,9 @@ public class CustomerRegistrationDisplay {
 
         return email;
     }
-
+    /**
+     * This method prints a success message upon successful collection of all registration details of the customer
+     */
     public void printSuccess(){
         System.out.println("Customer account successfully registered in database!");
     }
