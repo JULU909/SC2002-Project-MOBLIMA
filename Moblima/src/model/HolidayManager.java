@@ -29,6 +29,12 @@ public class HolidayManager {
         this.filename = filename;
     }
     
+	/**
+     * This method reads from a csv file (holidays.csv), splits the columns into an String[11], and returns the ArrayList
+     * @return Returns an array list of Holiday for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public ArrayList<Holiday> readHolidayCSV() throws FileNotFoundException, IOException { //Read CSV
     	ArrayList<Holiday> list = new ArrayList<Holiday>(); //Create array list of movies
     	BufferedReader br = new BufferedReader(new FileReader(filename));
