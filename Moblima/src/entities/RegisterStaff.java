@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * This class registers the staff and adds the staff object and its relevant attributes to the csv
- * @author
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */

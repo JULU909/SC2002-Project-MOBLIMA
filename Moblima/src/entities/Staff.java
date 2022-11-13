@@ -3,7 +3,7 @@ import enums.UserType;
 
 /**
  * Staff class is child of Parent class User 
- * @author
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */

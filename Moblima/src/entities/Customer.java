@@ -6,7 +6,7 @@ import enums.UserType;
 
 /**
  * Customer class is a child Class that extends from the Parent User Class
- * @author
+ * @author Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
@@ -73,9 +73,7 @@ public class Customer extends User{
         this.emailAddress = emailAdress;
     }
 
-    // implement movie history if possible
     public ArrayList<Movie> getMovieHistory(){
-        // copy list so original is not modified
        return this.movieHistory;
     }
 

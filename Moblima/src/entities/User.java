@@ -5,7 +5,7 @@ import enums.UserType;
 
 /**
  * This class initializes all User attributes with relevant getter and setter methods
- * @author 
+ * @author  Kit Ye
  * @version 1.0
  * @since 2022-11-13
  */
@@ -30,23 +30,6 @@ public class User{
 	
 	public String getUsername() {
 		return this.username;
-	}
-
-	public void setPassword() { //set password with UI
-		System.out.println("Enter current password (default if first time): ");
-		Scanner input = new Scanner(System.in);
-		String text = input.nextLine();
-		if(! ( (this.password).equals(text) ) ) //make sure user is setting their own password
-		{
-			System.out.println("Password incorrect! Exiting...");
-			input.close();
-			return;
-		}
-		System.out.println("Enter new password: ");
-		this.password = input.nextLine(); //update user's password attribute
-		System.out.println("New password set! ");
-		input.close();
-		return;
 	}
 	
 	public void setPassword(String password) { //set password directly
@@ -73,7 +56,6 @@ public class User{
  * @param database a List of array of User Objects
  * @return boolean: true if user is valid, false if user is invalid
  */
-
 	public static boolean validateUser(String username, String password, ArrayList<User> database) {
 		for (User u : database){
 		    if(u.getUsername().equals(username) && u.getPassword().equals(password)){
