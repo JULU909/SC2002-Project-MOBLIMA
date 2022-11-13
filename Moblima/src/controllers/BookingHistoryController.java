@@ -23,6 +23,7 @@ import model.*;
 
 
 public class BookingHistoryController {
+    
     /**
      * This method displays the History of all the booked Tickets, by id or by ALL tickets
      * @param customer customer object with attributes such as age, ageGroup, mobileNumber, emailAddress, movieHistory

@@ -10,9 +10,23 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**	Control Class that manages the History of the bookings
+ * @author 
+ * @version 1.0
+ */
+
 public class CustomerLoginController {
     public String filepath = "Moblima/src/Data/Customers.csv";
 
+
+    /**
+     * This method controls and Displays the Customer Login Display, and validates the Customer's input fields
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws FileNotFoundException
+     * @throws ParseException
+     */
+    
 	public static void execute() throws FileNotFoundException, IOException, InterruptedException, ParseException {
         Scanner sc = new Scanner(System.in);
 	
