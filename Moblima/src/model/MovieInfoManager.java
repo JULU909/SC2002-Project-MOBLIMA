@@ -23,7 +23,7 @@ import java.io.FileWriter; //for writing to csv
 /**	Reads and writes to the CSV containing movie information
  * @author Tham Holdon
  * @author Jia Wei
- * 
+ * @author Kit Ye
  */
 public class MovieInfoManager  {
 	private String filename;
@@ -269,7 +269,6 @@ public class MovieInfoManager  {
      * @throws FileNotFoundException
      * @throws IOException
      */
-
     public void writeMovieCSV(ArrayList<Movie> list) throws FileNotFoundException, IOException{
     	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);

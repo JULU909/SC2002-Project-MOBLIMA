@@ -16,6 +16,9 @@ import java.util.Scanner;
 
 import entities.Holiday;
 
+/**	Reads and writes to the CSV containing holiday information
+ * @author Kit Ye
+ */
 public class HolidayManager {
     private String filename;
 
@@ -140,7 +143,7 @@ public class HolidayManager {
 
 
 	/**
-     * This method writes a column from the csv file to the last row.
+     * This method overwrites the csv file with holiday data from the ArrayList.
 	 * @param list An array list of Holiday for the code to read or write
      * @throws FileNotFoundException
      * @throws IOException
@@ -151,7 +154,7 @@ public class HolidayManager {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     	int i =0;
-    	while(i!=list.size()) //Go through every movie in array list
+    	while(i!=list.size()) //Go through every holiday in array list
     	{
     		//Get every attribute
     		Holiday holiday = list.get(i);

@@ -13,6 +13,9 @@ import entities.Showtime;
 import java.util.ArrayList;
 import java.io.FileWriter; //for writing to csv
 
+/**	Reads and writes to the CSV containing customer information
+ * @author Kit Ye
+ */
 public class CustomerManager {
     private static String filename;
     private ArrayList<Customer> data;
@@ -27,7 +30,12 @@ public class CustomerManager {
     public CustomerManager(String filename) {
         this.filename = filename;
     }
-
+    /**
+     * This methods gets the number of customers in the csv
+     * @return Returns an integer length of the number of customers inside the csv
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static int getLength() throws FileNotFoundException, IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader("Moblima/src/Data/Customers.csv"))) {
@@ -38,6 +46,13 @@ public class CustomerManager {
         }
         return count;
     }
+
+    /**
+     * This method reads from a csv file (Customers.csv), splits the columns into a String[5], and returns the ArrayList
+     * @return Returns an ArrayList of Customer for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     static public ArrayList<Customer> getDataAll() throws FileNotFoundException, IOException{
         
         ArrayList<Customer> data = new ArrayList<Customer>(getLength());
@@ -59,7 +74,12 @@ public class CustomerManager {
         }
         return data;
     }
-
+	/**
+     * This method reads from a csv file (Customers.csv), and checks if a username exists inside the file
+     * @param username the username to be checked against the database
+     * @param database the list of existing users to be checked against the username
+     * @return Returns true if the username is found in the database, false otherwise
+     */
     public static boolean duplicateUsername(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -68,7 +88,13 @@ public class CustomerManager {
         }
         return false;
     } 
-
+	/**
+     * This method removes a row from the csv file, by username, if it exists in the file.
+     * @param username the username to be removed
+     * @return Returns true if the username is found in the database, false otherwise
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void removeCustomerCSV(String username) throws FileNotFoundException, IOException {
         ArrayList<Customer> database = getDataAll();
         int i=0;
@@ -82,7 +108,12 @@ public class CustomerManager {
         database.remove(i);
         writeCustomerCSV(database);
     } 
-
+	/**
+     * This method checks finds a customer inside an ArrayList by username, and returns it if it does
+     * @param username the username to be checked against the database
+     * @param database the list of existing customers to be checked against the username
+     * @return Returns the customer object if the username is found in the database, null otherwise
+     */
     public static Customer findCustomer(String username, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username)){
@@ -91,7 +122,13 @@ public class CustomerManager {
         }
         return null;
     } 
-
+	/**
+     * This method reads from an ArrayList, and checks if a username and password corresponding to a customer exists in the list
+     * @param username the username to be checked against the database
+     * @param password the username and password to be checked against the database
+     * @param database the list of existing customers to be checked against the username and password
+     * @return Returns true if the username and password of a customer is found in the database, false otherwise
+     */
     public static boolean validateCustomer(String username, String password, ArrayList<Customer> database){
         for (Customer c : database){
             if(c.getUsername().equals(username) && c.getPassword().equals(password)){
@@ -100,7 +137,12 @@ public class CustomerManager {
         }
         return false;
     } 
-
+	/**
+     * This method overwrites the csv file with customer data from the ArrayList.
+	 * @param list An array list of Customer for the code to read or write
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void writeCustomerCSV(ArrayList<Customer> database) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",false);
@@ -131,7 +173,12 @@ public class CustomerManager {
     	writer.close();
     }
 
-
+    /**
+     * This methods adds a customer into the CSV in a new row
+     * @param customer the customer to be added
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void addCustomerCSV(Customer customer) throws FileNotFoundException, IOException { //Add a movie into CSV
     	//Writer will write into filename, true allows appending
     	FileWriter writer = new FileWriter("Moblima/src/Data/Customers.csv",true);

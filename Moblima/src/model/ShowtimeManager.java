@@ -29,12 +29,10 @@ public class ShowtimeManager  {
     }
 
 
-
     public ShowtimeManager(String filename) {
         this.filename = filename;
     }
 
-    
 
     public int getLength()throws FileNotFoundException, IOException {
         int count = 0;
@@ -46,8 +44,12 @@ public class ShowtimeManager  {
         }
         return count;
     }
-    // object.getDataAll(object.getLength())
-
+    /**
+     * This methods gets the number of showtimes in the csv
+     * @return Returns an integer length of the number of showtimes inside the csv
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public Showtime[] getDataAll() throws FileNotFoundException, IOException{
 
         data = new Showtime [getLength()];
