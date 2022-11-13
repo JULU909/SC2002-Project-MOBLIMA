@@ -61,8 +61,14 @@ public class StaffSettingsController {
 	public static void addMovie() throws FileNotFoundException, IOException {
 		Movie newMovie = MovieSettings.addMovie(); //Create movie
 		MovieInfoManager mm = new MovieInfoManager();
-		mm.addMoviecsv(newMovie); //Add to movieInfo CSV
-		System.out.println(newMovie.getTitle() + " added!");
+		int i = MovieInfoManager.findExactMovieCSV(newMovie.getTitle(), mm.readMovieCSV());
+		if(i==-1)
+		{
+			mm.addMoviecsv(newMovie); //Add to movieInfo CSV
+			System.out.println(newMovie.getTitle() + " added!");
+		}
+		else
+			System.out.println("A movie with that title is already in the database! Exiting...");
 		return;
 	}
 	/**
@@ -75,7 +81,7 @@ public class StaffSettingsController {
 		System.out.println("Enter movie title to edit: ");
 		Scanner sc = new Scanner(System.in);
 		String TitletoEdit = sc.nextLine();
-		int j = MovieInfoManager.findMovieCSV(TitletoEdit, movieList); //Find it in array list
+		int j = MovieInfoManager.findExactMovieCSV(TitletoEdit, movieList); //Find it in array list
 		if(j == -1) //If it does not exist
 		{
 			System.out.println("Movie does not exist! Exiting...");
@@ -97,7 +103,7 @@ public class StaffSettingsController {
 		ArrayList<Movie>movieList = mm.readMovieCSV();
 		StaffSettingsController.showMovies();
 		String TitletoRemove = MovieSettings.removeMovie(); //Find title of Movie to remove
-		int k = MovieInfoManager.findMovieCSV(TitletoRemove, movieList); //Find it in array list	
+		int k = MovieInfoManager.findExactMovieCSV(TitletoRemove, movieList); //Find it in array list	
 		if(k == -1) //If it does not exist
 		{
 			System.out.println("Movie does not exist! Exiting...");
@@ -106,7 +112,6 @@ public class StaffSettingsController {
 		Movie movie = movieList.get(k); //Otherwise, get it from array list
 		movie.setMovieStatus(MovieStatus.END_OF_SHOWING);
 		movieList.set(k,movie); //Remove it from array list
-		//movieList.add(movie);
 		mm.writeMovieCSV(movieList); //Then write the list it to CSV
 		System.out.println(TitletoRemove + " removed!");
 		return;
@@ -117,9 +122,15 @@ public class StaffSettingsController {
 	public static void addShowtime() throws FileNotFoundException, IOException {
 		StaffSettingsController.showMovies();
 		ShowtimeManager sm = new ShowtimeManager("Moblima/src/Data/Showtimes.csv");
-		Showtime newShowtime = ShowtimeSettings.addShowtime(); //Get show time to add
 		
-		sm.addShowtimecsv(newShowtime); //And add it to CSV
+		Showtime newShowtime = ShowtimeSettings.addShowtime(); //Get show time to add
+		int i = ShowtimeManager.findShowtimecsv(sm.readShowtimecsv(), newShowtime);
+		if(i==-1)
+			sm.addShowtimecsv(newShowtime); //And add it to CSV
+		else
+		{
+			System.out.println("That showtime already exists on the database! Exiting...");
+		}
 		return;
 	}
 	/**

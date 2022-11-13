@@ -22,7 +22,7 @@ public class ShowtimeManager  {
     private Showtime[] data;
     private Showtime temp;
 
-    public final static String FILENAME = /*new File("Showtimes.csv").getAbsolutePath();*/"Moblima/src/Data/Showtimes.csv";;
+    public final static String FILENAME = /*new File("Showtimes.csv").getAbsolutePath();*/"Moblima/src/Data/Showtimes.csv";
 
     public ShowtimeManager(){   
         this.filename = FILENAME;

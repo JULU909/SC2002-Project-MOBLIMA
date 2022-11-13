@@ -230,6 +230,21 @@ public class MovieInfoManager  {
     	}
     	return -1; //If not present, return -1
     }
+    /**
+     * This method will find an exact match of a specific movie in the array list
+     * @param title, the title of the movie to find
+     * @param list, the array list of all movies in the CSV
+     * @return the index of the movie to be found in the CSV
+     */
+    public static int findExactMovieCSV(String title, ArrayList<Movie> list) {
+    	int i = 0;
+		//title is input from user
+    	while(i!=list.size()) {
+    		if(list.get(i).getTitle().equals(title)) //Match title
+    			return i; //Return position
+    	}
+    	return -1;
+    }
 
 	/**
      * This method will find the closest substring to the target string, current getLevenshteinDistance is smaller than 5. You can increase this number to allow for greater user input inaccuracies
