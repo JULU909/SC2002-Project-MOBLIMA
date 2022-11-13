@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import entities.Customer;
 import entities.Showtime;
 import entities.Staff;
 
@@ -108,6 +109,20 @@ public class StaffManager extends FileManager  {
             }
         }
         return null;
+    } 
+    /**
+     * This method checks for duplicate usernames in the staff database
+     * @param username, the user name of Staff
+     * @param database, an array list of staff objects
+     * @return true if duplicate found, false otherwise
+     */
+    public static boolean duplicateUsername(String username, ArrayList<Staff> database){
+        for (Staff s : database){
+            if(s.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
     } 
 
     
