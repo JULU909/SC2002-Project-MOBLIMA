@@ -19,6 +19,7 @@ import model.*;
 /**	Control Class that manages the History of the bookings
  * @author 
  * @version 1.0
+ * @since 2022-11-13
  */
 
 

@@ -7,6 +7,13 @@ import enums.MovieType;
 import enums.AgeRating;
 import enums.MovieStatus;
 
+/**
+ * This class initialises all relevant Movie Attributes with getter and setter functions for the movie attributes
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class Movie {
 	private String title;
 	private String synopsis;
@@ -22,6 +29,22 @@ public class Movie {
     private double averageRating;
     private String genre;
     private String runTime;
+
+  /**
+     * The following methods initialise Movie Attributes
+     * @param title
+     * @param synopsis
+     * @param director
+     * @param cast
+     * @param type
+     * @param ageRating
+     * @param status
+     * @param averageRating
+     * @param reviews
+     * @param totalSales
+     * @param genre
+     * @param runTime
+     */
 
 	public Movie(String title, String synopsis, String director, ArrayList<String> cast, MovieType type, AgeRating ageRating,MovieStatus status, 
 			double averageRating,ArrayList<Review> reviews,int totalSales, String genre, String runTime)
@@ -51,6 +74,9 @@ public class Movie {
 		this.runTime = runTime;	
 	} //constructor for new movie
 	
+  /**
+     * The following methods are getter and setter functions
+     */
     public String getTitle() {
         return this.title;
     }
