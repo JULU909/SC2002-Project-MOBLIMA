@@ -229,7 +229,12 @@ public class MovieInfoManager  {
     	}
     	return -1; //If not present, return -1
     }
-    
+    /**
+     * This method will find an exact match of a specific movie in the array list
+     * @param title, the title of the movie to find
+     * @param list, the array list of all movies in the CSV
+     * @return the index of the movie to be found in the CSV
+     */
     public static int findExactMovieCSV(String title, ArrayList<Movie> list) {
     	int i = 0;
 		//title is input from user
