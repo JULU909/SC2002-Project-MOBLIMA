@@ -1,7 +1,9 @@
 package controllers;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import entities.Showtime;
+import enums.CineplexTypes;
 /**
  * This class allows the adding,editing and removing of show times
  * @author Tham Holdon
@@ -17,16 +19,49 @@ public class ShowtimeSettings { //static functions so that object does not need 
 	public static Showtime createShowtime() { //create a show time object
 		
 		Scanner sc = new Scanner(System.in);
+		int time;
+		int date;
 		System.out.println("Enter movie: ");
 		String movie = sc.nextLine();
 		System.out.println("Enter cineplex: ");
 		String cineplex = sc.nextLine();
+		if(!cineplex.equals("ALPHA") && !cineplex.equals("BETA") && !cineplex.equals("GAMMA"))
+		{
+			System.out.println("Invalid cineplex! Defaulting to ALPHA");
+			cineplex = "ALPHA";
+			
+		}
 		System.out.println("Enter cinemaType: ");
 		String cinemaType = sc.nextLine();
-		System.out.println("Enter time: ");
-		int time = sc.nextInt();
-		System.out.println("Enter date(DDMMYY): ");
-		int date = sc.nextInt();
+		if(!cinemaType.equals("PREMIUM") && !cinemaType.equals("GOLD") && !cinemaType.equals("STANDARD"))
+		{
+			System.out.println("Invalid cinema type! Defaulting to STANDARD");
+			cinemaType = "ALPHA";
+		}
+		while(true) {
+			try {
+				System.out.println("Enter time: ");
+				time = sc.nextInt();
+				break;
+			}catch(InputMismatchException e ) {
+				System.out.println("Enter a valid input! ");
+		        String error = sc.next(); // catch the enter;
+		        continue;
+			}
+		}
+		
+		while(true) {
+			try {
+				System.out.println("Enter date(DDMMYY): ");
+				date = sc.nextInt();
+				break;
+			}catch(InputMismatchException e ) {
+				System.out.println("Enter a valid input! ");
+		        String error = sc.next(); // catch the enter;
+		        continue;
+			}
+		}
+	
 		
 		Showtime showtime = new Showtime(time,date,cineplex,movie);
 		showtime.setCinemaType(cinemaType);
@@ -73,25 +108,58 @@ public class ShowtimeSettings { //static functions so that object does not need 
 			case 2:
 				System.out.println("Enter cineplex: ");
 				input = sc.nextLine();
+				if(!input.equals("ALPHA") && !input.equals("BETA") && !input.equals("GAMMA"))
+				{
+					System.out.println("Invalid cineplex! Defaulting to ALPHA");
+					input = "ALPHA";
+					
+				}
 				showtime.setCineplex(input);
 				System.out.println("Cineplex edited to " + input);
 				break;
 			case 3:
 				System.out.println("Enter cinema type: ");
 				input = sc.nextLine();
+				if(!input.equals("PREMIUM") && !input.equals("GOLD") && !input.equals("STANDARD"))
+				{
+					System.out.println("Invalid cinema type! Defaulting to STANDARD");
+					input = "ALPHA";
+				}
 				showtime.setCinemaType(input);
 				System.out.println("Cinema type edited to " + input);
 				break;
 			case 4:
-				System.out.println("Enter time: ");
-				number = sc.nextInt();
+				while(true) {
+					try{
+						System.out.println("Enter time: ");
+						number = sc.nextInt();
+						break;
+					}
+					
+					catch(InputMismatchException e ) {
+				System.out.println("Enter a valid input! ");
+		        String error = sc.next(); // catch the enter;
+		        continue;
+			}
+				}
 				sc.nextLine(); // eat the \n
 				showtime.setTime(number);
 				System.out.println("Time edited to " + number);
 				break;
 			case 5:
-				System.out.println("Enter date(DDMMYY): ");
-				number = sc.nextInt();
+				while(true) {
+					try {
+						System.out.println("Enter date(DDMMYY): ");
+						number = sc.nextInt();
+						break;
+					}
+					catch(InputMismatchException e ) {
+						System.out.println("Enter a valid input! ");
+				        String error = sc.next(); // catch the enter;
+				        continue;
+			}
+				}
+				
 				sc.nextLine(); // eat the \n
 				showtime.setDate(number);
 				System.out.println("Date edited to " + number);
@@ -115,5 +183,4 @@ public class ShowtimeSettings { //static functions so that object does not need 
 		System.out.println("Removing showtime...");
 		return createShowtime();
 	}
-
 }
