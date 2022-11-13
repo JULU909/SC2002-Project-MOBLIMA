@@ -211,7 +211,7 @@ public class MovieInfoManager  {
      * This method will find a specific movie in the array list
      * @param title, the title of the movie to find
      * @param list, the array list of all movies in the CSV
-     * @return
+     * @return Returns an int that denotes the index of the movie to be found in the CSV
      * @throws FileNotFoundException
      * @throws IOException
      */
@@ -240,6 +240,13 @@ public class MovieInfoManager  {
     	return -1;
     }
 
+	/**
+     * This method will find the closest substring to the target string, current getLevenshteinDistance is smaller than 5. You can increase this number to allow for greater user input inaccuracies
+     * @param user_inputed, user input String to be compared
+     * @param lmaoArr_indexString, target string from array to be compared
+     * @return Returns an int that denotes whether the target string can be approximately found 
+	*/
+
 	public static int fuzzyMatching(String user_inputed, String lmaoArr_indexString){
 		//debug : System.out.printf("%d",getLevenshteinDistance(user_inputed, lmaoArr_indexString));
 		if(getLevenshteinDistance(user_inputed, lmaoArr_indexString) <5){
@@ -250,12 +257,14 @@ public class MovieInfoManager  {
 			return 0;
 		}
 	}
+	
     /**
      * This method writes all movies in the array list of movies into the CSV
      * @param list, the array list of movies
      * @throws FileNotFoundException
      * @throws IOException
      */
+
     public void writeMovieCSV(ArrayList<Movie> list) throws FileNotFoundException, IOException{
     	//FileWriter to write to CSV, no true because it's rewriting    	
     	FileWriter writer = new FileWriter(filename);

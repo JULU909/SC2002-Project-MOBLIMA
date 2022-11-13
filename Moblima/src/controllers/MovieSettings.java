@@ -9,11 +9,17 @@ import java.util.ArrayList;
 import enums.AgeRating;
 import enums.MovieStatus;
 import enums.MovieType;
+
 /**
  * This class allows the user to decide what movies to add/edit/remove from the movieInformation CSV
  * @author Tham Holdon
+ * @version 1.0
+ * @since 2022-11-13
  */
+
+
 public class MovieSettings {
+
 	/**
 	 * This method asks the user to input various attributes needed to create a movie object
 	 * @return A movie object with their stated attributes

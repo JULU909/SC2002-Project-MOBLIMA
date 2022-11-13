@@ -5,7 +5,10 @@ import entities.Showtime;
 /**
  * This class allows the adding,editing and removing of show times
  * @author Tham Holdon
+ * @version 1.0
+ * @since 2022-11-13
  */
+ 
 public class ShowtimeSettings { //static functions so that object does not need to be created
 	/**
 	 * This method asks the user attributes of a show time to wish to create

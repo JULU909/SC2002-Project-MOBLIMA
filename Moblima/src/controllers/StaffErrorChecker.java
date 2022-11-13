@@ -3,8 +3,9 @@ package controllers;
 import java.util.ArrayList;
 /**
  * This class helps to check for errors when inputting attributes at staff settings
- * @author Tham Holdon
- *
+ * @author Tham Holdon/**
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class StaffErrorChecker {
 	/**

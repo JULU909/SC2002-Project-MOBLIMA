@@ -7,7 +7,10 @@ import java.util.Scanner;
 /**
  * This class allows the setting of a movie's movie status
  * @author Tham Holdon
+ * @version 1.0
+ * @since 2022-11-13
  */
+
 public class MovieStatusSetter {
 /**
  * This method lets a user choose which movie status a movie is to have

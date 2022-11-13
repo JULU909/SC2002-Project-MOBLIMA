@@ -10,7 +10,21 @@ import entities.Movie;
 import entities.Review;
 import model.MovieInfoManager;
 
+/**
+ * This class allows the Customers to leave MovieReview(String) and/or leave MovieRating(int) and/or view movie Ratings
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class ReviewMaker {
+
+	/**
+     * This Method Displays the Movie UI and prompts the user to leave a MovieReview (String). The user_input will update the csv accordingly. (Things updated: avgRating, Review)
+     * @param customer customer object with attributes such as age, ageGroup, mobileNumber, emailAddress, movieHistory
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
 	public static void newMovieReview(Customer customer) throws FileNotFoundException, IOException { 
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie> list = mm.readMovieCSV();	
@@ -66,6 +80,11 @@ public class ReviewMaker {
 		sc.next();
 	}
 
+	/**
+     * This method will obtain the user_inputted rating score (int) and return it
+     * @param sc, A scanner object that will be called to obtain user inputs
+     * @return an int that denotes the rating of the movie
+     */
 	public static int newMovieRating(Scanner sc) {
 		while (!sc.hasNextInt()) {
 			System.out.println("Please enter a whole number for rating and within the range of 1 to 5:");
@@ -76,6 +95,11 @@ public class ReviewMaker {
 		return rating;
 	}
 
+	/**
+     * This Method Displays the MovieRating for a specific Movie by an index (int) inputted by customer
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
 	public static void viewMovieRating() throws FileNotFoundException, IOException { 
 		MovieInfoManager mm = new MovieInfoManager();
 		ArrayList<Movie> list = mm.readMovieCSV();	
@@ -116,6 +140,11 @@ public class ReviewMaker {
 		System.out.println();
 	}
 
+	/**
+     * This Method validates whether the user input is valid, and returns the movieOption input that customer has inputted
+	 * @param sc, A Scanner Object that will be used to obtain user inputs
+     * @return an int that denotes the movieOption
+     */
 	public static int newMovieOption(Scanner sc) {
 		while (!sc.hasNextInt()) {
 			System.out.println("Please enter a valid option:");

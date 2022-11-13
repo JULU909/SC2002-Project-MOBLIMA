@@ -8,7 +8,10 @@ public class MovieTypeSetter {
 	/**
 	 * This class allows the setting of a movie's movie type
 	 * @author Tham Holdon
+	 * @version 1.0
+ 	 * @since 2022-11-13
 	 */
+
 	public static MovieType typeSetter() {
 		/**
 		 * This method lets the user decide which movie type a movie is to have

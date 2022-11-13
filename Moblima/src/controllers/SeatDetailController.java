@@ -11,7 +11,22 @@ import enums.*;
 import model.*;
 import entities.*;
 
+/**
+ * This class is a control class that Connects the managers (staff) to movie showtime interfaces for attribute assignmments
+ * @author
+ * @version 1.0
+ * @since 2022-11-13
+ */
+
 public class SeatDetailController {
+    
+    /**
+     * This method gets the seat details by displaying booking and showtimes
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws NumberFormatException
+     * @throws InterruptedException
+	*/
     public void getSeatDetails() throws NumberFormatException, FileNotFoundException, IOException, InterruptedException{
         // Connection to the managers and UI
         BookingDisplay booking = new BookingDisplay();
