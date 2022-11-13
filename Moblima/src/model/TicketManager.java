@@ -184,7 +184,7 @@ public class TicketManager extends FileManager {
     /**
      * This method searches for tickets by movie title.
      * @param tickets an array list of all ticket objects
-     * @param username an attribute of the user class
+     * @param movie an attribute of the movie class. representing the title
      * @return returns an array list of all ticket objects
      */
 

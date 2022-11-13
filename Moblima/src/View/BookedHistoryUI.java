@@ -25,13 +25,13 @@ import java.time.format.DateTimeFormatter;
 public class BookedHistoryUI {
     Scanner sc = new Scanner(System.in);
 
+    /** 
+     * This method prints the UI to let the user check their previous ticket bookings
+     * @return int, the choice made by the user
+     */
     public int mainUI(){
 
-        /** 
-         * This method prints the UI to get the Cineplex the user wants to watch the movie at
-         * After the cineplex is obtained, it will be returned as a String
-         * @return String
-         */
+
         while(true){
     
         CineplexTypes [] list ;
@@ -52,15 +52,14 @@ public class BookedHistoryUI {
             }
         }
     }
+    /** 
+     * This method prints purchased tickets of the user based on the input.
+     * If the ArrayList is empty it simply returns to the controller class.
+     * @param userTickets, the list of all tickets purchased by the user
+     */
+    public void printAllTickets(ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
 
-    public  void printAllTickets(ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
 
-        /** 
-         * This method prints purchased tickets of the user based on the input ArrayList<Tickets> item.
-         * If the ArrayList is empty it simply returns to the controller class.
-         * @param ArrayList<Ticket>
-         * @return String
-         */
         if (userTickets.size() == 0 ){
             noBookings(); return;
         }
@@ -88,15 +87,13 @@ public class BookedHistoryUI {
 
         
     }
-
-    public  void individualTicketmenu(ArrayList <entities.Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
-        /** 
-         * This method asks the user whether they want to view the seat details of any previewed 
-         * tickets and accordingly calls another function to print the specific ticket details.
-         * 
-         * @param ArrayList<Ticket>
-         * @return void
-         */
+    /** 
+     * This method asks the user whether they want to view the seat details of any previewed 
+     * tickets and accordingly calls another function to print the specific ticket details.
+     * 
+     * @param userTickets, the list of all tickets booked by the user previously
+     */
+    public void individualTicketmenu(ArrayList <entities.Ticket> userTickets) throws NumberFormatException, IOException, InterruptedException{
         if (userTickets.size() == 0 ){
             return;
         }
@@ -112,30 +109,25 @@ public class BookedHistoryUI {
         }
         }
     }
-
+    /** 
+     * This method prints a error message under the circumstance that no booking has been found.
+     */
     public void noBookings(){
-
-        /** 
-         * This method prints a error message under the circumstance that no booking has been found.
-         * @return void
-         */
         System.out.println("No corresponding booking found!" );
         System.out.println("" );
         System.out.println("-------------------------------");
         }
 
+  /** 
+     * * This method prints the seat details along with the ticket details of a specific purchased tickets
+     * It collects the ticket data from the ArrayList input and the specific index mentioned by the user of 
+     * the ticket.
+     * 
+     * @param index, the index of the seat specified by the user
+     * @param userTickets, an array list of tickets booked by the user
+     */
+    public void printTicketSeats(int index ,ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
 
-    public  void printTicketSeats(int index ,ArrayList <Ticket> userTickets) throws IOException, InterruptedException{
-
-        /** 
-         * * This method prints the seat details along with the ticket details of a specific purchased tickets
-         * It collects the ticket data from the ArrayList input and the specific index mentioned by the user of 
-         * the ticket.
-         * 
-         * @param int
-         * @param ArrayList<Ticket>
-         * @return String
-         */
         int i = index;
         Ticket mainTicket = userTickets.get(index);
 
@@ -158,14 +150,13 @@ public class BookedHistoryUI {
 
         System.out.println("Total Cost      : " + userTickets.get(i).getPrice() );;
 
-
     }
+ /** 
+   * This method asks the user for a specific ticket ID.
+   * @return String
+   */
+    public String getTicketID() throws IOException, InterruptedException{
 
-    public  String getTicketID() throws IOException, InterruptedException{
-          /** 
-         * This method asks the user for a specific ticket ID.
-         * @return String
-         */
         System.out.println("Please enter your Ticket ID :     " );
        
         System.out.println("-----------------------------");
@@ -173,17 +164,16 @@ public class BookedHistoryUI {
         return input;
 
     }
+    /** 
+     * This method prints the the ticket details of a specific purchased ticket
+     * It collects the ticket data from the ArrayList input and the specific index mentioned by the user of 
+     * the ticket.
+     * 
+     * @param index, the index of the ticket mentioned
+     * @param userTickets, an array list of tickets previously bought by the user
+     */
+    public void printTicketIndex(int index ,ArrayList <Ticket> userTickets){
 
-    public  void printTicketIndex(int index ,ArrayList <Ticket> userTickets){
-        /** 
-         * * This method prints the the ticket details of a specific purchased ticket
-         * It collects the ticket data from the ArrayList input and the specific index mentioned by the user of 
-         * the ticket.
-         * 
-         * @param int
-         * @param ArrayList<Ticket>
-         * @return void
-         */
         int i = index;
         System.out.println("Ticket " + (i+1) + "      :" );
             //Thread.sleep(1000);
@@ -201,17 +191,16 @@ public class BookedHistoryUI {
             System.out.println("------------------------");
             String input = sc.next();
     }
+    
+    /** 
+    * This method prints the the ticket details of a specific purchased ticket based on the ticket ID
+    * It collects the ticket data from the ArrayList input and the specific ticketID mentioned by the user of 
+    * the ticket. If no booking exists it prints an message to indicate that.
+    * @param idString, the id number of the string
+    * @param userTickets, the list of tickets bought
+    */
+    public void printByTicketID(String idString ,ArrayList <Ticket> userTickets) throws InterruptedException{
 
-    public  void printByTicketID(String idString ,ArrayList <Ticket> userTickets) throws InterruptedException{
-         /** 
-         * * This method prints the the ticket details of a specific purchased ticket based on the ticket ID
-         * It collects the ticket data from the ArrayList input and the specific ticketID mentioned by the user of 
-         * the ticket. If no booking exists it prints an message to indicate that.
-         * 
-         * @param String
-         * @param ArrayList<Ticket>
-         * @return void
-         */
         int check = 0;
         for (int i = 0 ; i < userTickets.size(); i++){
             Ticket temp = userTickets.get(i);
@@ -254,13 +243,13 @@ public class BookedHistoryUI {
         }
 
     }
-
+   /** 
+    * This method asks the user for a movie name they would like to search and returns it.
+    * 
+    * @return String, the name of the movie
+    */
     public  String getMovieName() throws InterruptedException{
-         /** 
-         * * This method asks the user for a movie name they would like to search and returns it.
-         * 
-         * @param String
-         */
+
         System.out.println("Enter the movie name you would like to search" );
         System.out.println("-----------------------------");
         String input = sc.next();

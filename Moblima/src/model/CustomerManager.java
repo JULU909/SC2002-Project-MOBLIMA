@@ -23,15 +23,22 @@ public class CustomerManager extends FileManager {
     private static String filename;
     private ArrayList<Customer> data;
     private Showtime temp;
-
+/**
+ * This is the location of Customers.csv
+ */
     public final static String FILENAME = "Moblima/src/Data/Customers.csv";
 
-    // constructor initialises the default path to customer.csv if no input data is given
+    /**
+     * Constructor initialises the default path to customer.csv if no input data is given
+     */
     public CustomerManager(){
         super(FILENAME);
         this.filename = FILENAME;
     }
-
+/**
+ * Constructor for specific filename
+ * @param filename, the filename if Customers.csv is in a different location
+ */
     public CustomerManager(String filename) {
         super(filename);
         this.filename = filename;
@@ -99,7 +106,6 @@ public class CustomerManager extends FileManager {
 	/**
      * This method removes a row from the csv file, by username, if it exists in the file.
      * @param username the username to be removed
-     * @return Returns true if the username is found in the database, false otherwise
      * @throws FileNotFoundException
      * @throws IOException
      */

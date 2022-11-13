@@ -118,12 +118,10 @@ public class CustomerMenuUI {
         // pay.printPayment();
 
     }
-    /**
-     * This method displays the seat details of the movies to the user
-     * @throws InterruptedException
-     * @throws IOException
-     * @throws ParseException
-     */
+/**
+ * This method displays all the options available in the customer menu
+ * @return the integer of the choice the customer has decided to access
+ */
     public static int mainDisplayOptions() {
 
         int choice = 0;
@@ -155,10 +153,12 @@ public class CustomerMenuUI {
         return choice;
     }
 
-    /**
-     * This method displays the List of choices the user has and receives the user inputs
-     * @return the choice selected by the user
-     */
+/**
+ * This method displays the seat details of the movies to the user
+ * @throws FileNotFoundException
+ * @throws IOException
+ * @throws InterruptedException
+ */
     public static void seatDetails() throws FileNotFoundException, IOException, InterruptedException{
         SeatDetailController sdc = new SeatDetailController();
         sdc.getSeatDetails();
@@ -204,7 +204,10 @@ public class CustomerMenuUI {
         MovieInfoManager m1 = new MovieInfoManager();
         m1.rankByRatings(byTicketSales);
     }
-
+/**
+ * Displays the user settings for the user
+ * @param user, a user object to ensure that a valid user object is accessing the settings
+ */
     public static void admin(User user) {
         System.out.println("=====================================================================================\n");
         System.out.println("                          User Settings                                           \n");
@@ -214,7 +217,9 @@ public class CustomerMenuUI {
         System.out.println("Your Choice please: ");
 
     }
-
+/**
+ * Displays text when exiting MOBLIMA
+ */
     public static void exitDialouge() {
         System.out.println("Thank you for using Moblima! Logging out...");
 
