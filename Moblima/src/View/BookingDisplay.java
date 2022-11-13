@@ -83,20 +83,34 @@ public ArrayList askSeats(int number){
      */
     Scanner sc = new Scanner(System.in);
     ArrayList <Seat> seats = new ArrayList<Seat>();
-    System.out.println( "Please Enter your seat numbers (EG : A1) : ");
-    System.out.println( "------------------------------------------- ");
+    
+    int check =0;
     while (true){
     try {
+    System.out.println( "Please Enter your seat numbers (EG : A1) : ");
+    System.out.println( "------------------------------------------- ");
+    check = 0;
     for (int i = 0 ; i < number; i++){
         String seat = sc.nextLine();
         Seat TempSeat = new Seat();
         String strNew = seat.substring(1, seat.length());
-        
+        if (Integer.valueOf(seat.charAt(0))>91 || Integer.valueOf(seat.charAt(0)) <65 || Integer.valueOf(strNew) > 28 || Integer.valueOf(strNew) <= 0 ){
+            System.out.println("Invalid format please enter a seat number properly!");
+            check =1;
+            break;
+        }
         TempSeat.Seat(null, null, seat.charAt(0), Integer.valueOf(strNew));
         seats.add(TempSeat);
     }
+    if(check ==1){
+        continue;
+    }
         break;}
     catch (NumberFormatException e){
+        System.out.println("Enter the a proper seat number please!");
+        continue;
+    }
+    catch (InputMismatchException e){
         System.out.println("Enter the a proper seat number please!");
         continue;
     }
@@ -118,7 +132,7 @@ public int askTickets(){
     System.out.println( "--------------------------------------------- ");
     int choice = 0 ;
     choice = sc.nextInt();
-    if (choice <= 0){
+    if (choice < 0){
         System.out.println("Please enter a valid input!");
 
     }
