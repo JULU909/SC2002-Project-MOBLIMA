@@ -40,7 +40,7 @@ public class MovieInfoManager  extends FileManager{
     }
 	/**
      * Constructs the MovieInfoManager with the inputed file name
-	 * @param String
+	 * @param filename The name of the string
      */
     public MovieInfoManager(String filename) {
 		super(filename);

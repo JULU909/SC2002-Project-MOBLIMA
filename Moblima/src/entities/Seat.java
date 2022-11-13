@@ -11,10 +11,6 @@ import enums.*;
 
 /**
      * Constructor for seat object. Sets the seat type , status, row and column
-     * @param int
-     * @param int
-     * @param seatType
-     * @param seatStatus
      */
 public class Seat {
     private SeatTypes seatType;
@@ -25,8 +21,10 @@ public class Seat {
     
  /**
      * Setting the row and column of the specific seat booked.
-     * @param int
-     * @param int
+     * @param seatType the type of seat
+     * @param seatStatus the status of the seat
+     * @param row the row of the seat
+     * @param col the column of the seat
      */
 
     public void Seat(SeatTypes seatType,SeatStatus seatStatus, int row , int col){
@@ -50,8 +48,8 @@ public class Seat {
     */
     /**
      * Setting the row and column of the specific seat booked.
-     * @param int
-     * @param int
+     * @param row The row of the seat
+     * @param col The column of the seat
      */
     public void setRowCol(int row, int col){
 

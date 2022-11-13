@@ -172,22 +172,22 @@ public void setLayout() throws IOException{
  */
 /**
  * This method sets the cinema type of a specific showtime.
- * @param String
+ * @param type Sets cinema type of showtime
  */
 public void setCinemaType(String type){
     this.cinemaType = type;
 }
 /**
  * This method gets the cinema type of a specific showtime.
- * @return String
+ * @return Cinema type of showtime
  */
 public String getCinemaType(){
     return this.cinemaType;
 }
 /**
  * This method returns the seat status detail of a specific seat based on row and column number.
- * @param int
- * @param int
+ * @param row The row of the seat
+ * @param col The column of the seat
  */
 public SeatStatus getSeatStatus(int row , int col ){
     if ((row)>= 7){
@@ -200,42 +200,42 @@ public SeatStatus getSeatStatus(int row , int col ){
 }
 /**
  * This method returns the date detail of a specific showtime.
- * @return int
+ * @return The date of the showtime
  */
 public int getDate() {
 	return this.date;
 }
 /**
  * This method sets the date of a specific showtime.
- * @param int
+ * @param date The date to be set
  */
 public void setDate(int date) {
 	this.date = date;
 }
 /**
  * This method returns the time detail of a specific showtime.
- * @return int
+ * @return The time of the show time
  */
 public int getTime(){
     return this.time;
 }
 /**
  * This method sets the time of a specific showtime.
- * @param int
+ * @param time The time to set
  */
 public void setTime(int time) {
 	this.time = time;
 }
 /**
  * This method returns the movie detail of a specific showtime.
- * @return String
+ * @return Name of movie
  */
 public String getMovie(){
     return this.movie;
 }
 /**
  * This method sets the movie name a specific showtime.
- * @param String
+ * @param movie The name of the movie
  */
 public void setMovie(String movie) {
 	this.movie = movie;
@@ -250,7 +250,7 @@ public String getCineplex(){
 
 /**
  * This method sets the showtime cineplex of a specific showtime.
- * @param String
+ * @param cineplex The name of the cineplex
  */
 public void setCineplex(String cineplex) {
 	this.cineplex = cineplex;
@@ -264,16 +264,16 @@ public String getShowTimeDetails(){
 }
 /**
  * This method returns the seat type of a specific seat for the showtime.
- * @param int // row of the seat
- * @param int // column of the seat
- * @return SeatTypes
+ * @param row row of the seat
+ * @param col column of the seat
+ * @return The seat type of the seat
  */
 public SeatTypes getSeatType(int col , int row ){
     return this.layout[row-65][col-1].getSeatType();
 }
 /**
  * This method returns the title of the movie for the movie
- * @return String
+ * @return The title of the string
  */
 
 public String returnTitle(){
@@ -282,7 +282,8 @@ public String returnTitle(){
 
 /**
  * This method checks for the validity of a seat and returns an indicator
- * @return int
+ * @param row row of the seat
+ * @param col col of the seat
  */
 
 public int validSeat(int row , int col){
