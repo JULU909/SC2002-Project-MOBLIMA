@@ -106,7 +106,6 @@ public class HolidayManager {
 
 	/**
      * This method prints out all rows of the holiday.csv file.
-     * 
 	 * @throws FileNotFoundException
      * @throws IOException
      */
